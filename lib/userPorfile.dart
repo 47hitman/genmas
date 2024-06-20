@@ -6,6 +6,7 @@ import 'package:genmmas/games/cocokkan_gambar_screen.dart';
 import 'package:genmmas/games/cocokkan_text_screen.dart';
 import 'package:genmmas/games/lengkapi_kata_screen.dart';
 import 'package:genmmas/games/menyusun_huruf_screen.dart';
+import 'package:genmmas/games/susun_kata_screen.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -74,8 +75,8 @@ class ProfileScreen extends StatelessWidget {
                     PageTransition(
                         duration: const Duration(milliseconds: 300),
                         type: PageTransitionType.rightToLeft,
-                        child: const LengkapiKataScreen()));
-                // Aksi untuk About Us
+                        child: const SusunKataScreen()));
+                // // Aksi untuk About Us
               },
             ),
             CustomButton(
