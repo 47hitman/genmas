@@ -1,10 +1,9 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:flutter/material.dart';
-import 'package:genmmas/aboutUs.dart';
 import 'package:genmmas/editProfile.dart';
-import 'package:genmmas/games/cari_gambar_screen.dart';
-import 'package:genmmas/games/tebak_gambar_screen.dart';
+import 'package:genmmas/games/cocokkan_gambar_screen.dart';
+import 'package:genmmas/games/cocokkan_text_screen.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -73,7 +72,7 @@ class ProfileScreen extends StatelessWidget {
                     PageTransition(
                         duration: const Duration(milliseconds: 300),
                         type: PageTransitionType.rightToLeft,
-                        child: const CariGambarScreen()));
+                        child: const CocokkanTextScreen()));
                 // Aksi untuk About Us
               },
             ),
