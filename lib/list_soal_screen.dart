@@ -7,6 +7,7 @@ import 'package:genmmas/games/lengkapi_kata_screen.dart';
 import 'package:genmmas/games/maze_screen.dart';
 import 'package:genmmas/games/susun_kata_screen.dart';
 import 'package:genmmas/games/tebak_gambar_screen.dart';
+import 'package:genmmas/games/voice_game_screen.dart';
 import 'package:genmmas/models/hiddem_item.dart';
 import 'package:genmmas/userPorfile.dart';
 import 'package:page_transition/page_transition.dart';
@@ -127,6 +128,19 @@ class _ListSoalScreenState extends State<ListSoalScreen> {
                     duration: const Duration(milliseconds: 300),
                     type: PageTransitionType.rightToLeft,
                     child: const HiddenObjectGameScreen()));
+            // Aksi untuk About Us
+          },
+        ),
+        CustomButton(
+          iconPath: 'assets/icon.gif',
+          label: 'Voice Game',
+          onTap: () {
+            Navigator.push(
+                context,
+                PageTransition(
+                    duration: const Duration(milliseconds: 300),
+                    type: PageTransitionType.rightToLeft,
+                    child: const VoiceGameScreen()));
             // Aksi untuk About Us
           },
         ),
