@@ -1,174 +1,236 @@
 import 'package:flutter/material.dart';
-import '../models/match_item.dart';
-import '../widget/line_painter.dart';
 
-class CocokkanGambarScreen extends StatefulWidget {
-  const CocokkanGambarScreen({super.key});
+class ImageMatchingGameScreen extends StatefulWidget {
+  const ImageMatchingGameScreen({super.key});
 
   @override
-  _CocokkanGambarScreenState createState() => _CocokkanGambarScreenState();
+  _ImageMatchingGameScreenState createState() =>
+      _ImageMatchingGameScreenState();
 }
 
-class _CocokkanGambarScreenState extends State<CocokkanGambarScreen> {
-  late List<MatchItem> _leftItems;
-  late List<MatchItem> _rightItems;
-  Offset? _startOffset;
-  Offset? _endOffset;
-  int _selectedIndex = -1;
-  bool _isIncorrect = false;
-  final GlobalKey _painterKey = GlobalKey();
+class _ImageMatchingGameScreenState extends State<ImageMatchingGameScreen> {
+  final List<Map<String, String>> items = [
+    {'image': 'assets/soal1/ular.png', 'text': 'Ular'},
+    {'image': 'assets/soal1/tupai.png', 'text': 'Tupai'},
+    {'image': 'assets/soal1/kelinci.png', 'text': 'Kelinci'},
+    {'image': 'assets/soal1/kupukupu.png', 'text': 'Kupu2'},
+    {'image': 'assets/soal1/burung.png', 'text': 'Burung'},
+  ];
+
+  final List<Map<String, String>> shuffledItems = [];
+  final Set<String> matchedItems = {};
 
   @override
   void initState() {
     super.initState();
-    _initializeGame();
+    shuffledItems.addAll(items);
+    shuffledItems.shuffle();
   }
 
-  void _initializeGame() {
-    _leftItems = [
-      MatchItem(imagePath: 'assets/icon.gif'),
-      MatchItem(imagePath: 'assets/icon.gif'),
-    ];
-    _rightItems = List.from(_leftItems);
-    _rightItems.shuffle();
-  }
-
-  void _onLeftItemTap(int index, BuildContext context) {
-    setState(() {
-      _selectedIndex = index;
-      RenderBox box = context.findRenderObject() as RenderBox;
-      _startOffset = box.localToGlobal(Offset.zero) +
-          Offset(box.size.width / 2, box.size.height / 2);
-      _isIncorrect = false;
-    });
-  }
-
-  void _onRightItemTap(int index, BuildContext context) {
-    if (_selectedIndex != -1) {
-      if (_leftItems[_selectedIndex].imagePath ==
-          _rightItems[index].imagePath) {
-        setState(() {
-          RenderBox box = context.findRenderObject() as RenderBox;
-          _endOffset = box.localToGlobal(Offset.zero) +
-              Offset(box.size.width / 2, box.size.height / 2);
-
-          _leftItems[_selectedIndex].isMatched = true;
-          _rightItems[index].isMatched = true;
-
-          _selectedIndex = -1;
-
-          // Show notification
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('Gambar cocok!'),
-              duration: Duration(seconds: 2),
-            ),
-          );
-        });
-      } else {
-        setState(() {
-          _isIncorrect = true;
-          _selectedIndex = -1;
-        });
-      }
+  void _checkCompletion() {
+    if (matchedItems.length == items.length) {
+      _showSuccessDialog();
     }
+  }
+
+  void _showSuccessDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text(
+            'Selamat!',
+            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+          ),
+          content: const Text(
+            'Kamu berhasil mencocokkan semua gambar!',
+            style: TextStyle(fontSize: 20),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('OK'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  bool _checkIfMatched(String imagePath, String targetPath) {
+    return imagePath == targetPath;
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Cocokkan Gambar',
-            style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold)),
-        automaticallyImplyLeading: false,
-        backgroundColor: Colors.orangeAccent,
+        title: const Text(
+          'Cocokkan Kartu',
+          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+        ),
+        backgroundColor: Colors.orange,
       ),
-      body: Stack(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Expanded(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: List.generate(_leftItems.length, (index) {
-                      return GestureDetector(
-                        onTap: () => _onLeftItemTap(index, context),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              color: _leftItems[index].isMatched
-                                  ? Colors.green
-                                  : Colors.blue,
-                              width: 4,
-                            ),
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Image.asset(
-                            _leftItems[index].imagePath,
-                            width: 100,
-                            height: 100,
-                          ),
-                        ),
-                      );
-                    }),
-                  ),
-                ),
-                Expanded(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: List.generate(_rightItems.length, (index) {
-                      return GestureDetector(
-                        onTap: () => _onRightItemTap(index, context),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              color: _rightItems[index].isMatched
-                                  ? Colors.green
-                                  : Colors.blue,
-                              width: 4,
-                            ),
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Image.asset(
-                            _rightItems[index].imagePath,
-                            width: 100,
-                            height: 100,
-                          ),
-                        ),
-                      );
-                    }),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          if (_startOffset != null && _endOffset != null)
-            CustomPaint(
-              key: _painterKey,
-              size: Size.infinite,
-              painter: LinePainter(start: _startOffset!, end: _endOffset!),
-            ),
-          if (_isIncorrect)
-            Center(
-              child: Container(
-                padding: const EdgeInsets.all(16.0),
-                decoration: BoxDecoration(
-                  color: Colors.red,
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: const Text(
-                  'Gambar tidak cocok, coba lagi!',
-                  style: TextStyle(
-                      fontSize: 24,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold),
-                ),
+      body: Container(
+        color: Colors.lightBlueAccent,
+        child: Column(
+          children: [
+            const Padding(
+              padding: EdgeInsets.all(16.0),
+              child: Text(
+                'Seret dan lepaskan kartu ke pasangan yang sesuai',
+                style: TextStyle(fontSize: 22, color: Colors.white),
+                textAlign: TextAlign.center,
               ),
             ),
-        ],
+            Expanded(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: items.map((item) {
+                      return Draggable<Map<String, String>>(
+                        data: item,
+                        feedback: Material(
+                          child: Column(
+                            children: [
+                              item['image'] != null
+                                  ? Image.asset(item['image']!,
+                                      width: 70, height: 60)
+                                  : Container(),
+                              Text(
+                                item['text']!,
+                                style: const TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        childWhenDragging: Container(
+                          width: 70,
+                          height: 70,
+                          color: Colors.grey,
+                        ),
+                        child: matchedItems.contains(item['image'])
+                            ? Container(
+                                width: 70,
+                                height: 90,
+                                decoration: BoxDecoration(
+                                  color: Colors.green,
+                                  borderRadius: BorderRadius.circular(8),
+                                  border:
+                                      Border.all(color: Colors.white, width: 3),
+                                ),
+                                child: Column(
+                                  children: [
+                                    item['image'] != null
+                                        ? Image.asset(item['image']!,
+                                            width: 70, height: 60)
+                                        : Container(),
+                                    Text(
+                                      item['text']!,
+                                      style: const TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              )
+                            : Container(
+                                width: 70,
+                                height: 90,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8),
+                                  border:
+                                      Border.all(color: Colors.white, width: 3),
+                                ),
+                                child: Column(
+                                  children: [
+                                    item['image'] != null
+                                        ? Image.asset(item['image']!,
+                                            width: 70, height: 60)
+                                        : Container(),
+                                    Text(
+                                      item['text']!,
+                                      style: const TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                      );
+                    }).toList(),
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: shuffledItems.map((item) {
+                      return DragTarget<Map<String, String>>(
+                        builder: (BuildContext context,
+                            List<Map<String, String>?> candidateData,
+                            List<dynamic> rejectedData) {
+                          return Container(
+                            width: 70,
+                            height: 90,
+                            decoration: BoxDecoration(
+                              color: matchedItems.contains(item['image'])
+                                  ? Colors.green
+                                  : Colors.transparent,
+                              borderRadius: BorderRadius.circular(8),
+                              border: Border.all(color: Colors.white, width: 3),
+                            ),
+                            child: Column(
+                              children: [
+                                item['image'] != null
+                                    ? Image.asset(item['image']!,
+                                        width: 70, height: 60)
+                                    : Container(),
+                                Text(
+                                  item['text']!,
+                                  style: const TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                        onWillAccept: (data) => true,
+                        onAccept: (data) {
+                          if (_checkIfMatched(data['image']!, item['image']!)) {
+                            setState(() {
+                              matchedItems.add(item['image']!);
+                            });
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(content: Text('Cocok!')),
+                            );
+                            _checkCompletion();
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                  content: Text('Tidak cocok, coba lagi!')),
+                            );
+                          }
+                        },
+                      );
+                    }).toList(),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

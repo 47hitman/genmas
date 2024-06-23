@@ -5,6 +5,7 @@ import 'package:genmmas/games/cocokkan_gambar_screen.dart';
 import 'package:genmmas/games/cocokkan_text_screen.dart';
 import 'package:genmmas/games/lengkapi_kata_screen.dart';
 import 'package:genmmas/games/maze_screen.dart';
+import 'package:genmmas/games/pasangkan_gambar_screen.dart';
 import 'package:genmmas/games/susun_kata_screen.dart';
 import 'package:genmmas/games/tebak_gambar_screen.dart';
 import 'package:genmmas/games/voice_game_screen.dart';
@@ -26,125 +27,151 @@ class _ListSoalScreenState extends State<ListSoalScreen> {
       appBar: AppBar(
         title: const Text('Daftar Soal'),
       ),
-      body: Column(children: [
-        CustomButton(
-          iconPath: 'assets/icon.gif',
-          label: 'Cari Gambar',
-          onTap: () {
-            Navigator.push(
+      body: ListView(
+        padding: const EdgeInsets.all(8.0),
+        children: [
+          CustomButton(
+            iconPath: 'assets/icon.gif',
+            label: 'Pasangkan Gambar',
+            onTap: () {
+              Navigator.push(
                 context,
                 PageTransition(
-                    duration: const Duration(milliseconds: 300),
-                    type: PageTransitionType.rightToLeft,
-                    child: const CariGambarScreen()));
-            // Aksi untuk About Us
-          },
-        ),
-        CustomButton(
-          iconPath: 'assets/icon.gif',
-          label: 'Cocokan Gambar',
-          onTap: () {
-            Navigator.push(
+                  duration: const Duration(milliseconds: 300),
+                  type: PageTransitionType.rightToLeft,
+                  child: const SingleImageMatchingGameScreen(),
+                ),
+              );
+            },
+          ),
+          CustomButton(
+            iconPath: 'assets/icon.gif',
+            label: 'Cari Gambar',
+            onTap: () {
+              Navigator.push(
                 context,
                 PageTransition(
-                    duration: const Duration(milliseconds: 300),
-                    type: PageTransitionType.rightToLeft,
-                    child: const CocokkanGambarScreen()));
-            // Aksi untuk About Us
-          },
-        ),
-        CustomButton(
-          iconPath: 'assets/icon.gif',
-          label: 'Cocokan Text',
-          onTap: () {
-            Navigator.push(
+                  duration: const Duration(milliseconds: 300),
+                  type: PageTransitionType.rightToLeft,
+                  child: const CariGambarScreen(),
+                ),
+              );
+            },
+          ),
+          CustomButton(
+            iconPath: 'assets/icon.gif',
+            label: 'Cocokan Gambar',
+            onTap: () {
+              Navigator.push(
                 context,
                 PageTransition(
-                    duration: const Duration(milliseconds: 300),
-                    type: PageTransitionType.rightToLeft,
-                    child: const CocokkanTextScreen()));
-            // Aksi untuk About Us
-          },
-        ),
-        CustomButton(
-          iconPath: 'assets/icon.gif',
-          label: 'Lengkapi Kata',
-          onTap: () {
-            Navigator.push(
+                  duration: const Duration(milliseconds: 300),
+                  type: PageTransitionType.rightToLeft,
+                  child: const ImageMatchingGameScreen(),
+                ),
+              );
+            },
+          ),
+          CustomButton(
+            iconPath: 'assets/icon.gif',
+            label: 'Cocokan Text',
+            onTap: () {
+              Navigator.push(
                 context,
                 PageTransition(
-                    duration: const Duration(milliseconds: 300),
-                    type: PageTransitionType.rightToLeft,
-                    child: const LengkapiKataScreen()));
-            // Aksi untuk About Us
-          },
-        ),
-        CustomButton(
-          iconPath: 'assets/icon.gif',
-          label: 'Susun Kata',
-          onTap: () {
-            Navigator.push(
+                  duration: const Duration(milliseconds: 300),
+                  type: PageTransitionType.rightToLeft,
+                  child: const TextMatchingGameScreen(),
+                ),
+              );
+            },
+          ),
+          CustomButton(
+            iconPath: 'assets/icon.gif',
+            label: 'Lengkapi Kata',
+            onTap: () {
+              Navigator.push(
                 context,
                 PageTransition(
-                    duration: const Duration(milliseconds: 300),
-                    type: PageTransitionType.rightToLeft,
-                    child: const SusunKataScreen()));
-            // Aksi untuk About Us
-          },
-        ),
-        CustomButton(
-          iconPath: 'assets/icon.gif',
-          label: 'Tebak Gambar',
-          onTap: () {
-            Navigator.push(
+                  duration: const Duration(milliseconds: 300),
+                  type: PageTransitionType.rightToLeft,
+                  child: const LengkapiKataScreen(),
+                ),
+              );
+            },
+          ),
+          CustomButton(
+            iconPath: 'assets/icon.gif',
+            label: 'Susun Kata',
+            onTap: () {
+              Navigator.push(
                 context,
                 PageTransition(
-                    duration: const Duration(milliseconds: 300),
-                    type: PageTransitionType.rightToLeft,
-                    child: const TebakGambarScreen()));
-            // Aksi untuk About Us
-          },
-        ),
-        CustomButton(
-          iconPath: 'assets/icon.gif',
-          label: 'Maze',
-          onTap: () {
-            Navigator.push(
+                  duration: const Duration(milliseconds: 300),
+                  type: PageTransitionType.rightToLeft,
+                  child: const SusunKataScreen(),
+                ),
+              );
+            },
+          ),
+          CustomButton(
+            iconPath: 'assets/icon.gif',
+            label: 'Tebak Gambar',
+            onTap: () {
+              Navigator.push(
                 context,
                 PageTransition(
-                    duration: const Duration(milliseconds: 300),
-                    type: PageTransitionType.rightToLeft,
-                    child: const MazeScreen()));
-            // Aksi untuk About Us
-          },
-        ),
-        CustomButton(
-          iconPath: 'assets/icon.gif',
-          label: 'Gambar Tersembunyi',
-          onTap: () {
-            Navigator.push(
+                  duration: const Duration(milliseconds: 300),
+                  type: PageTransitionType.rightToLeft,
+                  child: const TebakGambarScreen(),
+                ),
+              );
+            },
+          ),
+          CustomButton(
+            iconPath: 'assets/icon.gif',
+            label: 'Maze',
+            onTap: () {
+              Navigator.push(
                 context,
                 PageTransition(
-                    duration: const Duration(milliseconds: 300),
-                    type: PageTransitionType.rightToLeft,
-                    child: const HiddenObjectGameScreen()));
-            // Aksi untuk About Us
-          },
-        ),
-        CustomButton(
-          iconPath: 'assets/icon.gif',
-          label: 'Voice Game',
-          onTap: () {
-            Navigator.push(
+                  duration: const Duration(milliseconds: 300),
+                  type: PageTransitionType.rightToLeft,
+                  child: const MazeScreen(),
+                ),
+              );
+            },
+          ),
+          CustomButton(
+            iconPath: 'assets/icon.gif',
+            label: 'Gambar Tersembunyi',
+            onTap: () {
+              Navigator.push(
                 context,
                 PageTransition(
-                    duration: const Duration(milliseconds: 300),
-                    type: PageTransitionType.rightToLeft,
-                    child: const VoiceGameScreen()));
-            // Aksi untuk About Us
-          },
-        ),
-      ]),
+                  duration: const Duration(milliseconds: 300),
+                  type: PageTransitionType.rightToLeft,
+                  child: const HiddenObjectGameScreen(),
+                ),
+              );
+            },
+          ),
+          CustomButton(
+            iconPath: 'assets/icon.gif',
+            label: 'Voice Game',
+            onTap: () {
+              Navigator.push(
+                context,
+                PageTransition(
+                  duration: const Duration(milliseconds: 300),
+                  type: PageTransitionType.rightToLeft,
+                  child: const VoiceGameScreen(),
+                ),
+              );
+            },
+          ),
+        ],
+      ),
     );
   }
 }

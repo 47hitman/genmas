@@ -31,9 +31,6 @@ class _VoiceGameScreenState extends State<VoiceGameScreen> {
             _checkResult();
           }
         }),
-        onSoundLevelChange: (val) {
-          // You can use this to update a UI element with the current sound level
-        },
         listenFor: const Duration(seconds: 5),
         cancelOnError: true,
         listenMode: stt.ListenMode.confirmation,
@@ -51,8 +48,20 @@ class _VoiceGameScreenState extends State<VoiceGameScreen> {
 
   void _checkResult() {
     if (_spokenText.toLowerCase() == _targetWord.toLowerCase()) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Correct! You said: $_spokenText')),
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: const Text('Betul!'),
+          // content: Text('You said: $_spokenText'),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('OK'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        ),
       );
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -73,19 +82,26 @@ class _VoiceGameScreenState extends State<VoiceGameScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              'Say the word: $_targetWord',
+              'Katakan: $_targetWord',
               style: const TextStyle(fontSize: 24),
-            ),
-            const SizedBox(height: 20),
-            IconButton(
-              icon: Icon(_isListening ? Icons.mic : Icons.mic_none),
-              onPressed: _isListening ? _stopListening : _startListening,
-              iconSize: 48,
             ),
             const SizedBox(height: 20),
             Text(
-              'You said: $_spokenText',
+              'kamu Mengatakan: $_spokenText',
               style: const TextStyle(fontSize: 24),
+            ),
+            const SizedBox(height: 200),
+            GestureDetector(
+              onLongPressStart: (details) {
+                _startListening();
+              },
+              onLongPressEnd: (details) {
+                _stopListening();
+              },
+              child: Icon(
+                _isListening ? Icons.mic : Icons.mic_none,
+                size: 48,
+              ),
             ),
           ],
         ),

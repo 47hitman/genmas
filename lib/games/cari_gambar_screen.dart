@@ -27,22 +27,14 @@ class _CariGambarScreenState extends State<CariGambarScreen> {
 
   void _initializeGame() {
     _imageItems = [
-      ImageFindItem(imagePath: 'assets/images/image1.png'),
-      ImageFindItem(imagePath: 'assets/images/image1.png'),
-      ImageFindItem(imagePath: 'assets/images/image2.png'),
-      ImageFindItem(imagePath: 'assets/images/image2.png'),
-      ImageFindItem(imagePath: 'assets/images/image3.png'),
-      ImageFindItem(imagePath: 'assets/images/image3.png'),
-      ImageFindItem(imagePath: 'assets/images/image4.png'),
-      ImageFindItem(imagePath: 'assets/images/image4.png'),
-      ImageFindItem(imagePath: 'assets/images/image5.png'),
-      ImageFindItem(imagePath: 'assets/images/image5.png'),
-      ImageFindItem(imagePath: 'assets/images/image6.png'),
-      ImageFindItem(imagePath: 'assets/images/image6.png'),
-      ImageFindItem(imagePath: 'assets/images/image7.png'),
-      ImageFindItem(imagePath: 'assets/images/image7.png'),
-      ImageFindItem(imagePath: 'assets/images/image8.png'),
-      ImageFindItem(imagePath: 'assets/images/image8.png'),
+      ImageFindItem(imagePath: 'assets/soal1/ular.png'),
+      ImageFindItem(imagePath: 'assets/soal1/ular.png'),
+      ImageFindItem(imagePath: 'assets/soal1/tupai.png'),
+      ImageFindItem(imagePath: 'assets/soal1/tupai.png'),
+      ImageFindItem(imagePath: 'assets/soal1/kelinci.png'),
+      ImageFindItem(imagePath: 'assets/soal1/kelinci.png'),
+      ImageFindItem(imagePath: 'assets/soal1/kupukupu.png'),
+      ImageFindItem(imagePath: 'assets/soal1/kupukupu.png'),
     ];
     _imageItems.shuffle();
   }
