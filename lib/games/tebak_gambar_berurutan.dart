@@ -1,3 +1,4 @@
+import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
 
 import '../services/globals.dart';
@@ -13,6 +14,21 @@ class TebakGambarBerurutanScreen extends StatefulWidget {
 class _TebakGambarBerurutanScreenState
     extends State<TebakGambarBerurutanScreen> {
   int currentIndex = 0;
+  @override
+  void initState() {
+    super.initState();
+
+    _play();
+  }
+
+  final AssetsAudioPlayer _player = AssetsAudioPlayer.newPlayer();
+  void _play() {
+    _player.open(
+      Audio(sound),
+      autoStart: true,
+      showNotification: true,
+    );
+  }
 
   void _checkAnswer(String selectedImage) {
     setState(() {

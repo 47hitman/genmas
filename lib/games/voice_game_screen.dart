@@ -1,3 +1,4 @@
+import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
 
@@ -20,6 +21,16 @@ class _VoiceGameScreenState extends State<VoiceGameScreen> {
   void initState() {
     super.initState();
     _speech = stt.SpeechToText();
+    _play('assets/level5/Level 5.m4a');
+  }
+
+  final AssetsAudioPlayer _player = AssetsAudioPlayer.newPlayer();
+  void _play(sound) {
+    _player.open(
+      Audio(sound),
+      autoStart: true,
+      showNotification: true,
+    );
   }
 
   void _startListening() async {

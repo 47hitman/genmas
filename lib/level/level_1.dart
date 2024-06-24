@@ -657,6 +657,7 @@ class _level1State extends State<level1> {
               children: [
                 InkWell(
                   onTap: () {
+                    sound = 'assets/soal1/Level 1 (aktivitas 3a).m4a';
                     targetImage = 'assets/level1/aktivitas3/kucing.png';
                     options = [
                       {
@@ -725,6 +726,7 @@ class _level1State extends State<level1> {
                 ),
                 InkWell(
                   onTap: () {
+                    sound = 'assets/soal1/Level 1 (aktivitas 3b).m4a';
                     targetImage = 'assets/level1/aktivitas3/b.png';
                     options = [
                       {'image': 'assets/level1/aktivitas3/d.png', 'text': ''},
@@ -778,6 +780,7 @@ class _level1State extends State<level1> {
               children: [
                 InkWell(
                   onTap: () {
+                    sound = 'assets/soal1/Level 1 (aktivitas 3c).m4a';
                     targetImage = 'assets/level1/aktivitas3/buku.png';
                     options = [
                       {
@@ -867,6 +870,7 @@ class _level1State extends State<level1> {
                 ),
                 InkWell(
                   onTap: () {
+                    sound = 'assets/soal1/Level 1 (aktivitas 4).m4a';
                     imageItems = [
                       ImageFindItem(
                           imagePath: 'assets/level1/aktivitas4/apel.png'),
@@ -952,6 +956,7 @@ class _level1State extends State<level1> {
               children: [
                 InkWell(
                   onTap: () {
+                    sound = 'assets/soal1/Level 1 (aktivitas 5).m4a';
                     images = [
                       'assets/level1/aktivitas5/wortel.png',
                       'assets/level1/aktivitas5/brokoli.png',

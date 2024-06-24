@@ -1,3 +1,4 @@
+import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
 import 'package:genmmas/games/lengkapi_kata_screen.dart';
 import 'package:page_transition/page_transition.dart';
@@ -12,6 +13,53 @@ class Level3kvkv extends StatefulWidget {
 }
 
 class _Level3kvkvState extends State<Level3kvkv> {
+  @override
+  void initState() {
+    super.initState();
+    String selectedOption = assetName;
+    if (selectedOption == 'susu') {
+      _play('assets/level3/Level 3 susu.m4a');
+    }
+    if (selectedOption == 'sawi') {
+      _play('assets/level3/Level 3 sawi.m4a');
+    }
+    if (selectedOption == 'sapu') {
+      _play('assets/level3/Level 3 sapu.m4a');
+    }
+
+    if (selectedOption == 'siku') {
+      _play('assets/level3/Level 3 siku.m4a');
+    }
+
+    if (selectedOption == 'soda') {
+      _play('assets/level3/Level 3 soda.m4a');
+    }
+    if (selectedOption == 'bibir') {
+      _play('assets/level3/Level 3 bibir.m4a');
+    }
+    if (selectedOption == 'badak') {
+      _play('assets/level3/Level 3 badak.m4a');
+    }
+    if (selectedOption == 'botol') {
+      _play('assets/level3/Level 3 botol.m4a');
+    }
+    if (selectedOption == 'bayam') {
+      _play('assets/level3/Level 3 bayam.m4a');
+    }
+    if (selectedOption == 'beras') {
+      _play('assets/level3/Level 3 beras.m4a');
+    }
+  }
+
+  final AssetsAudioPlayer _player = AssetsAudioPlayer.newPlayer();
+  void _play(sound) {
+    _player.open(
+      Audio(sound),
+      autoStart: true,
+      showNotification: true,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

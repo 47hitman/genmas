@@ -1,3 +1,4 @@
+import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
 
 import '../services/globals.dart';
@@ -14,6 +15,21 @@ class _SingleImageMatchingGameScreenState
     extends State<SingleImageMatchingGameScreen> {
   String? selectedOption;
   bool matched = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _play();
+  }
+
+  final AssetsAudioPlayer _player = AssetsAudioPlayer.newPlayer();
+  void _play() {
+    _player.open(
+      Audio(sound),
+      autoStart: true,
+      showNotification: true,
+    );
+  }
 
   void _checkCompletion() {
     if (matched) {

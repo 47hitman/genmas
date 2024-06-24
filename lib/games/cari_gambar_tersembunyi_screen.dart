@@ -1,3 +1,4 @@
+import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
 
 import '../models/hiddem_item.dart';
@@ -10,6 +11,27 @@ class HiddenObjectGameScreen extends StatefulWidget {
 }
 
 class _HiddenObjectGameScreenState extends State<HiddenObjectGameScreen> {
+  final AssetsAudioPlayer _player = AssetsAudioPlayer.newPlayer();
+  @override
+  void initState() {
+    super.initState();
+    _play();
+  }
+
+  @override
+  void dispose() {
+    _player.dispose();
+    super.dispose();
+  }
+
+  void _play() {
+    _player.open(
+      Audio('assets/soal1/Level 1 (aktivitas 1).m4a'),
+      autoStart: true,
+      showNotification: true,
+    );
+  }
+
   List<HiddenItem> hiddenItems = [
     HiddenItem(
         imagePath: 'assets/soal1/ular.png', position: const Offset(20, 100)),
@@ -27,7 +49,7 @@ class _HiddenObjectGameScreenState extends State<HiddenObjectGameScreen> {
 
   Set<int> foundItems = {};
 
-  void _checkForHiddenItem(Offset position) {
+  void checkForHiddenItem(Offset position) {
     for (int i = 0; i < hiddenItems.length; i++) {
       final item = hiddenItems[i];
       final itemRect = Rect.fromLTWH(
@@ -51,7 +73,7 @@ class _HiddenObjectGameScreenState extends State<HiddenObjectGameScreen> {
         );
 
         if (foundItems.length == hiddenItems.length) {
-          _showSuccessDialog();
+          showSuccessDialog();
         }
 
         return;
@@ -67,7 +89,7 @@ class _HiddenObjectGameScreenState extends State<HiddenObjectGameScreen> {
     );
   }
 
-  void _showSuccessDialog() {
+  void showSuccessDialog() {
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -98,7 +120,7 @@ class _HiddenObjectGameScreenState extends State<HiddenObjectGameScreen> {
       ),
       body: GestureDetector(
         onTapDown: (details) {
-          _checkForHiddenItem(details.localPosition);
+          checkForHiddenItem(details.localPosition);
         },
         child: Column(
           children: [

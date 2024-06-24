@@ -1,5 +1,6 @@
+import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
-import 'package:maze/maze.dart';
+import 'package:maze/maze.dart' as maze; // Use 'maze' as a prefix
 
 class MazeScreen extends StatefulWidget {
   const MazeScreen({Key? key}) : super(key: key);
@@ -9,6 +10,21 @@ class MazeScreen extends StatefulWidget {
 }
 
 class _MazeScreenState extends State<MazeScreen> {
+  final AssetsAudioPlayer _player = AssetsAudioPlayer.newPlayer();
+  @override
+  void initState() {
+    super.initState();
+    _play();
+  }
+
+  void _play() {
+    _player.open(
+      Audio('assets/soal1/Level 1 (aktivitas 7a).m4a'),
+      autoStart: true,
+      showNotification: true,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,31 +42,26 @@ class _MazeScreenState extends State<MazeScreen> {
       ),
       body: Column(
         children: [
-          const Padding(
-            padding: EdgeInsets.all(16.0),
-            child: Text(
-              'Ayo temukan jalan Andi untuk pergi ke sekolah!',
-              style: TextStyle(fontSize: 20, color: Colors.black87),
-              textAlign: TextAlign.center,
-            ),
-          ),
           Expanded(
             child: SafeArea(
-              child: Maze(
-                player: MazeItem(
+              child: maze.Maze(
+                // Use 'maze.Maze' here
+                player: maze.MazeItem(
+                  // Use 'maze.MazeItem' here
                   'assets/level1/aktivitas7/andy.png',
-                  ImageType.asset,
+                  maze.ImageType.asset, // Use 'maze.ImageType' with the prefix
                 ),
                 columns: 6,
                 rows: 12,
                 wallThickness: 4.0,
                 wallColor: Colors.blueAccent,
-                finish: MazeItem(
+                finish: maze.MazeItem(
+                  // Use 'maze.MazeItem' here
                   'assets/level1/aktivitas7/rumah.png',
-                  ImageType.asset,
+                  maze.ImageType.asset, // Use 'maze.ImageType' with the prefix
                 ),
                 onFinish: () {
-                  showCompletionDialog(); // Panggil fungsi untuk menampilkan dialog
+                  showCompletionDialog(); // Call function to show dialog
                 },
               ),
             ),
@@ -78,7 +89,7 @@ class _MazeScreenState extends State<MazeScreen> {
               child: const Text('OK'),
               onPressed: () {
                 Navigator.of(context)
-                    .pop(); // Tutup dialog saat tombol OK ditekan
+                    .pop(); // Close dialog when OK button is pressed
               },
             ),
           ],

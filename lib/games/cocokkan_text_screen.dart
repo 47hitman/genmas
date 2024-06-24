@@ -1,3 +1,4 @@
+import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
 
 import '../services/globals.dart';
@@ -12,12 +13,22 @@ class TextMatchingGameScreen extends StatefulWidget {
 class _TextMatchingGameScreenState extends State<TextMatchingGameScreen> {
   final List<String> shuffledItems = [];
   final Set<String> matchedItems = {};
+  final AssetsAudioPlayer _player = AssetsAudioPlayer.newPlayer();
 
   @override
   void initState() {
     super.initState();
     shuffledItems.addAll(itemstext);
     shuffledItems.shuffle();
+    _play();
+  }
+
+  void _play() {
+    _player.open(
+      Audio('assets/soal1/Level 1 (aktivitas 2c).m4a'),
+      autoStart: true,
+      showNotification: true,
+    );
   }
 
   void _checkCompletion() {

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:genmmas/level/level3_kvkv.dart';
 import 'package:page_transition/page_transition.dart';
-import '../games/kata_pola_screnn.dart';
 import '../services/globals.dart';
 
 class level3 extends StatefulWidget {
@@ -135,8 +134,6 @@ class _level3State extends State<level3> {
                 itemBuilder: (context, index) {
                   return GestureDetector(
                     onTap: () {
-                      // Tambahkan logika yang ingin Anda lakukan saat tombol ditekan di sini
-                      // print('Tombol ditekan');
                       String imageName = _getImageName(index);
                       assetName = _getText(index);
                       assetLocation = "assets/level3/aktivitas1/$imageName.png";
@@ -221,8 +218,6 @@ class _level3State extends State<level3> {
                 itemBuilder: (context, index) {
                   return GestureDetector(
                     onTap: () {
-                      // Tambahkan logika yang ingin Anda lakukan saat tombol ditekan di sini
-                      // print('Tombol ditekan');
                       String imageName = _getImageName2(index);
                       assetName = _getText2(index);
                       assetLocation = "assets/level3/aktivitas2/$imageName.png";

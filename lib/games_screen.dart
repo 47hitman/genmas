@@ -49,6 +49,18 @@ class _GamesScreenState extends State<GamesScreen> {
     );
   }
 
+  void _onGamesTap4(int level) {
+    // Ganti sesuai dengan fungsi navigasi ke level yang dipilih
+    // Navigator.push(
+    //   context,
+    //   PageTransition(
+    //     duration: const Duration(milliseconds: 300),
+    //     type: PageTransitionType.rightToLeft,
+    //     child: const menu3level(), // Ganti dengan widget level yang sesuai
+    //   ),
+    // );
+  }
+
   void _onGamesTap5(int level) {
     // Ganti sesuai dengan fungsi navigasi ke level yang dipilih
     Navigator.push(
@@ -200,7 +212,7 @@ class _GamesScreenState extends State<GamesScreen> {
             ),
             const SizedBox(height: 20),
             GestureDetector(
-              onTap: () => _onGamesTap3(
+              onTap: () => _onGamesTap4(
                   3), // Ubah menjadi level 3 jika sudah ditambahkan
               child: Container(
                 width: double.infinity,

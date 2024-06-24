@@ -67,13 +67,361 @@ class _level2State extends State<level2> {
               children: [
                 InkWell(
                   onTap: () {
-                    berawalan = "bu";
-                    targetImage = 'assets/soal1/burung.png';
+                    sound = 'assets/level2/Level 2 (aktivitas 1 sa).m4a';
+                    berawalan = "sa";
+                    targetImage = 'assets/level2/sapu.png';
                     options = [
-                      {'image': 'assets/soal1/ular.png', 'text': 'Ular'},
-                      {'image': 'assets/soal1/tupai.png', 'text': 'Tupai'},
-                      {'image': 'assets/soal1/kelinci.png', 'text': 'Kelinci'},
-                      {'image': 'assets/soal1/burung.png', 'text': 'Burung'},
+                      {'image': 'assets/level2/soda.png', 'text': 'soda'},
+                      {'image': 'assets/level2/bibir.png', 'text': 'bibir'},
+                      {'image': 'assets/level2/sapu.png', 'text': 'sapu'},
+                    ];
+                    Navigator.push(
+                      context,
+                      PageTransition(
+                        duration: const Duration(milliseconds: 300),
+                        type: PageTransitionType.rightToLeft,
+                        child: const berawalnGameScreen(),
+                      ),
+                    );
+                    // Aksi yang ingin dilakukan ketika tombol ditekan
+                  },
+                  child: Container(
+                    width: 80, // Lebar tombol
+                    height: 80, // Tinggi tombol
+                    decoration: BoxDecoration(
+                      shape:
+                          BoxShape.circle, // Membuat tombol berbentuk lingkaran
+                      color: const Color.fromARGB(
+                          255, 19, 212, 42), // Warna tombol
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.3),
+                          spreadRadius: 1,
+                          blurRadius: 2,
+                          offset:
+                              const Offset(0, 2), // changes position of shadow
+                        ),
+                      ],
+                    ),
+                    child: const Center(
+                      child: Icon(
+                        Icons.star,
+                        color: Colors.white, // Warna ikon bintang selalu putih
+                        size: 40, // Ukuran ikon bintang
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  width: 50,
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const SizedBox(
+                  width: 50,
+                ),
+                InkWell(
+                  onTap: () {
+                    sound = 'assets/level2/Level 2 (aktivitas 1 si).m4a';
+                    berawalan = "si";
+                    targetImage = 'assets/level2/siku.png';
+                    options = [
+                      {'image': 'assets/level2/botol.png', 'text': 'botol'},
+                      {'image': 'assets/level2/siku.png', 'text': 'siku'},
+                      {'image': 'assets/level2/badak.png', 'text': 'badak'},
+                    ];
+                    Navigator.push(
+                      context,
+                      PageTransition(
+                        duration: const Duration(milliseconds: 300),
+                        type: PageTransitionType.rightToLeft,
+                        child: const berawalnGameScreen(),
+                      ),
+                    );
+                    // Aksi yang ingin dilakukan ketika tombol ditekan
+                  },
+                  child: Container(
+                    width: 80, // Lebar tombol
+                    height: 80, // Tinggi tombol
+                    decoration: BoxDecoration(
+                      shape:
+                          BoxShape.circle, // Membuat tombol berbentuk lingkaran
+                      color: const Color.fromARGB(
+                          255, 19, 212, 42), // Warna tombol
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.3),
+                          spreadRadius: 1,
+                          blurRadius: 2,
+                          offset:
+                              const Offset(0, 2), // changes position of shadow
+                        ),
+                      ],
+                    ),
+                    child: const Center(
+                      child: Icon(
+                        Icons.star,
+                        color: Colors.white, // Warna ikon bintang selalu putih
+                        size: 40, // Ukuran ikon bintang
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                InkWell(
+                  onTap: () {
+                    sound = 'assets/level2/Level 2 (aktivitas 1 so).m4a';
+                    berawalan = "so";
+                    targetImage = 'assets/level2/soda.png';
+                    options = [
+                      {'image': 'assets/level2/siku.png', 'text': 'siku'},
+                      {'image': 'assets/level2/badak.png', 'text': 'badak'},
+                      {'image': 'assets/level2/soda.png', 'text': 'soda'},
+                    ];
+                    Navigator.push(
+                      context,
+                      PageTransition(
+                        duration: const Duration(milliseconds: 300),
+                        type: PageTransitionType.rightToLeft,
+                        child: const berawalnGameScreen(),
+                      ),
+                    );
+                    // Aksi yang ingin dilakukan ketika tombol ditekan
+                  },
+                  child: Container(
+                    width: 80, // Lebar tombol
+                    height: 80, // Tinggi tombol
+                    decoration: BoxDecoration(
+                      shape:
+                          BoxShape.circle, // Membuat tombol berbentuk lingkaran
+                      color: const Color.fromARGB(
+                          255, 19, 212, 42), // Warna tombol
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.3),
+                          spreadRadius: 1,
+                          blurRadius: 2,
+                          offset:
+                              const Offset(0, 2), // changes position of shadow
+                        ),
+                      ],
+                    ),
+                    child: const Center(
+                      child: Icon(
+                        Icons.star,
+                        color: Colors.white, // Warna ikon bintang selalu putih
+                        size: 40, // Ukuran ikon bintang
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  width: 50,
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const SizedBox(
+                  width: 50,
+                ),
+                InkWell(
+                  onTap: () {
+                    sound = 'assets/level2/Level 2 (aktivitas 1 ba).m4a';
+                    berawalan = "ba";
+                    targetImage = 'assets/level2/badak.png';
+                    options = [
+                      {'image': 'assets/level2/badak.png', 'text': 'badak'},
+                      {'image': 'assets/level2/siku.png', 'text': 'siku'},
+                      {'image': 'assets/level2/bibir.png', 'text': 'bibir'},
+                    ];
+                    Navigator.push(
+                      context,
+                      PageTransition(
+                        duration: const Duration(milliseconds: 300),
+                        type: PageTransitionType.rightToLeft,
+                        child: const berawalnGameScreen(),
+                      ),
+                    );
+                    // Aksi yang ingin dilakukan ketika tombol ditekan
+                  },
+                  child: Container(
+                    width: 80, // Lebar tombol
+                    height: 80, // Tinggi tombol
+                    decoration: BoxDecoration(
+                      shape:
+                          BoxShape.circle, // Membuat tombol berbentuk lingkaran
+                      color: const Color.fromARGB(
+                          255, 19, 212, 42), // Warna tombol
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.3),
+                          spreadRadius: 1,
+                          blurRadius: 2,
+                          offset:
+                              const Offset(0, 2), // changes position of shadow
+                        ),
+                      ],
+                    ),
+                    child: const Center(
+                      child: Icon(
+                        Icons.star,
+                        color: Colors.white, // Warna ikon bintang selalu putih
+                        size: 40, // Ukuran ikon bintang
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                InkWell(
+                  onTap: () {
+                    sound = 'assets/level2/Level 2 (aktivitas 1 bi).m4a';
+                    berawalan = "bi";
+                    targetImage = 'assets/level2/bibir.png';
+                    options = [
+                      {'image': 'assets/level2/beras.png', 'text': 'beras'},
+                      {'image': 'assets/level2/bibir.png', 'text': 'bibir'},
+                      {'image': 'assets/level2/botol.png', 'text': 'botol'},
+                    ];
+                    Navigator.push(
+                      context,
+                      PageTransition(
+                        duration: const Duration(milliseconds: 300),
+                        type: PageTransitionType.rightToLeft,
+                        child: const berawalnGameScreen(),
+                      ),
+                    );
+                    // Aksi yang ingin dilakukan ketika tombol ditekan
+                  },
+                  child: Container(
+                    width: 80, // Lebar tombol
+                    height: 80, // Tinggi tombol
+                    decoration: BoxDecoration(
+                      shape:
+                          BoxShape.circle, // Membuat tombol berbentuk lingkaran
+                      color: const Color.fromARGB(
+                          255, 19, 212, 42), // Warna tombol
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.3),
+                          spreadRadius: 1,
+                          blurRadius: 2,
+                          offset:
+                              const Offset(0, 2), // changes position of shadow
+                        ),
+                      ],
+                    ),
+                    child: const Center(
+                      child: Icon(
+                        Icons.star,
+                        color: Colors.white, // Warna ikon bintang selalu putih
+                        size: 40, // Ukuran ikon bintang
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  width: 50,
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const SizedBox(
+                  width: 50,
+                ),
+                InkWell(
+                  onTap: () {
+                    sound = 'assets/level2/Level 2 (aktivitas 1 be).m4a';
+                    berawalan = "be";
+                    targetImage = 'assets/level2/beras.png';
+                    options = [
+                      {'image': 'assets/level2/beras.png', 'text': 'beras'},
+                      {'image': 'assets/level2/bayam.png', 'text': 'bayam'},
+                      {'image': 'assets/level2/sapu.png', 'text': 'sapu'},
+                    ];
+                    Navigator.push(
+                      context,
+                      PageTransition(
+                        duration: const Duration(milliseconds: 300),
+                        type: PageTransitionType.rightToLeft,
+                        child: const berawalnGameScreen(),
+                      ),
+                    );
+                    // Aksi yang ingin dilakukan ketika tombol ditekan
+                  },
+                  child: Container(
+                    width: 80, // Lebar tombol
+                    height: 80, // Tinggi tombol
+                    decoration: BoxDecoration(
+                      shape:
+                          BoxShape.circle, // Membuat tombol berbentuk lingkaran
+                      color: const Color.fromARGB(
+                          255, 19, 212, 42), // Warna tombol
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.3),
+                          spreadRadius: 1,
+                          blurRadius: 2,
+                          offset:
+                              const Offset(0, 2), // changes position of shadow
+                        ),
+                      ],
+                    ),
+                    child: const Center(
+                      child: Icon(
+                        Icons.star,
+                        color: Colors.white, // Warna ikon bintang selalu putih
+                        size: 40, // Ukuran ikon bintang
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                InkWell(
+                  onTap: () {
+                    sound = 'assets/level2/Level 2 (aktivitas 1 bo).m4a';
+                    berawalan = "bo";
+                    targetImage = 'assets/level2/botol.png';
+                    options = [
+                      {'image': 'assets/level2/botol.png', 'text': 'botol'},
+                      {'image': 'assets/level2/susu.png', 'text': 'susu'},
+                      {'image': 'assets/level2/badak.png', 'text': 'badak'},
                     ];
                     Navigator.push(
                       context,
@@ -163,10 +511,240 @@ class _level2State extends State<level2> {
                 ),
                 InkWell(
                   onTap: () {
+                    sound =
+                        'assets/level2/Level 2 (aktivitas 2a ini dibaca susu).m4a';
                     appbar = "KVKV";
                     kvkv = "susu";
                     option2 = "air";
                     option3 = "roti";
+
+                    Navigator.push(
+                      context,
+                      PageTransition(
+                        duration: const Duration(milliseconds: 300),
+                        type: PageTransitionType.rightToLeft,
+                        child: const KataPola(),
+                      ),
+                    );
+                    // Aksi yang ingin dilakukan ketika tombol ditekan
+                  },
+                  child: Container(
+                    width: 80, // Lebar tombol
+                    height: 80, // Tinggi tombol
+                    decoration: BoxDecoration(
+                      shape:
+                          BoxShape.circle, // Membuat tombol berbentuk lingkaran
+                      color: const Color.fromARGB(
+                          255, 19, 212, 42), // Warna tombol
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.3),
+                          spreadRadius: 1,
+                          blurRadius: 2,
+                          offset:
+                              const Offset(0, 2), // changes position of shadow
+                        ),
+                      ],
+                    ),
+                    child: const Center(
+                      child: Icon(
+                        Icons.star,
+                        color: Colors.white, // Warna ikon bintang selalu putih
+                        size: 40, // Ukuran ikon bintang
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                InkWell(
+                  onTap: () {
+                    sound =
+                        'assets/level2/Level 2 (aktivitas 2a ini dibaca sawi).m4a';
+                    appbar = "KVKV";
+                    kvkv = "sawi";
+                    option2 = "donat";
+                    option3 = "palu";
+
+                    Navigator.push(
+                      context,
+                      PageTransition(
+                        duration: const Duration(milliseconds: 300),
+                        type: PageTransitionType.rightToLeft,
+                        child: const KataPola(),
+                      ),
+                    );
+                    // Aksi yang ingin dilakukan ketika tombol ditekan
+                  },
+                  child: Container(
+                    width: 80, // Lebar tombol
+                    height: 80, // Tinggi tombol
+                    decoration: BoxDecoration(
+                      shape:
+                          BoxShape.circle, // Membuat tombol berbentuk lingkaran
+                      color: const Color.fromARGB(
+                          255, 19, 212, 42), // Warna tombol
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.3),
+                          spreadRadius: 1,
+                          blurRadius: 2,
+                          offset:
+                              const Offset(0, 2), // changes position of shadow
+                        ),
+                      ],
+                    ),
+                    child: const Center(
+                      child: Icon(
+                        Icons.star,
+                        color: Colors.white, // Warna ikon bintang selalu putih
+                        size: 40, // Ukuran ikon bintang
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  width: 50,
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const SizedBox(
+                  width: 50,
+                ),
+                InkWell(
+                  onTap: () {
+                    sound =
+                        'assets/level2/Level 2 (aktivitas 2a ini dibaca sapu).m4a';
+                    appbar = "KVKV";
+                    kvkv = "sapu";
+                    option2 = "besi";
+                    option3 = "kotak";
+
+                    Navigator.push(
+                      context,
+                      PageTransition(
+                        duration: const Duration(milliseconds: 300),
+                        type: PageTransitionType.rightToLeft,
+                        child: const KataPola(),
+                      ),
+                    );
+                    // Aksi yang ingin dilakukan ketika tombol ditekan
+                  },
+                  child: Container(
+                    width: 80, // Lebar tombol
+                    height: 80, // Tinggi tombol
+                    decoration: BoxDecoration(
+                      shape:
+                          BoxShape.circle, // Membuat tombol berbentuk lingkaran
+                      color: const Color.fromARGB(
+                          255, 19, 212, 42), // Warna tombol
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.3),
+                          spreadRadius: 1,
+                          blurRadius: 2,
+                          offset:
+                              const Offset(0, 2), // changes position of shadow
+                        ),
+                      ],
+                    ),
+                    child: const Center(
+                      child: Icon(
+                        Icons.star,
+                        color: Colors.white, // Warna ikon bintang selalu putih
+                        size: 40, // Ukuran ikon bintang
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                InkWell(
+                  onTap: () {
+                    sound =
+                        'assets/level2/Level 2 (aktivitas 2a ini dibaca siku).m4a';
+                    appbar = "KVKV";
+                    kvkv = "siku";
+                    option2 = "bebek";
+                    option3 = "jari";
+
+                    Navigator.push(
+                      context,
+                      PageTransition(
+                        duration: const Duration(milliseconds: 300),
+                        type: PageTransitionType.rightToLeft,
+                        child: const KataPola(),
+                      ),
+                    );
+                    // Aksi yang ingin dilakukan ketika tombol ditekan
+                  },
+                  child: Container(
+                    width: 80, // Lebar tombol
+                    height: 80, // Tinggi tombol
+                    decoration: BoxDecoration(
+                      shape:
+                          BoxShape.circle, // Membuat tombol berbentuk lingkaran
+                      color: const Color.fromARGB(
+                          255, 19, 212, 42), // Warna tombol
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.3),
+                          spreadRadius: 1,
+                          blurRadius: 2,
+                          offset:
+                              const Offset(0, 2), // changes position of shadow
+                        ),
+                      ],
+                    ),
+                    child: const Center(
+                      child: Icon(
+                        Icons.star,
+                        color: Colors.white, // Warna ikon bintang selalu putih
+                        size: 40, // Ukuran ikon bintang
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  width: 50,
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const SizedBox(
+                  width: 50,
+                ),
+                InkWell(
+                  onTap: () {
+                    sound =
+                        'assets/level2/Level 2 (aktivitas 2a ini dibaca soda).m4a';
+                    appbar = "KVKV";
+                    kvkv = "soda";
+                    option2 = "kapas";
+                    option3 = "batu";
 
                     Navigator.push(
                       context,
@@ -236,10 +814,240 @@ class _level2State extends State<level2> {
               children: [
                 InkWell(
                   onTap: () {
+                    sound =
+                        'assets/level2/Level 2 (aktivitas 2c ini dibaca bibir).m4a';
                     appbar = "KVKVK";
-                    kvkv = "susu";
-                    option2 = "air";
-                    option3 = "roti";
+                    kvkv = "bibir";
+                    option2 = "lidi";
+                    option3 = "siku";
+
+                    Navigator.push(
+                      context,
+                      PageTransition(
+                        duration: const Duration(milliseconds: 300),
+                        type: PageTransitionType.rightToLeft,
+                        child: const KataPola(),
+                      ),
+                    );
+                    // Aksi yang ingin dilakukan ketika tombol ditekan
+                  },
+                  child: Container(
+                    width: 80, // Lebar tombol
+                    height: 80, // Tinggi tombol
+                    decoration: BoxDecoration(
+                      shape:
+                          BoxShape.circle, // Membuat tombol berbentuk lingkaran
+                      color: const Color.fromARGB(
+                          255, 19, 212, 42), // Warna tombol
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.3),
+                          spreadRadius: 1,
+                          blurRadius: 2,
+                          offset:
+                              const Offset(0, 2), // changes position of shadow
+                        ),
+                      ],
+                    ),
+                    child: const Center(
+                      child: Icon(
+                        Icons.star,
+                        color: Colors.white, // Warna ikon bintang selalu putih
+                        size: 40, // Ukuran ikon bintang
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  width: 50,
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const SizedBox(
+                  width: 50,
+                ),
+                InkWell(
+                  onTap: () {
+                    sound =
+                        'assets/level2/Level 2 (aktivitas 2c ini dibaca badak).m4a';
+                    appbar = "KVKVK";
+                    kvkv = "badak";
+                    option2 = "rusa";
+                    option3 = "duku";
+
+                    Navigator.push(
+                      context,
+                      PageTransition(
+                        duration: const Duration(milliseconds: 300),
+                        type: PageTransitionType.rightToLeft,
+                        child: const KataPola(),
+                      ),
+                    );
+                    // Aksi yang ingin dilakukan ketika tombol ditekan
+                  },
+                  child: Container(
+                    width: 80, // Lebar tombol
+                    height: 80, // Tinggi tombol
+                    decoration: BoxDecoration(
+                      shape:
+                          BoxShape.circle, // Membuat tombol berbentuk lingkaran
+                      color: const Color.fromARGB(
+                          255, 19, 212, 42), // Warna tombol
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.3),
+                          spreadRadius: 1,
+                          blurRadius: 2,
+                          offset:
+                              const Offset(0, 2), // changes position of shadow
+                        ),
+                      ],
+                    ),
+                    child: const Center(
+                      child: Icon(
+                        Icons.star,
+                        color: Colors.white, // Warna ikon bintang selalu putih
+                        size: 40, // Ukuran ikon bintang
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                InkWell(
+                  onTap: () {
+                    sound =
+                        'assets/level2/Level 2 (aktivitas 2c ini dibaca botol).m4a';
+                    appbar = "KVKVK";
+                    kvkv = "botol";
+                    option2 = "pena";
+                    option3 = "dasi";
+
+                    Navigator.push(
+                      context,
+                      PageTransition(
+                        duration: const Duration(milliseconds: 300),
+                        type: PageTransitionType.rightToLeft,
+                        child: const KataPola(),
+                      ),
+                    );
+                    // Aksi yang ingin dilakukan ketika tombol ditekan
+                  },
+                  child: Container(
+                    width: 80, // Lebar tombol
+                    height: 80, // Tinggi tombol
+                    decoration: BoxDecoration(
+                      shape:
+                          BoxShape.circle, // Membuat tombol berbentuk lingkaran
+                      color: const Color.fromARGB(
+                          255, 19, 212, 42), // Warna tombol
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.3),
+                          spreadRadius: 1,
+                          blurRadius: 2,
+                          offset:
+                              const Offset(0, 2), // changes position of shadow
+                        ),
+                      ],
+                    ),
+                    child: const Center(
+                      child: Icon(
+                        Icons.star,
+                        color: Colors.white, // Warna ikon bintang selalu putih
+                        size: 40, // Ukuran ikon bintang
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  width: 50,
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const SizedBox(
+                  width: 50,
+                ),
+                InkWell(
+                  onTap: () {
+                    sound =
+                        'assets/level2/Level 2 (aktivitas 2c ini dibaca bayam).m4a';
+                    appbar = "KVKVK";
+                    kvkv = "bayam";
+                    option2 = "madu";
+                    option3 = "dasi";
+
+                    Navigator.push(
+                      context,
+                      PageTransition(
+                        duration: const Duration(milliseconds: 300),
+                        type: PageTransitionType.rightToLeft,
+                        child: const KataPola(),
+                      ),
+                    );
+                    // Aksi yang ingin dilakukan ketika tombol ditekan
+                  },
+                  child: Container(
+                    width: 80, // Lebar tombol
+                    height: 80, // Tinggi tombol
+                    decoration: BoxDecoration(
+                      shape:
+                          BoxShape.circle, // Membuat tombol berbentuk lingkaran
+                      color: const Color.fromARGB(
+                          255, 19, 212, 42), // Warna tombol
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.3),
+                          spreadRadius: 1,
+                          blurRadius: 2,
+                          offset:
+                              const Offset(0, 2), // changes position of shadow
+                        ),
+                      ],
+                    ),
+                    child: const Center(
+                      child: Icon(
+                        Icons.star,
+                        color: Colors.white, // Warna ikon bintang selalu putih
+                        size: 40, // Ukuran ikon bintang
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                InkWell(
+                  onTap: () {
+                    sound =
+                        'assets/level2/Level 2 (aktivitas 2c ini dibaca beras).m4a';
+                    appbar = "KVKVK";
+                    kvkv = "beras";
+                    option2 = "dasi";
+                    option3 = "mata";
 
                     Navigator.push(
                       context,

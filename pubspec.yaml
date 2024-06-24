@@ -44,6 +44,7 @@ dependencies:
   cached_network_image: ^3.3.1
   maze: ^3.0.0
   speech_to_text: ^6.6.2
+  assets_audio_player: ^3.1.1
   # flutter_tts: ^4.0.2
 
 dev_dependencies:
@@ -71,6 +72,10 @@ flutter:
   assets:
     - assets/
     - assets/soal1/
+    - assets/level2/
+    - assets/level3/
+    - assets/level4/
+    - assets/level5/
     - assets/level3/aktivitas1/
     - assets/level3/aktivitas2/
     - assets/level1/aktivitas2/
@@ -79,6 +84,7 @@ flutter:
     - assets/level1/aktivitas5/
     - assets/level1/aktivitas6/
     - assets/level1/aktivitas7/
+
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 

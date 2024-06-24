@@ -1,3 +1,4 @@
+import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
 import '../models/image_find_item.dart';
 import 'dart:async';
@@ -25,6 +26,16 @@ class _CariGambarScreenState extends State<CariGambarScreen> {
     super.initState();
     _initializeGame();
     _startCountdown();
+    _play();
+  }
+
+  final AssetsAudioPlayer _player = AssetsAudioPlayer.newPlayer();
+  void _play() {
+    _player.open(
+      Audio(sound),
+      autoStart: true,
+      showNotification: true,
+    );
   }
 
   void _initializeGame() {
@@ -127,10 +138,18 @@ class _CariGambarScreenState extends State<CariGambarScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Cari Gambar Memory',
-            style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold)),
-        automaticallyImplyLeading: false,
         backgroundColor: Colors.orangeAccent,
+        automaticallyImplyLeading: false, // Hides the default back button
+        title: const Text(
+          'Cari Gambar Memory',
+          style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+        ),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.of(context).pop(); // Handles back navigation
+          },
+        ),
       ),
       body: Column(
         children: [

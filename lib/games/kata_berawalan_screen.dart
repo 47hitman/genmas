@@ -1,3 +1,4 @@
+import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
 
 import '../services/globals.dart';
@@ -12,11 +13,19 @@ class berawalnGameScreen extends StatefulWidget {
 class _berawalnGameScreenState extends State<berawalnGameScreen> {
   String? selectedOption;
   bool matched = false;
+  @override
+  void initState() {
+    super.initState();
+    _play(sound);
+  }
 
-  void _checkCompletion() {
-    if (matched) {
-      _showSuccessDialog();
-    }
+  final AssetsAudioPlayer _player = AssetsAudioPlayer.newPlayer();
+  void _play(sound) {
+    _player.open(
+      Audio(sound),
+      autoStart: true,
+      showNotification: true,
+    );
   }
 
   void _showSuccessDialog() {
@@ -89,7 +98,40 @@ class _berawalnGameScreenState extends State<berawalnGameScreen> {
                   return GestureDetector(
                     onTap: () {
                       setState(() {
-                        selectedOption = option['image'];
+                        selectedOption = option['text'];
+                        print(selectedOption);
+                        if (selectedOption == 'soda') {
+                          _play(
+                              'assets/level2/Level 2 (aktivitas 2a ini dibaca soda).m4a');
+                        }
+                        if (selectedOption == 'bibir') {
+                          _play(
+                              'assets/level2/Level 2 (aktivitas 2c ini dibaca bibir).m4a');
+                        }
+                        if (selectedOption == 'sapu') {
+                          _play(
+                              'assets/level2/Level 2 (aktivitas 2a ini dibaca sapu).m4a');
+                        }
+                        if (selectedOption == 'botol') {
+                          _play(
+                              'assets/level2/Level 2 (aktivitas 2c ini dibaca botol).m4a');
+                        }
+                        if (selectedOption == 'siku') {
+                          _play(
+                              'assets/level2/Level 2 (aktivitas 2a ini dibaca siku).m4a');
+                        }
+                        if (selectedOption == 'badak') {
+                          _play(
+                              'assets/level2/Level 2 (aktivitas 2c ini dibaca badak).m4a');
+                        }
+                        if (selectedOption == 'beras') {
+                          _play(
+                              'assets/level2/Level 2 (aktivitas 2c ini dibaca beras).m4a');
+                        }
+                        if (selectedOption == 'bayam') {
+                          _play(
+                              'assets/level2/Level 2 (aktivitas 2c ini dibaca bayam).m4a');
+                        }
                       });
                       if (_checkIfMatched(option['image']!)) {
                         setState(() {
@@ -149,9 +191,9 @@ class _berawalnGameScreenState extends State<berawalnGameScreen> {
                           Text(
                             option['text']!,
                             style: const TextStyle(
-                              fontSize: 14,
+                              fontSize: 18,
                               fontWeight: FontWeight.bold,
-                              color: Colors.black,
+                              color: Colors.white,
                             ),
                           ),
                         ],

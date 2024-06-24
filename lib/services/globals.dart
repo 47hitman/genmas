@@ -38,3 +38,5 @@ String extratext4 = "";
 List<String> itemstext = [];
 List<String> extraTexts = [];
 List<String> images = [];
+
+String sound = "";

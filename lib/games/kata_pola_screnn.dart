@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
 
 import '../services/globals.dart';
@@ -21,6 +22,16 @@ class _KataPolaState extends State<KataPola> {
   void initState() {
     super.initState();
     _startTimer();
+    _play(sound);
+  }
+
+  final AssetsAudioPlayer _player = AssetsAudioPlayer.newPlayer();
+  void _play(sound) {
+    _player.open(
+      Audio(sound),
+      autoStart: true,
+      showNotification: true,
+    );
   }
 
   void _startTimer() {
@@ -29,6 +40,50 @@ class _KataPolaState extends State<KataPola> {
       setState(() {
         _showInitialScreen = false;
         _showSecondScreen = true;
+        // _play(sound);
+        String selectedOption = kvkv;
+        if (selectedOption == 'susu') {
+          _play('assets/level2/Level 2 (aktivitas 2a tunjuk kata susu).m4a');
+        }
+        if (selectedOption == 'sawi') {
+          _play('assets/level2/Level 2 (aktivitas 2a tunjuk kata sawi).m4a');
+        }
+
+        if (selectedOption == 'sapu') {
+          _play('assets/level2/Level 2 (aktivitas 2a tunjuk kata sapu).m4a');
+        }
+
+        if (selectedOption == 'siku') {
+          _play('assets/level2/Level 2 (aktivitas 2a tunjuk kata siku).m4a');
+        }
+
+        if (selectedOption == 'soda') {
+          _play('assets/level2/Level 2 (aktivitas 2a tunjuk kata soda).m4a');
+        }
+        if (selectedOption == 'bibir') {
+          _play('assets/level2/Level 2 (aktivitas 2c tunjuk kata bibir).m4a');
+        }
+        if (selectedOption == 'beras') {
+          _play('assets/level2/Level 2 (aktivitas 2c tunjuk kata beras).m4a');
+        }
+        if (selectedOption == 'beras') {
+          _play('assets/level2/Level 2 (aktivitas 2c tunjuk kata beras).m4a');
+        }
+        if (selectedOption == 'badak') {
+          _play('assets/level2/Level 2 (aktivitas 2c tunjuk kata badak).m4a');
+        }
+        if (selectedOption == 'bayam') {
+          _play('assets/level2/Level 2 (aktivitas 2c tunjuk kata bayam).m4a');
+        }
+        if (selectedOption == 'botol') {
+          _play('assets/level2/Level 2 (aktivitas 2c tunjuk kata botol).m4a');
+        }
+        if (selectedOption == 'bedak') {
+          _play('assets/level2/Level 2 (aktivitas 2c tunjuk kata bedak).m4a');
+        }
+        if (selectedOption == 'bedak') {
+          _play('assets/level2/Level 2 (aktivitas 2c tunjuk kata bedak).m4a');
+        }
       });
     });
   }
@@ -107,10 +162,10 @@ class _KataPolaState extends State<KataPola> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text(
-          'Ini dibaca $kvkv, ini dibaca apa',
-          style: const TextStyle(fontSize: 20),
-        ),
+        // Text(
+        //   'Ini dibaca $kvkv, ini dibaca apa',
+        //   style: const TextStyle(fontSize: 20),
+        // ),
         const SizedBox(height: 20),
         Text(
           kvkv,
@@ -125,10 +180,10 @@ class _KataPolaState extends State<KataPola> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text(
-          'Tunjuk kata $kvkv! Pilih kata yang benar:',
-          style: const TextStyle(fontSize: 20),
-        ),
+        // Text(
+        //   'Tunjuk kata $kvkv! Pilih kata yang benar:',
+        //   style: const TextStyle(fontSize: 20),
+        // ),
         const SizedBox(height: 30),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,

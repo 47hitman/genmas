@@ -1,3 +1,4 @@
+import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
 
 import '../services/globals.dart';
@@ -38,6 +39,21 @@ class _MatchingGameScreenState extends State<MatchingGameScreen> {
   //     'path': 'assets/level1/aktivitas6/gelas.png',
   //   },
   // ];
+  @override
+  void initState() {
+    super.initState();
+
+    _play();
+  }
+
+  final AssetsAudioPlayer _player = AssetsAudioPlayer.newPlayer();
+  void _play() {
+    _player.open(
+      Audio('assets/soal1/Level 1 (aktivitas 6).m4a'),
+      autoStart: true,
+      showNotification: true,
+    );
+  }
 
   String? selectedImage;
   bool showSuccessDialog = false;
