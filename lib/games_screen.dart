@@ -5,6 +5,9 @@ import 'package:page_transition/page_transition.dart';
 import 'level/level_2.dart';
 import 'level/level_3.dart';
 import 'level/level_5.dart';
+import 'menu/level_1_menu.dart';
+import 'menu/level_2_menu.dart';
+import 'menu/level_3_menu.dart';
 
 class GamesScreen extends StatefulWidget {
   const GamesScreen({Key? key}) : super(key: key);
@@ -21,7 +24,7 @@ class _GamesScreenState extends State<GamesScreen> {
       PageTransition(
         duration: const Duration(milliseconds: 300),
         type: PageTransitionType.rightToLeft,
-        child: const level1(), // Ganti dengan widget level yang sesuai
+        child: const menu1level(), // Ganti dengan widget level yang sesuai
       ),
     );
   }
@@ -33,7 +36,7 @@ class _GamesScreenState extends State<GamesScreen> {
       PageTransition(
         duration: const Duration(milliseconds: 300),
         type: PageTransitionType.rightToLeft,
-        child: const level2(), // Ganti dengan widget level yang sesuai
+        child: const menu2level(), // Ganti dengan widget level yang sesuai
       ),
     );
   }
@@ -45,7 +48,7 @@ class _GamesScreenState extends State<GamesScreen> {
       PageTransition(
         duration: const Duration(milliseconds: 300),
         type: PageTransitionType.rightToLeft,
-        child: const level3(), // Ganti dengan widget level yang sesuai
+        child: const menu3level(), // Ganti dengan widget level yang sesuai
       ),
     );
   }

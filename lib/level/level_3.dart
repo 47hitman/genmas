@@ -15,15 +15,15 @@ String _getImageName(int index) {
   // Menyesuaikan nama gambar sesuai dengan index
   switch (index) {
     case 0:
-      return "ular";
+      return "susu";
     case 1:
-      return "tupai";
+      return "sawi";
     case 2:
-      return "burung";
+      return "sapu";
     case 3:
-      return "kupukupu";
+      return "siku";
     case 4:
-      return "kelinci";
+      return "soda";
     default:
       return "";
   }
@@ -33,15 +33,50 @@ String _getText(int index) {
   // Menyesuaikan teks sesuai dengan index
   switch (index) {
     case 0:
-      return "ular";
+      return "susu";
     case 1:
-      return "tupai";
+      return "sawi";
     case 2:
-      return "burung";
+      return "sapu";
     case 3:
-      return "kupukupu";
+      return "siku";
     case 4:
-      return "kelinci";
+      return "soda";
+    default:
+      return "";
+  }
+}
+
+String _getImageName2(int index) {
+  switch (index) {
+    case 0:
+      return "bibir";
+    case 1:
+      return "badak";
+    case 2:
+      return "botol";
+    case 3:
+      return "bayam";
+    case 4:
+      return "beras";
+    default:
+      return "";
+  }
+}
+
+String _getText2(int index) {
+  // Menyesuaikan teks sesuai dengan index
+  switch (index) {
+    case 0:
+      return "bibir";
+    case 1:
+      return "badak";
+    case 2:
+      return "botol";
+    case 3:
+      return "bayam";
+    case 4:
+      return "beras";
     default:
       return "";
   }
@@ -104,7 +139,7 @@ class _level3State extends State<level3> {
                       // print('Tombol ditekan');
                       String imageName = _getImageName(index);
                       assetName = _getText(index);
-                      assetLocation = "assets/soal1/$imageName.png";
+                      assetLocation = "assets/level3/aktivitas1/$imageName.png";
                       Navigator.push(
                         context,
                         PageTransition(
@@ -128,7 +163,7 @@ class _level3State extends State<level3> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Image.asset(
-                            "assets/soal1/${_getImageName(index)}.png",
+                            "assets/level3/aktivitas1/${_getImageName(index)}.png",
                             width: 70,
                             height: 60,
                           ),
@@ -188,9 +223,9 @@ class _level3State extends State<level3> {
                     onTap: () {
                       // Tambahkan logika yang ingin Anda lakukan saat tombol ditekan di sini
                       // print('Tombol ditekan');
-                      String imageName = _getImageName(index);
-                      assetName = _getText(index);
-                      assetLocation = "assets/soal1/$imageName.png";
+                      String imageName = _getImageName2(index);
+                      assetName = _getText2(index);
+                      assetLocation = "assets/level3/aktivitas2/$imageName.png";
                       Navigator.push(
                         context,
                         PageTransition(
@@ -214,13 +249,13 @@ class _level3State extends State<level3> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Image.asset(
-                            "assets/soal1/${_getImageName(index)}.png",
+                            "assets/level3/aktivitas2/${_getImageName2(index)}.png",
                             width: 70,
                             height: 60,
                           ),
                           const SizedBox(height: 5),
                           Text(
-                            _getText(index),
+                            _getText2(index),
                             style: const TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.bold,
