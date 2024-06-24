@@ -220,6 +220,188 @@ class _ImageMatchingGameScreenState extends State<ImageMatchingGameScreen> {
                       );
                     }).toList(),
                   ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      if (extra4 != '')
+                        Draggable<Map<String, String>>(
+                          data: {'image': extra4, 'text': extratext4},
+                          feedback: Material(
+                            child: Column(
+                              children: [
+                                Image.asset(extra4, width: 70, height: 60),
+                                Text(
+                                  extratext4,
+                                  style: const TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          childWhenDragging: Container(
+                            width: 70,
+                            height: 70,
+                            color: Colors.grey,
+                          ),
+                          child: Container(
+                            width: 70,
+                            height: 90,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
+                              border: Border.all(color: Colors.white, width: 3),
+                            ),
+                            child: Column(
+                              children: [
+                                Image.asset(extra4, width: 70, height: 60),
+                                Text(
+                                  extratext4,
+                                  style: const TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      if (extra1 != '')
+                        Draggable<Map<String, String>>(
+                          data: {'image': extra1, 'text': extratext1},
+                          feedback: Material(
+                            child: Column(
+                              children: [
+                                Image.asset(extra1, width: 70, height: 60),
+                                Text(
+                                  extratext1,
+                                  style: const TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          childWhenDragging: Container(
+                            width: 70,
+                            height: 70,
+                            color: Colors.grey,
+                          ),
+                          child: Container(
+                            width: 70,
+                            height: 90,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
+                              border: Border.all(color: Colors.white, width: 3),
+                            ),
+                            child: Column(
+                              children: [
+                                Image.asset(extra1, width: 70, height: 60),
+                                Text(
+                                  extratext1,
+                                  style: const TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                    ],
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      if (extra2 != '')
+                        Draggable<Map<String, String>>(
+                          data: {'image': extra2, 'text': extratext2},
+                          feedback: Material(
+                            child: Column(
+                              children: [
+                                Image.asset(extra2, width: 70, height: 60),
+                                Text(
+                                  extratext2,
+                                  style: const TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          childWhenDragging: Container(
+                            width: 70,
+                            height: 70,
+                            color: Colors.grey,
+                          ),
+                          child: Container(
+                            width: 70,
+                            height: 90,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
+                              border: Border.all(color: Colors.white, width: 3),
+                            ),
+                            child: Column(
+                              children: [
+                                Image.asset(extra2, width: 70, height: 60),
+                                Text(
+                                  extratext2,
+                                  style: const TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      if (extra3 != '')
+                        Draggable<Map<String, String>>(
+                          data: {'image': extra3, 'text': extratext3},
+                          feedback: Material(
+                            child: Column(
+                              children: [
+                                Image.asset(extra3, width: 70, height: 60),
+                                Text(
+                                  extratext3,
+                                  style: const TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          childWhenDragging: Container(
+                            width: 70,
+                            height: 70,
+                            color: Colors.grey,
+                          ),
+                          child: Container(
+                            width: 70,
+                            height: 90,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
+                              border: Border.all(color: Colors.white, width: 3),
+                            ),
+                            child: Column(
+                              children: [
+                                Image.asset(extra3, width: 70, height: 60),
+                                Text(
+                                  extratext3,
+                                  style: const TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                    ],
+                  ),
                 ],
               ),
             ),

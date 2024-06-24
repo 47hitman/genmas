@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../services/globals.dart';
+
 class TextMatchingGameScreen extends StatefulWidget {
   const TextMatchingGameScreen({super.key});
 
@@ -8,25 +10,18 @@ class TextMatchingGameScreen extends StatefulWidget {
 }
 
 class _TextMatchingGameScreenState extends State<TextMatchingGameScreen> {
-  final List<String> items = [
-    'Ular',
-    'Tupai',
-    'Kelinci',
-    'Kupu-kupu',
-    'Burung'
-  ];
   final List<String> shuffledItems = [];
   final Set<String> matchedItems = {};
 
   @override
   void initState() {
     super.initState();
-    shuffledItems.addAll(items);
+    shuffledItems.addAll(itemstext);
     shuffledItems.shuffle();
   }
 
   void _checkCompletion() {
-    if (matchedItems.length == items.length) {
+    if (matchedItems.length == itemstext.length) {
       _showSuccessDialog();
     }
   }
@@ -89,14 +84,32 @@ class _TextMatchingGameScreenState extends State<TextMatchingGameScreen> {
                 children: [
                   Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: items.map((item) {
-                      return Draggable<String>(
-                        data: item,
-                        feedback: Material(
-                          child: Container(
+                    children: [
+                      ...itemstext.map((item) {
+                        return Draggable<String>(
+                          data: item,
+                          feedback: Material(
+                            child: Container(
+                              padding: const EdgeInsets.all(8.0),
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                border:
+                                    Border.all(color: Colors.black, width: 2),
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: Text(
+                                item,
+                                style: const TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ),
+                          childWhenDragging: Container(
                             padding: const EdgeInsets.all(8.0),
                             decoration: BoxDecoration(
-                              color: Colors.white,
+                              color: Colors.grey,
                               border: Border.all(color: Colors.black, width: 2),
                               borderRadius: BorderRadius.circular(8),
                             ),
@@ -105,63 +118,103 @@ class _TextMatchingGameScreenState extends State<TextMatchingGameScreen> {
                               style: const TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
+                                color: Colors.white,
                               ),
                             ),
                           ),
-                        ),
-                        childWhenDragging: Container(
-                          padding: const EdgeInsets.all(8.0),
-                          decoration: BoxDecoration(
-                            color: Colors.grey,
-                            border: Border.all(color: Colors.black, width: 2),
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: Text(
-                            item,
-                            style: const TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                        child: matchedItems.contains(item)
-                            ? Container(
-                                padding: const EdgeInsets.all(8.0),
-                                decoration: BoxDecoration(
-                                  color: Colors.green,
-                                  borderRadius: BorderRadius.circular(8),
-                                  border:
-                                      Border.all(color: Colors.white, width: 3),
-                                ),
-                                child: Text(
-                                  item,
-                                  style: const TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
+                          child: matchedItems.contains(item)
+                              ? Container(
+                                  padding: const EdgeInsets.all(8.0),
+                                  decoration: BoxDecoration(
+                                    color: Colors.green,
+                                    borderRadius: BorderRadius.circular(8),
+                                    border: Border.all(
+                                        color: Colors.white, width: 3),
+                                  ),
+                                  child: Text(
+                                    item,
+                                    style: const TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                )
+                              : Container(
+                                  padding: const EdgeInsets.all(8.0),
+                                  decoration: BoxDecoration(
                                     color: Colors.white,
+                                    borderRadius: BorderRadius.circular(8),
+                                    border: Border.all(
+                                        color: Colors.black, width: 2),
+                                  ),
+                                  child: Text(
+                                    item,
+                                    style: const TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black,
+                                    ),
                                   ),
                                 ),
-                              )
-                            : Container(
-                                padding: const EdgeInsets.all(8.0),
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(8),
-                                  border:
-                                      Border.all(color: Colors.black, width: 2),
-                                ),
-                                child: Text(
-                                  item,
-                                  style: const TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.black,
-                                  ),
+                        );
+                      }).toList(),
+                      // Add extra texts as draggable items
+                      ...extraTexts.map((extraText) {
+                        return Draggable<String>(
+                          data: extraText,
+                          feedback: Material(
+                            child: Container(
+                              padding: const EdgeInsets.all(8.0),
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                border: Border.all(color: Colors.red, width: 2),
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: Text(
+                                extraText,
+                                style: const TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
                                 ),
                               ),
-                      );
-                    }).toList(),
+                            ),
+                          ),
+                          childWhenDragging: Container(
+                            padding: const EdgeInsets.all(8.0),
+                            decoration: BoxDecoration(
+                              color: Colors.grey,
+                              border: Border.all(color: Colors.red, width: 2),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            child: Text(
+                              extraText,
+                              style: const TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                          child: Container(
+                            padding: const EdgeInsets.all(8.0),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(8),
+                              border: Border.all(color: Colors.black, width: 2),
+                            ),
+                            child: Text(
+                              extraText,
+                              style: const TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black,
+                              ),
+                            ),
+                          ),
+                        );
+                      }).toList(),
+                    ],
                   ),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,

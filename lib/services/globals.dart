@@ -27,3 +27,14 @@ bool pilih3 = false;
 bool timer = false;
 
 String voice = "";
+String extra1 = "";
+String extratext1 = "";
+String extra2 = "";
+String extratext2 = "";
+String extra3 = "";
+String extratext3 = "";
+String extra4 = "";
+String extratext4 = "";
+List<String> itemstext = [];
+List<String> extraTexts = [];
+List<String> images = [];

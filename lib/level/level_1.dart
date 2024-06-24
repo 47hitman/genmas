@@ -4,8 +4,11 @@ import 'package:page_transition/page_transition.dart';
 import '../../models/image_find_item.dart';
 import '../games/cari_gambar_screen.dart';
 import '../games/cari_gambar_tersembunyi_screen.dart';
+import '../games/cocokkan_text_screen.dart';
 import '../games/maze_screen.dart';
 import '../games/pasangkan_gambar_screen.dart';
+import '../games/quits_screen.dart';
+import '../games/tebak_gambar_berurutan.dart';
 import '../services/globals.dart';
 
 class level1 extends StatefulWidget {
@@ -147,9 +150,23 @@ class _level1State extends State<level1> {
                 ),
                 InkWell(
                   onTap: () {
+                    extra1 = '';
+                    extratext1 = '';
+                    extra2 = '';
+                    extratext2 = '';
+                    extra3 = '';
+                    extratext3 = '';
+                    extra4 = '';
+                    extratext4 = '';
                     items = [
-                      {'image': 'assets/soal1/ular.png', 'text': 'Ular'},
-                      {'image': 'assets/soal1/tupai.png', 'text': 'Tupai'},
+                      {
+                        'image': 'assets/level1/aktivitas2/buku.png',
+                        'text': 'Buku'
+                      },
+                      {
+                        'image': 'assets/level1/aktivitas2/bola.png',
+                        'text': 'Bola'
+                      },
                     ];
                     Navigator.push(
                       context,
@@ -192,6 +209,428 @@ class _level1State extends State<level1> {
             const SizedBox(
               height: 30,
             ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                InkWell(
+                  onTap: () {
+                    extra1 = 'assets/level1/aktivitas2/meja.png';
+                    extratext1 = 'meja';
+                    extra2 = '';
+                    extratext2 = '';
+                    extra3 = '';
+                    extratext3 = '';
+                    extra4 = '';
+                    extratext4 = '';
+                    items = [
+                      {
+                        'image': 'assets/level1/aktivitas2/buku.png',
+                        'text': 'Buku'
+                      },
+                      {
+                        'image': 'assets/level1/aktivitas2/bola.png',
+                        'text': 'Bola'
+                      },
+                    ];
+                    Navigator.push(
+                      context,
+                      PageTransition(
+                        duration: const Duration(milliseconds: 300),
+                        type: PageTransitionType.rightToLeft,
+                        child: const ImageMatchingGameScreen(),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    width: 80, // Lebar tombol
+                    height: 80, // Tinggi tombol
+                    decoration: BoxDecoration(
+                      shape:
+                          BoxShape.circle, // Membuat tombol berbentuk lingkaran
+                      color: const Color.fromARGB(
+                          255, 19, 212, 42), // Warna tombol
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.3),
+                          spreadRadius: 1,
+                          blurRadius: 2,
+                          offset:
+                              const Offset(0, 2), // changes position of shadow
+                        ),
+                      ],
+                    ),
+                    child: const Center(
+                      child: Icon(
+                        Icons.star,
+                        color: Colors.white, // Warna ikon bintang selalu putih
+                        size: 40, // Ukuran ikon bintang
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  width: 50,
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const SizedBox(
+                  width: 50,
+                ),
+                InkWell(
+                  onTap: () {
+                    extra1 = 'assets/level1/aktivitas2/meja.png';
+                    extratext1 = 'meja';
+                    extra2 = 'assets/level1/aktivitas2/baju.png';
+                    extratext2 = 'baju';
+                    extra3 = '';
+                    extratext3 = '';
+                    extra4 = '';
+                    extratext4 = '';
+                    items = [
+                      {
+                        'image': 'assets/level1/aktivitas2/buku.png',
+                        'text': 'Buku'
+                      },
+                      {
+                        'image': 'assets/level1/aktivitas2/bola.png',
+                        'text': 'Bola'
+                      },
+                    ];
+                    Navigator.push(
+                      context,
+                      PageTransition(
+                        duration: const Duration(milliseconds: 300),
+                        type: PageTransitionType.rightToLeft,
+                        child: const ImageMatchingGameScreen(),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    width: 80, // Lebar tombol
+                    height: 80, // Tinggi tombol
+                    decoration: BoxDecoration(
+                      shape:
+                          BoxShape.circle, // Membuat tombol berbentuk lingkaran
+                      color: const Color.fromARGB(
+                          255, 19, 212, 42), // Warna tombol
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.3),
+                          spreadRadius: 1,
+                          blurRadius: 2,
+                          offset:
+                              const Offset(0, 2), // changes position of shadow
+                        ),
+                      ],
+                    ),
+                    child: const Center(
+                      child: Icon(
+                        Icons.star,
+                        color: Colors.white, // Warna ikon bintang selalu putih
+                        size: 40, // Ukuran ikon bintang
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                InkWell(
+                  onTap: () {
+                    extra1 = 'assets/level1/aktivitas2/meja.png';
+                    extratext1 = 'meja';
+                    extra2 = 'assets/level1/aktivitas2/baju.png';
+                    extratext2 = 'baju';
+                    extra3 = 'assets/level1/aktivitas2/mobil.png';
+                    extratext3 = 'mobil';
+                    extra4 = 'assets/level1/aktivitas2/balon.png';
+                    extratext4 = 'balon';
+                    items = [
+                      {
+                        'image': 'assets/level1/aktivitas2/buku.png',
+                        'text': 'Buku'
+                      },
+                      {
+                        'image': 'assets/level1/aktivitas2/bola.png',
+                        'text': 'Bola'
+                      },
+                    ];
+                    Navigator.push(
+                      context,
+                      PageTransition(
+                        duration: const Duration(milliseconds: 300),
+                        type: PageTransitionType.rightToLeft,
+                        child: const ImageMatchingGameScreen(),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    width: 80, // Lebar tombol
+                    height: 80, // Tinggi tombol
+                    decoration: BoxDecoration(
+                      shape:
+                          BoxShape.circle, // Membuat tombol berbentuk lingkaran
+                      color: const Color.fromARGB(
+                          255, 19, 212, 42), // Warna tombol
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.3),
+                          spreadRadius: 1,
+                          blurRadius: 2,
+                          offset:
+                              const Offset(0, 2), // changes position of shadow
+                        ),
+                      ],
+                    ),
+                    child: const Center(
+                      child: Icon(
+                        Icons.star,
+                        color: Colors.white, // Warna ikon bintang selalu putih
+                        size: 40, // Ukuran ikon bintang
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  width: 50,
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const SizedBox(
+                  width: 50,
+                ),
+                InkWell(
+                  onTap: () {
+                    extraTexts = [];
+
+                    itemstext = [
+                      'buku',
+                      'bola',
+                    ];
+
+                    Navigator.push(
+                      context,
+                      PageTransition(
+                        duration: const Duration(milliseconds: 300),
+                        type: PageTransitionType.rightToLeft,
+                        child: const TextMatchingGameScreen(),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    width: 80, // Lebar tombol
+                    height: 80, // Tinggi tombol
+                    decoration: BoxDecoration(
+                      shape:
+                          BoxShape.circle, // Membuat tombol berbentuk lingkaran
+                      color: const Color.fromARGB(
+                          255, 19, 212, 42), // Warna tombol
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.3),
+                          spreadRadius: 1,
+                          blurRadius: 2,
+                          offset:
+                              const Offset(0, 2), // changes position of shadow
+                        ),
+                      ],
+                    ),
+                    child: const Center(
+                      child: Icon(
+                        Icons.star,
+                        color: Colors.white, // Warna ikon bintang selalu putih
+                        size: 40, // Ukuran ikon bintang
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                InkWell(
+                  onTap: () {
+                    extraTexts = ['meja'];
+                    itemstext = [
+                      'buku',
+                      'bola',
+                    ];
+
+                    Navigator.push(
+                      context,
+                      PageTransition(
+                        duration: const Duration(milliseconds: 300),
+                        type: PageTransitionType.rightToLeft,
+                        child: const TextMatchingGameScreen(),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    width: 80, // Lebar tombol
+                    height: 80, // Tinggi tombol
+                    decoration: BoxDecoration(
+                      shape:
+                          BoxShape.circle, // Membuat tombol berbentuk lingkaran
+                      color: const Color.fromARGB(
+                          255, 19, 212, 42), // Warna tombol
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.3),
+                          spreadRadius: 1,
+                          blurRadius: 2,
+                          offset:
+                              const Offset(0, 2), // changes position of shadow
+                        ),
+                      ],
+                    ),
+                    child: const Center(
+                      child: Icon(
+                        Icons.star,
+                        color: Colors.white, // Warna ikon bintang selalu putih
+                        size: 40, // Ukuran ikon bintang
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  width: 50,
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const SizedBox(
+                  width: 50,
+                ),
+                InkWell(
+                  onTap: () {
+                    extraTexts = ['meja', 'baju'];
+                    itemstext = [
+                      'buku',
+                      'bola',
+                    ];
+
+                    Navigator.push(
+                      context,
+                      PageTransition(
+                        duration: const Duration(milliseconds: 300),
+                        type: PageTransitionType.rightToLeft,
+                        child: const TextMatchingGameScreen(),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    width: 80, // Lebar tombol
+                    height: 80, // Tinggi tombol
+                    decoration: BoxDecoration(
+                      shape:
+                          BoxShape.circle, // Membuat tombol berbentuk lingkaran
+                      color: const Color.fromARGB(
+                          255, 19, 212, 42), // Warna tombol
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.3),
+                          spreadRadius: 1,
+                          blurRadius: 2,
+                          offset:
+                              const Offset(0, 2), // changes position of shadow
+                        ),
+                      ],
+                    ),
+                    child: const Center(
+                      child: Icon(
+                        Icons.star,
+                        color: Colors.white, // Warna ikon bintang selalu putih
+                        size: 40, // Ukuran ikon bintang
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                InkWell(
+                  onTap: () {
+                    extraTexts = ['meja', 'baju', 'mobil'];
+                    itemstext = [
+                      'buku',
+                      'bola',
+                    ];
+
+                    Navigator.push(
+                      context,
+                      PageTransition(
+                        duration: const Duration(milliseconds: 300),
+                        type: PageTransitionType.rightToLeft,
+                        child: const TextMatchingGameScreen(),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    width: 80, // Lebar tombol
+                    height: 80, // Tinggi tombol
+                    decoration: BoxDecoration(
+                      shape:
+                          BoxShape.circle, // Membuat tombol berbentuk lingkaran
+                      color: const Color.fromARGB(
+                          255, 19, 212, 42), // Warna tombol
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.3),
+                          spreadRadius: 1,
+                          blurRadius: 2,
+                          offset:
+                              const Offset(0, 2), // changes position of shadow
+                        ),
+                      ],
+                    ),
+                    child: const Center(
+                      child: Icon(
+                        Icons.star,
+                        color: Colors.white, // Warna ikon bintang selalu putih
+                        size: 40, // Ukuran ikon bintang
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  width: 50,
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 30,
+            ),
             Container(
               width: double.infinity,
               color: const Color.fromARGB(255, 19, 212, 42),
@@ -218,12 +657,142 @@ class _level1State extends State<level1> {
               children: [
                 InkWell(
                   onTap: () {
-                    targetImage = 'assets/soal1/burung.png';
+                    targetImage = 'assets/level1/aktivitas3/kucing.png';
                     options = [
-                      {'image': 'assets/soal1/ular.png', 'text': 'Ular'},
-                      {'image': 'assets/soal1/tupai.png', 'text': 'Tupai'},
-                      {'image': 'assets/soal1/kelinci.png', 'text': 'Kelinci'},
-                      {'image': 'assets/soal1/burung.png', 'text': 'Burung'},
+                      {
+                        'image': 'assets/level1/aktivitas3/tupai.png',
+                        'text': ''
+                      },
+                      {
+                        'image': 'assets/level1/aktivitas3/kucing.png',
+                        'text': ''
+                      },
+                      {
+                        'image': 'assets/level1/aktivitas3/tikus.png',
+                        'text': ''
+                      },
+                      // {'image': 'assets/level1/aktivitas3/kucing.png', 'text': 'Burung'},
+                    ];
+                    Navigator.push(
+                      context,
+                      PageTransition(
+                        duration: const Duration(milliseconds: 300),
+                        type: PageTransitionType.rightToLeft,
+                        child: const SingleImageMatchingGameScreen(),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    width: 80, // Lebar tombol
+                    height: 80, // Tinggi tombol
+                    decoration: BoxDecoration(
+                      shape:
+                          BoxShape.circle, // Membuat tombol berbentuk lingkaran
+                      color: const Color.fromARGB(
+                          255, 19, 212, 42), // Warna tombol
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.3),
+                          spreadRadius: 1,
+                          blurRadius: 2,
+                          offset:
+                              const Offset(0, 2), // changes position of shadow
+                        ),
+                      ],
+                    ),
+                    child: const Center(
+                      child: Icon(
+                        Icons.star,
+                        color: Colors.white, // Warna ikon bintang selalu putih
+                        size: 40, // Ukuran ikon bintang
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  width: 50,
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const SizedBox(
+                  width: 50,
+                ),
+                InkWell(
+                  onTap: () {
+                    targetImage = 'assets/level1/aktivitas3/b.png';
+                    options = [
+                      {'image': 'assets/level1/aktivitas3/d.png', 'text': ''},
+                      {'image': 'assets/level1/aktivitas3/o.png', 'text': ''},
+                      {'image': 'assets/level1/aktivitas3/b.png', 'text': ''},
+                      // {'image': 'assets/level1/aktivitas3/kucing.png', 'text': 'Burung'},
+                    ];
+                    Navigator.push(
+                      context,
+                      PageTransition(
+                        duration: const Duration(milliseconds: 300),
+                        type: PageTransitionType.rightToLeft,
+                        child: const SingleImageMatchingGameScreen(),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    width: 80, // Lebar tombol
+                    height: 80, // Tinggi tombol
+                    decoration: BoxDecoration(
+                      shape:
+                          BoxShape.circle, // Membuat tombol berbentuk lingkaran
+                      color: const Color.fromARGB(
+                          255, 19, 212, 42), // Warna tombol
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.3),
+                          spreadRadius: 1,
+                          blurRadius: 2,
+                          offset:
+                              const Offset(0, 2), // changes position of shadow
+                        ),
+                      ],
+                    ),
+                    child: const Center(
+                      child: Icon(
+                        Icons.star,
+                        color: Colors.white, // Warna ikon bintang selalu putih
+                        size: 40, // Ukuran ikon bintang
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                InkWell(
+                  onTap: () {
+                    targetImage = 'assets/level1/aktivitas3/buku.png';
+                    options = [
+                      {
+                        'image': 'assets/level1/aktivitas3/buku.png',
+                        'text': ''
+                      },
+                      {
+                        'image': 'assets/level1/aktivitas3/baju.png',
+                        'text': ''
+                      },
+                      {
+                        'image': 'assets/level1/aktivitas3/bola.png',
+                        'text': ''
+                      },
+                      // {'image': 'assets/level1/aktivitas3/kucing.png', 'text': 'Burung'},
                     ];
                     Navigator.push(
                       context,
@@ -299,14 +868,22 @@ class _level1State extends State<level1> {
                 InkWell(
                   onTap: () {
                     imageItems = [
-                      ImageFindItem(imagePath: 'assets/soal1/ular.png'),
-                      ImageFindItem(imagePath: 'assets/soal1/ular.png'),
-                      ImageFindItem(imagePath: 'assets/soal1/tupai.png'),
-                      ImageFindItem(imagePath: 'assets/soal1/tupai.png'),
-                      ImageFindItem(imagePath: 'assets/soal1/kelinci.png'),
-                      ImageFindItem(imagePath: 'assets/soal1/kelinci.png'),
-                      ImageFindItem(imagePath: 'assets/soal1/kupukupu.png'),
-                      ImageFindItem(imagePath: 'assets/soal1/kupukupu.png'),
+                      ImageFindItem(
+                          imagePath: 'assets/level1/aktivitas4/apel.png'),
+                      ImageFindItem(
+                          imagePath: 'assets/level1/aktivitas4/apel.png'),
+                      ImageFindItem(
+                          imagePath: 'assets/level1/aktivitas4/jeruk.png'),
+                      ImageFindItem(
+                          imagePath: 'assets/level1/aktivitas4/jeruk.png'),
+                      ImageFindItem(
+                          imagePath: 'assets/level1/aktivitas4/nanas.png'),
+                      ImageFindItem(
+                          imagePath: 'assets/level1/aktivitas4/nanas.png'),
+                      ImageFindItem(
+                          imagePath: 'assets/level1/aktivitas4/ceri.png'),
+                      ImageFindItem(
+                          imagePath: 'assets/level1/aktivitas4/ceri.png'),
                     ];
                     Navigator.push(
                       context,
@@ -375,12 +952,17 @@ class _level1State extends State<level1> {
               children: [
                 InkWell(
                   onTap: () {
+                    images = [
+                      'assets/level1/aktivitas5/wortel.png',
+                      'assets/level1/aktivitas5/brokoli.png',
+                      'assets/level1/aktivitas5/wortel.png',
+                    ];
                     Navigator.push(
                       context,
                       PageTransition(
                         duration: const Duration(milliseconds: 300),
                         type: PageTransitionType.rightToLeft,
-                        child: const SingleImageMatchingGameScreen(),
+                        child: const TebakGambarBerurutanScreen(),
                       ),
                     );
                   },
@@ -448,12 +1030,158 @@ class _level1State extends State<level1> {
                 ),
                 InkWell(
                   onTap: () {
+                    targetImage = 'assets/level1/aktivitas6/kubus.png';
+                    options = [
+                      {
+                        'image': 'dadu',
+                        'path': 'assets/level1/aktivitas6/dadu.png',
+                      },
+                      {
+                        'image': 'bola',
+                        'path': 'assets/level1/aktivitas6/bola.png',
+                      },
+                      {
+                        'image': 'gelas',
+                        'path': 'assets/level1/aktivitas6/gelas.png',
+                      },
+                    ];
+
                     Navigator.push(
                       context,
                       PageTransition(
                         duration: const Duration(milliseconds: 300),
                         type: PageTransitionType.rightToLeft,
-                        child: const SingleImageMatchingGameScreen(),
+                        child: const MatchingGameScreen(),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    width: 80, // Lebar tombol
+                    height: 80, // Tinggi tombol
+                    decoration: BoxDecoration(
+                      shape:
+                          BoxShape.circle, // Membuat tombol berbentuk lingkaran
+                      color: const Color.fromARGB(
+                          255, 19, 212, 42), // Warna tombol
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.3),
+                          spreadRadius: 1,
+                          blurRadius: 2,
+                          offset:
+                              const Offset(0, 2), // changes position of shadow
+                        ),
+                      ],
+                    ),
+                    child: const Center(
+                      child: Icon(
+                        Icons.star,
+                        color: Colors.white, // Warna ikon bintang selalu putih
+                        size: 40, // Ukuran ikon bintang
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                InkWell(
+                  onTap: () {
+                    targetImage = 'assets/level1/aktivitas6/segiempat.png';
+                    options = [
+                      {
+                        'image': 'ketupat',
+                        'path': 'assets/level1/aktivitas6/ketupat.png',
+                      },
+                      {
+                        'image': 'escream',
+                        'path': 'assets/level1/aktivitas6/escream.png',
+                      },
+                      {
+                        'image': 'mail',
+                        'path': 'assets/level1/aktivitas6/mail.png',
+                      },
+                    ];
+
+                    Navigator.push(
+                      context,
+                      PageTransition(
+                        duration: const Duration(milliseconds: 300),
+                        type: PageTransitionType.rightToLeft,
+                        child: const MatchingGameScreen(),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    width: 80, // Lebar tombol
+                    height: 80, // Tinggi tombol
+                    decoration: BoxDecoration(
+                      shape:
+                          BoxShape.circle, // Membuat tombol berbentuk lingkaran
+                      color: const Color.fromARGB(
+                          255, 19, 212, 42), // Warna tombol
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.3),
+                          spreadRadius: 1,
+                          blurRadius: 2,
+                          offset:
+                              const Offset(0, 2), // changes position of shadow
+                        ),
+                      ],
+                    ),
+                    child: const Center(
+                      child: Icon(
+                        Icons.star,
+                        color: Colors.white, // Warna ikon bintang selalu putih
+                        size: 40, // Ukuran ikon bintang
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  width: 50,
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const SizedBox(
+                  width: 50,
+                ),
+                InkWell(
+                  onTap: () {
+                    targetImage = 'assets/level1/aktivitas6/bulat.png';
+                    options = [
+                      {
+                        'image': 'jam',
+                        'path': 'assets/level1/aktivitas6/jam.png',
+                      },
+                      {
+                        'image': 'jeruk',
+                        'path': 'assets/level1/aktivitas6/jeruk.png',
+                      },
+                      {
+                        'image': 'mail',
+                        'path': 'assets/level1/aktivitas6/mail.png',
+                      },
+                    ];
+
+                    Navigator.push(
+                      context,
+                      PageTransition(
+                        duration: const Duration(milliseconds: 300),
+                        type: PageTransitionType.rightToLeft,
+                        child: const MatchingGameScreen(),
                       ),
                     );
                   },

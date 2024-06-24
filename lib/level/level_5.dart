@@ -2,9 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:genmmas/games/voice_game_screen.dart';
 import 'package:page_transition/page_transition.dart';
 
-import '../games/kata_berawalan_screen.dart';
-import '../games/kata_pola_screnn.dart';
-
 import '../services/globals.dart';
 
 class level5 extends StatefulWidget {
