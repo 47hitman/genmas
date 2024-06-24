@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
 
+import '../services/globals.dart';
+
 class VoiceGameScreen extends StatefulWidget {
   const VoiceGameScreen({super.key});
 
@@ -12,7 +14,7 @@ class _VoiceGameScreenState extends State<VoiceGameScreen> {
   late stt.SpeechToText _speech;
   bool _isListening = false;
   String _spokenText = '';
-  final String _targetWord = 'sapu';
+  final String _targetWord = voice;
 
   @override
   void initState() {

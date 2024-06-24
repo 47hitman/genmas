@@ -2,16 +2,14 @@ import 'package:flutter/material.dart';
 
 import '../services/globals.dart';
 
-class SingleImageMatchingGameScreen extends StatefulWidget {
-  const SingleImageMatchingGameScreen({Key? key}) : super(key: key);
+class berawalnGameScreen extends StatefulWidget {
+  const berawalnGameScreen({Key? key}) : super(key: key);
 
   @override
-  _SingleImageMatchingGameScreenState createState() =>
-      _SingleImageMatchingGameScreenState();
+  _berawalnGameScreenState createState() => _berawalnGameScreenState();
 }
 
-class _SingleImageMatchingGameScreenState
-    extends State<SingleImageMatchingGameScreen> {
+class _berawalnGameScreenState extends State<berawalnGameScreen> {
   String? selectedOption;
   bool matched = false;
 
@@ -62,7 +60,7 @@ class _SingleImageMatchingGameScreenState
       backgroundColor: Colors.lightBlueAccent,
       appBar: AppBar(
         title: const Text(
-          'Pasangkan Gambar!',
+          'Kata Berawalan!',
           style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
         ),
         backgroundColor: Colors.orange,
@@ -74,20 +72,12 @@ class _SingleImageMatchingGameScreenState
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              const Padding(
-                padding: EdgeInsets.symmetric(vertical: 16.0),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 16.0),
                 child: Text(
-                  'Klik gambar di bawah untuk memasangkan dengan gambar di atas',
-                  style: TextStyle(fontSize: 22, color: Colors.white),
+                  'Ayo tunjukkan kata yang berawalan "$berawalan"',
+                  style: const TextStyle(fontSize: 22, color: Colors.white),
                   textAlign: TextAlign.center,
-                ),
-              ),
-              Opacity(
-                opacity: matched ? 1.0 : 0.5,
-                child: Image.asset(
-                  matched ? targetImage : targetImage,
-                  width: 120,
-                  height: 120,
                 ),
               ),
               const SizedBox(height: 10),

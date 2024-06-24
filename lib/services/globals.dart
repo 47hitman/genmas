@@ -7,3 +7,23 @@ List<Map<String, String>> options = [];
 String targetImage = "";
 
 List<ImageFindItem> imageItems = [];
+
+String match = "";
+
+String berawalan = "";
+
+String kvkv = "";
+String option2 = "";
+String option3 = "";
+
+String appbar = "";
+
+String assetLocation = "";
+String assetName = "";
+
+bool pilih1 = false;
+bool pilih2 = false;
+bool pilih3 = false;
+bool timer = false;
+
+String voice = "";
