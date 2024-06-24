@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../services/globals.dart';
+
 class SingleImageMatchingGameScreen extends StatefulWidget {
   const SingleImageMatchingGameScreen({Key? key}) : super(key: key);
 
@@ -10,14 +12,6 @@ class SingleImageMatchingGameScreen extends StatefulWidget {
 
 class _SingleImageMatchingGameScreenState
     extends State<SingleImageMatchingGameScreen> {
-  final String targetImage = 'assets/soal1/burung.png'; // Gambar samar-samar
-  final List<Map<String, String>> options = [
-    {'image': 'assets/soal1/ular.png', 'text': 'Ular'},
-    {'image': 'assets/soal1/tupai.png', 'text': 'Tupai'},
-    {'image': 'assets/soal1/kelinci.png', 'text': 'Kelinci'},
-    {'image': 'assets/soal1/burung.png', 'text': 'Burung'},
-  ]; // Pilihan gambar untuk dipasangkan
-
   String? selectedOption;
   bool matched = false;
 
@@ -112,13 +106,32 @@ class _SingleImageMatchingGameScreenState
                           matched = true;
                         });
                         ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text('Cocok!')),
+                          const SnackBar(content: Text('Cocok! Selamat!')),
                         );
                         _showSuccessDialog();
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                              content: Text('Tidak cocok, coba lagi!')),
+                          SnackBar(
+                            content: const Text('Tidak cocok, coba lagi ya!'),
+                            behavior: SnackBarBehavior
+                                .floating, // Optional: Floating behavior
+                            shape: RoundedRectangleBorder(
+                              // Optional: Custom shape
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            backgroundColor: Colors.blueGrey[
+                                600], // Optional: Custom background color
+                            duration: const Duration(
+                                seconds:
+                                    2), // Optional: Duration for how long snackbar will be visible
+                            action: SnackBarAction(
+                              // Optional: For adding an action button
+                              label: 'OK',
+                              onPressed: () {
+                                // Do something when OK is pressed
+                              },
+                            ),
+                          ),
                         );
                       }
                     },

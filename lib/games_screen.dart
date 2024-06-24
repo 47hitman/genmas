@@ -1,25 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:genmmas/level/level_1.dart';
 import 'package:page_transition/page_transition.dart';
 
-import 'games_screen.dart';
-
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class GamesScreen extends StatefulWidget {
+  const GamesScreen({super.key});
 
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  _GamesScreenState createState() => _GamesScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
-  void _onGamesTap() {
-    Navigator.push(
-      context,
-      PageTransition(
-        duration: const Duration(milliseconds: 300),
-        type: PageTransitionType.rightToLeft,
-        child: const GamesScreen(),
-      ),
-    );
+class _GamesScreenState extends State<GamesScreen> {
+  void _onGamesTap(int level) {
+    // Ganti sesuai dengan fungsi navigasi ke level yang dipilih
+    switch (level) {
+      case 1:
+        Navigator.push(
+          context,
+          PageTransition(
+            duration: const Duration(milliseconds: 300),
+            type: PageTransitionType.rightToLeft,
+            child: const level1(),
+          ),
+        );
+        break;
+      case 2:
+        // Tambahkan navigasi ke Level 2 jika diperlukan
+        break;
+      default:
+        break;
+    }
   }
 
   void _onAssessmentTap() {
@@ -32,10 +41,11 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Pembelajaran',
+          'GAMES',
           style: TextStyle(color: Colors.white),
         ),
-        backgroundColor: Colors.deepPurple,
+        backgroundColor: const Color.fromARGB(
+            255, 19, 212, 42), // Ubah warna latar belakang appbar
       ),
       body: Container(
         decoration: const BoxDecoration(
@@ -51,7 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: GestureDetector(
-                onTap: _onGamesTap,
+                onTap: () => _onGamesTap(1), // Ubah menjadi level 1
                 child: Container(
                   width: double.infinity,
                   decoration: BoxDecoration(
@@ -75,7 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       SizedBox(height: 20),
                       Text(
-                        "GAMES",
+                        "LEVEL 1",
                         style: TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.bold,
@@ -92,7 +102,8 @@ class _HomeScreenState extends State<HomeScreen> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: GestureDetector(
-                onTap: _onAssessmentTap,
+                onTap: () => _onGamesTap(
+                    2), // Ubah menjadi level 2 jika sudah ditambahkan
                 child: Container(
                   width: double.infinity,
                   decoration: BoxDecoration(
@@ -110,17 +121,17 @@ class _HomeScreenState extends State<HomeScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Icon(
-                        Icons.school,
+                        Icons.videogame_asset,
                         size: 100,
-                        color: Colors.orange,
+                        color: Colors.purple,
                       ),
                       SizedBox(height: 20),
                       Text(
-                        "ASESMEN",
+                        "LEVEL 2",
                         style: TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.bold,
-                          color: Colors.orange,
+                          color: Colors.purple,
                         ),
                       ),
                       SizedBox(height: 20),
@@ -129,6 +140,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
             ),
+            const SizedBox(height: 20),
           ],
         ),
       ),

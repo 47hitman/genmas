@@ -43,7 +43,11 @@ class _HiddenObjectGameScreenState extends State<HiddenObjectGameScreen> {
         });
 
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Kamu menemukan sebuah item!')),
+          const SnackBar(
+            content: Text('Kamu menemukan sebuah item!'),
+            behavior: SnackBarBehavior.floating,
+            duration: Duration(seconds: 1), // Adjust duration as needed
+          ),
         );
 
         if (foundItems.length == hiddenItems.length) {
@@ -55,7 +59,11 @@ class _HiddenObjectGameScreenState extends State<HiddenObjectGameScreen> {
     }
 
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Tidak ada item di sini, coba lagi!')),
+      const SnackBar(
+        content: Text('Tidak ada item di sini, coba lagi!'),
+        behavior: SnackBarBehavior.floating,
+        duration: Duration(seconds: 1), // Adjust duration as needed
+      ),
     );
   }
 

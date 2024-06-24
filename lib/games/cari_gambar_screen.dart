@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import '../models/image_find_item.dart';
 import 'dart:async';
 
+import '../services/globals.dart';
+
 class CariGambarScreen extends StatefulWidget {
   const CariGambarScreen({super.key});
 
@@ -10,7 +12,7 @@ class CariGambarScreen extends StatefulWidget {
 }
 
 class _CariGambarScreenState extends State<CariGambarScreen> {
-  late List<ImageFindItem> _imageItems;
+  // late List<ImageFindItem> _imageItems;
   ImageFindItem? _firstSelected;
   ImageFindItem? _secondSelected;
   bool _isProcessing = false;
@@ -26,17 +28,7 @@ class _CariGambarScreenState extends State<CariGambarScreen> {
   }
 
   void _initializeGame() {
-    _imageItems = [
-      ImageFindItem(imagePath: 'assets/soal1/ular.png'),
-      ImageFindItem(imagePath: 'assets/soal1/ular.png'),
-      ImageFindItem(imagePath: 'assets/soal1/tupai.png'),
-      ImageFindItem(imagePath: 'assets/soal1/tupai.png'),
-      ImageFindItem(imagePath: 'assets/soal1/kelinci.png'),
-      ImageFindItem(imagePath: 'assets/soal1/kelinci.png'),
-      ImageFindItem(imagePath: 'assets/soal1/kupukupu.png'),
-      ImageFindItem(imagePath: 'assets/soal1/kupukupu.png'),
-    ];
-    _imageItems.shuffle();
+    imageItems.shuffle();
   }
 
   void _startCountdown() {
@@ -58,7 +50,7 @@ class _CariGambarScreenState extends State<CariGambarScreen> {
 
   void _flipAllCards({bool flip = true}) {
     setState(() {
-      for (var item in _imageItems) {
+      for (var item in imageItems) {
         item.isFlipped = flip;
       }
     });
@@ -169,9 +161,9 @@ class _CariGambarScreenState extends State<CariGambarScreen> {
                 crossAxisSpacing: 16.0,
                 mainAxisSpacing: 16.0,
               ),
-              itemCount: _imageItems.length,
+              itemCount: imageItems.length,
               itemBuilder: (context, index) {
-                final item = _imageItems[index];
+                final item = imageItems[index];
                 return GestureDetector(
                   onTap: () => _onCardTapped(item),
                   child: Card(

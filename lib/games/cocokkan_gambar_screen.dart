@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../services/globals.dart';
+
 class ImageMatchingGameScreen extends StatefulWidget {
   const ImageMatchingGameScreen({super.key});
 
@@ -9,14 +11,6 @@ class ImageMatchingGameScreen extends StatefulWidget {
 }
 
 class _ImageMatchingGameScreenState extends State<ImageMatchingGameScreen> {
-  final List<Map<String, String>> items = [
-    {'image': 'assets/soal1/ular.png', 'text': 'Ular'},
-    {'image': 'assets/soal1/tupai.png', 'text': 'Tupai'},
-    {'image': 'assets/soal1/kelinci.png', 'text': 'Kelinci'},
-    {'image': 'assets/soal1/kupukupu.png', 'text': 'Kupu2'},
-    {'image': 'assets/soal1/burung.png', 'text': 'Burung'},
-  ];
-
   final List<Map<String, String>> shuffledItems = [];
   final Set<String> matchedItems = {};
 
