@@ -6,10 +6,42 @@ import 'package:genmmas/games/cari_gambar_screen.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'aboutUs.dart';
 import 'loginScreens.dart';
+import 'services/services.dart';
 
-class ProfileScreen extends StatelessWidget {
+String name = "Loading...";
+String email = "";
+
+class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
+
+  @override
+  _ProfileScreenState createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
+  @override
+  void initState() {
+    super.initState();
+    _doSomething();
+  }
+
+  int points = 0; // Example points value
+  void _doSomething() async {
+    try {
+      Map<String, dynamic>? value = await Services.instance.userInfo();
+      if (value != null) {
+        setState(() {
+          print(value);
+          name = "${value['first_name']} ${value['last_name']}";
+          email = value['email'];
+        });
+      }
+    } catch (e) {
+      print('Error: $e');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,14 +65,14 @@ class ProfileScreen extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    const Text(
-                      'Nama Pengguna',
-                      style:
-                          TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                    Text(
+                      name,
+                      style: const TextStyle(
+                          fontSize: 24, fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(height: 8),
                     Text(
-                      'email@example.com',
+                      email,
                       style: TextStyle(fontSize: 16, color: Colors.grey[600]),
                     ),
                   ],
@@ -71,7 +103,7 @@ class ProfileScreen extends StatelessWidget {
                     PageTransition(
                         duration: const Duration(milliseconds: 300),
                         type: PageTransitionType.rightToLeft,
-                        child: const CariGambarScreen()));
+                        child: const AboutUsScreen()));
                 // Aksi untuk About Us
               },
             ),

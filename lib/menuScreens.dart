@@ -21,7 +21,7 @@ class _MenuScreenState extends State<MenuScreen> {
     // const tweetScreen(),
     const HomeScreen(),
 
-    ListSoalScreen(),
+    // const ListSoalScreen(),
     // const Text("dua"),
     const ProfileScreen()
     // const Text("tiga"),
@@ -46,10 +46,10 @@ class _MenuScreenState extends State<MenuScreen> {
             icon: Icon(Icons.home),
             label: 'Home',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.browse_gallery),
-            label: 'Galery',
-          ),
+          // BottomNavigationBarItem(
+          //   icon: Icon(Icons.browse_gallery),
+          //   label: 'Galery',
+          // ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
             label: 'Profile',

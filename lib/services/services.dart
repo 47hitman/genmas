@@ -3,6 +3,8 @@ import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'dart:core';
 
+import 'package:shared_preferences/shared_preferences.dart';
+
 class Services {
   Services._privateConstructor();
   String blackping = "https://gemmasapi.kapuyuaxdev.my.id";
@@ -34,6 +36,36 @@ class Services {
         print(blackping);
         print(response.statusCode);
         print(response.body);
+      }
+      return null;
+    }
+  }
+
+  Future<Map<String, dynamic>?> userInfo() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? token = prefs.getString('auth_token');
+    // Ensure the path does not have a leading slash
+    Uri url = Uri.parse('$blackping/auth/user');
+
+    final http.Response response = await http.get(
+      url,
+      headers: <String, String>{
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer $token',
+      },
+    );
+
+    if (response.statusCode == 200) {
+      if (kDebugMode) {
+        // print(response.body);
+      }
+      return jsonDecode(response.body)
+          as Map<String, dynamic>; // Ensure the type is correct
+    } else {
+      if (kDebugMode) {
+        // print(blackping);
+        // print(response.statusCode);
+        // print(response.body);
       }
       return null;
     }
