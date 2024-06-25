@@ -5,6 +5,7 @@ import '../games/cari_gambar_tersembunyi_screen.dart';
 import '../games/cocokkan_gambar_screen.dart';
 import '../games/cocokkan_text_screen.dart';
 import '../games/quits_screen.dart';
+import '../games_screen.dart';
 import '../services/globals.dart';
 
 class asesment1level extends StatefulWidget {
@@ -20,15 +21,25 @@ class _asesment1levelState extends State<asesment1level> {
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
-          backgroundColor: const Color.fromARGB(255, 19, 212, 42),
-          title: const Text(
-            'Level 1 Ujian',
-            style: TextStyle(color: Colors.white), // Text warna putih
-          ),
-          iconTheme: const IconThemeData(
-            color: Colors.white, // Icon (panah kembali) warna putih
-          ),
-        ),
+            backgroundColor: const Color.fromARGB(255, 19, 212, 42),
+            title: const Text(
+              'Level 1 Ujian',
+              style: TextStyle(color: Colors.white), // Text warna putih
+            ),
+            iconTheme: const IconThemeData(
+              color: Colors.white, // Icon (panah kembali) warna putih
+            ),
+            leading: IconButton(
+              icon: const Icon(Icons.arrow_back),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          const GamesScreen()), // Replace SpecificPage with your target page
+                );
+              },
+            )),
         body: SingleChildScrollView(
           child: Column(
             children: [
@@ -36,16 +47,16 @@ class _asesment1levelState extends State<asesment1level> {
                 width: double.infinity,
                 color: const Color.fromARGB(255, 19, 212, 42),
                 padding: const EdgeInsets.all(16.0),
-                child: const Row(
+                child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
+                    const Text(
                       "Ujian Level 1",
                       style: TextStyle(color: Colors.white, fontSize: 18),
                     ),
                     Text(
-                      "Point 0",
-                      style: TextStyle(color: Colors.white, fontSize: 18),
+                      point.toString(),
+                      style: const TextStyle(color: Colors.white, fontSize: 18),
                     ),
                   ],
                 ),

@@ -1,6 +1,8 @@
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
+import '../menu/level_1_menu.dart';
 import '../services/globals.dart';
 
 void main() => runApp(const MyApp());
@@ -24,21 +26,25 @@ class MatchingGameScreen extends StatefulWidget {
 }
 
 class _MatchingGameScreenState extends State<MatchingGameScreen> {
-  // String targetImage = 'assets/level1/aktivitas6/kubus.png';
-  // List<Map<String, String>> options = [
-  //   {
-  //     'image': 'dadu',
-  //     'path': 'assets/level1/aktivitas6/dadu.png',
-  //   },
-  //   {
-  //     'image': 'bola',
-  //     'path': 'assets/level1/aktivitas6/bola.png',
-  //   },
-  //   {
-  //     'image': 'gelas',
-  //     'path': 'assets/level1/aktivitas6/gelas.png',
-  //   },
-  // ];
+  Future<void> _saveData() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    switch (aktivitas6) {
+      case 1:
+        prefs.setBool('aktivast61', aktivast61);
+        break;
+      case 2:
+        prefs.setBool('aktivast62', aktivast62);
+        break;
+      case 3:
+        prefs.setBool('aktivast63', aktivast63);
+        break;
+      default:
+        // print('Invalid aktivitas2 value: $aktivitas2');
+        break;
+    }
+  }
+
   @override
   void initState() {
     super.initState();
@@ -160,8 +166,30 @@ class _MatchingGameScreenState extends State<MatchingGameScreen> {
           actions: [
             TextButton(
               onPressed: () {
-                Navigator.of(context).pop();
+                setState(() {
+                  switch (aktivitas6) {
+                    case 1:
+                      aktivast61 = true;
+                      break;
+                    case 2:
+                      aktivast62 = true;
+                      break;
+                    case 3:
+                      aktivast63 = true;
+                      break;
+
+                    default:
+                      break;
+                  }
+                });
                 resetGame();
+                _saveData();
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          const menu1level()), // Replace SpecificPage with your target page
+                );
               },
               child: const Text('OK'),
             ),

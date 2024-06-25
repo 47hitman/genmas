@@ -5,6 +5,7 @@ import 'level/level_5.dart';
 import 'menu/level_1_menu.dart';
 import 'menu/level_2_menu.dart';
 import 'menu/level_3_menu.dart';
+import 'menuScreens.dart';
 
 class GamesScreen extends StatefulWidget {
   const GamesScreen({Key? key}) : super(key: key);
@@ -78,13 +79,25 @@ class _GamesScreenState extends State<GamesScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'GAMES',
-          style: TextStyle(color: Colors.white),
-        ),
-        backgroundColor: const Color.fromARGB(
-            255, 19, 212, 42), // Ubah warna latar belakang appbar
-      ),
+          backgroundColor: const Color.fromARGB(255, 19, 212, 42),
+          title: const Text(
+            'Games',
+            style: TextStyle(color: Colors.white), // Text warna putih
+          ),
+          iconTheme: const IconThemeData(
+            color: Colors.white, // Icon (panah kembali) warna putih
+          ),
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) =>
+                        const MenuScreen()), // Replace SpecificPage with your target page
+              );
+            },
+          )),
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(

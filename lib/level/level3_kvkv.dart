@@ -117,6 +117,7 @@ class _Level3kvkvState extends State<Level3kvkv> {
                   pilih1 = false;
                   pilih2 = false;
                   pilih3 = false;
+                  pilih4 = false;
                   timer = false;
                   Navigator.push(
                     context,
@@ -136,10 +137,11 @@ class _Level3kvkvState extends State<Level3kvkv> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  pilih1 = true;
-                  pilih2 = true;
-                  pilih3 = true;
-                  timer = false;
+                  pilih1 = false;
+                  pilih2 = false;
+                  pilih3 = false;
+                  pilih4 = false;
+                  timer = true;
                   Navigator.push(
                     context,
                     PageTransition(
@@ -158,10 +160,11 @@ class _Level3kvkvState extends State<Level3kvkv> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  pilih1 = true;
+                  pilih1 = false;
                   pilih2 = true;
                   pilih3 = true;
-                  timer = true;
+                  pilih4 = true;
+                  timer = false;
                   Navigator.push(
                     context,
                     PageTransition(
@@ -177,6 +180,80 @@ class _Level3kvkvState extends State<Level3kvkv> {
                 ),
                 child:
                     const Text('Soal 3', style: TextStyle(color: Colors.white)),
+              ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              ElevatedButton(
+                onPressed: () {
+                  pilih1 = false;
+                  pilih2 = true;
+                  pilih3 = false;
+                  pilih4 = true;
+                  timer = false;
+                  Navigator.push(
+                    context,
+                    PageTransition(
+                      duration: const Duration(milliseconds: 300),
+                      type: PageTransitionType.rightToLeft,
+                      child: const LengkapiKataScreen(),
+                    ),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color.fromARGB(
+                      255, 19, 212, 42), // Same color as AppBar
+                ),
+                child:
+                    const Text('Soal 4', style: TextStyle(color: Colors.white)),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  pilih1 = false;
+                  pilih2 = true;
+                  pilih3 = false;
+                  pilih4 = false;
+                  timer = false;
+                  Navigator.push(
+                    context,
+                    PageTransition(
+                      duration: const Duration(milliseconds: 300),
+                      type: PageTransitionType.rightToLeft,
+                      child: const LengkapiKataScreen(),
+                    ),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color.fromARGB(
+                      255, 19, 212, 42), // Same color as AppBar
+                ),
+                child:
+                    const Text('Soal 5', style: TextStyle(color: Colors.white)),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  pilih1 = false;
+                  pilih2 = false;
+                  pilih3 = false;
+                  pilih4 = false;
+                  timer = false;
+                  Navigator.push(
+                    context,
+                    PageTransition(
+                      duration: const Duration(milliseconds: 300),
+                      type: PageTransitionType.rightToLeft,
+                      child: const LengkapiKataScreen(),
+                    ),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color.fromARGB(
+                      255, 19, 212, 42), // Same color as AppBar
+                ),
+                child:
+                    const Text('Soal 6', style: TextStyle(color: Colors.white)),
               ),
             ],
           ),

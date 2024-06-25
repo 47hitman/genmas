@@ -1,7 +1,11 @@
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
+import 'package:genmmas/level/level_1.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
+import '../menu/level_1_menu.dart';
 import '../models/hiddem_item.dart';
+import '../services/globals.dart';
 
 class HiddenObjectGameScreen extends StatefulWidget {
   const HiddenObjectGameScreen({super.key});
@@ -22,6 +26,11 @@ class _HiddenObjectGameScreenState extends State<HiddenObjectGameScreen> {
   void dispose() {
     _player.dispose();
     super.dispose();
+  }
+
+  Future<void> _saveData() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setBool('aktivast1', aktivast1);
   }
 
   void _play() {
@@ -75,7 +84,6 @@ class _HiddenObjectGameScreenState extends State<HiddenObjectGameScreen> {
         if (foundItems.length == hiddenItems.length) {
           showSuccessDialog();
         }
-
         return;
       }
     }
@@ -100,7 +108,18 @@ class _HiddenObjectGameScreenState extends State<HiddenObjectGameScreen> {
             TextButton(
               child: const Text('OK'),
               onPressed: () {
-                Navigator.of(context).pop();
+                // Navigator.of(context).pop();
+                // Navigator.of(context).pop();
+                setState(() {
+                  aktivast1 = true;
+                });
+                _saveData();
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          const menu1level()), // Replace SpecificPage with your target page
+                );
               },
             ),
           ],

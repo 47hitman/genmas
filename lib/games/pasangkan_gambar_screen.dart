@@ -1,6 +1,8 @@
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
+import '../menu/level_1_menu.dart';
 import '../services/globals.dart';
 
 class SingleImageMatchingGameScreen extends StatefulWidget {
@@ -31,9 +33,29 @@ class _SingleImageMatchingGameScreenState
     );
   }
 
-  void _checkCompletion() {
-    if (matched) {
-      _showSuccessDialog();
+  // void _checkCompletion() {
+  //   if (matched) {
+  //     _showSuccessDialog();
+  //   }
+  // }
+
+  Future<void> _saveData() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    switch (aktivitas3) {
+      case 1:
+        prefs.setBool('aktivast31', aktivast31);
+        break;
+      case 2:
+        prefs.setBool('aktivast32', aktivast32);
+        break;
+      case 3:
+        prefs.setBool('aktivast33', aktivast33);
+        break;
+
+      default:
+        // print('Invalid aktivitas2 value: $aktivitas2');
+        break;
     }
   }
 
@@ -56,9 +78,29 @@ class _SingleImageMatchingGameScreenState
               onPressed: () {
                 Navigator.of(context).pop();
                 setState(() {
+                  switch (aktivitas3) {
+                    case 1:
+                      aktivast31 = true;
+                      break;
+                    case 2:
+                      aktivast32 = true;
+                      break;
+                    case 3:
+                      aktivast33 = true;
+                      break;
+                    default:
+                      break;
+                  }
                   matched = false;
                   selectedOption = null;
                 });
+                _saveData();
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          const menu1level()), // Replace SpecificPage with your target page
+                );
               },
             ),
           ],

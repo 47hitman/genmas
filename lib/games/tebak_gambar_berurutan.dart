@@ -1,6 +1,8 @@
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
+import '../menu/level_1_menu.dart';
 import '../services/globals.dart';
 
 class TebakGambarBerurutanScreen extends StatefulWidget {
@@ -45,6 +47,12 @@ class _TebakGambarBerurutanScreenState
     });
   }
 
+  Future<void> _saveData() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    prefs.setBool('aktivast5', aktivast5);
+  }
+
   // Method untuk menampilkan dialog berdasarkan status jawaban
   void _showDialog(bool correct) {
     showDialog(
@@ -59,7 +67,16 @@ class _TebakGambarBerurutanScreenState
             TextButton(
               child: const Text('OK'),
               onPressed: () {
-                Navigator.of(context).pop();
+                setState(() {
+                  aktivast5 = true;
+                });
+                _saveData();
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          const menu1level()), // Replace SpecificPage with your target page
+                );
               },
             ),
           ],

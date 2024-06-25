@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
@@ -64,7 +65,8 @@ class _LengkapiKataScreenState extends State<LengkapiKataScreen> {
     sudahDipilih = List<bool>.filled(kataTersusun.length, false);
     sudahDipilih[0] = pilih1;
     sudahDipilih[1] = pilih2;
-    sudahDipilih[3] = pilih3;
+    sudahDipilih[2] = pilih3;
+    sudahDipilih[3] = pilih4;
   }
 
   final AssetsAudioPlayer _player = AssetsAudioPlayer.newPlayer();
@@ -92,23 +94,30 @@ class _LengkapiKataScreenState extends State<LengkapiKataScreen> {
   }
 
   List<String> _acakHuruf(String kata) {
-    List<String> hurufAcak = kata.split('')..shuffle();
-    List<String> kataAcak = List.from(hurufAcak);
+    List<String> hurufAcak = kata.split('');
+    int n = hurufAcak.length;
 
-    // Jika ada huruf acak yang sama dengan kata tersusun, cari lagi
-    for (int i = 0; i < kata.length; i++) {
-      if (hurufAcak[i] == kata[i]) {
-        int j = i + 1;
-        while (j < kata.length && hurufAcak[j] == kata[j]) {
-          j++;
-        }
-        if (j < kata.length) {
-          String temp = hurufAcak[i];
-          hurufAcak[i] = hurufAcak[j];
-          hurufAcak[j] = temp;
+    bool isSamePosition;
+    do {
+      isSamePosition = false;
+
+      // Fisher-Yates shuffle
+      for (int i = n - 1; i > 0; i--) {
+        int j = Random().nextInt(i + 1);
+        // Swap elements at i and j
+        String temp = hurufAcak[i];
+        hurufAcak[i] = hurufAcak[j];
+        hurufAcak[j] = temp;
+      }
+
+      // Check if any character is in its original position
+      for (int i = 0; i < n; i++) {
+        if (hurufAcak[i] == kata[i]) {
+          isSamePosition = true;
+          break;
         }
       }
-    }
+    } while (isSamePosition);
 
     return hurufAcak;
   }
@@ -134,13 +143,13 @@ class _LengkapiKataScreenState extends State<LengkapiKataScreen> {
     return sudahDipilih.every((element) => element);
   }
 
-  void _reset() {
-    setState(() {
-      ScaffoldMessenger.of(context).removeCurrentSnackBar();
-      kataAcak.shuffle();
-      sudahDipilih = List<bool>.filled(kataTersusun.length, false);
-    });
-  }
+  // void _reset() {
+  //   setState(() {
+  //     ScaffoldMessenger.of(context).removeCurrentSnackBar();
+  //     kataAcak.shuffle();
+  //     sudahDipilih = List<bool>.filled(kataTersusun.length, false);
+  //   });
+  // }
 
   void _showSnackBar(String message) {
     ScaffoldMessenger.of(context).showSnackBar(
@@ -160,12 +169,26 @@ class _LengkapiKataScreenState extends State<LengkapiKataScreen> {
               child: const Text('OK'),
               onPressed: () {
                 Navigator.of(context).pop();
+                _playKataBerurutan();
               },
             ),
           ],
         );
       },
     );
+  }
+
+  void _playKataBerurutan() {
+    int index = 0;
+
+    Timer.periodic(const Duration(seconds: 1), (timer) {
+      if (index < kataTersusun.length) {
+        playAudioForCharacter(kataTersusun[index]);
+        index++;
+      } else {
+        timer.cancel();
+      }
+    });
   }
 
   @override

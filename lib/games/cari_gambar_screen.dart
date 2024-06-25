@@ -1,5 +1,7 @@
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import '../menu/level_1_menu.dart';
 import '../models/image_find_item.dart';
 import 'dart:async';
 
@@ -13,7 +15,6 @@ class CariGambarScreen extends StatefulWidget {
 }
 
 class _CariGambarScreenState extends State<CariGambarScreen> {
-  // late List<ImageFindItem> _imageItems;
   ImageFindItem? _firstSelected;
   ImageFindItem? _secondSelected;
   bool _isProcessing = false;
@@ -36,6 +37,11 @@ class _CariGambarScreenState extends State<CariGambarScreen> {
       autoStart: true,
       showNotification: true,
     );
+  }
+
+  Future<void> _saveData() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setBool('aktivast4', aktivast4);
   }
 
   void _initializeGame() {
@@ -85,6 +91,7 @@ class _CariGambarScreenState extends State<CariGambarScreen> {
           _score += 10;
         });
         _resetSelection();
+        _checkIfGameCompleted();
       } else {
         Timer(const Duration(seconds: 1), () {
           setState(() {
@@ -134,12 +141,57 @@ class _CariGambarScreenState extends State<CariGambarScreen> {
     );
   }
 
+  void _showSuccessDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+          title: const Row(
+            children: [
+              Icon(Icons.check_circle, color: Colors.green),
+              SizedBox(width: 10),
+              Text('Berhasil',
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+            ],
+          ),
+          content: const Text('Semua gambar cocok, bagus sekali!',
+              style: TextStyle(fontSize: 18)),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                setState(() {
+                  aktivast4 = true;
+                });
+                _saveData();
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          const menu1level()), // Replace SpecificPage with your target page
+                );
+              },
+              child: const Text('OK', style: TextStyle(fontSize: 18)),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _checkIfGameCompleted() {
+    if (imageItems.every((item) => item.isFlipped)) {
+      _showSuccessDialog();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.orangeAccent,
-        automaticallyImplyLeading: false, // Hides the default back button
+        automaticallyImplyLeading: false,
         title: const Text(
           'Cari Gambar Memory',
           style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
@@ -147,7 +199,7 @@ class _CariGambarScreenState extends State<CariGambarScreen> {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
-            Navigator.of(context).pop(); // Handles back navigation
+            Navigator.of(context).pop();
           },
         ),
       ),

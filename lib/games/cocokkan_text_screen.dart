@@ -1,6 +1,8 @@
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
+import '../menu/level_1_menu.dart';
 import '../services/globals.dart';
 
 class TextMatchingGameScreen extends StatefulWidget {
@@ -37,6 +39,40 @@ class _TextMatchingGameScreenState extends State<TextMatchingGameScreen> {
     }
   }
 
+  Future<void> _saveData() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    switch (aktivitas2) {
+      case 1:
+        prefs.setBool('aktivast21', aktivast21);
+        break;
+      case 2:
+        prefs.setBool('aktivast22', aktivast22);
+        break;
+      case 3:
+        prefs.setBool('aktivast23', aktivast23);
+        break;
+      case 4:
+        prefs.setBool('aktivast24', aktivast24);
+        break;
+      case 5:
+        prefs.setBool('aktivast25', aktivast25);
+        break;
+      case 6:
+        prefs.setBool('aktivast26', aktivast26);
+        break;
+      case 7:
+        prefs.setBool('aktivast27', aktivast27);
+        break;
+      case 8:
+        prefs.setBool('aktivast28', aktivast28);
+        break;
+      default:
+        // print('Invalid aktivitas2 value: $aktivitas2');
+        break;
+    }
+  }
+
   void _showSuccessDialog() {
     showDialog(
       context: context,
@@ -54,7 +90,45 @@ class _TextMatchingGameScreenState extends State<TextMatchingGameScreen> {
             TextButton(
               child: const Text('OK'),
               onPressed: () {
-                Navigator.of(context).pop();
+                setState(() {
+                  switch (aktivitas2) {
+                    case 1:
+                      aktivast21 = true;
+                      break;
+                    case 2:
+                      aktivast22 = true;
+                      break;
+                    case 3:
+                      aktivast23 = true;
+                      break;
+                    case 4:
+                      aktivast24 = true;
+                      break;
+                    case 5:
+                      aktivast25 = true;
+                      break;
+                    case 6:
+                      aktivast26 = true;
+                      break;
+                    case 7:
+                      aktivast27 = true;
+                      break;
+                    case 8:
+                      aktivast28 = true;
+                      break;
+                    default:
+                      print('Invalid aktivitas2 value: $aktivitas2');
+                      break;
+                  }
+                });
+
+                _saveData();
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          const menu1level()), // Replace SpecificPage with your target page
+                );
               },
             ),
           ],

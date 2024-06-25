@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 
 import 'games_screen.dart';
+import 'services/globals.dart';
 import 'services/services.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -32,6 +33,8 @@ class _HomeScreenState extends State<HomeScreen> {
           name = "${value['first_name']} ${value['last_name']}";
           role = value['role'];
           points = value['score'];
+          point = value['score'];
+          print(point);
         });
       }
     } catch (e) {
@@ -58,13 +61,13 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'Pembelajaran',
-          style: TextStyle(color: Colors.white),
-        ),
-        backgroundColor: Colors.deepPurple,
-      ),
+      // appBar: AppBar(
+      //   title: const Text(
+      //     'Pembelajaran',
+      //     style: TextStyle(color: Colors.white),
+      //   ),
+      //   backgroundColor: Colors.deepPurple,
+      // ),
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(

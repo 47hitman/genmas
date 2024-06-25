@@ -32,12 +32,12 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
       // Here, you can send the updated data to your backend server
-      print('Updated Info:');
-      print('Email: $_email');
-      print('First Name: $_firstName');
-      print('Last Name: $_lastName');
+      // print('Updated Info:');
+      // print('Email: $_email');
+      // print('First Name: $_firstName');
+      // print('Last Name: $_lastName');
       if (_image != null) {
-        print('Profile Picture: ${_image!.path}');
+        // print('Profile Picture: ${_image!.path}');
       }
     }
   }
