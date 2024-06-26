@@ -67,6 +67,12 @@ bool aktivast33 = false;
 bool aktivast4 = false;
 //-------------------------
 
+// aktivitas 3----------
+List<String> options4 = [];
+List<String> answer = [];
+List<String> correctAnswer = [];
+//-------------------------
+
 // aktivitas 5----------
 bool aktivast5 = false;
 //-------------------------

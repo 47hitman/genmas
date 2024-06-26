@@ -5,6 +5,7 @@ import 'level/level_5.dart';
 import 'menu/level_1_menu.dart';
 import 'menu/level_2_menu.dart';
 import 'menu/level_3_menu.dart';
+import 'menu/level_4_menu.dart';
 import 'menuScreens.dart';
 
 class GamesScreen extends StatefulWidget {
@@ -52,15 +53,14 @@ class _GamesScreenState extends State<GamesScreen> {
   }
 
   void _onGamesTap4(int level) {
-    // Ganti sesuai dengan fungsi navigasi ke level yang dipilih
-    // Navigator.push(
-    //   context,
-    //   PageTransition(
-    //     duration: const Duration(milliseconds: 300),
-    //     type: PageTransitionType.rightToLeft,
-    //     child: const menu3level(), // Ganti dengan widget level yang sesuai
-    //   ),
-    // );
+    Navigator.push(
+      context,
+      PageTransition(
+        duration: const Duration(milliseconds: 300),
+        type: PageTransitionType.rightToLeft,
+        child: const menu4level(), // Ganti dengan widget level yang sesuai
+      ),
+    );
   }
 
   void _onGamesTap5(int level) {

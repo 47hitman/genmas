@@ -71,6 +71,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/
+    - assets/option/
     - assets/soal1/
     - assets/level2/
     - assets/level3/

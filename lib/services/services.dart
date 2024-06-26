@@ -115,4 +115,36 @@ class Services {
       return null;
     }
   }
+
+  Future<String?> score(
+    score,
+  ) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? token = prefs.getString('auth_token');
+    // Ensure the path does not have a leading slash
+    Uri url = Uri.parse('$blackping/question/score');
+
+    final http.Response response = await http.put(
+      url,
+      headers: <String, String>{
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer $token',
+      },
+      body: jsonEncode({"score": score}),
+    );
+
+    if (response.statusCode == 200) {
+      // if (kDebugMode) {
+      //   print(response.body);
+      // }
+      return jsonDecode(response.body);
+    } else {
+      // if (kDebugMode) {
+      //   print(blackping);
+      //   print(response.statusCode);
+      //   print(response.body);
+      // }
+      return null;
+    }
+  }
 }

@@ -1,9 +1,13 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:async';
 import 'dart:math';
 
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
 import 'package:genmmas/services/globals.dart';
+
+import '../services/services.dart';
 
 class LengkapiKataScreen extends StatefulWidget {
   const LengkapiKataScreen({Key? key}) : super(key: key);
@@ -18,6 +22,66 @@ class _LengkapiKataScreenState extends State<LengkapiKataScreen> {
   List<bool> sudahDipilih = [];
   int _countdown = 4;
   Timer? _countdownTimer;
+
+  int incorrectAnswers = 0;
+  bool showHelp = false;
+  int points = 10; // Start with max points
+  bool gameCompleted = false;
+  void _pilihHuruf(int index) {
+    setState(() {
+      int nextIndex = sudahDipilih.indexWhere((e) => !e);
+      if (nextIndex != -1 && kataAcak[index] == kataTersusun[nextIndex]) {
+        sudahDipilih[nextIndex] = true;
+
+        // Reset incorrect answers count
+        incorrectAnswers = 0;
+
+        // Check if all letters have been correctly chosen
+        if (_cekPenyelesaian()) {
+          // _showDialogKataBerhasilDisusun();
+          _playKataBerurutan();
+        }
+      } else {
+        Future.delayed(const Duration(seconds: 1), () {
+          _play('assets/option/Ayo coba lagi.m4a');
+        });
+        _showSnackBar('Pilih huruf berikutnya yang benar');
+        incorrectAnswers++;
+
+        if (incorrectAnswers >= 3 && !showHelp) {
+          showHelp = true;
+          _showHelpMenu();
+        }
+
+        // Adjust points based on incorrect answers and help usage
+        if (showHelp) {
+          points = 5;
+        } else if (incorrectAnswers >= 3) {
+          points = 0;
+        }
+      }
+    });
+  }
+
+  void _showHelpMenu() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Bantuan'),
+          content: Text('Silakan pilih huruf yang benar $kataTersusun'),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('OK'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
 
   @override
   void initState() {
@@ -122,23 +186,6 @@ class _LengkapiKataScreenState extends State<LengkapiKataScreen> {
     return hurufAcak;
   }
 
-  void _pilihHuruf(int index) {
-    setState(() {
-      int nextIndex = sudahDipilih.indexWhere((e) => !e);
-      if (nextIndex != -1 &&
-          index == kataAcak.indexOf(kataTersusun[nextIndex])) {
-        sudahDipilih[nextIndex] = true;
-
-        // Cek apakah semua huruf sudah dipilih dengan benar
-        if (_cekPenyelesaian()) {
-          _showDialogKataBerhasilDisusun();
-        }
-      } else {
-        _showSnackBar('Pilih huruf berikutnya yang benar');
-      }
-    });
-  }
-
   bool _cekPenyelesaian() {
     return sudahDipilih.every((element) => element);
   }
@@ -146,8 +193,12 @@ class _LengkapiKataScreenState extends State<LengkapiKataScreen> {
   // void _reset() {
   //   setState(() {
   //     ScaffoldMessenger.of(context).removeCurrentSnackBar();
-  //     kataAcak.shuffle();
+  //     kataAcak = _acakHuruf(kataTersusun);
   //     sudahDipilih = List<bool>.filled(kataTersusun.length, false);
+  //     incorrectAnswers = 0;
+  //     points = 10;
+  //     showHelp = false;
+  //     gameCompleted = false;
   //   });
   // }
 
@@ -158,34 +209,86 @@ class _LengkapiKataScreenState extends State<LengkapiKataScreen> {
   }
 
   void _showDialogKataBerhasilDisusun() {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: const Text('Selamat!'),
-          content: const Text('Kata berhasil disusun!'),
-          actions: <Widget>[
-            TextButton(
-              child: const Text('OK'),
-              onPressed: () {
-                Navigator.of(context).pop();
-                _playKataBerurutan();
-              },
-            ),
-          ],
-        );
-      },
-    );
+    if (!gameCompleted) {
+      gameCompleted = true;
+      // Calculate points
+      if (showHelp) {
+        points = 5;
+      } else if (incorrectAnswers >= 3) {
+        points = 0;
+      }
+
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: const Text('Selamat!'),
+            content: Text('Kata berhasil disusun!\nPoin: $points'),
+            actions: <Widget>[
+              TextButton(
+                child: const Text('OK'),
+                onPressed: () async {
+                  Navigator.of(context).pop(); // Tutup dialog
+                  Navigator.of(context).pop(); // Kembali ke layar sebelumnya
+                  await Services.instance.score(points);
+
+                  // _playKataBerurutan(); // Jika ingin memulai kembali setelah scoring, uncomment line ini
+                },
+              ),
+            ],
+          );
+        },
+      );
+    }
   }
 
   void _playKataBerurutan() {
     int index = 0;
+    final List<String> compliments = [
+      'assets/option/Bagus.m4a',
+      'assets/option/Hebat.m4a',
+      'assets/option/Pintar.m4a'
+    ];
 
-    Timer.periodic(const Duration(seconds: 1), (timer) {
+    Timer.periodic(const Duration(seconds: 2), (timer) {
       if (index < kataTersusun.length) {
         playAudioForCharacter(kataTersusun[index]);
         index++;
       } else {
+        String selectedOption = assetName;
+
+        if (selectedOption == 'susu') {
+          _play('assets/level3/Level 3 susu.m4a');
+        } else if (selectedOption == 'sawi') {
+          _play('assets/level3/Level 3 sawi.m4a');
+        } else if (selectedOption == 'sapu') {
+          _play('assets/level3/Level 3 sapu.m4a');
+        } else if (selectedOption == 'siku') {
+          _play('assets/level3/Level 3 siku.m4a');
+        } else if (selectedOption == 'soda') {
+          _play('assets/level3/Level 3 soda.m4a');
+        } else if (selectedOption == 'bibir') {
+          _play('assets/level3/Level 3 bibir.m4a');
+        } else if (selectedOption == 'badak') {
+          _play('assets/level3/Level 3 badak.m4a');
+        } else if (selectedOption == 'botol') {
+          _play('assets/level3/Level 3 botol.m4a');
+        } else if (selectedOption == 'bayam') {
+          _play('assets/level3/Level 3 bayam.m4a');
+        } else if (selectedOption == 'beras') {
+          _play('assets/level3/Level 3 beras.m4a');
+        }
+
+        // Pilih satu pujian secara acak
+
+        // Tampilkan dialog setelah pujian dimainkan
+        Future.delayed(const Duration(seconds: 2), () {
+          final randomCompliment =
+              compliments[Random().nextInt(compliments.length)];
+          _play(randomCompliment);
+          _showDialogKataBerhasilDisusun();
+        });
+
         timer.cancel();
       }
     });
@@ -202,6 +305,10 @@ class _LengkapiKataScreenState extends State<LengkapiKataScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
+            // Text(
+            //   'Poin: $points',
+            //   style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            // ),
             if (timer != false)
               if (_countdown > 0)
                 Text(
@@ -212,12 +319,14 @@ class _LengkapiKataScreenState extends State<LengkapiKataScreen> {
             assetLocation != null
                 ? Image.asset(assetLocation, width: 100, height: 80)
                 : Container(),
-            if (_countdown > 0)
-              Text(
-                kataTersusun,
-                style:
-                    const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-              ),
+            if (timer != false)
+              if (_countdown > 0)
+                Text(
+                  kataTersusun,
+                  style: const TextStyle(
+                      fontSize: 24, fontWeight: FontWeight.bold),
+                ),
+
             const SizedBox(height: 16),
 
             // Kolom huruf acak

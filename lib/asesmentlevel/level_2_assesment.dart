@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
-
-import '../games/cari_gambar_tersembunyi_screen.dart';
-import '../games/cocokkan_gambar_screen.dart';
 import '../games/cocokkan_text_screen.dart';
 import '../games/kata_berawalan_screen.dart';
 import '../games/kata_pola_screnn.dart';
-import '../games/quits_screen.dart';
 import '../services/globals.dart';
 
 class asesment2level extends StatefulWidget {
