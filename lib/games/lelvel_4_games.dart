@@ -1,3 +1,7 @@
+import 'dart:async';
+import 'dart:math';
+
+import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
 
 import '../services/globals.dart';
@@ -10,24 +14,129 @@ class SusunKataScreenLevel4 extends StatefulWidget {
 }
 
 class _SusunKataScreenLevel4State extends State<SusunKataScreenLevel4> {
+  String selectedOption = assetName;
+  @override
+  void initState() {
+    super.initState();
+    _play('assets/level4/Level 4.m4a');
+    Future.delayed(const Duration(seconds: 6), () {
+      if (selectedOption == 'susu') {
+        _play('assets/level3/Level 3 susu.m4a');
+      }
+      if (selectedOption == 'sawi') {
+        _play('assets/level3/Level 3 sawi.m4a');
+      }
+      if (selectedOption == 'sapu') {
+        _play('assets/level3/Level 3 sapu.m4a');
+      }
+
+      if (selectedOption == 'siku') {
+        _play('assets/level3/Level 3 siku.m4a');
+      }
+
+      if (selectedOption == 'soda') {
+        _play('assets/level3/Level 3 soda.m4a');
+      }
+      if (selectedOption == 'bibir') {
+        _play('assets/level3/Level 3 bibir.m4a');
+      }
+      if (selectedOption == 'badak') {
+        _play('assets/level3/Level 3 badak.m4a');
+      }
+      if (selectedOption == 'botol') {
+        _play('assets/level3/Level 3 botol.m4a');
+      }
+      if (selectedOption == 'bayam') {
+        _play('assets/level3/Level 3 bayam.m4a');
+      }
+      if (selectedOption == 'beras') {
+        _play('assets/level3/Level 3 beras.m4a');
+      }
+    });
+  }
+
+  final AssetsAudioPlayer _player = AssetsAudioPlayer.newPlayer();
+  void _play(sound) {
+    _player.open(
+      Audio(sound),
+      autoStart: true,
+      showNotification: true,
+    );
+  }
+
+  void _playKataBerurutan() {
+    int index = 0;
+    final List<String> compliments = [
+      'assets/option/Bagus.m4a',
+      'assets/option/Hebat.m4a',
+      'assets/option/Pintar.m4a'
+    ];
+
+    Timer.periodic(const Duration(seconds: 2), (timer) {
+      if (index < correctAnswer.length) {
+        playAudioForCharacter(correctAnswer[index]);
+        index++;
+      } else {
+        String selectedOption = assetName;
+
+        if (selectedOption == 'susu') {
+          _play('assets/level3/Level 3 susu.m4a');
+        } else if (selectedOption == 'sawi') {
+          _play('assets/level3/Level 3 sawi.m4a');
+        } else if (selectedOption == 'sapu') {
+          _play('assets/level3/Level 3 sapu.m4a');
+        } else if (selectedOption == 'siku') {
+          _play('assets/level3/Level 3 siku.m4a');
+        } else if (selectedOption == 'soda') {
+          _play('assets/level3/Level 3 soda.m4a');
+        } else if (selectedOption == 'bibir') {
+          _play('assets/level3/Level 3 bibir.m4a');
+        } else if (selectedOption == 'badak') {
+          _play('assets/level3/Level 3 badak.m4a');
+        } else if (selectedOption == 'botol') {
+          _play('assets/level3/Level 3 botol.m4a');
+        } else if (selectedOption == 'bayam') {
+          _play('assets/level3/Level 3 bayam.m4a');
+        } else if (selectedOption == 'beras') {
+          _play('assets/level3/Level 3 beras.m4a');
+        }
+        // Pilih satu pujian secara acak
+
+        // Tampilkan dialog setelah pujian dimainkan
+        Future.delayed(const Duration(seconds: 2), () {
+          final randomCompliment =
+              compliments[Random().nextInt(compliments.length)];
+          _play(randomCompliment);
+          showDialog(
+            context: context,
+            builder: (context) => AlertDialog(
+              title: const Text("Benar!"),
+              content: const Text("Selamat, jawaban kamu benar!"),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                    Navigator.of(context).pop();
+                  },
+                  child: const Text("OK"),
+                ),
+              ],
+            ),
+          );
+        });
+
+        timer.cancel();
+      }
+    });
+  }
+
   void checkAnswer() {
     if (answer[0] == correctAnswer[0] && answer[1] == correctAnswer[1]) {
-      showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-          title: const Text("Benar!"),
-          content: const Text("Selamat, jawaban kamu benar!"),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: const Text("OK"),
-            ),
-          ],
-        ),
-      );
+      _playKataBerurutan();
     } else {
+      Future.delayed(const Duration(seconds: 1), () {
+        _play('assets/option/Ayo coba lagi.m4a');
+      });
       showDialog(
         context: context,
         builder: (context) => AlertDialog(
@@ -60,7 +169,41 @@ class _SusunKataScreenLevel4State extends State<SusunKataScreenLevel4> {
     });
   }
 
-  void playSound() async {}
+  void playSound() async {
+    if (selectedOption == 'susu') {
+      _play('assets/level3/Level 3 susu.m4a');
+    }
+    if (selectedOption == 'sawi') {
+      _play('assets/level3/Level 3 sawi.m4a');
+    }
+    if (selectedOption == 'sapu') {
+      _play('assets/level3/Level 3 sapu.m4a');
+    }
+
+    if (selectedOption == 'siku') {
+      _play('assets/level3/Level 3 siku.m4a');
+    }
+
+    if (selectedOption == 'soda') {
+      _play('assets/level3/Level 3 soda.m4a');
+    }
+    if (selectedOption == 'bibir') {
+      _play('assets/level3/Level 3 bibir.m4a');
+    }
+    if (selectedOption == 'badak') {
+      _play('assets/level3/Level 3 badak.m4a');
+    }
+    if (selectedOption == 'botol') {
+      _play('assets/level3/Level 3 botol.m4a');
+    }
+    if (selectedOption == 'bayam') {
+      _play('assets/level3/Level 3 bayam.m4a');
+    }
+    if (selectedOption == 'beras') {
+      _play('assets/level3/Level 3 beras.m4a');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -119,6 +262,7 @@ class _SusunKataScreenLevel4State extends State<SusunKataScreenLevel4> {
             children: options4.map((option) {
               return GestureDetector(
                 onTap: () {
+                  playAudioForCharacter(option);
                   updateAnswer(option);
                 },
                 child: Container(
@@ -143,5 +287,37 @@ class _SusunKataScreenLevel4State extends State<SusunKataScreenLevel4> {
         ],
       ),
     );
+  }
+
+  void playAudioForCharacter(String character) {
+    // Define a map that maps each character to its corresponding audio file path
+    Map<String, String> audioPaths = {
+      'ba': 'assets/level4/Level 4 ba.m4a',
+      'be': 'assets/level4/Level 4 be.m4a',
+      'bi': 'assets/level4/Level 4 bi.m4a',
+      'bir': 'assets/level4/Level 4 bir.m4a',
+      'bo': 'assets/level4/Level 4 bo.m4a',
+      'da': 'assets/level4/Level 4 da.m4a',
+      'dak': 'assets/level4/Level 4 dak.m4a',
+      'ku': 'assets/level4/Level 4 ku.m4a',
+      'pu': 'assets/level4/Level 4 pu.m4a',
+      'ras': 'assets/level4/Level 4 ras.m4a',
+      'sa': 'assets/level4/Level 4 sa.m4a',
+      'si': 'assets/level4/Level 4 si.m4a',
+      'so': 'assets/level4/Level 4 so.m4a',
+      'su': 'assets/level4/Level 4 su.m4a',
+      'tol': 'assets/level4/Level 4 tol.m4a',
+      'wi': 'assets/level4/Level 4 wi.m4a',
+      'yam': 'assets/level4/Level 4 yam.m4a',
+    };
+
+    // Check if the character exists in the map
+    if (audioPaths.containsKey(character)) {
+      _play(audioPaths[
+          character]); // Replace `_play` with your actual audio playing function
+    } else {
+      // Handle cases where character is not 'a' to 'z'
+      print('No audio file found for character $character');
+    }
   }
 }

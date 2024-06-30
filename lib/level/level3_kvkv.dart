@@ -1,8 +1,10 @@
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
 import 'package:genmmas/games/lengkapi_kata_screen.dart';
+import 'package:genmmas/level/level_3.dart';
 import 'package:page_transition/page_transition.dart';
 
+import '../menu/level_3_menu.dart';
 import '../services/globals.dart';
 
 class Level3kvkv extends StatefulWidget {
@@ -11,6 +13,8 @@ class Level3kvkv extends StatefulWidget {
   @override
   _Level3kvkvState createState() => _Level3kvkvState();
 }
+
+Map<String, List<bool>> assetMap = {};
 
 class _Level3kvkvState extends State<Level3kvkv> {
   @override
@@ -49,6 +53,17 @@ class _Level3kvkvState extends State<Level3kvkv> {
     if (selectedOption == 'beras') {
       _play('assets/level3/Level 3 beras.m4a');
     }
+    assetMap = {
+      'susu': [susu1, susu2, susu3, susu4, susu5, susu6],
+      'sapu': [sapu1, sapu2, sapu3, sapu4, sapu5, sapu6],
+      'siku': [siku1, siku2, siku3, siku4, siku5, siku6],
+      'soda': [soda1, soda2, soda3, soda4, soda5, soda6],
+      'bibir': [bibir1, bibir2, bibir3, bibir4, bibir5, bibir6],
+      'badak': [badak1, badak2, badak3, badak4, badak5, badak6],
+      'botol': [botol1, botol2, botol3, botol4, botol5, botol6],
+      'bayam': [bayam1, bayam2, bayam3, bayam4, bayam5, bayam6],
+      'beras': [beras1, beras2, beras3, beras4, beras5, beras6],
+    };
   }
 
   final AssetsAudioPlayer _player = AssetsAudioPlayer.newPlayer();
@@ -62,6 +77,8 @@ class _Level3kvkvState extends State<Level3kvkv> {
 
   @override
   Widget build(BuildContext context) {
+    List<bool> assetConditions =
+        assetMap[assetName] ?? [false, false, false, false, false, false];
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -72,6 +89,17 @@ class _Level3kvkvState extends State<Level3kvkv> {
         ),
         iconTheme: const IconThemeData(
           color: Colors.white,
+        ),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) =>
+                      const level3()), // Replace SpecificPage with your target page
+            );
+          },
         ),
       ),
       body: Column(
@@ -114,6 +142,13 @@ class _Level3kvkvState extends State<Level3kvkv> {
             children: [
               ElevatedButton(
                 onPressed: () {
+                  assetName == 'susu' ? awal = true : awal = false;
+                  soal1 = true;
+                  soal2 = false;
+                  soal3 = false;
+                  soal4 = false;
+                  soal5 = false;
+                  soal6 = false;
                   pilih1 = false;
                   pilih2 = false;
                   pilih3 = false;
@@ -129,54 +164,69 @@ class _Level3kvkvState extends State<Level3kvkv> {
                   );
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color.fromARGB(
-                      255, 19, 212, 42), // Same color as AppBar
+                  backgroundColor: const Color.fromARGB(255, 19, 212, 42),
                 ),
                 child:
                     const Text('Soal 1', style: TextStyle(color: Colors.white)),
               ),
               ElevatedButton(
-                onPressed: () {
-                  pilih1 = false;
-                  pilih2 = false;
-                  pilih3 = false;
-                  pilih4 = false;
-                  timer = true;
-                  Navigator.push(
-                    context,
-                    PageTransition(
-                      duration: const Duration(milliseconds: 300),
-                      type: PageTransitionType.rightToLeft,
-                      child: const LengkapiKataScreen(),
-                    ),
-                  );
-                },
+                onPressed: assetConditions[0]
+                    ? () {
+                        soal1 = false;
+                        soal2 = true;
+                        soal3 = false;
+                        soal4 = false;
+                        soal5 = false;
+                        soal6 = false;
+                        assetName != 'susu' ? awal = true : awal = false;
+                        pilih1 = false;
+                        pilih2 = false;
+                        pilih3 = false;
+                        pilih4 = false;
+                        timer = true;
+                        Navigator.push(
+                          context,
+                          PageTransition(
+                            duration: const Duration(milliseconds: 300),
+                            type: PageTransitionType.rightToLeft,
+                            child: const LengkapiKataScreen(),
+                          ),
+                        );
+                      }
+                    : null,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color.fromARGB(
-                      255, 19, 212, 42), // Same color as AppBar
+                  backgroundColor: const Color.fromARGB(255, 19, 212, 42),
                 ),
                 child:
                     const Text('Soal 2', style: TextStyle(color: Colors.white)),
               ),
               ElevatedButton(
-                onPressed: () {
-                  pilih1 = false;
-                  pilih2 = true;
-                  pilih3 = true;
-                  pilih4 = true;
-                  timer = false;
-                  Navigator.push(
-                    context,
-                    PageTransition(
-                      duration: const Duration(milliseconds: 300),
-                      type: PageTransitionType.rightToLeft,
-                      child: const LengkapiKataScreen(),
-                    ),
-                  );
-                },
+                onPressed: assetConditions[1]
+                    ? () {
+                        soal1 = false;
+                        soal2 = false;
+                        soal3 = true;
+                        soal4 = false;
+                        soal5 = false;
+                        soal6 = false;
+                        assetName != 'susu' ? awal = true : awal = false;
+                        pilih1 = false;
+                        pilih2 = true;
+                        pilih3 = true;
+                        pilih4 = true;
+                        timer = false;
+                        Navigator.push(
+                          context,
+                          PageTransition(
+                            duration: const Duration(milliseconds: 300),
+                            type: PageTransitionType.rightToLeft,
+                            child: const LengkapiKataScreen(),
+                          ),
+                        );
+                      }
+                    : null,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color.fromARGB(
-                      255, 19, 212, 42), // Same color as AppBar
+                  backgroundColor: const Color.fromARGB(255, 19, 212, 42),
                 ),
                 child:
                     const Text('Soal 3', style: TextStyle(color: Colors.white)),
@@ -187,70 +237,94 @@ class _Level3kvkvState extends State<Level3kvkv> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               ElevatedButton(
-                onPressed: () {
-                  pilih1 = false;
-                  pilih2 = true;
-                  pilih3 = false;
-                  pilih4 = true;
-                  timer = false;
-                  Navigator.push(
-                    context,
-                    PageTransition(
-                      duration: const Duration(milliseconds: 300),
-                      type: PageTransitionType.rightToLeft,
-                      child: const LengkapiKataScreen(),
-                    ),
-                  );
-                },
+                onPressed: assetConditions[2]
+                    ? () {
+                        assetName != 'susu' ? awal = true : awal = false;
+                        soal1 = false;
+                        soal2 = false;
+                        soal3 = false;
+                        soal4 = true;
+                        soal5 = false;
+                        soal6 = false;
+                        pilih1 = false;
+                        pilih2 = true;
+                        pilih3 = false;
+                        pilih4 = true;
+                        timer = false;
+                        Navigator.push(
+                          context,
+                          PageTransition(
+                            duration: const Duration(milliseconds: 300),
+                            type: PageTransitionType.rightToLeft,
+                            child: const LengkapiKataScreen(),
+                          ),
+                        );
+                      }
+                    : null,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color.fromARGB(
-                      255, 19, 212, 42), // Same color as AppBar
+                  backgroundColor: const Color.fromARGB(255, 19, 212, 42),
                 ),
                 child:
                     const Text('Soal 4', style: TextStyle(color: Colors.white)),
               ),
               ElevatedButton(
-                onPressed: () {
-                  pilih1 = false;
-                  pilih2 = true;
-                  pilih3 = false;
-                  pilih4 = false;
-                  timer = false;
-                  Navigator.push(
-                    context,
-                    PageTransition(
-                      duration: const Duration(milliseconds: 300),
-                      type: PageTransitionType.rightToLeft,
-                      child: const LengkapiKataScreen(),
-                    ),
-                  );
-                },
+                onPressed: assetConditions[3]
+                    ? () {
+                        soal1 = false;
+                        soal2 = false;
+                        soal3 = false;
+                        soal4 = false;
+                        soal5 = true;
+                        soal6 = false;
+                        assetName != 'susu' ? awal = true : awal = false;
+                        pilih1 = false;
+                        pilih2 = true;
+                        pilih3 = false;
+                        pilih4 = false;
+                        timer = false;
+                        Navigator.push(
+                          context,
+                          PageTransition(
+                            duration: const Duration(milliseconds: 300),
+                            type: PageTransitionType.rightToLeft,
+                            child: const LengkapiKataScreen(),
+                          ),
+                        );
+                      }
+                    : null,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color.fromARGB(
-                      255, 19, 212, 42), // Same color as AppBar
+                  backgroundColor: const Color.fromARGB(255, 19, 212, 42),
                 ),
                 child:
                     const Text('Soal 5', style: TextStyle(color: Colors.white)),
               ),
               ElevatedButton(
-                onPressed: () {
-                  pilih1 = false;
-                  pilih2 = false;
-                  pilih3 = false;
-                  pilih4 = false;
-                  timer = false;
-                  Navigator.push(
-                    context,
-                    PageTransition(
-                      duration: const Duration(milliseconds: 300),
-                      type: PageTransitionType.rightToLeft,
-                      child: const LengkapiKataScreen(),
-                    ),
-                  );
-                },
+                onPressed: assetConditions[4]
+                    ? () {
+                        soal1 = false;
+                        soal2 = false;
+                        soal3 = false;
+                        soal4 = false;
+                        soal5 = false;
+                        soal6 = true;
+                        assetName != 'susu' ? awal = true : awal = false;
+                        pilih1 = false;
+                        pilih2 = false;
+                        pilih3 = false;
+                        pilih4 = false;
+                        timer = false;
+                        Navigator.push(
+                          context,
+                          PageTransition(
+                            duration: const Duration(milliseconds: 300),
+                            type: PageTransitionType.rightToLeft,
+                            child: const LengkapiKataScreen(),
+                          ),
+                        );
+                      }
+                    : null,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color.fromARGB(
-                      255, 19, 212, 42), // Same color as AppBar
+                  backgroundColor: const Color.fromARGB(255, 19, 212, 42),
                 ),
                 child:
                     const Text('Soal 6', style: TextStyle(color: Colors.white)),

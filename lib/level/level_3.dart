@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:genmmas/games_screen.dart';
 import 'package:genmmas/level/level3_kvkv.dart';
 import 'package:page_transition/page_transition.dart';
 import '../services/globals.dart';
@@ -92,8 +93,16 @@ class _level3State extends State<level3> {
           'Level 3',
           style: TextStyle(color: Colors.white), // Text warna putih
         ),
-        iconTheme: const IconThemeData(
-          color: Colors.white, // Icon (panah kembali) warna putih
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) =>
+                      const GamesScreen()), // Replace SpecificPage with your target page
+            );
+          },
         ),
       ),
       body: SingleChildScrollView(
@@ -216,27 +225,33 @@ class _level3State extends State<level3> {
                 ),
                 itemCount: 5, // Jumlah item dalam GridView
                 itemBuilder: (context, index) {
+                  // Check the boolean variables to determine if the item should be enabled
+                  bool isEnabled = _checkIfEnabled(index);
+
                   return GestureDetector(
-                    onTap: () {
-                      String imageName = _getImageName2(index);
-                      assetName = _getText2(index);
-                      assetLocation = "assets/level3/aktivitas2/$imageName.png";
-                      Navigator.push(
-                        context,
-                        PageTransition(
-                          duration: const Duration(milliseconds: 300),
-                          type: PageTransitionType.rightToLeft,
-                          child: const Level3kvkv(),
-                        ),
-                      );
-                      // print('Tombol $assetName ditekan');
-                      // print('Lokasi asset gambar: $assetLocation');
-                    },
+                    onTap: isEnabled
+                        ? () {
+                            String imageName = _getImageName2(index);
+                            assetName = _getText2(index);
+                            assetLocation =
+                                "assets/level3/aktivitas2/$imageName.png";
+                            Navigator.push(
+                              context,
+                              PageTransition(
+                                duration: const Duration(milliseconds: 300),
+                                type: PageTransitionType.rightToLeft,
+                                child: const Level3kvkv(),
+                              ),
+                            );
+                            // print('Tombol $assetName ditekan');
+                            // print('Lokasi asset gambar: $assetLocation');
+                          }
+                        : null,
                     child: Container(
                       width: 80,
                       height: 100,
                       decoration: BoxDecoration(
-                        color: Colors.green,
+                        color: isEnabled ? Colors.green : Colors.grey,
                         borderRadius: BorderRadius.circular(8),
                         border: Border.all(color: Colors.white, width: 3),
                       ),
@@ -272,4 +287,55 @@ class _level3State extends State<level3> {
       ),
     );
   }
+}
+
+bool _checkIfEnabled(int index) {
+  bool isEnabled = false;
+
+  switch (index) {
+    case 0:
+      isEnabled = susu1 || sawi1 || sapu1 || siku1 || soda1;
+      isEnabled = susu2 || sawi2 || sapu2 || siku2 || soda2;
+      isEnabled = susu3 || sawi3 || sapu3 || siku3 || soda3;
+      isEnabled = susu4 || sawi4 || sapu4 || siku4 || soda4;
+      isEnabled = susu5 || sawi5 || sapu5 || siku5 || soda5;
+      break;
+    case 1:
+      isEnabled = susu1 || sawi1 || sapu1 || siku1 || soda1;
+      isEnabled = susu2 || sawi2 || sapu2 || siku2 || soda2;
+      isEnabled = susu3 || sawi3 || sapu3 || siku3 || soda3;
+      isEnabled = susu4 || sawi4 || sapu4 || siku4 || soda4;
+      isEnabled = susu5 || sawi5 || sapu5 || siku5 || soda5;
+      break;
+    case 2:
+      isEnabled = susu1 || sawi1 || sapu1 || siku1 || soda1;
+      isEnabled = susu2 || sawi2 || sapu2 || siku2 || soda2;
+      isEnabled = susu3 || sawi3 || sapu3 || siku3 || soda3;
+      isEnabled = susu4 || sawi4 || sapu4 || siku4 || soda4;
+      isEnabled = susu5 || sawi5 || sapu5 || siku5 || soda5;
+      break;
+    case 3:
+      isEnabled = susu1 || sawi1 || sapu1 || siku1 || soda1;
+      isEnabled = susu2 || sawi2 || sapu2 || siku2 || soda2;
+      isEnabled = susu3 || sawi3 || sapu3 || siku3 || soda3;
+      isEnabled = susu4 || sawi4 || sapu4 || siku4 || soda4;
+      isEnabled = susu5 || sawi5 || sapu5 || siku5 || soda5;
+      break;
+    case 4:
+      isEnabled = susu1 || sawi1 || sapu1 || siku1 || soda1;
+      isEnabled = susu2 || sawi2 || sapu2 || siku2 || soda2;
+      isEnabled = susu3 || sawi3 || sapu3 || siku3 || soda3;
+      isEnabled = susu4 || sawi4 || sapu4 || siku4 || soda4;
+      isEnabled = susu5 || sawi5 || sapu5 || siku5 || soda5;
+      break;
+    default:
+      isEnabled = false;
+  }
+
+  // Print pesan jika semua kondisi true
+  if (isEnabled && index >= 0 && index <= 4) {
+    print('Enable = true for index $index');
+  }
+
+  return isEnabled;
 }

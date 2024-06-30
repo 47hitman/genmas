@@ -183,13 +183,13 @@ class _level2State extends State<level2> {
               children: [
                 InkWell(
                   onTap: () {
-                    sound = 'assets/level2/Level 2 (aktivitas 1 so).m4a';
-                    berawalan = "so";
-                    targetImage = 'assets/level2/soda.png';
+                    sound = 'assets/level2/Level 2 (aktivitas 1 su).m4a';
+                    berawalan = "su";
+                    targetImage = 'assets/level2/susu.png';
                     options = [
+                      {'image': 'assets/level2/susu.png', 'text': 'susu'},
                       {'image': 'assets/level2/siku.png', 'text': 'siku'},
-                      {'image': 'assets/level2/badak.png', 'text': 'badak'},
-                      {'image': 'assets/level2/soda.png', 'text': 'soda'},
+                      {'image': 'assets/level2/sapu.png', 'text': 'sapu'},
                     ];
                     Navigator.push(
                       context,
@@ -242,6 +242,61 @@ class _level2State extends State<level2> {
                 const SizedBox(
                   width: 50,
                 ),
+                InkWell(
+                  onTap: () {
+                    sound = 'assets/level2/Level 2 (aktivitas 1 so).m4a';
+                    berawalan = "so";
+                    targetImage = 'assets/level2/soda.png';
+                    options = [
+                      {'image': 'assets/level2/siku.png', 'text': 'siku'},
+                      {'image': 'assets/level2/badak.png', 'text': 'badak'},
+                      {'image': 'assets/level2/soda.png', 'text': 'soda'},
+                    ];
+                    Navigator.push(
+                      context,
+                      PageTransition(
+                        duration: const Duration(milliseconds: 300),
+                        type: PageTransitionType.rightToLeft,
+                        child: const berawalnGameScreen(),
+                      ),
+                    );
+                    // Aksi yang ingin dilakukan ketika tombol ditekan
+                  },
+                  child: Container(
+                    width: 80, // Lebar tombol
+                    height: 80, // Tinggi tombol
+                    decoration: BoxDecoration(
+                      shape:
+                          BoxShape.circle, // Membuat tombol berbentuk lingkaran
+                      color: const Color.fromARGB(
+                          255, 19, 212, 42), // Warna tombol
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.3),
+                          spreadRadius: 1,
+                          blurRadius: 2,
+                          offset:
+                              const Offset(0, 2), // changes position of shadow
+                        ),
+                      ],
+                    ),
+                    child: const Center(
+                      child: Icon(
+                        Icons.star,
+                        color: Colors.white, // Warna ikon bintang selalu putih
+                        size: 40, // Ukuran ikon bintang
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
                 InkWell(
                   onTap: () {
                     sound = 'assets/level2/Level 2 (aktivitas 1 ba).m4a';
@@ -289,6 +344,9 @@ class _level2State extends State<level2> {
                     ),
                   ),
                 ),
+                const SizedBox(
+                  width: 50,
+                ),
               ],
             ),
             const SizedBox(
@@ -297,6 +355,9 @@ class _level2State extends State<level2> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                const SizedBox(
+                  width: 50,
+                ),
                 InkWell(
                   onTap: () {
                     sound = 'assets/level2/Level 2 (aktivitas 1 bi).m4a';
@@ -344,9 +405,6 @@ class _level2State extends State<level2> {
                     ),
                   ),
                 ),
-                const SizedBox(
-                  width: 50,
-                ),
               ],
             ),
             const SizedBox(
@@ -355,9 +413,6 @@ class _level2State extends State<level2> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const SizedBox(
-                  width: 50,
-                ),
                 InkWell(
                   onTap: () {
                     sound = 'assets/level2/Level 2 (aktivitas 1 be).m4a';
@@ -405,6 +460,9 @@ class _level2State extends State<level2> {
                     ),
                   ),
                 ),
+                const SizedBox(
+                  width: 50,
+                ),
               ],
             ),
             const SizedBox(
@@ -413,6 +471,9 @@ class _level2State extends State<level2> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                const SizedBox(
+                  width: 50,
+                ),
                 InkWell(
                   onTap: () {
                     sound = 'assets/level2/Level 2 (aktivitas 1 bo).m4a';
@@ -459,9 +520,6 @@ class _level2State extends State<level2> {
                       ),
                     ),
                   ),
-                ),
-                const SizedBox(
-                  width: 50,
                 ),
               ],
             ),

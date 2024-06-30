@@ -95,7 +95,7 @@ class _VoiceGameScreenState extends State<VoiceGameScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              'Katakan: $_targetWord',
+              _targetWord,
               style: const TextStyle(fontSize: 24),
             ),
             const SizedBox(height: 20),

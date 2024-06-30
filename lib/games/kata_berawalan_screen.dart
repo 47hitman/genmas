@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
 
@@ -46,6 +48,7 @@ class _berawalnGameScreenState extends State<berawalnGameScreen> {
               child: const Text('OK'),
               onPressed: () {
                 Navigator.of(context).pop();
+                Navigator.of(context).pop();
                 setState(() {
                   matched = false;
                   selectedOption = null;
@@ -81,15 +84,15 @@ class _berawalnGameScreenState extends State<berawalnGameScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 16.0),
-                child: Text(
-                  'Ayo tunjukkan kata yang berawalan "$berawalan"',
-                  style: const TextStyle(fontSize: 22, color: Colors.white),
-                  textAlign: TextAlign.center,
-                ),
-              ),
-              const SizedBox(height: 10),
+              // Padding(
+              //   padding: const EdgeInsets.symmetric(vertical: 16.0),
+              //   child: Text(
+              //     'Ayo tunjukkan kata yang berawalan "$berawalan"',
+              //     style: const TextStyle(fontSize: 22, color: Colors.white),
+              //     textAlign: TextAlign.center,
+              //   ),
+              // ),
+              const SizedBox(height: 100),
               Wrap(
                 spacing: 10,
                 runSpacing: 10,
@@ -99,49 +102,83 @@ class _berawalnGameScreenState extends State<berawalnGameScreen> {
                     onTap: () {
                       setState(() {
                         selectedOption = option['text'];
-                        print(selectedOption);
-                        if (selectedOption == 'soda') {
-                          _play(
-                              'assets/level2/Level 2 (aktivitas 2a ini dibaca soda).m4a');
-                        }
-                        if (selectedOption == 'bibir') {
-                          _play(
-                              'assets/level2/Level 2 (aktivitas 2c ini dibaca bibir).m4a');
-                        }
-                        if (selectedOption == 'sapu') {
-                          _play(
-                              'assets/level2/Level 2 (aktivitas 2a ini dibaca sapu).m4a');
-                        }
-                        if (selectedOption == 'botol') {
-                          _play(
-                              'assets/level2/Level 2 (aktivitas 2c ini dibaca botol).m4a');
-                        }
-                        if (selectedOption == 'siku') {
-                          _play(
-                              'assets/level2/Level 2 (aktivitas 2a ini dibaca siku).m4a');
-                        }
-                        if (selectedOption == 'badak') {
-                          _play(
-                              'assets/level2/Level 2 (aktivitas 2c ini dibaca badak).m4a');
-                        }
-                        if (selectedOption == 'beras') {
-                          _play(
-                              'assets/level2/Level 2 (aktivitas 2c ini dibaca beras).m4a');
-                        }
-                        if (selectedOption == 'bayam') {
-                          _play(
-                              'assets/level2/Level 2 (aktivitas 2c ini dibaca bayam).m4a');
+                        if (selectedOption == 'susu') {
+                          _play('assets/level3/Level 3 susu.m4a');
+                        } else if (selectedOption == 'sawi') {
+                          _play('assets/level3/Level 3 sawi.m4a');
+                        } else if (selectedOption == 'sapu') {
+                          _play('assets/level3/Level 3 sapu.m4a');
+                        } else if (selectedOption == 'siku') {
+                          _play('assets/level3/Level 3 siku.m4a');
+                        } else if (selectedOption == 'soda') {
+                          _play('assets/level3/Level 3 soda.m4a');
+                        } else if (selectedOption == 'bibir') {
+                          _play('assets/level3/Level 3 bibir.m4a');
+                        } else if (selectedOption == 'badak') {
+                          _play('assets/level3/Level 3 badak.m4a');
+                        } else if (selectedOption == 'botol') {
+                          _play('assets/level3/Level 3 botol.m4a');
+                        } else if (selectedOption == 'bayam') {
+                          _play('assets/level3/Level 3 bayam.m4a');
+                        } else if (selectedOption == 'beras') {
+                          _play('assets/level3/Level 3 beras.m4a');
                         }
                       });
                       if (_checkIfMatched(option['image']!)) {
                         setState(() {
                           matched = true;
                         });
+                        final List<String> compliments = [
+                          'assets/option/Bagus.m4a',
+                          'assets/option/Hebat.m4a',
+                          'assets/option/Pintar.m4a'
+                        ];
+                        // if (selectedOption == 'soda') {
+                        //   _play(
+                        //       'assets/level2/Level 2 (aktivitas 2a ini dibaca soda).m4a');
+                        // }
+                        // if (selectedOption == 'bibir') {
+                        //   _play(
+                        //       'assets/level2/Level 2 (aktivitas 2c ini dibaca bibir).m4a');
+                        // }
+                        // if (selectedOption == 'sapu') {
+                        //   _play(
+                        //       'assets/level2/Level 2 (aktivitas 2a ini dibaca sapu).m4a');
+                        // }
+                        // if (selectedOption == 'botol') {
+                        //   _play(
+                        //       'assets/level2/Level 2 (aktivitas 2c ini dibaca botol).m4a');
+                        // }
+                        // if (selectedOption == 'siku') {
+                        //   _play(
+                        //       'assets/level2/Level 2 (aktivitas 2a ini dibaca siku).m4a');
+                        // }
+                        // if (selectedOption == 'badak') {
+                        //   _play(
+                        //       'assets/level2/Level 2 (aktivitas 2c ini dibaca badak).m4a');
+                        // }
+                        // if (selectedOption == 'beras') {
+                        //   _play(
+                        //       'assets/level2/Level 2 (aktivitas 2c ini dibaca beras).m4a');
+                        // }
+                        // if (selectedOption == 'bayam') {
+                        //   _play(
+                        //       'assets/level2/Level 2 (aktivitas 2c ini dibaca bayam).m4a');
+                        // }
+                        Future.delayed(const Duration(seconds: 2), () {
+                          final randomCompliment =
+                              compliments[Random().nextInt(compliments.length)];
+                          _play(randomCompliment);
+                          _showSuccessDialog();
+                        });
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(content: Text('Cocok! Selamat!')),
                         );
-                        _showSuccessDialog();
                       } else {
+                        Future.delayed(const Duration(seconds: 2), () {
+                          _play('assets/option/Ayo coba lagi.m4a');
+                        });
+
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             content: const Text('Tidak cocok, coba lagi ya!'),

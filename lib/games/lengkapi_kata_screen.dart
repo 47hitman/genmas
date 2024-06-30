@@ -5,6 +5,7 @@ import 'dart:math';
 
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
+import 'package:genmmas/level/level3_kvkv.dart';
 import 'package:genmmas/services/globals.dart';
 
 import '../services/services.dart';
@@ -68,16 +69,25 @@ class _LengkapiKataScreenState extends State<LengkapiKataScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Bantuan'),
-          content: Text('Silakan pilih huruf yang benar $kataTersusun'),
-          actions: <Widget>[
-            TextButton(
-              child: const Text('OK'),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              // Teks di tengah
+              Text(
+                kataTersusun,
+                style:
+                    const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 16), // Jarak antara teks dan tombol OK
+              // Tombol OK
+              TextButton(
+                child: const Text('OK'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          ),
         );
       },
     );
@@ -87,38 +97,43 @@ class _LengkapiKataScreenState extends State<LengkapiKataScreen> {
   void initState() {
     super.initState();
     String selectedOption = assetName;
-    if (selectedOption == 'susu') {
-      _play('assets/level3/Level 3 susu.m4a');
-    }
-    if (selectedOption == 'sawi') {
-      _play('assets/level3/Level 3 sawi.m4a');
-    }
-    if (selectedOption == 'sapu') {
-      _play('assets/level3/Level 3 sapu.m4a');
-    }
+    _play('assets/level3/insruksi.m4a');
 
-    if (selectedOption == 'siku') {
-      _play('assets/level3/Level 3 siku.m4a');
-    }
+    Future.delayed(const Duration(seconds: 2), () {
+      if (selectedOption == 'susu') {
+        _play('assets/level3/Level 3 susu.m4a');
+      }
+      if (selectedOption == 'sawi') {
+        _play('assets/level3/Level 3 sawi.m4a');
+      }
+      if (selectedOption == 'sapu') {
+        _play('assets/level3/Level 3 sapu.m4a');
+      }
 
-    if (selectedOption == 'soda') {
-      _play('assets/level3/Level 3 soda.m4a');
-    }
-    if (selectedOption == 'bibir') {
-      _play('assets/level3/Level 3 bibir.m4a');
-    }
-    if (selectedOption == 'badak') {
-      _play('assets/level3/Level 3 badak.m4a');
-    }
-    if (selectedOption == 'botol') {
-      _play('assets/level3/Level 3 botol.m4a');
-    }
-    if (selectedOption == 'bayam') {
-      _play('assets/level3/Level 3 bayam.m4a');
-    }
-    if (selectedOption == 'beras') {
-      _play('assets/level3/Level 3 beras.m4a');
-    }
+      if (selectedOption == 'siku') {
+        _play('assets/level3/Level 3 siku.m4a');
+      }
+
+      if (selectedOption == 'soda') {
+        _play('assets/level3/Level 3 soda.m4a');
+      }
+      if (selectedOption == 'bibir') {
+        _play('assets/level3/Level 3 bibir.m4a');
+      }
+      if (selectedOption == 'badak') {
+        _play('assets/level3/Level 3 badak.m4a');
+      }
+      if (selectedOption == 'botol') {
+        _play('assets/level3/Level 3 botol.m4a');
+      }
+      if (selectedOption == 'bayam') {
+        _play('assets/level3/Level 3 bayam.m4a');
+      }
+      if (selectedOption == 'beras') {
+        _play('assets/level3/Level 3 beras.m4a');
+      }
+    });
+
     if (timer != false) {
       _startCountdown();
     }
@@ -228,8 +243,86 @@ class _LengkapiKataScreenState extends State<LengkapiKataScreen> {
               TextButton(
                 child: const Text('OK'),
                 onPressed: () async {
-                  Navigator.of(context).pop(); // Tutup dialog
-                  Navigator.of(context).pop(); // Kembali ke layar sebelumnya
+                  setState(() {
+                    if (assetName == 'susu') {
+                      if (soal1 == true) susu1 = true;
+                      if (soal2 == true) susu2 = true;
+                      if (soal3 == true) susu3 = true;
+                      if (soal4 == true) susu4 = true;
+                      if (soal5 == true) susu5 = true;
+                      if (soal6 == true) susu6 = true;
+                    } else if (assetName == 'sawi') {
+                      if (soal1 == true) sawi1 = true;
+                      if (soal2 == true) sawi2 = true;
+                      if (soal3 == true) sawi3 = true;
+                      if (soal4 == true) sawi4 = true;
+                      if (soal5 == true) sawi5 = true;
+                      if (soal6 == true) sawi6 = true;
+                    } else if (assetName == 'sapu') {
+                      if (soal1 == true) sapu1 = true;
+                      if (soal2 == true) sapu2 = true;
+                      if (soal3 == true) sapu3 = true;
+                      if (soal4 == true) sapu4 = true;
+                      if (soal5 == true) sapu5 = true;
+                      if (soal6 == true) sapu6 = true;
+                    } else if (assetName == 'siku') {
+                      if (soal1 == true) siku1 = true;
+                      if (soal2 == true) siku2 = true;
+                      if (soal3 == true) siku3 = true;
+                      if (soal4 == true) siku4 = true;
+                      if (soal5 == true) siku5 = true;
+                      if (soal6 == true) siku6 = true;
+                    } else if (assetName == 'soda') {
+                      if (soal1 == true) soda1 = true;
+                      if (soal2 == true) soda2 = true;
+                      if (soal3 == true) soda3 = true;
+                      if (soal4 == true) soda4 = true;
+                      if (soal5 == true) soda5 = true;
+                      if (soal6 == true) soda6 = true;
+                    } else if (assetName == 'bibir') {
+                      if (soal1 == true) bibir1 = true;
+                      if (soal2 == true) bibir2 = true;
+                      if (soal3 == true) bibir3 = true;
+                      if (soal4 == true) bibir4 = true;
+                      if (soal5 == true) bibir5 = true;
+                      if (soal6 == true) bibir6 = true;
+                    } else if (assetName == 'badak') {
+                      if (soal1 == true) badak1 = true;
+                      if (soal2 == true) badak2 = true;
+                      if (soal3 == true) badak3 = true;
+                      if (soal4 == true) badak4 = true;
+                      if (soal5 == true) badak5 = true;
+                      if (soal6 == true) badak6 = true;
+                    } else if (assetName == 'botol') {
+                      if (soal1 == true) botol1 = true;
+                      if (soal2 == true) botol2 = true;
+                      if (soal3 == true) botol3 = true;
+                      if (soal4 == true) botol4 = true;
+                      if (soal5 == true) botol5 = true;
+                      if (soal6 == true) botol6 = true;
+                    } else if (assetName == 'bayam') {
+                      if (soal1 == true) bayam1 = true;
+                      if (soal2 == true) bayam2 = true;
+                      if (soal3 == true) bayam3 = true;
+                      if (soal4 == true) bayam4 = true;
+                      if (soal5 == true) bayam5 = true;
+                      if (soal6 == true) bayam6 = true;
+                    } else if (assetName == 'beras') {
+                      if (soal1 == true) beras1 = true;
+                      if (soal2 == true) beras2 = true;
+                      if (soal3 == true) beras3 = true;
+                      if (soal4 == true) beras4 = true;
+                      if (soal5 == true) beras5 = true;
+                      if (soal6 == true) beras6 = true;
+                    }
+                  });
+
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            const Level3kvkv()), // Replace SpecificPage with your target page
+                  );
                   await Services.instance.score(points);
 
                   // _playKataBerurutan(); // Jika ingin memulai kembali setelah scoring, uncomment line ini
@@ -315,7 +408,7 @@ class _LengkapiKataScreenState extends State<LengkapiKataScreen> {
                   'Tunggu $_countdown detik...',
                   style: const TextStyle(fontSize: 24, color: Colors.red),
                 ),
-            // Ganti dengan gambar yang relevan
+
             assetLocation != null
                 ? Image.asset(assetLocation, width: 100, height: 80)
                 : Container(),
@@ -326,12 +419,13 @@ class _LengkapiKataScreenState extends State<LengkapiKataScreen> {
                   style: const TextStyle(
                       fontSize: 24, fontWeight: FontWeight.bold),
                 ),
-
+            if (awal != false)
+              Text(
+                kataTersusun,
+                style:
+                    const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              ),
             const SizedBox(height: 16),
-
-            // Kolom huruf acak
-
-            // Kolom untuk menyusun kata
 
             Row(
               mainAxisAlignment: MainAxisAlignment.center,

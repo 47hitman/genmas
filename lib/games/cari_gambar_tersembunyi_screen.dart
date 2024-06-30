@@ -143,6 +143,9 @@ class _HiddenObjectGameScreenState extends State<HiddenObjectGameScreen> {
         },
         child: Column(
           children: [
+            const SizedBox(
+              height: 150,
+            ),
             Stack(
               children: [
                 // Background image or any other background widget

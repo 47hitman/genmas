@@ -26,6 +26,7 @@ bool pilih2 = false;
 bool pilih3 = false;
 bool pilih4 = false;
 bool timer = false;
+bool awal = false;
 
 String voice = "";
 String extra1 = "";
@@ -92,3 +93,91 @@ int aktivitas2 = 0;
 int aktivitas3 = 0;
 int aktivitas6 = 0;
 int point = 0;
+
+//------ susu--------
+bool susu1 = false;
+bool susu2 = false;
+bool susu3 = false;
+bool susu4 = false;
+bool susu5 = false;
+bool susu6 = false;
+
+//------ sawi--------
+bool sawi1 = false;
+bool sawi2 = false;
+bool sawi3 = false;
+bool sawi4 = false;
+bool sawi5 = false;
+bool sawi6 = false;
+
+//------ sapu--------
+bool sapu1 = false;
+bool sapu2 = false;
+bool sapu3 = false;
+bool sapu4 = false;
+bool sapu5 = false;
+bool sapu6 = false;
+
+//------ siku--------
+bool siku1 = false;
+bool siku2 = false;
+bool siku3 = false;
+bool siku4 = false;
+bool siku5 = false;
+bool siku6 = false;
+
+//------ soda--------
+bool soda1 = false;
+bool soda2 = false;
+bool soda3 = false;
+bool soda4 = false;
+bool soda5 = false;
+bool soda6 = false;
+
+//------ bibir--------
+bool bibir1 = false;
+bool bibir2 = false;
+bool bibir3 = false;
+bool bibir4 = false;
+bool bibir5 = false;
+bool bibir6 = false;
+
+//------ badak--------
+bool badak1 = false;
+bool badak2 = false;
+bool badak3 = false;
+bool badak4 = false;
+bool badak5 = false;
+bool badak6 = false;
+
+//------ botol--------
+bool botol1 = false;
+bool botol2 = false;
+bool botol3 = false;
+bool botol4 = false;
+bool botol5 = false;
+bool botol6 = false;
+
+//------ bayam--------
+bool bayam1 = false;
+bool bayam2 = false;
+bool bayam3 = false;
+bool bayam4 = false;
+bool bayam5 = false;
+bool bayam6 = false;
+
+//------ beras--------
+bool beras1 = false;
+bool beras2 = false;
+bool beras3 = false;
+bool beras4 = false;
+bool beras5 = false;
+bool beras6 = false;
+
+//------soal1------
+bool soal1 = false;
+bool soal2 = false;
+bool soal3 = false;
+bool soal4 = false;
+bool soal5 = false;
+bool soal6 = false;
