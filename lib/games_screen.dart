@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:genmmas/level/level_3.dart';
 import 'package:page_transition/page_transition.dart';
 import 'level/level_5.dart';
 import 'menu/level_1_menu.dart';
@@ -47,7 +46,7 @@ class _GamesScreenState extends State<GamesScreen> {
       PageTransition(
         duration: const Duration(milliseconds: 300),
         type: PageTransitionType.rightToLeft,
-        child: const level3(), // Ganti dengan widget level yang sesuai
+        child: const menu3level(), // Ganti dengan widget level yang sesuai
       ),
     );
   }

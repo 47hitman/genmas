@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -23,6 +25,14 @@ class _TextMatchingGameScreenState extends State<TextMatchingGameScreen> {
     shuffledItems.addAll(itemstext);
     shuffledItems.shuffle();
     _play();
+  }
+
+  void _play2(sound) {
+    _player.open(
+      Audio(sound),
+      autoStart: true,
+      showNotification: true,
+    );
   }
 
   void _play() {
@@ -155,14 +165,14 @@ class _TextMatchingGameScreenState extends State<TextMatchingGameScreen> {
         color: Colors.lightBlueAccent,
         child: Column(
           children: [
-            const Padding(
-              padding: EdgeInsets.all(16.0),
-              child: Text(
-                'Seret dan lepaskan teks ke pasangan yang sesuai',
-                style: TextStyle(fontSize: 22, color: Colors.white),
-                textAlign: TextAlign.center,
-              ),
-            ),
+            // const Padding(
+            //   padding: EdgeInsets.all(16.0),
+            //   child: Text(
+            //     'Seret dan lepaskan teks ke pasangan yang sesuai',
+            //     style: TextStyle(fontSize: 22, color: Colors.white),
+            //     textAlign: TextAlign.center,
+            //   ),
+            // ),
             Expanded(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -336,8 +346,17 @@ class _TextMatchingGameScreenState extends State<TextMatchingGameScreen> {
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(content: Text('Cocok!')),
                             );
+                            final List<String> compliments = [
+                              'assets/option/Bagus.m4a',
+                              'assets/option/Hebat.m4a',
+                              'assets/option/Pintar.m4a'
+                            ];
+                            final randomCompliment = compliments[
+                                Random().nextInt(compliments.length)];
+                            _play2(randomCompliment);
                             _checkCompletion();
                           } else {
+                            _play2('assets/option/Ayo coba lagi.m4a');
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
                                   content: Text('Tidak cocok, coba lagi!')),

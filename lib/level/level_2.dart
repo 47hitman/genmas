@@ -4,6 +4,7 @@ import 'package:page_transition/page_transition.dart';
 import '../games/kata_berawalan_screen.dart';
 import '../games/kata_pola_screnn.dart';
 
+import '../games/voice_game_screen.dart';
 import '../services/globals.dart';
 
 class level2 extends StatefulWidget {
@@ -80,7 +81,7 @@ class _level2State extends State<level2> {
                       PageTransition(
                         duration: const Duration(milliseconds: 300),
                         type: PageTransitionType.rightToLeft,
-                        child: const berawalnGameScreen(),
+                        child: const BerawalnGameScreen(),
                       ),
                     );
                     // Aksi yang ingin dilakukan ketika tombol ditekan
@@ -141,7 +142,7 @@ class _level2State extends State<level2> {
                       PageTransition(
                         duration: const Duration(milliseconds: 300),
                         type: PageTransitionType.rightToLeft,
-                        child: const berawalnGameScreen(),
+                        child: const BerawalnGameScreen(),
                       ),
                     );
                     // Aksi yang ingin dilakukan ketika tombol ditekan
@@ -196,7 +197,7 @@ class _level2State extends State<level2> {
                       PageTransition(
                         duration: const Duration(milliseconds: 300),
                         type: PageTransitionType.rightToLeft,
-                        child: const berawalnGameScreen(),
+                        child: const BerawalnGameScreen(),
                       ),
                     );
                     // Aksi yang ingin dilakukan ketika tombol ditekan
@@ -257,7 +258,7 @@ class _level2State extends State<level2> {
                       PageTransition(
                         duration: const Duration(milliseconds: 300),
                         type: PageTransitionType.rightToLeft,
-                        child: const berawalnGameScreen(),
+                        child: const BerawalnGameScreen(),
                       ),
                     );
                     // Aksi yang ingin dilakukan ketika tombol ditekan
@@ -312,7 +313,7 @@ class _level2State extends State<level2> {
                       PageTransition(
                         duration: const Duration(milliseconds: 300),
                         type: PageTransitionType.rightToLeft,
-                        child: const berawalnGameScreen(),
+                        child: const BerawalnGameScreen(),
                       ),
                     );
                     // Aksi yang ingin dilakukan ketika tombol ditekan
@@ -373,7 +374,7 @@ class _level2State extends State<level2> {
                       PageTransition(
                         duration: const Duration(milliseconds: 300),
                         type: PageTransitionType.rightToLeft,
-                        child: const berawalnGameScreen(),
+                        child: const BerawalnGameScreen(),
                       ),
                     );
                     // Aksi yang ingin dilakukan ketika tombol ditekan
@@ -428,7 +429,7 @@ class _level2State extends State<level2> {
                       PageTransition(
                         duration: const Duration(milliseconds: 300),
                         type: PageTransitionType.rightToLeft,
-                        child: const berawalnGameScreen(),
+                        child: const BerawalnGameScreen(),
                       ),
                     );
                     // Aksi yang ingin dilakukan ketika tombol ditekan
@@ -489,7 +490,7 @@ class _level2State extends State<level2> {
                       PageTransition(
                         duration: const Duration(milliseconds: 300),
                         type: PageTransitionType.rightToLeft,
-                        child: const berawalnGameScreen(),
+                        child: const BerawalnGameScreen(),
                       ),
                     );
                     // Aksi yang ingin dilakukan ketika tombol ditekan
@@ -623,6 +624,60 @@ class _level2State extends State<level2> {
               children: [
                 InkWell(
                   onTap: () {
+                    voice = "susu";
+                    Navigator.push(
+                      context,
+                      PageTransition(
+                        duration: const Duration(milliseconds: 300),
+                        type: PageTransitionType.rightToLeft,
+                        child: const VoiceGameScreen(),
+                      ),
+                    );
+                    // Aksi yang ingin dilakukan ketika tombol ditekan
+                  },
+                  child: Container(
+                    width: 80, // Lebar tombol
+                    height: 80, // Tinggi tombol
+                    decoration: BoxDecoration(
+                      shape:
+                          BoxShape.circle, // Membuat tombol berbentuk lingkaran
+                      color: const Color.fromARGB(
+                          255, 19, 212, 42), // Warna tombol
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.3),
+                          spreadRadius: 1,
+                          blurRadius: 2,
+                          offset:
+                              const Offset(0, 2), // changes position of shadow
+                        ),
+                      ],
+                    ),
+                    child: const Center(
+                      child: Icon(
+                        Icons.star,
+                        color: Colors.white, // Warna ikon bintang selalu putih
+                        size: 40, // Ukuran ikon bintang
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  width: 50,
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const SizedBox(
+                  width: 50,
+                ),
+                InkWell(
+                  onTap: () {
                     sound =
                         'assets/level2/Level 2 (aktivitas 2a ini dibaca sawi).m4a';
                     appbar = "KVKV";
@@ -636,6 +691,54 @@ class _level2State extends State<level2> {
                         duration: const Duration(milliseconds: 300),
                         type: PageTransitionType.rightToLeft,
                         child: const KataPola(),
+                      ),
+                    );
+                    // Aksi yang ingin dilakukan ketika tombol ditekan
+                  },
+                  child: Container(
+                    width: 80, // Lebar tombol
+                    height: 80, // Tinggi tombol
+                    decoration: BoxDecoration(
+                      shape:
+                          BoxShape.circle, // Membuat tombol berbentuk lingkaran
+                      color: const Color.fromARGB(
+                          255, 19, 212, 42), // Warna tombol
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.3),
+                          spreadRadius: 1,
+                          blurRadius: 2,
+                          offset:
+                              const Offset(0, 2), // changes position of shadow
+                        ),
+                      ],
+                    ),
+                    child: const Center(
+                      child: Icon(
+                        Icons.star,
+                        color: Colors.white, // Warna ikon bintang selalu putih
+                        size: 40, // Ukuran ikon bintang
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                InkWell(
+                  onTap: () {
+                    voice = "sawi";
+                    Navigator.push(
+                      context,
+                      PageTransition(
+                        duration: const Duration(milliseconds: 300),
+                        type: PageTransitionType.rightToLeft,
+                        child: const VoiceGameScreen(),
                       ),
                     );
                     // Aksi yang ingin dilakukan ketika tombol ditekan
@@ -737,6 +840,60 @@ class _level2State extends State<level2> {
               children: [
                 InkWell(
                   onTap: () {
+                    voice = "sapu";
+                    Navigator.push(
+                      context,
+                      PageTransition(
+                        duration: const Duration(milliseconds: 300),
+                        type: PageTransitionType.rightToLeft,
+                        child: const VoiceGameScreen(),
+                      ),
+                    );
+                    // Aksi yang ingin dilakukan ketika tombol ditekan
+                  },
+                  child: Container(
+                    width: 80, // Lebar tombol
+                    height: 80, // Tinggi tombol
+                    decoration: BoxDecoration(
+                      shape:
+                          BoxShape.circle, // Membuat tombol berbentuk lingkaran
+                      color: const Color.fromARGB(
+                          255, 19, 212, 42), // Warna tombol
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.3),
+                          spreadRadius: 1,
+                          blurRadius: 2,
+                          offset:
+                              const Offset(0, 2), // changes position of shadow
+                        ),
+                      ],
+                    ),
+                    child: const Center(
+                      child: Icon(
+                        Icons.star,
+                        color: Colors.white, // Warna ikon bintang selalu putih
+                        size: 40, // Ukuran ikon bintang
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  width: 50,
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const SizedBox(
+                  width: 50,
+                ),
+                InkWell(
+                  onTap: () {
                     sound =
                         'assets/level2/Level 2 (aktivitas 2a ini dibaca siku).m4a';
                     appbar = "KVKV";
@@ -750,6 +907,54 @@ class _level2State extends State<level2> {
                         duration: const Duration(milliseconds: 300),
                         type: PageTransitionType.rightToLeft,
                         child: const KataPola(),
+                      ),
+                    );
+                    // Aksi yang ingin dilakukan ketika tombol ditekan
+                  },
+                  child: Container(
+                    width: 80, // Lebar tombol
+                    height: 80, // Tinggi tombol
+                    decoration: BoxDecoration(
+                      shape:
+                          BoxShape.circle, // Membuat tombol berbentuk lingkaran
+                      color: const Color.fromARGB(
+                          255, 19, 212, 42), // Warna tombol
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.3),
+                          spreadRadius: 1,
+                          blurRadius: 2,
+                          offset:
+                              const Offset(0, 2), // changes position of shadow
+                        ),
+                      ],
+                    ),
+                    child: const Center(
+                      child: Icon(
+                        Icons.star,
+                        color: Colors.white, // Warna ikon bintang selalu putih
+                        size: 40, // Ukuran ikon bintang
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                InkWell(
+                  onTap: () {
+                    voice = "siku";
+                    Navigator.push(
+                      context,
+                      PageTransition(
+                        duration: const Duration(milliseconds: 300),
+                        type: PageTransitionType.rightToLeft,
+                        child: const VoiceGameScreen(),
                       ),
                     );
                     // Aksi yang ingin dilakukan ketika tombol ditekan
@@ -846,6 +1051,57 @@ class _level2State extends State<level2> {
             const SizedBox(
               height: 30,
             ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                InkWell(
+                  onTap: () {
+                    voice = "soda";
+                    Navigator.push(
+                      context,
+                      PageTransition(
+                        duration: const Duration(milliseconds: 300),
+                        type: PageTransitionType.rightToLeft,
+                        child: const VoiceGameScreen(),
+                      ),
+                    );
+                    // Aksi yang ingin dilakukan ketika tombol ditekan
+                  },
+                  child: Container(
+                    width: 80, // Lebar tombol
+                    height: 80, // Tinggi tombol
+                    decoration: BoxDecoration(
+                      shape:
+                          BoxShape.circle, // Membuat tombol berbentuk lingkaran
+                      color: const Color.fromARGB(
+                          255, 19, 212, 42), // Warna tombol
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.3),
+                          spreadRadius: 1,
+                          blurRadius: 2,
+                          offset:
+                              const Offset(0, 2), // changes position of shadow
+                        ),
+                      ],
+                    ),
+                    child: const Center(
+                      child: Icon(
+                        Icons.star,
+                        color: Colors.white, // Warna ikon bintang selalu putih
+                        size: 40, // Ukuran ikon bintang
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  width: 50,
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 30,
+            ),
             Container(
               width: double.infinity,
               color: const Color.fromARGB(255, 19, 212, 42),
@@ -932,6 +1188,54 @@ class _level2State extends State<level2> {
                 ),
                 InkWell(
                   onTap: () {
+                    voice = "bibir";
+                    Navigator.push(
+                      context,
+                      PageTransition(
+                        duration: const Duration(milliseconds: 300),
+                        type: PageTransitionType.rightToLeft,
+                        child: const VoiceGameScreen(),
+                      ),
+                    );
+                    // Aksi yang ingin dilakukan ketika tombol ditekan
+                  },
+                  child: Container(
+                    width: 80, // Lebar tombol
+                    height: 80, // Tinggi tombol
+                    decoration: BoxDecoration(
+                      shape:
+                          BoxShape.circle, // Membuat tombol berbentuk lingkaran
+                      color: const Color.fromARGB(
+                          255, 19, 212, 42), // Warna tombol
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.3),
+                          spreadRadius: 1,
+                          blurRadius: 2,
+                          offset:
+                              const Offset(0, 2), // changes position of shadow
+                        ),
+                      ],
+                    ),
+                    child: const Center(
+                      child: Icon(
+                        Icons.star,
+                        color: Colors.white, // Warna ikon bintang selalu putih
+                        size: 40, // Ukuran ikon bintang
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                InkWell(
+                  onTap: () {
                     sound =
                         'assets/level2/Level 2 (aktivitas 2c ini dibaca badak).m4a';
                     appbar = "KVKVK";
@@ -945,6 +1249,60 @@ class _level2State extends State<level2> {
                         duration: const Duration(milliseconds: 300),
                         type: PageTransitionType.rightToLeft,
                         child: const KataPola(),
+                      ),
+                    );
+                    // Aksi yang ingin dilakukan ketika tombol ditekan
+                  },
+                  child: Container(
+                    width: 80, // Lebar tombol
+                    height: 80, // Tinggi tombol
+                    decoration: BoxDecoration(
+                      shape:
+                          BoxShape.circle, // Membuat tombol berbentuk lingkaran
+                      color: const Color.fromARGB(
+                          255, 19, 212, 42), // Warna tombol
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.3),
+                          spreadRadius: 1,
+                          blurRadius: 2,
+                          offset:
+                              const Offset(0, 2), // changes position of shadow
+                        ),
+                      ],
+                    ),
+                    child: const Center(
+                      child: Icon(
+                        Icons.star,
+                        color: Colors.white, // Warna ikon bintang selalu putih
+                        size: 40, // Ukuran ikon bintang
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  width: 50,
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const SizedBox(
+                  width: 50,
+                ),
+                InkWell(
+                  onTap: () {
+                    voice = "badak";
+                    Navigator.push(
+                      context,
+                      PageTransition(
+                        duration: const Duration(milliseconds: 300),
+                        type: PageTransitionType.rightToLeft,
+                        child: const VoiceGameScreen(),
                       ),
                     );
                     // Aksi yang ingin dilakukan ketika tombol ditekan
@@ -1046,6 +1404,54 @@ class _level2State extends State<level2> {
                 ),
                 InkWell(
                   onTap: () {
+                    voice = "botol";
+                    Navigator.push(
+                      context,
+                      PageTransition(
+                        duration: const Duration(milliseconds: 300),
+                        type: PageTransitionType.rightToLeft,
+                        child: const VoiceGameScreen(),
+                      ),
+                    );
+                    // Aksi yang ingin dilakukan ketika tombol ditekan
+                  },
+                  child: Container(
+                    width: 80, // Lebar tombol
+                    height: 80, // Tinggi tombol
+                    decoration: BoxDecoration(
+                      shape:
+                          BoxShape.circle, // Membuat tombol berbentuk lingkaran
+                      color: const Color.fromARGB(
+                          255, 19, 212, 42), // Warna tombol
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.3),
+                          spreadRadius: 1,
+                          blurRadius: 2,
+                          offset:
+                              const Offset(0, 2), // changes position of shadow
+                        ),
+                      ],
+                    ),
+                    child: const Center(
+                      child: Icon(
+                        Icons.star,
+                        color: Colors.white, // Warna ikon bintang selalu putih
+                        size: 40, // Ukuran ikon bintang
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                InkWell(
+                  onTap: () {
                     sound =
                         'assets/level2/Level 2 (aktivitas 2c ini dibaca bayam).m4a';
                     appbar = "KVKVK";
@@ -1059,6 +1465,60 @@ class _level2State extends State<level2> {
                         duration: const Duration(milliseconds: 300),
                         type: PageTransitionType.rightToLeft,
                         child: const KataPola(),
+                      ),
+                    );
+                    // Aksi yang ingin dilakukan ketika tombol ditekan
+                  },
+                  child: Container(
+                    width: 80, // Lebar tombol
+                    height: 80, // Tinggi tombol
+                    decoration: BoxDecoration(
+                      shape:
+                          BoxShape.circle, // Membuat tombol berbentuk lingkaran
+                      color: const Color.fromARGB(
+                          255, 19, 212, 42), // Warna tombol
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.3),
+                          spreadRadius: 1,
+                          blurRadius: 2,
+                          offset:
+                              const Offset(0, 2), // changes position of shadow
+                        ),
+                      ],
+                    ),
+                    child: const Center(
+                      child: Icon(
+                        Icons.star,
+                        color: Colors.white, // Warna ikon bintang selalu putih
+                        size: 40, // Ukuran ikon bintang
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  width: 50,
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const SizedBox(
+                  width: 50,
+                ),
+                InkWell(
+                  onTap: () {
+                    voice = "bayam";
+                    Navigator.push(
+                      context,
+                      PageTransition(
+                        duration: const Duration(milliseconds: 300),
+                        type: PageTransitionType.rightToLeft,
+                        child: const VoiceGameScreen(),
                       ),
                     );
                     // Aksi yang ingin dilakukan ketika tombol ditekan
@@ -1150,7 +1610,58 @@ class _level2State extends State<level2> {
               ],
             ),
             const SizedBox(
-              height: 50,
+              height: 30,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const SizedBox(
+                  width: 50,
+                ),
+                InkWell(
+                  onTap: () {
+                    voice = "beras";
+                    Navigator.push(
+                      context,
+                      PageTransition(
+                        duration: const Duration(milliseconds: 300),
+                        type: PageTransitionType.rightToLeft,
+                        child: const VoiceGameScreen(),
+                      ),
+                    );
+                    // Aksi yang ingin dilakukan ketika tombol ditekan
+                  },
+                  child: Container(
+                    width: 80, // Lebar tombol
+                    height: 80, // Tinggi tombol
+                    decoration: BoxDecoration(
+                      shape:
+                          BoxShape.circle, // Membuat tombol berbentuk lingkaran
+                      color: const Color.fromARGB(
+                          255, 19, 212, 42), // Warna tombol
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.3),
+                          spreadRadius: 1,
+                          blurRadius: 2,
+                          offset:
+                              const Offset(0, 2), // changes position of shadow
+                        ),
+                      ],
+                    ),
+                    child: const Center(
+                      child: Icon(
+                        Icons.star,
+                        color: Colors.white, // Warna ikon bintang selalu putih
+                        size: 40, // Ukuran ikon bintang
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 30,
             ),
           ],
         ),

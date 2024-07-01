@@ -73,7 +73,7 @@ class _asesment3levelState extends State<asesment3level> {
                         PageTransition(
                           duration: const Duration(milliseconds: 300),
                           type: PageTransitionType.rightToLeft,
-                          child: const berawalnGameScreen(),
+                          child: const BerawalnGameScreen(),
                         ),
                       );
                       // Aksi yang ingin dilakukan ketika tombol ditekan
@@ -129,7 +129,7 @@ class _asesment3levelState extends State<asesment3level> {
                         PageTransition(
                           duration: const Duration(milliseconds: 300),
                           type: PageTransitionType.rightToLeft,
-                          child: const berawalnGameScreen(),
+                          child: const BerawalnGameScreen(),
                         ),
                       );
                       // Aksi yang ingin dilakukan ketika tombol ditekan

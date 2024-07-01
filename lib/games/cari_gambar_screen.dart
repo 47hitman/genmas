@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -97,6 +99,7 @@ class _CariGambarScreenState extends State<CariGambarScreen> {
           setState(() {
             _firstSelected!.isFlipped = false;
             _secondSelected!.isFlipped = false;
+            _play2('assets/option/Ayo coba lagi.m4a');
             _showErrorDialog();
           });
           _resetSelection();
@@ -182,8 +185,24 @@ class _CariGambarScreenState extends State<CariGambarScreen> {
 
   void _checkIfGameCompleted() {
     if (imageItems.every((item) => item.isFlipped)) {
+      final List<String> compliments = [
+        'assets/option/Bagus.m4a',
+        'assets/option/Hebat.m4a',
+        'assets/option/Pintar.m4a'
+      ];
+      final randomCompliment =
+          compliments[Random().nextInt(compliments.length)];
+      _play2(randomCompliment);
       _showSuccessDialog();
     }
+  }
+
+  void _play2(sound) {
+    _player.open(
+      Audio(sound),
+      autoStart: true,
+      showNotification: true,
+    );
   }
 
   @override
@@ -205,6 +224,9 @@ class _CariGambarScreenState extends State<CariGambarScreen> {
       ),
       body: Column(
         children: [
+          const SizedBox(
+            height: 120,
+          ),
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(

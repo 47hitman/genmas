@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -32,12 +34,29 @@ class _TebakGambarBerurutanScreenState
     );
   }
 
+  void _play2(sound) {
+    _player.open(
+      Audio(sound),
+      autoStart: true,
+      showNotification: true,
+    );
+  }
+
   void _checkAnswer(String selectedImage) {
     setState(() {
       if (selectedImage == images[(currentIndex + 3) % images.length]) {
+        final List<String> compliments = [
+          'assets/option/Bagus.m4a',
+          'assets/option/Hebat.m4a',
+          'assets/option/Pintar.m4a'
+        ];
+        final randomCompliment =
+            compliments[Random().nextInt(compliments.length)];
+        _play2(randomCompliment);
         _showDialog(true); // Menampilkan dialog jika jawaban benar
         currentIndex = (currentIndex + 1) % images.length;
       } else {
+        _play2('assets/option/Ayo coba lagi.m4a');
         _showDialog(false); // Menampilkan dialog jika jawaban salah
         // Show some feedback for incorrect answer
         ScaffoldMessenger.of(context).showSnackBar(
@@ -67,16 +86,20 @@ class _TebakGambarBerurutanScreenState
             TextButton(
               child: const Text('OK'),
               onPressed: () {
-                setState(() {
-                  aktivast5 = true;
-                });
-                _saveData();
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) =>
-                          const menu1level()), // Replace SpecificPage with your target page
-                );
+                correct == true
+                    ? setState(() {
+                        aktivast5 = true;
+                        _saveData();
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  const menu1level()), // Replace SpecificPage with your target page
+                        );
+                      })
+                    : setState(() {
+                        Navigator.of(context).pop();
+                      });
               },
             ),
           ],

@@ -130,45 +130,6 @@ class _SusunKataScreenLevel4State extends State<SusunKataScreenLevel4> {
     });
   }
 
-  void checkAnswer() {
-    if (answer[0] == correctAnswer[0] && answer[1] == correctAnswer[1]) {
-      _playKataBerurutan();
-    } else {
-      Future.delayed(const Duration(seconds: 1), () {
-        _play('assets/option/Ayo coba lagi.m4a');
-      });
-      showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-          title: const Text("Salah"),
-          content: const Text("Coba lagi, ya!"),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: const Text("OK"),
-            ),
-          ],
-        ),
-      );
-    }
-  }
-
-  void updateAnswer(String selectedOption) {
-    setState(() {
-      for (int i = 0; i < answer.length; i++) {
-        if (answer[i] == "") {
-          answer[i] = selectedOption;
-          break;
-        }
-      }
-      if (!answer.contains("")) {
-        checkAnswer();
-      }
-    });
-  }
-
   void playSound() async {
     if (selectedOption == 'susu') {
       _play('assets/level3/Level 3 susu.m4a');
@@ -287,6 +248,50 @@ class _SusunKataScreenLevel4State extends State<SusunKataScreenLevel4> {
         ],
       ),
     );
+  }
+
+  void updateAnswer(String selectedOption) {
+    setState(() {
+      bool answerUpdated = false;
+      for (int i = 0; i < answer.length; i++) {
+        if (answer[i] == "") {
+          answer[i] = selectedOption;
+          answerUpdated = true;
+          break;
+        }
+      }
+      if (!answer.contains("") && answerUpdated) {
+        checkAnswer();
+      }
+    });
+  }
+
+  void checkAnswer() {
+    if (answer[0] == correctAnswer[0] && answer[1] == correctAnswer[1]) {
+      _playKataBerurutan();
+    } else {
+      Future.delayed(const Duration(seconds: 1), () {
+        _play('assets/option/Ayo coba lagi.m4a');
+      });
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: const Text("Salah"),
+          content: const Text("Coba lagi, ya!"),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+                setState(() {
+                  answer = List.filled(answer.length, "");
+                });
+              },
+              child: const Text("OK"),
+            ),
+          ],
+        ),
+      );
+    }
   }
 
   void playAudioForCharacter(String character) {

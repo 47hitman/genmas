@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
 import 'package:genmmas/level/level_1.dart';
@@ -16,6 +18,7 @@ class HiddenObjectGameScreen extends StatefulWidget {
 
 class _HiddenObjectGameScreenState extends State<HiddenObjectGameScreen> {
   final AssetsAudioPlayer _player = AssetsAudioPlayer.newPlayer();
+
   @override
   void initState() {
     super.initState();
@@ -41,19 +44,27 @@ class _HiddenObjectGameScreenState extends State<HiddenObjectGameScreen> {
     );
   }
 
+  void _play2(sound) {
+    _player.open(
+      Audio(sound),
+      autoStart: true,
+      showNotification: true,
+    );
+  }
+
   List<HiddenItem> hiddenItems = [
     HiddenItem(
-        imagePath: 'assets/soal1/ular.png', position: const Offset(20, 100)),
+        imagePath: 'assets/soal1/ular.png', position: const Offset(20, 250)),
     HiddenItem(
-        imagePath: 'assets/soal1/tupai.png', position: const Offset(260, 20)),
+        imagePath: 'assets/soal1/tupai.png', position: const Offset(260, 170)),
     HiddenItem(
         imagePath: 'assets/soal1/kelinci.png',
-        position: const Offset(172, 140)),
+        position: const Offset(172, 290)),
     HiddenItem(
         imagePath: 'assets/soal1/kupukupu.png',
-        position: const Offset(325, 53)),
+        position: const Offset(325, 203)),
     HiddenItem(
-        imagePath: 'assets/soal1/burung.png', position: const Offset(120, 80)),
+        imagePath: 'assets/soal1/burung.png', position: const Offset(120, 230)),
   ];
 
   Set<int> foundItems = {};
@@ -72,7 +83,14 @@ class _HiddenObjectGameScreenState extends State<HiddenObjectGameScreen> {
         setState(() {
           foundItems.add(i);
         });
-
+        final List<String> compliments = [
+          'assets/option/Bagus.m4a',
+          'assets/option/Hebat.m4a',
+          'assets/option/Pintar.m4a'
+        ];
+        final randomCompliment =
+            compliments[Random().nextInt(compliments.length)];
+        _play2(randomCompliment);
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
             content: Text('Kamu menemukan sebuah item!'),
@@ -108,8 +126,6 @@ class _HiddenObjectGameScreenState extends State<HiddenObjectGameScreen> {
             TextButton(
               child: const Text('OK'),
               onPressed: () {
-                // Navigator.of(context).pop();
-                // Navigator.of(context).pop();
                 setState(() {
                   aktivast1 = true;
                 });
@@ -143,15 +159,13 @@ class _HiddenObjectGameScreenState extends State<HiddenObjectGameScreen> {
         },
         child: Column(
           children: [
-            const SizedBox(
-              height: 150,
-            ),
             Stack(
               children: [
                 // Background image or any other background widget
                 Align(
                   alignment: Alignment.topCenter,
                   child: Container(
+                    margin: const EdgeInsets.only(top: 150),
                     height: 200,
                     width: 350,
                     decoration: const BoxDecoration(

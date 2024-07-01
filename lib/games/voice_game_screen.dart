@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
@@ -61,6 +63,16 @@ class _VoiceGameScreenState extends State<VoiceGameScreen> {
 
   void _checkResult() {
     if (_spokenText.toLowerCase() == _targetWord.toLowerCase()) {
+      final List<String> compliments = [
+        'assets/option/Bagus.m4a',
+        'assets/option/Hebat.m4a',
+        'assets/option/Pintar.m4a'
+      ];
+      Future.delayed(const Duration(seconds: 2), () {
+        final randomCompliment =
+            compliments[Random().nextInt(compliments.length)];
+        _play(randomCompliment);
+      });
       showDialog(
         context: context,
         builder: (context) => AlertDialog(
@@ -71,12 +83,16 @@ class _VoiceGameScreenState extends State<VoiceGameScreen> {
               child: const Text('OK'),
               onPressed: () {
                 Navigator.of(context).pop();
+                Navigator.of(context).pop();
               },
             ),
           ],
         ),
       );
     } else {
+      Future.delayed(const Duration(seconds: 1), () {
+        _play('assets/option/Ayo coba lagi.m4a');
+      });
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Incorrect! You said: $_spokenText')),
       );
@@ -98,11 +114,11 @@ class _VoiceGameScreenState extends State<VoiceGameScreen> {
               _targetWord,
               style: const TextStyle(fontSize: 24),
             ),
-            const SizedBox(height: 20),
-            Text(
-              'kamu Mengatakan: $_spokenText',
-              style: const TextStyle(fontSize: 24),
-            ),
+            // const SizedBox(height: 20),
+            // Text(
+            //   'kamu Mengatakan: $_spokenText',
+            //   style: const TextStyle(fontSize: 24),
+            // ),
             const SizedBox(height: 200),
             GestureDetector(
               onLongPressStart: (details) {

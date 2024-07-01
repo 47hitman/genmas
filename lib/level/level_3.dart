@@ -1,3 +1,4 @@
+import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
 import 'package:genmmas/games_screen.dart';
 import 'package:genmmas/level/level3_kvkv.dart';
@@ -83,6 +84,21 @@ String _getText2(int index) {
 }
 
 class _level3State extends State<level3> {
+  @override
+  void initState() {
+    super.initState();
+    _play('assets/level3/Level 3 (pilihlah salah satu gambar).m4a');
+  }
+
+  final AssetsAudioPlayer _player = AssetsAudioPlayer.newPlayer();
+  void _play(sound) {
+    _player.open(
+      Audio(sound),
+      autoStart: true,
+      showNotification: true,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

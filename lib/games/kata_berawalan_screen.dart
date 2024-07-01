@@ -5,24 +5,25 @@ import 'package:flutter/material.dart';
 
 import '../services/globals.dart';
 
-class berawalnGameScreen extends StatefulWidget {
-  const berawalnGameScreen({Key? key}) : super(key: key);
+class BerawalnGameScreen extends StatefulWidget {
+  const BerawalnGameScreen({Key? key}) : super(key: key);
 
   @override
-  _berawalnGameScreenState createState() => _berawalnGameScreenState();
+  _BerawalnGameScreenState createState() => _BerawalnGameScreenState();
 }
 
-class _berawalnGameScreenState extends State<berawalnGameScreen> {
+class _BerawalnGameScreenState extends State<BerawalnGameScreen> {
   String? selectedOption;
   bool matched = false;
+  final AssetsAudioPlayer _player = AssetsAudioPlayer.newPlayer();
+
   @override
   void initState() {
     super.initState();
     _play(sound);
   }
 
-  final AssetsAudioPlayer _player = AssetsAudioPlayer.newPlayer();
-  void _play(sound) {
+  void _play(String sound) {
     _player.open(
       Audio(sound),
       autoStart: true,
@@ -62,8 +63,52 @@ class _berawalnGameScreenState extends State<berawalnGameScreen> {
   }
 
   bool _checkIfMatched(String option) {
-    return option ==
-        targetImage; // Ganti dengan path gambar target yang sebenarnya
+    return option == targetImage;
+  }
+
+  void _checkAnswer() {
+    print(selectedOption);
+    print("--------------------");
+    if (selectedOption != null && _checkIfMatched(selectedOption!)) {
+      setState(() {
+        matched = true;
+      });
+      final List<String> compliments = [
+        'assets/option/Bagus.m4a',
+        'assets/option/Hebat.m4a',
+        'assets/option/Pintar.m4a'
+      ];
+
+      Future.delayed(const Duration(seconds: 2), () {
+        final randomCompliment =
+            compliments[Random().nextInt(compliments.length)];
+        _play(randomCompliment);
+        _showSuccessDialog();
+      });
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Cocok! Selamat!')),
+      );
+    } else {
+      // Future.delayed(const Duration(seconds: 2), () {
+      //   _play('assets/option/Ayo coba lagi.m4a');
+      // });
+      _play('assets/option/Ayo coba lagi.m4a');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: const Text('Tidak cocok, coba lagi ya!'),
+          behavior: SnackBarBehavior.floating,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+          backgroundColor: Colors.blueGrey[600],
+          duration: const Duration(seconds: 2),
+          action: SnackBarAction(
+            label: 'OK',
+            onPressed: () {},
+          ),
+        ),
+      );
+    }
   }
 
   @override
@@ -84,15 +129,18 @@ class _berawalnGameScreenState extends State<berawalnGameScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              // Padding(
-              //   padding: const EdgeInsets.symmetric(vertical: 16.0),
-              //   child: Text(
-              //     'Ayo tunjukkan kata yang berawalan "$berawalan"',
-              //     style: const TextStyle(fontSize: 22, color: Colors.white),
-              //     textAlign: TextAlign.center,
+              const SizedBox(
+                height: 150,
+              ),
+              // if (selectedOption != null)
+              //   Padding(
+              //     padding: const EdgeInsets.symmetric(vertical: 16.0),
+              //     child: Text(
+              //       'Kamu memilih: $selectedOption',
+              //       style: const TextStyle(fontSize: 22, color: Colors.white),
+              //       textAlign: TextAlign.center,
+              //     ),
               //   ),
-              // ),
-              const SizedBox(height: 100),
               Wrap(
                 spacing: 10,
                 runSpacing: 10,
@@ -101,108 +149,9 @@ class _berawalnGameScreenState extends State<berawalnGameScreen> {
                   return GestureDetector(
                     onTap: () {
                       setState(() {
-                        selectedOption = option['text'];
-                        if (selectedOption == 'susu') {
-                          _play('assets/level3/Level 3 susu.m4a');
-                        } else if (selectedOption == 'sawi') {
-                          _play('assets/level3/Level 3 sawi.m4a');
-                        } else if (selectedOption == 'sapu') {
-                          _play('assets/level3/Level 3 sapu.m4a');
-                        } else if (selectedOption == 'siku') {
-                          _play('assets/level3/Level 3 siku.m4a');
-                        } else if (selectedOption == 'soda') {
-                          _play('assets/level3/Level 3 soda.m4a');
-                        } else if (selectedOption == 'bibir') {
-                          _play('assets/level3/Level 3 bibir.m4a');
-                        } else if (selectedOption == 'badak') {
-                          _play('assets/level3/Level 3 badak.m4a');
-                        } else if (selectedOption == 'botol') {
-                          _play('assets/level3/Level 3 botol.m4a');
-                        } else if (selectedOption == 'bayam') {
-                          _play('assets/level3/Level 3 bayam.m4a');
-                        } else if (selectedOption == 'beras') {
-                          _play('assets/level3/Level 3 beras.m4a');
-                        }
+                        selectedOption = option['image'];
+                        _play('assets/level3/Level 3 $selectedOption.m4a');
                       });
-                      if (_checkIfMatched(option['image']!)) {
-                        setState(() {
-                          matched = true;
-                        });
-                        final List<String> compliments = [
-                          'assets/option/Bagus.m4a',
-                          'assets/option/Hebat.m4a',
-                          'assets/option/Pintar.m4a'
-                        ];
-                        // if (selectedOption == 'soda') {
-                        //   _play(
-                        //       'assets/level2/Level 2 (aktivitas 2a ini dibaca soda).m4a');
-                        // }
-                        // if (selectedOption == 'bibir') {
-                        //   _play(
-                        //       'assets/level2/Level 2 (aktivitas 2c ini dibaca bibir).m4a');
-                        // }
-                        // if (selectedOption == 'sapu') {
-                        //   _play(
-                        //       'assets/level2/Level 2 (aktivitas 2a ini dibaca sapu).m4a');
-                        // }
-                        // if (selectedOption == 'botol') {
-                        //   _play(
-                        //       'assets/level2/Level 2 (aktivitas 2c ini dibaca botol).m4a');
-                        // }
-                        // if (selectedOption == 'siku') {
-                        //   _play(
-                        //       'assets/level2/Level 2 (aktivitas 2a ini dibaca siku).m4a');
-                        // }
-                        // if (selectedOption == 'badak') {
-                        //   _play(
-                        //       'assets/level2/Level 2 (aktivitas 2c ini dibaca badak).m4a');
-                        // }
-                        // if (selectedOption == 'beras') {
-                        //   _play(
-                        //       'assets/level2/Level 2 (aktivitas 2c ini dibaca beras).m4a');
-                        // }
-                        // if (selectedOption == 'bayam') {
-                        //   _play(
-                        //       'assets/level2/Level 2 (aktivitas 2c ini dibaca bayam).m4a');
-                        // }
-                        Future.delayed(const Duration(seconds: 2), () {
-                          final randomCompliment =
-                              compliments[Random().nextInt(compliments.length)];
-                          _play(randomCompliment);
-                          _showSuccessDialog();
-                        });
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text('Cocok! Selamat!')),
-                        );
-                      } else {
-                        Future.delayed(const Duration(seconds: 2), () {
-                          _play('assets/option/Ayo coba lagi.m4a');
-                        });
-
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: const Text('Tidak cocok, coba lagi ya!'),
-                            behavior: SnackBarBehavior
-                                .floating, // Optional: Floating behavior
-                            shape: RoundedRectangleBorder(
-                              // Optional: Custom shape
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            backgroundColor: Colors.blueGrey[
-                                600], // Optional: Custom background color
-                            duration: const Duration(
-                                seconds:
-                                    2), // Optional: Duration for how long snackbar will be visible
-                            action: SnackBarAction(
-                              // Optional: For adding an action button
-                              label: 'OK',
-                              onPressed: () {
-                                // Do something when OK is pressed
-                              },
-                            ),
-                          ),
-                        );
-                      }
                     },
                     child: Container(
                       width: 80,
@@ -238,6 +187,22 @@ class _berawalnGameScreenState extends State<berawalnGameScreen> {
                     ),
                   );
                 }).toList(),
+              ),
+              const SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: _checkAnswer,
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.orange,
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+                child: const Text(
+                  'Cek Jawaban',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
               ),
             ],
           ),

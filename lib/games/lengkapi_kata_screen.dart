@@ -37,9 +37,7 @@ class _LengkapiKataScreenState extends State<LengkapiKataScreen> {
         // Reset incorrect answers count
         incorrectAnswers = 0;
 
-        // Check if all letters have been correctly chosen
         if (_cekPenyelesaian()) {
-          // _showDialogKataBerhasilDisusun();
           _playKataBerurutan();
         }
       } else {

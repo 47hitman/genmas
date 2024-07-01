@@ -183,14 +183,14 @@ class _ImageMatchingGameScreenState extends State<ImageMatchingGameScreen> {
         color: Colors.lightBlueAccent,
         child: Column(
           children: [
-            const Padding(
-              padding: EdgeInsets.all(16.0),
-              child: Text(
-                'Seret dan lepaskan kartu ke pasangan yang sesuai',
-                style: TextStyle(fontSize: 22, color: Colors.white),
-                textAlign: TextAlign.center,
-              ),
-            ),
+            // const Padding(
+            //   padding: EdgeInsets.all(16.0),
+            //   child: Text(
+            //     'Seret dan lepaskan kartu ke pasangan yang sesuai',
+            //     style: TextStyle(fontSize: 22, color: Colors.white),
+            //     textAlign: TextAlign.center,
+            //   ),
+            // ),
             Expanded(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -321,11 +321,20 @@ class _ImageMatchingGameScreenState extends State<ImageMatchingGameScreen> {
                             setState(() {
                               matchedItems.add(item['image']!);
                             });
+                            final List<String> compliments = [
+                              'assets/option/Bagus.m4a',
+                              'assets/option/Hebat.m4a',
+                              'assets/option/Pintar.m4a'
+                            ];
+                            final randomCompliment = compliments[
+                                Random().nextInt(compliments.length)];
+                            _play2(randomCompliment);
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(content: Text('Cocok!')),
                             );
                             _checkCompletion();
                           } else {
+                            _play2('assets/option/Ayo coba lagi.m4a');
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
                                   content: Text('Tidak cocok, coba lagi!')),
