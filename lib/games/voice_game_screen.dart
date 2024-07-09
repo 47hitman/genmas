@@ -106,33 +106,42 @@ class _VoiceGameScreenState extends State<VoiceGameScreen> {
       appBar: AppBar(
         title: const Text('Voice Game'),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              _targetWord,
-              style: const TextStyle(fontSize: 24),
-            ),
-            // const SizedBox(height: 20),
-            // Text(
-            //   'kamu Mengatakan: $_spokenText',
-            //   style: const TextStyle(fontSize: 24),
-            // ),
-            const SizedBox(height: 200),
-            GestureDetector(
-              onLongPressStart: (details) {
-                _startListening();
-              },
-              onLongPressEnd: (details) {
-                _stopListening();
-              },
-              child: Icon(
-                _isListening ? Icons.mic : Icons.mic_none,
-                size: 48,
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/background2.png"),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                _targetWord,
+                style:
+                    const TextStyle(fontSize: 45, fontWeight: FontWeight.bold),
               ),
-            ),
-          ],
+              // const SizedBox(height: 20),
+              // Text(
+              //   'kamu Mengatakan: $_spokenText',
+              //   style: const TextStyle(fontSize: 24),
+              // ),
+              const SizedBox(height: 200),
+              GestureDetector(
+                onLongPressStart: (details) {
+                  _startListening();
+                },
+                onLongPressEnd: (details) {
+                  _stopListening();
+                },
+                child: Icon(
+                  _isListening ? Icons.mic : Icons.mic_none,
+                  size: 70,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

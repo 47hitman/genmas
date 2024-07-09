@@ -46,14 +46,30 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Profile'),
-        automaticallyImplyLeading: false,
-      ),
-      body: Padding(
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/background2.png"),
+            fit: BoxFit.cover,
+          ),
+        ),
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: <Widget>[
+            const SizedBox(
+              height: 20,
+            ),
+            const Row(
+              children: [
+                Text(
+                  'profile',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 20,
+            ),
             Row(
               children: <Widget>[
                 const CircleAvatar(
@@ -81,8 +97,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
             const SizedBox(height: 32),
             CustomButton(
-              iconPath: 'assets/icon.gif',
-              label: 'Edit Profile',
+              iconPath: 'assets/simbolsiswa.png',
+              label: 'edit profil',
               onTap: () {
                 Navigator.push(
                     context,
@@ -95,8 +111,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
               },
             ),
             CustomButton(
-              iconPath: 'assets/icon.gif',
-              label: 'About Us',
+              iconPath: 'assets/simbolsiswa.png',
+              label: 'tentang aplikasi',
               onTap: () {
                 Navigator.push(
                     context,
@@ -108,48 +124,80 @@ class _ProfileScreenState extends State<ProfileScreen> {
               },
             ),
             CustomButton(
-              iconPath: 'assets/icon.gif',
-              label: 'Logout',
+              iconPath: 'assets/simbolsiswa.png',
+              label: 'keluar',
               onTap: () {
                 showDialog(
                   context: context,
                   builder: (BuildContext context) {
                     return AlertDialog(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      backgroundColor: Colors.orange.shade100,
                       title: const Row(
                         children: [
-                          Icon(Icons.warning, color: Colors.red),
-                          SizedBox(width: 10),
-                          Text('Confirm Logout')
+                          // Icon(Icons.warning, color: Colors.red),
+                          // SizedBox(width: 10),
+                          Text(
+                            'Konfirmasi Keluar',
+                            style: TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.blue,
+                            ),
+                          ),
                         ],
                       ),
-                      content: const Text('Are you sure you want to logout?'),
+                      content: const Text(
+                        'Apakah Anda Yakin Ingin Keluar?',
+                        style: TextStyle(fontSize: 18, color: Colors.blue),
+                      ),
                       actions: <Widget>[
-                        TextButton(
-                          onPressed: () {
-                            Navigator.of(context).pop();
-                          },
-                          child: const Text('Cancel'),
+                        Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.blue,
+                          ),
+                          child: TextButton(
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                            child: const Text(
+                              'Batal',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ),
                         ),
-                        TextButton(
-                          onPressed: () async {
-                            // Aksi untuk Logout
-                            Navigator.of(context).pop();
+                        Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.blue,
+                          ),
+                          child: TextButton(
+                            onPressed: () async {
+                              // Aksi untuk Logout
+                              Navigator.of(context).pop();
 
-                            // Clear the token from shared preferences
-                            SharedPreferences prefs =
-                                await SharedPreferences.getInstance();
-                            await prefs.remove('auth_token');
+                              // Clear the token from shared preferences
+                              SharedPreferences prefs =
+                                  await SharedPreferences.getInstance();
+                              await prefs.remove('auth_token');
 
-                            // Navigate to the LoginScreen
-                            Navigator.pushAndRemoveUntil(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (BuildContext context) =>
-                                      const LoginScreen()),
-                              (Route<dynamic> route) => false,
-                            );
-                          },
-                          child: const Text('Logout'),
+                              // Navigate to the LoginScreen
+                              Navigator.pushAndRemoveUntil(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (BuildContext context) =>
+                                        const LoginScreen()),
+                                (Route<dynamic> route) => false,
+                              );
+                            },
+                            child: const Text(
+                              'Keluar',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ),
                         ),
                       ],
                     );

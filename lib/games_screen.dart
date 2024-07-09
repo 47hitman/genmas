@@ -78,7 +78,7 @@ class _GamesScreenState extends State<GamesScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          backgroundColor: const Color.fromARGB(255, 19, 212, 42),
+          backgroundColor: Colors.blue,
           title: const Text(
             'Games',
             style: TextStyle(color: Colors.white), // Text warna putih
@@ -99,14 +99,18 @@ class _GamesScreenState extends State<GamesScreen> {
           )),
       body: Container(
         decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            colors: [Colors.blueAccent, Colors.lightBlueAccent],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
+          image: DecorationImage(
+            image: AssetImage("assets/background3.png"),
+            fit: BoxFit.cover,
           ),
+          // gradient: LinearGradient(
+          //   colors: [Colors.blueAccent, Colors.lightBlueAccent],
+          //   begin: Alignment.topLeft,
+          //   end: Alignment.bottomRight,
+          // ),
         ),
         child: ListView(
-          padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 20.0),
+          padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 40.0),
           children: [
             GestureDetector(
               onTap: () => _onGamesTap(1), // Ubah menjadi level 1

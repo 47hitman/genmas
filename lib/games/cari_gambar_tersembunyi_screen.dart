@@ -120,24 +120,60 @@ class _HiddenObjectGameScreenState extends State<HiddenObjectGameScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Selamat!'),
-          content: const Text('Kamu berhasil menemukan semua gambar hewan!'),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+          backgroundColor: Colors.orange.shade100,
+          title: const Text(
+            'Selamat!',
+            style: TextStyle(
+                fontSize: 24, fontWeight: FontWeight.bold, color: Colors.blue),
+          ),
+          content: const Text(
+            'Kamu berhasil menemukan semua gambar hewan!',
+            style: TextStyle(
+                fontSize: 24, fontWeight: FontWeight.bold, color: Colors.blue),
+          ),
           actions: <Widget>[
-            TextButton(
-              child: const Text('OK'),
-              onPressed: () {
-                setState(() {
-                  aktivast1 = true;
-                });
-                _saveData();
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) =>
-                          const menu1level()), // Replace SpecificPage with your target page
-                );
-              },
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Colors.blue,
+              ),
+              child: TextButton(
+                onPressed: () async {
+                  setState(() {
+                    aktivast1 = true;
+                  });
+                  _saveData();
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            const menu1level()), // Replace SpecificPage with your target page
+                  );
+                },
+                child: const Text(
+                  'ok',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
             ),
+            // TextButton(
+            //   child: const Text('OK'),
+            //   onPressed: () {
+            //     setState(() {
+            //       aktivast1 = true;
+            //     });
+            //     _saveData();
+            //     Navigator.push(
+            //       context,
+            //       MaterialPageRoute(
+            //           builder: (context) =>
+            //               const menu1level()), // Replace SpecificPage with your target page
+            //     );
+            //   },
+            // ),
           ],
         );
       },
@@ -157,63 +193,80 @@ class _HiddenObjectGameScreenState extends State<HiddenObjectGameScreen> {
         onTapDown: (details) {
           checkForHiddenItem(details.localPosition);
         },
-        child: Column(
-          children: [
-            Stack(
-              children: [
-                // Background image or any other background widget
-                Align(
-                  alignment: Alignment.topCenter,
-                  child: Container(
-                    margin: const EdgeInsets.only(top: 150),
-                    height: 200,
-                    width: 350,
-                    decoration: const BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage('assets/soal1/backgorund.png'),
-                        fit: BoxFit
-                            .cover, // You can adjust this to BoxFit.contain, BoxFit.fill, etc.
+        child: Container(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/background7.png"),
+              fit: BoxFit.cover,
+            ),
+          ),
+          child: Column(
+            children: [
+              Stack(
+                children: [
+                  // Background image or any other background widget
+                  Align(
+                    alignment: Alignment.topCenter,
+                    child: Container(
+                      margin: const EdgeInsets.only(top: 150),
+                      height: 200,
+                      width: 350,
+                      decoration: const BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage('assets/soal1/backgorund.png'),
+                          fit: BoxFit
+                              .cover, // You can adjust this to BoxFit.contain, BoxFit.fill, etc.
+                        ),
                       ),
                     ),
                   ),
-                ),
-                // Hidden items
-                ...hiddenItems.asMap().entries.map((entry) {
+                  // Hidden items
+                  ...hiddenItems.asMap().entries.map((entry) {
+                    int index = entry.key;
+                    HiddenItem item = entry.value;
+
+                    return Positioned(
+                      left: item.position.dx,
+                      top: item.position.dy,
+                      child: foundItems.contains(index)
+                          ? Image.asset(
+                              item.imagePath,
+                              width: 50,
+                              height: 50,
+                            )
+                          : Container(
+                              width: 50,
+                              height: 50,
+                              color: Colors.transparent,
+                            ),
+                    );
+                  }).toList(),
+                ],
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: hiddenItems.asMap().entries.map((entry) {
                   int index = entry.key;
                   HiddenItem item = entry.value;
-
-                  return Positioned(
-                    left: item.position.dx,
-                    top: item.position.dy,
-                    child: foundItems.contains(index)
-                        ? Image.asset(
-                            item.imagePath,
-                            width: 50,
-                            height: 50,
-                          )
-                        : Container(
-                            width: 50,
-                            height: 50,
-                            color: Colors.transparent,
-                          ),
+                  return Column(
+                    children: [
+                      Image.asset(item.imagePath, width: 50, height: 50),
+                      if (foundItems.contains(index))
+                        const Icon(Icons.check,
+                            color: Colors.green,
+                            size: 24) // Check mark or any other indicator
+                      else
+                        const SizedBox(
+                            height: 24), // Placeholder to maintain space
+                    ],
                   );
                 }).toList(),
-              ],
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Image.asset('assets/soal1/ular.png', width: 50, height: 50),
-                Image.asset('assets/soal1/tupai.png', width: 50, height: 50),
-                Image.asset('assets/soal1/kelinci.png', width: 50, height: 50),
-                Image.asset('assets/soal1/kupukupu.png', width: 50, height: 50),
-                Image.asset('assets/soal1/burung.png', width: 50, height: 50),
-              ],
-            ),
-          ],
+              ),
+            ],
+          ),
         ),
       ),
     );

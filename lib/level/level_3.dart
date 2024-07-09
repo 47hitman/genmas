@@ -121,184 +121,193 @@ class _level3State extends State<level3> {
           },
         ),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Container(
-              width: double.infinity,
-              color: const Color.fromARGB(255, 19, 212, 42),
-              padding: const EdgeInsets.all(16.0),
-              child: const Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Aktivitas 1",
-                    style: TextStyle(color: Colors.white, fontSize: 18),
-                  ),
-                  Text(
-                    "Kata Pola KVKV",
-                    style: TextStyle(color: Colors.white, fontSize: 18),
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            SizedBox(
-              height: 300, // Ukuran GridView sesuaikan dengan kebutuhan Anda
-              child: GridView.builder(
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3, // Jumlah kolom dalam satu baris
-                  mainAxisSpacing: 10, // Spasi antar item secara vertikal
-                  crossAxisSpacing: 10, // Spasi antar item secara horizontal
-                  childAspectRatio:
-                      0.8, // Perbandingan lebar terhadap tinggi setiap item
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/background7.png"),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Container(
+                width: double.infinity,
+                color: Colors.orange,
+                padding: const EdgeInsets.all(16.0),
+                child: const Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Aktivitas 1",
+                      style: TextStyle(color: Colors.white, fontSize: 18),
+                    ),
+                    Text(
+                      "Kata Pola KVKV",
+                      style: TextStyle(color: Colors.white, fontSize: 18),
+                    ),
+                  ],
                 ),
-                itemCount: 5, // Jumlah item dalam GridView
-                itemBuilder: (context, index) {
-                  return GestureDetector(
-                    onTap: () {
-                      String imageName = _getImageName(index);
-                      assetName = _getText(index);
-                      assetLocation = "assets/level3/aktivitas1/$imageName.png";
-                      Navigator.push(
-                        context,
-                        PageTransition(
-                          duration: const Duration(milliseconds: 300),
-                          type: PageTransitionType.rightToLeft,
-                          child: const Level3kvkv(),
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              SizedBox(
+                height: 300, // Ukuran GridView sesuaikan dengan kebutuhan Anda
+                child: GridView.builder(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 3, // Jumlah kolom dalam satu baris
+                    mainAxisSpacing: 10, // Spasi antar item secara vertikal
+                    crossAxisSpacing: 10, // Spasi antar item secara horizontal
+                    childAspectRatio:
+                        0.8, // Perbandingan lebar terhadap tinggi setiap item
+                  ),
+                  itemCount: 5, // Jumlah item dalam GridView
+                  itemBuilder: (context, index) {
+                    return GestureDetector(
+                      onTap: () {
+                        String imageName = _getImageName(index);
+                        assetName = _getText(index);
+                        assetLocation =
+                            "assets/level3/aktivitas1/$imageName.png";
+                        Navigator.push(
+                          context,
+                          PageTransition(
+                            duration: const Duration(milliseconds: 300),
+                            type: PageTransitionType.rightToLeft,
+                            child: const Level3kvkv(),
+                          ),
+                        );
+                        // print('Tombol $assetName ditekan');
+                        // print('Lokasi asset gambar: $assetLocation');
+                      },
+                      child: Container(
+                        width: 80,
+                        height: 100,
+                        decoration: BoxDecoration(
+                          color: Colors.lightBlue,
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(color: Colors.white, width: 3),
                         ),
-                      );
-                      // print('Tombol $assetName ditekan');
-                      // print('Lokasi asset gambar: $assetLocation');
-                    },
-                    child: Container(
-                      width: 80,
-                      height: 100,
-                      decoration: BoxDecoration(
-                        color: Colors.green,
-                        borderRadius: BorderRadius.circular(8),
-                        border: Border.all(color: Colors.white, width: 3),
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.asset(
-                            "assets/level3/aktivitas1/${_getImageName(index)}.png",
-                            width: 70,
-                            height: 60,
-                          ),
-                          const SizedBox(height: 5),
-                          Text(
-                            _getText(index),
-                            style: const TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image.asset(
+                              "assets/level3/aktivitas1/${_getImageName(index)}.png",
+                              width: 70,
+                              height: 60,
                             ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  );
-                },
-              ),
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            Container(
-              width: double.infinity,
-              color: const Color.fromARGB(255, 19, 212, 42),
-              padding: const EdgeInsets.all(16.0),
-              child: const Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Aktivitas 2",
-                    style: TextStyle(color: Colors.white, fontSize: 18),
-                  ),
-                  Text(
-                    "Kata Pola KVKVK",
-                    style: TextStyle(color: Colors.white, fontSize: 18),
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            SizedBox(
-              height: 300, // Ukuran GridView sesuaikan dengan kebutuhan Anda
-              child: GridView.builder(
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3, // Jumlah kolom dalam satu baris
-                  mainAxisSpacing: 10, // Spasi antar item secara vertikal
-                  crossAxisSpacing: 10, // Spasi antar item secara horizontal
-                  childAspectRatio:
-                      0.8, // Perbandingan lebar terhadap tinggi setiap item
-                ),
-                itemCount: 5, // Jumlah item dalam GridView
-                itemBuilder: (context, index) {
-                  // Check the boolean variables to determine if the item should be enabled
-                  bool isEnabled = _checkIfEnabled(index);
-
-                  return GestureDetector(
-                    onTap: isEnabled
-                        ? () {
-                            String imageName = _getImageName2(index);
-                            assetName = _getText2(index);
-                            assetLocation =
-                                "assets/level3/aktivitas2/$imageName.png";
-                            Navigator.push(
-                              context,
-                              PageTransition(
-                                duration: const Duration(milliseconds: 300),
-                                type: PageTransitionType.rightToLeft,
-                                child: const Level3kvkv(),
+                            const SizedBox(height: 5),
+                            Text(
+                              _getText(index),
+                              style: const TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
                               ),
-                            );
-                            // print('Tombol $assetName ditekan');
-                            // print('Lokasi asset gambar: $assetLocation');
-                          }
-                        : null,
-                    child: Container(
-                      width: 80,
-                      height: 100,
-                      decoration: BoxDecoration(
-                        color: isEnabled ? Colors.green : Colors.grey,
-                        borderRadius: BorderRadius.circular(8),
-                        border: Border.all(color: Colors.white, width: 3),
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.asset(
-                            "assets/level3/aktivitas2/${_getImageName2(index)}.png",
-                            width: 70,
-                            height: 60,
-                          ),
-                          const SizedBox(height: 5),
-                          Text(
-                            _getText2(index),
-                            style: const TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                  );
-                },
+                    );
+                  },
+                ),
               ),
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-          ],
+              const SizedBox(
+                height: 30,
+              ),
+              Container(
+                width: double.infinity,
+                color: Colors.blue,
+                padding: const EdgeInsets.all(16.0),
+                child: const Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Aktivitas 2",
+                      style: TextStyle(color: Colors.white, fontSize: 18),
+                    ),
+                    Text(
+                      "Kata Pola KVKVK",
+                      style: TextStyle(color: Colors.white, fontSize: 18),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              SizedBox(
+                height: 300, // Ukuran GridView sesuaikan dengan kebutuhan Anda
+                child: GridView.builder(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 3, // Jumlah kolom dalam satu baris
+                    mainAxisSpacing: 10, // Spasi antar item secara vertikal
+                    crossAxisSpacing: 10, // Spasi antar item secara horizontal
+                    childAspectRatio:
+                        0.8, // Perbandingan lebar terhadap tinggi setiap item
+                  ),
+                  itemCount: 5, // Jumlah item dalam GridView
+                  itemBuilder: (context, index) {
+                    // Check the boolean variables to determine if the item should be enabled
+                    bool isEnabled = _checkIfEnabled(index);
+
+                    return GestureDetector(
+                      onTap: isEnabled
+                          ? () {
+                              String imageName = _getImageName2(index);
+                              assetName = _getText2(index);
+                              assetLocation =
+                                  "assets/level3/aktivitas2/$imageName.png";
+                              Navigator.push(
+                                context,
+                                PageTransition(
+                                  duration: const Duration(milliseconds: 300),
+                                  type: PageTransitionType.rightToLeft,
+                                  child: const Level3kvkv(),
+                                ),
+                              );
+                              // print('Tombol $assetName ditekan');
+                              // print('Lokasi asset gambar: $assetLocation');
+                            }
+                          : null,
+                      child: Container(
+                        width: 80,
+                        height: 100,
+                        decoration: BoxDecoration(
+                          color: isEnabled ? Colors.lightBlue : Colors.grey,
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(color: Colors.white, width: 3),
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image.asset(
+                              "assets/level3/aktivitas2/${_getImageName2(index)}.png",
+                              width: 70,
+                              height: 60,
+                            ),
+                            const SizedBox(height: 5),
+                            Text(
+                              _getText2(index),
+                              style: const TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+            ],
+          ),
         ),
       ),
     );

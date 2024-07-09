@@ -174,7 +174,7 @@ class _ImageMatchingGameScreenState extends State<ImageMatchingGameScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Cocokkan Kartu',
+          'Cocokkan gambar yang sama',
           style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
         ),
         backgroundColor: Colors.orange,

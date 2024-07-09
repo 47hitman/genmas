@@ -45,75 +45,88 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Edit Profile'),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Form(
-          key: _formKey,
-          child: ListView(
-            children: <Widget>[
-              GestureDetector(
-                onTap: _pickImage,
-                child: CircleAvatar(
-                  radius: 50,
-                  backgroundImage: _image == null
-                      ? const NetworkImage(
-                          'https://gemmasapi.kapuyuaxdev.my.id/file/user/tessiswa.png')
-                      : FileImage(_image!) as ImageProvider,
-                ),
-              ),
-              const SizedBox(height: 16),
-              TextFormField(
-                initialValue: _email ?? '',
-                decoration: const InputDecoration(labelText: 'Email'),
-                keyboardType: TextInputType.emailAddress,
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter your email';
-                  }
-                  return null;
-                },
-                onSaved: (value) {
-                  _email = value;
-                },
-              ),
-              const SizedBox(height: 16),
-              TextFormField(
-                initialValue: _firstName ?? '',
-                decoration: const InputDecoration(labelText: 'First Name'),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter your first name';
-                  }
-                  return null;
-                },
-                onSaved: (value) {
-                  _firstName = value;
-                },
-              ),
-              const SizedBox(height: 16),
-              TextFormField(
-                initialValue: _lastName ?? '',
-                decoration: const InputDecoration(labelText: 'Last Name'),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter your last name';
-                  }
-                  return null;
-                },
-                onSaved: (value) {
-                  _lastName = value;
-                },
-              ),
-              const SizedBox(height: 32),
-              ElevatedButton(
-                onPressed: _submit,
-                child: const Text('Save Changes'),
-              ),
-            ],
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/background2.png"),
+            fit: BoxFit.cover,
           ),
+        ),
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            AppBar(
+              title: const Text('edit profil'),
+              backgroundColor: Colors.transparent,
+              elevation: 0,
+            ),
+            Form(
+              key: _formKey,
+              child: ListView(
+                children: <Widget>[
+                  GestureDetector(
+                    onTap: _pickImage,
+                    child: CircleAvatar(
+                      radius: 50,
+                      backgroundImage: _image == null
+                          ? const NetworkImage(
+                              'https://gemmasapi.kapuyuaxdev.my.id/file/user/tessiswa.png')
+                          : FileImage(_image!) as ImageProvider,
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  TextFormField(
+                    initialValue: _email ?? '',
+                    decoration: const InputDecoration(labelText: 'Email'),
+                    keyboardType: TextInputType.emailAddress,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter your email';
+                      }
+                      return null;
+                    },
+                    onSaved: (value) {
+                      _email = value;
+                    },
+                  ),
+                  const SizedBox(height: 16),
+                  TextFormField(
+                    initialValue: _firstName ?? '',
+                    decoration: const InputDecoration(labelText: 'nama depan'),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'masukan nama depan';
+                      }
+                      return null;
+                    },
+                    onSaved: (value) {
+                      _firstName = value;
+                    },
+                  ),
+                  const SizedBox(height: 16),
+                  TextFormField(
+                    initialValue: _lastName ?? '',
+                    decoration:
+                        const InputDecoration(labelText: 'nama belakang'),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'masukan nama belakang';
+                      }
+                      return null;
+                    },
+                    onSaved: (value) {
+                      _lastName = value;
+                    },
+                  ),
+                  const SizedBox(height: 32),
+                  ElevatedButton(
+                    onPressed: _submit,
+                    child: const Text('simpan perubahan'),
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );
