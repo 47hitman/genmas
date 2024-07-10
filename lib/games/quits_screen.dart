@@ -87,36 +87,41 @@ class _MatchingGameScreenState extends State<MatchingGameScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Ayo Temukan Bentuk yang Sama!'),
-      ),
-      body: SingleChildScrollView(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Padding(
-                padding: EdgeInsets.all(20.0),
-                child: Text(
-                  'Pilih gambar di bawah yang memiliki bentuk yang mirip dengan kubus:',
-                  style: TextStyle(fontSize: 20.0),
-                  textAlign: TextAlign.center,
-                ),
-              ),
-              Image.asset(
-                targetImage,
-                height: 150.0,
-              ),
-              const SizedBox(height: 20.0),
-              Wrap(
-                spacing: 20.0,
-                runSpacing: 20.0,
-                children: options.map((option) {
-                  return buildShapeOption(option['path']!);
-                }).toList(),
-              ),
-            ],
-          ),
+        title: const Text(
+          'Cari Bentuk Gambar yang Sama',
+          style: TextStyle(fontSize: 16),
         ),
+      ),
+      body: Stack(
+        fit: StackFit.expand,
+        children: [
+          Image.asset(
+            "assets/background5.png",
+            fit: BoxFit.cover,
+          ),
+          SingleChildScrollView(
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const SizedBox(height: 40),
+                  Image.asset(
+                    targetImage,
+                    height: 150.0,
+                  ),
+                  const SizedBox(height: 20.0),
+                  Wrap(
+                    spacing: 20.0,
+                    runSpacing: 20.0,
+                    children: options.map((option) {
+                      return buildShapeOption(option['path']!);
+                    }).toList(),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -155,49 +160,141 @@ class _MatchingGameScreenState extends State<MatchingGameScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text(
-            'Selamat!',
-            style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
           ),
-          content: const Text(
-            'Anda berhasil menemukan bentuk yang mirip ',
-            style: TextStyle(fontSize: 18.0),
+          backgroundColor: Colors.orange.shade100,
+          title: const Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                Icons.check_circle,
+                color: Colors.green,
+                size: 35,
+              ),
+              SizedBox(
+                width: 10,
+              ),
+              Text(
+                'Selamat!',
+                style: TextStyle(
+                    fontSize: 26,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.blue),
+              ),
+            ],
           ),
-          actions: [
-            TextButton(
-              onPressed: () {
-                setState(() {
-                  switch (aktivitas6) {
-                    case 1:
-                      aktivast61 = true;
-                      break;
-                    case 2:
-                      aktivast62 = true;
-                      break;
-                    case 3:
-                      aktivast63 = true;
-                      break;
+          content: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                'assets/poin.png',
+                width: 30,
+                height: 30,
+              ),
+              const SizedBox(width: 10),
+              const Text(
+                '10',
+                style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.blue),
+              ),
+            ],
+          ),
+          actions: <Widget>[
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Colors.blue,
+              ),
+              child: TextButton(
+                onPressed: () {
+                  setState(() {
+                    switch (aktivitas6) {
+                      case 1:
+                        aktivast61 = true;
+                        break;
+                      case 2:
+                        aktivast62 = true;
+                        break;
+                      case 3:
+                        aktivast63 = true;
+                        break;
 
-                    default:
-                      break;
-                  }
-                });
-                resetGame();
-                _saveData();
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) =>
-                          const menu1level()), // Replace SpecificPage with your target page
-                );
-              },
-              child: const Text('OK'),
+                      default:
+                        break;
+                    }
+                  });
+                  resetGame();
+                  _saveData();
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            const menu1level()), // Replace SpecificPage with your target page
+                  );
+                },
+                child: const Text(
+                  'ok',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
             ),
           ],
         );
       },
     );
   }
+
+  // void showSuccessDialogWidget() {
+  //   showDialog(
+  //     context: context,
+  //     builder: (BuildContext context) {
+  //       return AlertDialog(
+  //         title: const Text(
+  //           'Selamat!',
+  //           style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
+  //         ),
+  //         content: const Text(
+  //           'Anda berhasil menemukan bentuk yang mirip ',
+  //           style: TextStyle(fontSize: 18.0),
+  //         ),
+  //         actions: [
+  //           TextButton(
+  //             onPressed: () {
+  //               setState(() {
+  //                 switch (aktivitas6) {
+  //                   case 1:
+  //                     aktivast61 = true;
+  //                     break;
+  //                   case 2:
+  //                     aktivast62 = true;
+  //                     break;
+  //                   case 3:
+  //                     aktivast63 = true;
+  //                     break;
+
+  //                   default:
+  //                     break;
+  //                 }
+  //               });
+  //               resetGame();
+  //               _saveData();
+  //               Navigator.push(
+  //                 context,
+  //                 MaterialPageRoute(
+  //                     builder: (context) =>
+  //                         const menu1level()), // Replace SpecificPage with your target page
+  //               );
+  //             },
+  //             child: const Text('OK'),
+  //           ),
+  //         ],
+  //       );
+  //     },
+  //   );
+  // }
 
   void showWrongAnswerDialog() {
     showDialog(

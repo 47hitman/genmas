@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 
@@ -21,6 +22,23 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     _doSomething();
+    _play();
+  }
+
+  final AssetsAudioPlayer _player = AssetsAudioPlayer.newPlayer();
+  void _play() {
+    _player.open(
+      Audio('assets/intro.mp3'),
+      autoStart: true,
+      showNotification: true,
+      loopMode: LoopMode.single, // Loop the audio
+    );
+  }
+
+  @override
+  void dispose() {
+    _player.dispose(); // Dispose the player when done
+    super.dispose();
   }
 
   int points = 0; // Example points value
@@ -36,21 +54,57 @@ class _HomeScreenState extends State<HomeScreen> {
           point = value['score'];
           print(point);
         });
+      } else {
+        _showErrorDialog('Error', 'Sedang Ada Gannguan Mohon Coba lagi');
       }
     } catch (e) {
+      print('--------------');
       print('Error: $e');
+      _showErrorDialog(
+          'Error', 'An error occurred while fetching user information.');
     }
   }
 
-  void _onGamesTap() {
-    Navigator.push(
-      context,
-      PageTransition(
-        duration: const Duration(milliseconds: 300),
-        type: PageTransitionType.rightToLeft,
-        child: const GamesScreen(),
-      ),
+  void _showErrorDialog(String title, String message) {
+    showDialog(
+      context: context,
+      barrierDismissible:
+          false, // Prevents dialog from being dismissed by tapping outside
+      builder: (BuildContext context) {
+        return WillPopScope(
+          onWillPop: () async =>
+              false, // Prevents dialog from being dismissed by the back button
+          child: AlertDialog(
+            title: Text(title),
+            content: Text(message),
+            actions: <Widget>[
+              TextButton(
+                child: const Text('OK'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          ),
+        );
+      },
     );
+  }
+
+  void _onGamesTap() {
+    role != ""
+        ? setState(() {
+            _player.dispose();
+            Navigator.push(
+              context,
+              PageTransition(
+                duration: const Duration(milliseconds: 300),
+                type: PageTransitionType.rightToLeft,
+                child: const GamesScreen(),
+              ),
+            );
+          })
+        : _showErrorDialog('Error', 'Sedang Ada Gannguan Mohon Coba lagi');
   }
 
   void _onAssessmentTap() {

@@ -214,21 +214,30 @@ class _KataPolaState extends State<KataPola> {
       appBar: AppBar(
         title: Text('Kata Pola $appbar'),
       ),
-      body: Center(
-        child: _showInitialScreen
-            ? _buildInitialScreen()
-            : _showSecondScreen
-                ? _buildSecondScreen()
-                : FutureBuilder(
-                    future: _playAudioAndShowDialog(),
-                    builder: (context, snapshot) {
-                      if (snapshot.connectionState == ConnectionState.waiting) {
-                        return _buildInitialScreen();
-                      } else {
-                        return Container(); // or another widget if needed
-                      }
-                    },
-                  ),
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/background2.png"),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: Center(
+          child: _showInitialScreen
+              ? _buildInitialScreen()
+              : _showSecondScreen
+                  ? _buildSecondScreen()
+                  : FutureBuilder(
+                      future: _playAudioAndShowDialog(),
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
+                          return _buildInitialScreen();
+                        } else {
+                          return Container(); // or another widget if needed
+                        }
+                      },
+                    ),
+        ),
       ),
     );
   }
@@ -245,7 +254,7 @@ class _KataPolaState extends State<KataPola> {
         Text(
           kvkv,
           style: const TextStyle(
-              fontSize: 40, fontWeight: FontWeight.bold, color: Colors.blue),
+              fontSize: 60, fontWeight: FontWeight.bold, color: Colors.blue),
         ),
       ],
     );
@@ -272,7 +281,7 @@ class _KataPolaState extends State<KataPola> {
               ), // Index 0
               child: Text(
                 _buttonTexts[0],
-                style: const TextStyle(fontSize: 20, color: Colors.white),
+                style: const TextStyle(fontSize: 30, color: Colors.white),
               ),
             ),
             const SizedBox(width: 10),
@@ -281,11 +290,11 @@ class _KataPolaState extends State<KataPola> {
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.orange,
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                    const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
               ), // Index 1
               child: Text(
                 _buttonTexts[1],
-                style: const TextStyle(fontSize: 20, color: Colors.white),
+                style: const TextStyle(fontSize: 30, color: Colors.white),
               ),
             ),
             const SizedBox(width: 10),
@@ -298,7 +307,7 @@ class _KataPolaState extends State<KataPola> {
               ), // Index 2
               child: Text(
                 _buttonTexts[2],
-                style: const TextStyle(fontSize: 20, color: Colors.white),
+                style: const TextStyle(fontSize: 30, color: Colors.white),
               ),
             ),
           ],

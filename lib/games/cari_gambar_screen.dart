@@ -144,38 +144,116 @@ class _CariGambarScreenState extends State<CariGambarScreen> {
     );
   }
 
+  // void _showSuccessDialog() {
+  //   showDialog(
+  //     context: context,
+  //     builder: (BuildContext context) {
+  //       return AlertDialog(
+  //         shape:
+  //             RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+  //         title: const Row(
+  //           children: [
+  //             Icon(Icons.check_circle, color: Colors.green),
+  //             SizedBox(width: 10),
+  //             Text('Berhasil',
+  //                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+  //           ],
+  //         ),
+  //         content: const Text('Semua gambar cocok, bagus sekali!',
+  //             style: TextStyle(fontSize: 18)),
+  //         actions: <Widget>[
+  //           TextButton(
+  //             onPressed: () {
+  //               setState(() {
+  //                 aktivast4 = true;
+  //               });
+  //               _saveData();
+  //               Navigator.push(
+  //                 context,
+  //                 MaterialPageRoute(
+  //                     builder: (context) =>
+  //                         const menu1level()), // Replace SpecificPage with your target page
+  //               );
+  //             },
+  //             child: const Text('OK', style: TextStyle(fontSize: 18)),
+  //           ),
+  //         ],
+  //       );
+  //     },
+  //   );
+  // }
+
   void _showSuccessDialog() {
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+          backgroundColor: Colors.orange.shade100,
           title: const Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(Icons.check_circle, color: Colors.green),
-              SizedBox(width: 10),
-              Text('Berhasil',
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+              Icon(
+                Icons.check_circle,
+                color: Colors.green,
+                size: 35,
+              ),
+              SizedBox(
+                width: 10,
+              ),
+              Text(
+                'Selamat!',
+                style: TextStyle(
+                    fontSize: 26,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.blue),
+              ),
             ],
           ),
-          content: const Text('Semua gambar cocok, bagus sekali!',
-              style: TextStyle(fontSize: 18)),
+          content: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                'assets/poin.png',
+                width: 30,
+                height: 30,
+              ),
+              const SizedBox(width: 10),
+              const Text(
+                '10',
+                style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.blue),
+              ),
+            ],
+          ),
           actions: <Widget>[
-            TextButton(
-              onPressed: () {
-                setState(() {
-                  aktivast4 = true;
-                });
-                _saveData();
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) =>
-                          const menu1level()), // Replace SpecificPage with your target page
-                );
-              },
-              child: const Text('OK', style: TextStyle(fontSize: 18)),
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Colors.blue,
+              ),
+              child: TextButton(
+                onPressed: () {
+                  setState(() {
+                    aktivast4 = true;
+                  });
+                  _saveData();
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            const menu1level()), // Replace SpecificPage with your target page
+                  );
+                },
+                child: const Text(
+                  'ok',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
             ),
           ],
         );
@@ -212,7 +290,7 @@ class _CariGambarScreenState extends State<CariGambarScreen> {
         backgroundColor: Colors.orangeAccent,
         automaticallyImplyLeading: false,
         title: const Text(
-          'Cari Gambar Memory',
+          'tebak gambar',
           style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
         ),
         leading: IconButton(
@@ -222,64 +300,72 @@ class _CariGambarScreenState extends State<CariGambarScreen> {
           },
         ),
       ),
-      body: Column(
-        children: [
-          const SizedBox(
-            height: 120,
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/background1.png"),
+            fit: BoxFit.cover,
           ),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              children: [
-                Text(
-                  'Skor: $_score',
-                  style: const TextStyle(
-                      fontSize: 32,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.blueAccent),
-                ),
-                if (_countdown > 0)
-                  Text(
-                    'Tunggu $_countdown detik...',
-                    style: const TextStyle(fontSize: 24, color: Colors.red),
-                  ),
-              ],
+        ),
+        child: Column(
+          children: [
+            const SizedBox(
+              height: 120,
             ),
-          ),
-          Expanded(
-            child: GridView.builder(
+            Padding(
               padding: const EdgeInsets.all(16.0),
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 4,
-                crossAxisSpacing: 16.0,
-                mainAxisSpacing: 16.0,
-              ),
-              itemCount: imageItems.length,
-              itemBuilder: (context, index) {
-                final item = imageItems[index];
-                return GestureDetector(
-                  onTap: () => _onCardTapped(item),
-                  child: Card(
-                    color: Colors.amberAccent,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15)),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: item.isFlipped
-                          ? Image.asset(item.imagePath)
-                          : Container(
-                              decoration: BoxDecoration(
-                                color: Colors.blue,
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                            ),
-                    ),
+              child: Column(
+                children: [
+                  Text(
+                    'Skor: $_score',
+                    style: const TextStyle(
+                        fontSize: 32,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.blueAccent),
                   ),
-                );
-              },
+                  if (_countdown > 0)
+                    Text(
+                      'Tunggu $_countdown detik...',
+                      style: const TextStyle(fontSize: 24, color: Colors.red),
+                    ),
+                ],
+              ),
             ),
-          ),
-        ],
+            Expanded(
+              child: GridView.builder(
+                padding: const EdgeInsets.all(16.0),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 4,
+                  crossAxisSpacing: 16.0,
+                  mainAxisSpacing: 16.0,
+                ),
+                itemCount: imageItems.length,
+                itemBuilder: (context, index) {
+                  final item = imageItems[index];
+                  return GestureDetector(
+                    onTap: () => _onCardTapped(item),
+                    child: Card(
+                      color: Colors.amberAccent,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: item.isFlipped
+                            ? Image.asset(item.imagePath)
+                            : Container(
+                                decoration: BoxDecoration(
+                                  color: Colors.blue,
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                              ),
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

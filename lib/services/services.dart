@@ -64,8 +64,8 @@ class Services {
     } else {
       if (kDebugMode) {
         // print(blackping);
-        // print(response.statusCode);
-        // print(response.body);
+        print(response.statusCode);
+        print(response.body);
       }
       return null;
     }

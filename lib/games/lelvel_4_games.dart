@@ -109,20 +109,89 @@ class _SusunKataScreenLevel4State extends State<SusunKataScreenLevel4> {
           _play(randomCompliment);
           showDialog(
             context: context,
-            builder: (context) => AlertDialog(
-              title: const Text("Benar!"),
-              content: const Text("Selamat, jawaban kamu benar!"),
-              actions: [
-                TextButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                    Navigator.of(context).pop();
-                  },
-                  child: const Text("OK"),
+            builder: (BuildContext context) {
+              return AlertDialog(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
                 ),
-              ],
-            ),
+                backgroundColor: Colors.orange.shade100,
+                title: const Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.check_circle,
+                      color: Colors.green,
+                      size: 35,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      'Selamat!',
+                      style: TextStyle(
+                          fontSize: 26,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.blue),
+                    ),
+                  ],
+                ),
+                content: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      'assets/poin.png',
+                      width: 30,
+                      height: 30,
+                    ),
+                    const SizedBox(width: 10),
+                    const Text(
+                      '10',
+                      style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.blue),
+                    ),
+                  ],
+                ),
+                actions: <Widget>[
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Colors.blue,
+                    ),
+                    child: TextButton(
+                      onPressed: () async {
+                        Navigator.of(context).pop();
+                        Navigator.of(context).pop();
+                        // _playKataBerurutan(); // Jika ingin memulai kembali setelah scoring, uncomment line ini
+                      },
+                      child: const Text(
+                        'ok',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  ),
+                ],
+              );
+            },
           );
+
+          // showDialog(
+          //   context: context,
+          //   builder: (context) => AlertDialog(
+          //     title: const Text("Benar!"),
+          //     content: const Text("Selamat, jawaban kamu benar!"),
+          //     actions: [
+          //       TextButton(
+          //         onPressed: () {
+          //           Navigator.of(context).pop();
+          //           Navigator.of(context).pop();
+          //         },
+          //         child: const Text("OK"),
+          //       ),
+          //     ],
+          //   ),
+          // );
         });
 
         timer.cancel();
@@ -175,77 +244,86 @@ class _SusunKataScreenLevel4State extends State<SusunKataScreenLevel4> {
         ),
         backgroundColor: const Color.fromARGB(255, 19, 212, 42),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          // Gambar
-          IconButton(
-            icon: const Icon(Icons.volume_up, size: 50, color: Colors.blue),
-            onPressed: playSound,
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/background4.png"),
+            fit: BoxFit.cover,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset(
-                targetImage,
-                width: 70,
-                height: 70,
-              ),
-              const SizedBox(height: 20),
-              // Kolom kosong untuk jawaban
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: List.generate(answer.length, (index) {
-                  return Container(
-                    width: 50,
-                    height: 50,
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(
+              targetImage,
+              width: 70,
+              height: 70,
+            ),
+            // const SizedBox(height: 20),
+            // Kolom kosong untuk jawaban
+            // Gambar
+            IconButton(
+              icon: const Icon(Icons.volume_up, size: 50, color: Colors.blue),
+              onPressed: playSound,
+            ),
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: List.generate(answer.length, (index) {
+                    return Container(
+                      width: 50,
+                      height: 50,
+                      // margin: const EdgeInsets.all(5),
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.black),
+                        color: Colors.white,
+                      ),
+                      child: Center(
+                        child: Text(
+                          answer[index],
+                          style: const TextStyle(fontSize: 24),
+                        ),
+                      ),
+                    );
+                  }),
+                ),
+              ],
+            ),
+
+            const SizedBox(height: 20),
+            // Pilihan suku kata
+            Wrap(
+              alignment: WrapAlignment.center,
+              children: options4.map((option) {
+                return GestureDetector(
+                  onTap: () {
+                    playAudioForCharacter(option);
+                    updateAnswer(option);
+                  },
+                  child: Container(
+                    width: 70,
+                    height: 70,
                     margin: const EdgeInsets.all(5),
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.black),
-                      color: Colors.white,
+                      color: Colors.yellow[100],
+                      borderRadius: BorderRadius.circular(10),
                     ),
                     child: Center(
                       child: Text(
-                        answer[index],
+                        option,
                         style: const TextStyle(fontSize: 24),
                       ),
                     ),
-                  );
-                }),
-              ),
-            ],
-          ),
-
-          const SizedBox(height: 20),
-          // Pilihan suku kata
-          Wrap(
-            alignment: WrapAlignment.center,
-            children: options4.map((option) {
-              return GestureDetector(
-                onTap: () {
-                  playAudioForCharacter(option);
-                  updateAnswer(option);
-                },
-                child: Container(
-                  width: 70,
-                  height: 70,
-                  margin: const EdgeInsets.all(5),
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.black),
-                    color: Colors.yellow[100],
-                    borderRadius: BorderRadius.circular(10),
                   ),
-                  child: Center(
-                    child: Text(
-                      option,
-                      style: const TextStyle(fontSize: 24),
-                    ),
-                  ),
-                ),
-              );
-            }).toList(),
-          ),
-        ],
+                );
+              }).toList(),
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -88,13 +88,43 @@ class _TextMatchingGameScreenState extends State<TextMatchingGameScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text(
-            'Selamat!',
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+          title: const Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                Icons.check_circle,
+                color: Colors.green,
+                size: 35,
+              ),
+              SizedBox(
+                width: 10,
+              ),
+              Text(
+                'Selamat!',
+                style: TextStyle(
+                    fontSize: 26,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.blue),
+              ),
+            ],
           ),
-          content: const Text(
-            'Kamu berhasil mencocokkan semua teks!',
-            style: TextStyle(fontSize: 20),
+          content: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                'assets/poin.png',
+                width: 30,
+                height: 30,
+              ),
+              const SizedBox(width: 10),
+              const Text(
+                '10',
+                style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.blue),
+              ),
+            ],
           ),
           actions: <Widget>[
             TextButton(
@@ -162,7 +192,12 @@ class _TextMatchingGameScreenState extends State<TextMatchingGameScreen> {
         backgroundColor: Colors.orange,
       ),
       body: Container(
-        color: Colors.lightBlueAccent,
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/background 6.png"),
+            fit: BoxFit.cover,
+          ),
+        ),
         child: Column(
           children: [
             // const Padding(

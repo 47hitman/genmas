@@ -106,64 +106,170 @@ class _ImageMatchingGameScreenState extends State<ImageMatchingGameScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text(
-            'Selamat!',
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
           ),
-          content: const Text(
-            'Kamu berhasil mencocokkan semua gambar!',
-            style: TextStyle(fontSize: 20),
+          backgroundColor: Colors.orange.shade100,
+          title: const Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                Icons.check_circle,
+                color: Colors.green,
+                size: 35,
+              ),
+              SizedBox(
+                width: 10,
+              ),
+              Text(
+                'Selamat!',
+                style: TextStyle(
+                    fontSize: 26,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.blue),
+              ),
+            ],
+          ),
+          content: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                'assets/poin.png',
+                width: 30,
+                height: 30,
+              ),
+              const SizedBox(width: 10),
+              const Text(
+                '10',
+                style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.blue),
+              ),
+            ],
           ),
           actions: <Widget>[
-            TextButton(
-              child: const Text('OK'),
-              onPressed: () {
-                setState(() {
-                  switch (aktivitas2) {
-                    case 1:
-                      aktivast21 = true;
-                      break;
-                    case 2:
-                      aktivast22 = true;
-                      break;
-                    case 3:
-                      aktivast23 = true;
-                      break;
-                    case 4:
-                      aktivast24 = true;
-                      break;
-                    case 5:
-                      aktivast25 = true;
-                      break;
-                    case 6:
-                      aktivast26 = true;
-                      break;
-                    case 7:
-                      aktivast27 = true;
-                      break;
-                    case 8:
-                      aktivast28 = true;
-                      break;
-                    default:
-                      print('Invalid aktivitas2 value: $aktivitas2');
-                      break;
-                  }
-                });
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Colors.blue,
+              ),
+              child: TextButton(
+                onPressed: () async {
+                  setState(() {
+                    switch (aktivitas2) {
+                      case 1:
+                        aktivast21 = true;
+                        break;
+                      case 2:
+                        aktivast22 = true;
+                        break;
+                      case 3:
+                        aktivast23 = true;
+                        break;
+                      case 4:
+                        aktivast24 = true;
+                        break;
+                      case 5:
+                        aktivast25 = true;
+                        break;
+                      case 6:
+                        aktivast26 = true;
+                        break;
+                      case 7:
+                        aktivast27 = true;
+                        break;
+                      case 8:
+                        aktivast28 = true;
+                        break;
+                      default:
+                        print('Invalid aktivitas2 value: $aktivitas2');
+                        break;
+                    }
+                  });
 
-                _saveData();
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) =>
-                          const menu1level()), // Replace SpecificPage with your target page
-                );
-              },
+                  _saveData();
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            const menu1level()), // Replace SpecificPage with your target page
+                  );
+                },
+                child: const Text(
+                  'ok',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
             ),
           ],
         );
       },
     );
   }
+  // void _showSuccessDialog() {
+  //   showDialog(
+  //     context: context,
+  //     builder: (BuildContext context) {
+  //       return AlertDialog(
+  //         title: const Text(
+  //           'Selamat!',
+  //           style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+  //         ),
+  //         content: const Text(
+  //           'Kamu berhasil mencocokkan semua gambar!',
+  //           style: TextStyle(fontSize: 20),
+  //         ),
+  //         actions: <Widget>[
+  //           TextButton(
+  //             child: const Text('OK'),
+  //             onPressed: () {
+  //               setState(() {
+  //                 switch (aktivitas2) {
+  //                   case 1:
+  //                     aktivast21 = true;
+  //                     break;
+  //                   case 2:
+  //                     aktivast22 = true;
+  //                     break;
+  //                   case 3:
+  //                     aktivast23 = true;
+  //                     break;
+  //                   case 4:
+  //                     aktivast24 = true;
+  //                     break;
+  //                   case 5:
+  //                     aktivast25 = true;
+  //                     break;
+  //                   case 6:
+  //                     aktivast26 = true;
+  //                     break;
+  //                   case 7:
+  //                     aktivast27 = true;
+  //                     break;
+  //                   case 8:
+  //                     aktivast28 = true;
+  //                     break;
+  //                   default:
+  //                     print('Invalid aktivitas2 value: $aktivitas2');
+  //                     break;
+  //                 }
+  //               });
+
+  //               _saveData();
+  //               Navigator.push(
+  //                 context,
+  //                 MaterialPageRoute(
+  //                     builder: (context) =>
+  //                         const menu1level()), // Replace SpecificPage with your target page
+  //               );
+  //             },
+  //           ),
+  //         ],
+  //       );
+  //     },
+  //   );
+  // }
 
   bool _checkIfMatched(String imagePath, String targetPath) {
     return imagePath == targetPath;
@@ -175,12 +281,17 @@ class _ImageMatchingGameScreenState extends State<ImageMatchingGameScreen> {
       appBar: AppBar(
         title: const Text(
           'Cocokkan gambar yang sama',
-          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
         ),
         backgroundColor: Colors.orange,
       ),
       body: Container(
-        color: Colors.lightBlueAccent,
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/background 6.png"),
+            fit: BoxFit.cover,
+          ),
+        ),
         child: Column(
           children: [
             // const Padding(

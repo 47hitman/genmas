@@ -112,70 +112,78 @@ class _TebakGambarBerurutanScreenState
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Ayo Tebak Gambar Berikutnya'),
+        title: const Text('tebak gambar'),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          // Display the current images in sequence
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset(
-                images[(currentIndex) % images.length],
-                height: 100,
-                width: 100,
-              ),
-              Image.asset(
-                images[(currentIndex + 1) % images.length],
-                height: 100,
-                width: 100,
-              ),
-              Image.asset(
-                images[(currentIndex + 2) % images.length],
-                height: 100,
-                width: 100,
-              ),
-              const Text(
-                "....",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
-              )
-            ],
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/background5.png"),
+            fit: BoxFit.cover,
           ),
-          const SizedBox(height: 20),
-          const Text(
-            'Tebak gambar berikutnya:',
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(height: 20),
-          // Display the options
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              GestureDetector(
-                onTap: () =>
-                    _checkAnswer(images[(currentIndex + 3) % images.length]),
-                child: Image.asset(
-                  images[(currentIndex + 3) % images.length],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // Display the current images in sequence
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(
+                  images[(currentIndex) % images.length],
                   height: 100,
                   width: 100,
-                  fit: BoxFit.cover,
                 ),
-              ),
-              const SizedBox(width: 20),
-              GestureDetector(
-                onTap: () =>
-                    _checkAnswer(images[(currentIndex + 4) % images.length]),
-                child: Image.asset(
-                  images[(currentIndex + 4) % images.length],
+                Image.asset(
+                  images[(currentIndex + 1) % images.length],
                   height: 100,
                   width: 100,
-                  fit: BoxFit.cover,
                 ),
-              ),
-            ],
-          ),
-        ],
+                Image.asset(
+                  images[(currentIndex + 2) % images.length],
+                  height: 100,
+                  width: 100,
+                ),
+                const Text(
+                  "....",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+                )
+              ],
+            ),
+            const SizedBox(height: 20),
+            // const Text(
+            //   'Tebak gambar berikutnya:',
+            //   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            // ),
+            // const SizedBox(height: 20),
+            // Display the options
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                GestureDetector(
+                  onTap: () =>
+                      _checkAnswer(images[(currentIndex + 3) % images.length]),
+                  child: Image.asset(
+                    images[(currentIndex + 3) % images.length],
+                    height: 100,
+                    width: 100,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                const SizedBox(width: 20),
+                GestureDetector(
+                  onTap: () =>
+                      _checkAnswer(images[(currentIndex + 4) % images.length]),
+                  child: Image.asset(
+                    images[(currentIndex + 4) % images.length],
+                    height: 100,
+                    width: 100,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

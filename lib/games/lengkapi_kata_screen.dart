@@ -235,101 +235,165 @@ class _LengkapiKataScreenState extends State<LengkapiKataScreen> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: const Text('Selamat!'),
-            content: Text('Kata berhasil disusun!\nPoin: $points'),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
+            ),
+            backgroundColor: Colors.orange.shade100,
+            title: const Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.check_circle,
+                  color: Colors.green,
+                  size: 35,
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Text(
+                  'Selamat!',
+                  style: TextStyle(
+                      fontSize: 26,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.blue),
+                ),
+              ],
+            ),
+            content: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(
+                  'assets/poin.png',
+                  width: 30,
+                  height: 30,
+                ),
+                const SizedBox(width: 10),
+                const Text(
+                  '10',
+                  style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.blue),
+                ),
+              ],
+            ),
             actions: <Widget>[
-              TextButton(
-                child: const Text('OK'),
-                onPressed: () async {
-                  setState(() {
-                    if (assetName == 'susu') {
-                      if (soal1 == true) susu1 = true;
-                      if (soal2 == true) susu2 = true;
-                      if (soal3 == true) susu3 = true;
-                      if (soal4 == true) susu4 = true;
-                      if (soal5 == true) susu5 = true;
-                      if (soal6 == true) susu6 = true;
-                    } else if (assetName == 'sawi') {
-                      if (soal1 == true) sawi1 = true;
-                      if (soal2 == true) sawi2 = true;
-                      if (soal3 == true) sawi3 = true;
-                      if (soal4 == true) sawi4 = true;
-                      if (soal5 == true) sawi5 = true;
-                      if (soal6 == true) sawi6 = true;
-                    } else if (assetName == 'sapu') {
-                      if (soal1 == true) sapu1 = true;
-                      if (soal2 == true) sapu2 = true;
-                      if (soal3 == true) sapu3 = true;
-                      if (soal4 == true) sapu4 = true;
-                      if (soal5 == true) sapu5 = true;
-                      if (soal6 == true) sapu6 = true;
-                    } else if (assetName == 'siku') {
-                      if (soal1 == true) siku1 = true;
-                      if (soal2 == true) siku2 = true;
-                      if (soal3 == true) siku3 = true;
-                      if (soal4 == true) siku4 = true;
-                      if (soal5 == true) siku5 = true;
-                      if (soal6 == true) siku6 = true;
-                    } else if (assetName == 'soda') {
-                      if (soal1 == true) soda1 = true;
-                      if (soal2 == true) soda2 = true;
-                      if (soal3 == true) soda3 = true;
-                      if (soal4 == true) soda4 = true;
-                      if (soal5 == true) soda5 = true;
-                      if (soal6 == true) soda6 = true;
-                    } else if (assetName == 'bibir') {
-                      if (soal1 == true) bibir1 = true;
-                      if (soal2 == true) bibir2 = true;
-                      if (soal3 == true) bibir3 = true;
-                      if (soal4 == true) bibir4 = true;
-                      if (soal5 == true) bibir5 = true;
-                      if (soal6 == true) bibir6 = true;
-                    } else if (assetName == 'badak') {
-                      if (soal1 == true) badak1 = true;
-                      if (soal2 == true) badak2 = true;
-                      if (soal3 == true) badak3 = true;
-                      if (soal4 == true) badak4 = true;
-                      if (soal5 == true) badak5 = true;
-                      if (soal6 == true) badak6 = true;
-                    } else if (assetName == 'botol') {
-                      if (soal1 == true) botol1 = true;
-                      if (soal2 == true) botol2 = true;
-                      if (soal3 == true) botol3 = true;
-                      if (soal4 == true) botol4 = true;
-                      if (soal5 == true) botol5 = true;
-                      if (soal6 == true) botol6 = true;
-                    } else if (assetName == 'bayam') {
-                      if (soal1 == true) bayam1 = true;
-                      if (soal2 == true) bayam2 = true;
-                      if (soal3 == true) bayam3 = true;
-                      if (soal4 == true) bayam4 = true;
-                      if (soal5 == true) bayam5 = true;
-                      if (soal6 == true) bayam6 = true;
-                    } else if (assetName == 'beras') {
-                      if (soal1 == true) beras1 = true;
-                      if (soal2 == true) beras2 = true;
-                      if (soal3 == true) beras3 = true;
-                      if (soal4 == true) beras4 = true;
-                      if (soal5 == true) beras5 = true;
-                      if (soal6 == true) beras6 = true;
-                    }
-                  });
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Colors.blue,
+                ),
+                child: TextButton(
+                  onPressed: () async {
+                    setState(() {
+                      if (assetName == 'susu') {
+                        if (soal1 == true) susu1 = true;
+                        if (soal2 == true) susu2 = true;
+                        if (soal3 == true) susu3 = true;
+                        if (soal4 == true) susu4 = true;
+                        if (soal5 == true) susu5 = true;
+                        if (soal6 == true) susu6 = true;
+                      } else if (assetName == 'sawi') {
+                        if (soal1 == true) sawi1 = true;
+                        if (soal2 == true) sawi2 = true;
+                        if (soal3 == true) sawi3 = true;
+                        if (soal4 == true) sawi4 = true;
+                        if (soal5 == true) sawi5 = true;
+                        if (soal6 == true) sawi6 = true;
+                      } else if (assetName == 'sapu') {
+                        if (soal1 == true) sapu1 = true;
+                        if (soal2 == true) sapu2 = true;
+                        if (soal3 == true) sapu3 = true;
+                        if (soal4 == true) sapu4 = true;
+                        if (soal5 == true) sapu5 = true;
+                        if (soal6 == true) sapu6 = true;
+                      } else if (assetName == 'siku') {
+                        if (soal1 == true) siku1 = true;
+                        if (soal2 == true) siku2 = true;
+                        if (soal3 == true) siku3 = true;
+                        if (soal4 == true) siku4 = true;
+                        if (soal5 == true) siku5 = true;
+                        if (soal6 == true) siku6 = true;
+                      } else if (assetName == 'soda') {
+                        if (soal1 == true) soda1 = true;
+                        if (soal2 == true) soda2 = true;
+                        if (soal3 == true) soda3 = true;
+                        if (soal4 == true) soda4 = true;
+                        if (soal5 == true) soda5 = true;
+                        if (soal6 == true) soda6 = true;
+                      } else if (assetName == 'bibir') {
+                        if (soal1 == true) bibir1 = true;
+                        if (soal2 == true) bibir2 = true;
+                        if (soal3 == true) bibir3 = true;
+                        if (soal4 == true) bibir4 = true;
+                        if (soal5 == true) bibir5 = true;
+                        if (soal6 == true) bibir6 = true;
+                      } else if (assetName == 'badak') {
+                        if (soal1 == true) badak1 = true;
+                        if (soal2 == true) badak2 = true;
+                        if (soal3 == true) badak3 = true;
+                        if (soal4 == true) badak4 = true;
+                        if (soal5 == true) badak5 = true;
+                        if (soal6 == true) badak6 = true;
+                      } else if (assetName == 'botol') {
+                        if (soal1 == true) botol1 = true;
+                        if (soal2 == true) botol2 = true;
+                        if (soal3 == true) botol3 = true;
+                        if (soal4 == true) botol4 = true;
+                        if (soal5 == true) botol5 = true;
+                        if (soal6 == true) botol6 = true;
+                      } else if (assetName == 'bayam') {
+                        if (soal1 == true) bayam1 = true;
+                        if (soal2 == true) bayam2 = true;
+                        if (soal3 == true) bayam3 = true;
+                        if (soal4 == true) bayam4 = true;
+                        if (soal5 == true) bayam5 = true;
+                        if (soal6 == true) bayam6 = true;
+                      } else if (assetName == 'beras') {
+                        if (soal1 == true) beras1 = true;
+                        if (soal2 == true) beras2 = true;
+                        if (soal3 == true) beras3 = true;
+                        if (soal4 == true) beras4 = true;
+                        if (soal5 == true) beras5 = true;
+                        if (soal6 == true) beras6 = true;
+                      }
+                    });
 
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            const Level3kvkv()), // Replace SpecificPage with your target page
-                  );
-                  await Services.instance.score(points);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              const Level3kvkv()), // Replace SpecificPage with your target page
+                    );
+                    await Services.instance.score(points);
 
-                  // _playKataBerurutan(); // Jika ingin memulai kembali setelah scoring, uncomment line ini
-                },
+                    // _playKataBerurutan(); // Jika ingin memulai kembali setelah scoring, uncomment line ini
+                  },
+                  child: const Text(
+                    'ok',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
               ),
             ],
           );
         },
       );
+
+      // showDialog(
+      //   context: context,
+      //   builder: (BuildContext context) {
+      //     return AlertDialog(
+      //       title: const Text('Selamat!'),
+      //       content: Text('Kata berhasil disusun!\nPoin: $points'),
+      //       actions: <Widget>[
+      //         TextButton(
+      //           child: const Text('OK'),
+      //         ),
+      //       ],
+      //     );
+      //   },
+      // );
     }
   }
 
@@ -391,11 +455,20 @@ class _LengkapiKataScreenState extends State<LengkapiKataScreen> {
       appBar: AppBar(
         title: const Text('Menyusun Huruf Menjadi Kata'),
       ),
-      body: Padding(
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/background2.png"),
+            fit: BoxFit.cover,
+          ),
+        ),
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
+            const SizedBox(
+              height: 120,
+            ),
             // Text(
             //   'Poin: $points',
             //   style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
@@ -443,7 +516,7 @@ class _LengkapiKataScreenState extends State<LengkapiKataScreen> {
                                 height: 40,
                                 alignment: Alignment.center,
                                 decoration: BoxDecoration(
-                                  border: Border.all(color: Colors.grey),
+                                  border: Border.all(color: Colors.brown),
                                   borderRadius: BorderRadius.circular(8),
                                 ),
                                 child: Text(
@@ -466,7 +539,7 @@ class _LengkapiKataScreenState extends State<LengkapiKataScreen> {
                             height: 40,
                             alignment: Alignment.center,
                             decoration: BoxDecoration(
-                              border: Border.all(color: Colors.grey),
+                              border: Border.all(color: Colors.brown),
                               borderRadius: BorderRadius.circular(8),
                             ),
                             child: Text(
@@ -495,7 +568,8 @@ class _LengkapiKataScreenState extends State<LengkapiKataScreen> {
                                   index); // Call your _pilihHuruf function
                             },
                             child: Chip(
-                              backgroundColor: Colors.grey,
+                              backgroundColor:
+                                  const Color.fromARGB(255, 147, 113, 100),
                               label: Text(
                                 kataAcak[index],
                                 style: const TextStyle(fontSize: 18),
@@ -517,7 +591,8 @@ class _LengkapiKataScreenState extends State<LengkapiKataScreen> {
                           _pilihHuruf(index); // Call your _pilihHuruf function
                         },
                         child: Chip(
-                          backgroundColor: Colors.grey,
+                          backgroundColor:
+                              const Color.fromARGB(255, 147, 113, 100),
                           label: Text(
                             kataAcak[index],
                             style: const TextStyle(fontSize: 18),

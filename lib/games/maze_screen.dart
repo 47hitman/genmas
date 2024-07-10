@@ -38,7 +38,7 @@ class _MazeScreenState extends State<MazeScreen> {
           ),
         ),
         iconTheme: const IconThemeData(color: Colors.white),
-        backgroundColor: const Color.fromARGB(255, 19, 212, 42),
+        backgroundColor: Colors.orange,
       ),
       body: Column(
         children: [
@@ -76,25 +76,95 @@ class _MazeScreenState extends State<MazeScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text(
-            'Selamat!',
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
           ),
-          content: const Text(
-            'Anda telah membantu Andi menemukan jalannya ke sekolah!',
-            style: TextStyle(fontSize: 18),
+          backgroundColor: Colors.orange.shade100,
+          title: const Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                Icons.check_circle,
+                color: Colors.green,
+                size: 35,
+              ),
+              SizedBox(
+                width: 10,
+              ),
+              Text(
+                'Selamat!',
+                style: TextStyle(
+                    fontSize: 26,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.blue),
+              ),
+            ],
+          ),
+          content: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                'assets/poin.png',
+                width: 30,
+                height: 30,
+              ),
+              const SizedBox(width: 10),
+              const Text(
+                '10',
+                style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.blue),
+              ),
+            ],
           ),
           actions: <Widget>[
-            TextButton(
-              child: const Text('OK'),
-              onPressed: () {
-                Navigator.of(context)
-                    .pop(); // Close dialog when OK button is pressed
-              },
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Colors.blue,
+              ),
+              child: TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  Navigator.of(context).pop();
+                },
+                child: const Text(
+                  'ok',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
             ),
           ],
         );
       },
     );
   }
+
+  // void showCompletionDialog() {
+  //   showDialog(
+  //     context: context,
+  //     builder: (BuildContext context) {
+  //       return AlertDialog(
+  //         title: const Text(
+  //           'Selamat!',
+  //           style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+  //         ),
+  //         content: const Text(
+  //           'Anda telah membantu Andi menemukan jalannya ke sekolah!',
+  //           style: TextStyle(fontSize: 18),
+  //         ),
+  //         actions: <Widget>[
+  //           TextButton(
+  //             child: const Text('OK'),
+  //             onPressed: () {
+  //               Navigator.of(context)
+  //                   .pop(); // Close dialog when OK button is pressed
+  //             },
+  //           ),
+  //         ],
+  //       );
+  //     },
+  //   );
+  // }
 }

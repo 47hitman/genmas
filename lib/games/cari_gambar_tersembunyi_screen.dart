@@ -124,15 +124,43 @@ class _HiddenObjectGameScreenState extends State<HiddenObjectGameScreen> {
             borderRadius: BorderRadius.circular(20),
           ),
           backgroundColor: Colors.orange.shade100,
-          title: const Text(
-            'Selamat!',
-            style: TextStyle(
-                fontSize: 24, fontWeight: FontWeight.bold, color: Colors.blue),
+          title: const Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                Icons.check_circle,
+                color: Colors.green,
+                size: 35,
+              ),
+              SizedBox(
+                width: 10,
+              ),
+              Text(
+                'Selamat!',
+                style: TextStyle(
+                    fontSize: 26,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.blue),
+              ),
+            ],
           ),
-          content: const Text(
-            'Kamu berhasil menemukan semua gambar hewan!',
-            style: TextStyle(
-                fontSize: 24, fontWeight: FontWeight.bold, color: Colors.blue),
+          content: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                'assets/poin.png',
+                width: 30,
+                height: 30,
+              ),
+              const SizedBox(width: 10),
+              const Text(
+                '10',
+                style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.blue),
+              ),
+            ],
           ),
           actions: <Widget>[
             Container(
