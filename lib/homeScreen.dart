@@ -22,17 +22,21 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     _doSomething();
-    _play();
+    if (isAudioPlayerReady = false) {
+      _play();
+    }
   }
 
   final AssetsAudioPlayer _player = AssetsAudioPlayer.newPlayer();
   void _play() {
-    _player.open(
-      Audio('assets/intro.mp3'),
-      autoStart: true,
-      showNotification: true,
-      loopMode: LoopMode.single, // Loop the audio
-    );
+    _player.stop().then((_) {
+      _player.open(
+        Audio('assets/intro.mp3'),
+        autoStart: true,
+        showNotification: true,
+        loopMode: LoopMode.single, // Loop the audio
+      );
+    });
   }
 
   @override

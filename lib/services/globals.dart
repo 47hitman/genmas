@@ -17,7 +17,7 @@ String option2 = "";
 String option3 = "";
 
 String appbar = "";
-
+bool isAudioPlayerReady;
 String assetLocation = "";
 String assetName = "";
 
