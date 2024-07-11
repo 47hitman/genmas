@@ -58,6 +58,7 @@ class _Level3kvkvState extends State<Level3kvkv> {
       'sapu': [sapu1, sapu2, sapu3, sapu4, sapu5, sapu6],
       'siku': [siku1, siku2, siku3, siku4, siku5, siku6],
       'soda': [soda1, soda2, soda3, soda4, soda5, soda6],
+      'sawi': [sawi1, sawi2, sawi3, sawi4, sawi5, sawi6],
       'bibir': [bibir1, bibir2, bibir3, bibir4, bibir5, bibir6],
       'badak': [badak1, badak2, badak3, badak4, badak5, badak6],
       'botol': [botol1, botol2, botol3, botol4, botol5, botol6],
@@ -149,7 +150,9 @@ class _Level3kvkvState extends State<Level3kvkv> {
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    assetName == 'susu' ? awal = true : awal = false;
+                    // assetName == 'susu' ? awal = true : awal = false;
+
+                    awal = true;
                     soal1 = true;
                     soal2 = false;
                     soal3 = false;
@@ -185,7 +188,8 @@ class _Level3kvkvState extends State<Level3kvkv> {
                           soal4 = false;
                           soal5 = false;
                           soal6 = false;
-                          assetName != 'susu' ? awal = true : awal = false;
+                          // assetName != 'susu' ? awal = true : awal = false;
+                          awal = false;
                           pilih1 = false;
                           pilih2 = false;
                           pilih3 = false;

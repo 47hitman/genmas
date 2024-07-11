@@ -6,14 +6,14 @@ import 'package:speech_to_text/speech_to_text.dart' as stt;
 
 import '../services/globals.dart';
 
-class VoiceGameScreen extends StatefulWidget {
-  const VoiceGameScreen({super.key});
+class VoiceGameScreen2 extends StatefulWidget {
+  const VoiceGameScreen2({super.key});
 
   @override
-  _VoiceGameScreenState createState() => _VoiceGameScreenState();
+  _VoiceGameScreen2State createState() => _VoiceGameScreen2State();
 }
 
-class _VoiceGameScreenState extends State<VoiceGameScreen> {
+class _VoiceGameScreen2State extends State<VoiceGameScreen2> {
   late stt.SpeechToText _speech;
   bool _isListening = false;
   String _spokenText = '';
@@ -24,7 +24,7 @@ class _VoiceGameScreenState extends State<VoiceGameScreen> {
     super.initState();
     _speech = stt.SpeechToText();
     // Level 2 (aktivitas 2 ini dibaca apa).m4a
-    _play('assets/level5/Level 5.m4a');
+    _play('assets/level2/Level 2 (aktivitas 2 ini dibaca apa).m4a');
   }
 
   final AssetsAudioPlayer _player = AssetsAudioPlayer.newPlayer();
@@ -148,7 +148,7 @@ class _VoiceGameScreenState extends State<VoiceGameScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Voice Game'),
+        title: Text('Kata Pola $appbar'),
       ),
       body: Container(
         decoration: const BoxDecoration(

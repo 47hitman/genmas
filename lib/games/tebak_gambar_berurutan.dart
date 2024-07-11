@@ -125,31 +125,42 @@ class _TebakGambarBerurutanScreenState
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             // Display the current images in sequence
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Image.asset(
-                  images[(currentIndex) % images.length],
-                  height: 100,
-                  width: 100,
+            Container(
+              margin: const EdgeInsets.all(10),
+              padding: const EdgeInsets.all(5),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(
+                  color: Colors.black,
+                  width: 2,
                 ),
-                Image.asset(
-                  images[(currentIndex + 1) % images.length],
-                  height: 100,
-                  width: 100,
-                ),
-                Image.asset(
-                  images[(currentIndex + 2) % images.length],
-                  height: 100,
-                  width: 100,
-                ),
-                const Text(
-                  "....",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
-                )
-              ],
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    images[(currentIndex) % images.length],
+                    height: 100,
+                    width: 100,
+                  ),
+                  Image.asset(
+                    images[(currentIndex + 1) % images.length],
+                    height: 100,
+                    width: 100,
+                  ),
+                  Image.asset(
+                    images[(currentIndex + 2) % images.length],
+                    height: 100,
+                    width: 100,
+                  ),
+                  const Text(
+                    "....",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+                  )
+                ],
+              ),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 50),
             // const Text(
             //   'Tebak gambar berikutnya:',
             //   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
@@ -159,25 +170,43 @@ class _TebakGambarBerurutanScreenState
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                GestureDetector(
-                  onTap: () =>
-                      _checkAnswer(images[(currentIndex + 3) % images.length]),
-                  child: Image.asset(
-                    images[(currentIndex + 3) % images.length],
-                    height: 100,
-                    width: 100,
-                    fit: BoxFit.cover,
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(
+                      color: Colors.black,
+                      width: 2,
+                    ),
+                  ),
+                  child: GestureDetector(
+                    onTap: () => _checkAnswer(
+                        images[(currentIndex + 3) % images.length]),
+                    child: Image.asset(
+                      images[(currentIndex + 3) % images.length],
+                      height: 100,
+                      width: 100,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
                 const SizedBox(width: 20),
-                GestureDetector(
-                  onTap: () =>
-                      _checkAnswer(images[(currentIndex + 4) % images.length]),
-                  child: Image.asset(
-                    images[(currentIndex + 4) % images.length],
-                    height: 100,
-                    width: 100,
-                    fit: BoxFit.cover,
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(
+                      color: Colors.black,
+                      width: 2,
+                    ),
+                  ),
+                  child: GestureDetector(
+                    onTap: () => _checkAnswer(
+                        images[(currentIndex + 4) % images.length]),
+                    child: Image.asset(
+                      images[(currentIndex + 4) % images.length],
+                      height: 100,
+                      width: 100,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
               ],

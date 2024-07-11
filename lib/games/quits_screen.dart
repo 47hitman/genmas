@@ -99,25 +99,28 @@ class _MatchingGameScreenState extends State<MatchingGameScreen> {
             "assets/background5.png",
             fit: BoxFit.cover,
           ),
-          SingleChildScrollView(
-            child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const SizedBox(height: 40),
-                  Image.asset(
-                    targetImage,
-                    height: 150.0,
-                  ),
-                  const SizedBox(height: 20.0),
-                  Wrap(
-                    spacing: 20.0,
-                    runSpacing: 20.0,
-                    children: options.map((option) {
-                      return buildShapeOption(option['path']!);
-                    }).toList(),
-                  ),
-                ],
+          Padding(
+            padding: const EdgeInsets.only(top: 100),
+            child: SingleChildScrollView(
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const SizedBox(height: 40),
+                    Image.asset(
+                      targetImage,
+                      height: 150.0,
+                    ),
+                    const SizedBox(height: 20.0),
+                    Wrap(
+                      spacing: 20.0,
+                      runSpacing: 20.0,
+                      children: options.map((option) {
+                        return buildShapeOption(option['path']!);
+                      }).toList(),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

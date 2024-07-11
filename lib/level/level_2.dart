@@ -4,7 +4,7 @@ import 'package:page_transition/page_transition.dart';
 import '../games/kata_berawalan_screen.dart';
 import '../games/kata_pola_screnn.dart';
 
-import '../games/voice_game_screen.dart';
+import '../games/voice_game_level2.dart';
 import '../services/globals.dart';
 
 class level2 extends StatefulWidget {
@@ -640,13 +640,14 @@ class _level2State extends State<level2> {
                 children: [
                   InkWell(
                     onTap: () {
+                      appbar = "KVKV";
                       voice = "susu";
                       Navigator.push(
                         context,
                         PageTransition(
                           duration: const Duration(milliseconds: 300),
                           type: PageTransitionType.rightToLeft,
-                          child: const VoiceGameScreen(),
+                          child: const VoiceGameScreen2(),
                         ),
                       );
                       // Aksi yang ingin dilakukan ketika tombol ditekan
@@ -749,13 +750,14 @@ class _level2State extends State<level2> {
                 children: [
                   InkWell(
                     onTap: () {
+                      appbar = "KVKV";
                       voice = "sawi";
                       Navigator.push(
                         context,
                         PageTransition(
                           duration: const Duration(milliseconds: 300),
                           type: PageTransitionType.rightToLeft,
-                          child: const VoiceGameScreen(),
+                          child: const VoiceGameScreen2(),
                         ),
                       );
                       // Aksi yang ingin dilakukan ketika tombol ditekan
@@ -857,13 +859,14 @@ class _level2State extends State<level2> {
                 children: [
                   InkWell(
                     onTap: () {
+                      appbar = "KVKV";
                       voice = "sapu";
                       Navigator.push(
                         context,
                         PageTransition(
                           duration: const Duration(milliseconds: 300),
                           type: PageTransitionType.rightToLeft,
-                          child: const VoiceGameScreen(),
+                          child: const VoiceGameScreen2(),
                         ),
                       );
                       // Aksi yang ingin dilakukan ketika tombol ditekan
@@ -965,13 +968,14 @@ class _level2State extends State<level2> {
                 children: [
                   InkWell(
                     onTap: () {
+                      appbar = "KVKV";
                       voice = "siku";
                       Navigator.push(
                         context,
                         PageTransition(
                           duration: const Duration(milliseconds: 300),
                           type: PageTransitionType.rightToLeft,
-                          child: const VoiceGameScreen(),
+                          child: const VoiceGameScreen2(),
                         ),
                       );
                       // Aksi yang ingin dilakukan ketika tombol ditekan
@@ -1073,13 +1077,15 @@ class _level2State extends State<level2> {
                 children: [
                   InkWell(
                     onTap: () {
+                      appbar = "KVKV";
+
                       voice = "soda";
                       Navigator.push(
                         context,
                         PageTransition(
                           duration: const Duration(milliseconds: 300),
                           type: PageTransitionType.rightToLeft,
-                          child: const VoiceGameScreen(),
+                          child: const VoiceGameScreen2(),
                         ),
                       );
                       // Aksi yang ingin dilakukan ketika tombol ditekan
@@ -1206,13 +1212,14 @@ class _level2State extends State<level2> {
                   ),
                   InkWell(
                     onTap: () {
+                      appbar = "KVKVK";
                       voice = "bibir";
                       Navigator.push(
                         context,
                         PageTransition(
                           duration: const Duration(milliseconds: 300),
                           type: PageTransitionType.rightToLeft,
-                          child: const VoiceGameScreen(),
+                          child: const VoiceGameScreen2(),
                         ),
                       );
                       // Aksi yang ingin dilakukan ketika tombol ditekan
@@ -1315,13 +1322,14 @@ class _level2State extends State<level2> {
                   ),
                   InkWell(
                     onTap: () {
+                      appbar = "KVKVK";
                       voice = "badak";
                       Navigator.push(
                         context,
                         PageTransition(
                           duration: const Duration(milliseconds: 300),
                           type: PageTransitionType.rightToLeft,
-                          child: const VoiceGameScreen(),
+                          child: const VoiceGameScreen2(),
                         ),
                       );
                       // Aksi yang ingin dilakukan ketika tombol ditekan
@@ -1423,13 +1431,14 @@ class _level2State extends State<level2> {
                   ),
                   InkWell(
                     onTap: () {
+                      appbar = "KVKVK";
                       voice = "botol";
                       Navigator.push(
                         context,
                         PageTransition(
                           duration: const Duration(milliseconds: 300),
                           type: PageTransitionType.rightToLeft,
-                          child: const VoiceGameScreen(),
+                          child: const VoiceGameScreen2(),
                         ),
                       );
                       // Aksi yang ingin dilakukan ketika tombol ditekan
@@ -1531,13 +1540,14 @@ class _level2State extends State<level2> {
                   ),
                   InkWell(
                     onTap: () {
+                      appbar = "KVKVK";
                       voice = "bayam";
                       Navigator.push(
                         context,
                         PageTransition(
                           duration: const Duration(milliseconds: 300),
                           type: PageTransitionType.rightToLeft,
-                          child: const VoiceGameScreen(),
+                          child: const VoiceGameScreen2(),
                         ),
                       );
                       // Aksi yang ingin dilakukan ketika tombol ditekan
@@ -1639,13 +1649,14 @@ class _level2State extends State<level2> {
                   ),
                   InkWell(
                     onTap: () {
+                      appbar = "KVKVK";
                       voice = "beras";
                       Navigator.push(
                         context,
                         PageTransition(
                           duration: const Duration(milliseconds: 300),
                           type: PageTransitionType.rightToLeft,
-                          child: const VoiceGameScreen(),
+                          child: const VoiceGameScreen2(),
                         ),
                       );
                       // Aksi yang ingin dilakukan ketika tombol ditekan

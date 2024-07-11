@@ -14,12 +14,15 @@ class BerawalnGameScreen extends StatefulWidget {
 
 class _BerawalnGameScreenState extends State<BerawalnGameScreen> {
   String? selectedOption;
+  String? selectedText;
+
   bool matched = false;
   final AssetsAudioPlayer _player = AssetsAudioPlayer.newPlayer();
 
   @override
   void initState() {
     super.initState();
+
     _play(sound);
   }
 
@@ -96,9 +99,17 @@ class _BerawalnGameScreenState extends State<BerawalnGameScreen> {
     return option == targetImage;
   }
 
+  int incorrectAttempts = 0;
   void _checkAnswer() {
-    print(selectedOption);
-    print("--------------------");
+    String targetText = berawalan;
+
+    // Check if targetImage matches any option's image and update targetText
+    for (var option in options) {
+      if (option['image'] == targetImage) {
+        targetText = option['text']!;
+        break;
+      }
+    }
     if (selectedOption != null && _checkIfMatched(selectedOption!)) {
       setState(() {
         matched = true;
@@ -119,25 +130,71 @@ class _BerawalnGameScreenState extends State<BerawalnGameScreen> {
         const SnackBar(content: Text('Cocok! Selamat!')),
       );
     } else {
+      incorrectAttempts++;
       // Future.delayed(const Duration(seconds: 2), () {
       //   _play('assets/option/Ayo coba lagi.m4a');
       // });
-      _play('assets/option/Ayo coba lagi.m4a');
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: const Text('Tidak cocok, coba lagi ya!'),
-          behavior: SnackBarBehavior.floating,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
+      if (incorrectAttempts > 3) {
+        showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: const Text("Bantuan"),
+            content: SizedBox(
+              width: 30.0, // Sesuaikan lebar dialog sesuai kebutuhan Anda
+              height: 120,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    targetImage,
+                    width: 70,
+                    height: 70,
+                  ),
+                  const SizedBox(height: 5),
+                  Text(
+                    targetText,
+                    style: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  setState(() {
+                    answer = List.filled(answer.length, "");
+                    incorrectAttempts =
+                        0; // Reset the counter after showing the hint
+                  });
+                },
+                child: const Text("OK"),
+              ),
+            ],
           ),
-          backgroundColor: Colors.blueGrey[600],
-          duration: const Duration(seconds: 2),
-          action: SnackBarAction(
-            label: 'OK',
-            onPressed: () {},
+        );
+      } else {
+        _play('assets/option/Ayo coba lagi.m4a');
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: const Text('Tidak cocok, coba lagi ya!'),
+            behavior: SnackBarBehavior.floating,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+            backgroundColor: Colors.blueGrey[600],
+            duration: const Duration(seconds: 2),
+            action: SnackBarAction(
+              label: 'OK',
+              onPressed: () {},
+            ),
           ),
-        ),
-      );
+        );
+      }
     }
   }
 
@@ -183,7 +240,9 @@ class _BerawalnGameScreenState extends State<BerawalnGameScreen> {
                         onTap: () {
                           setState(() {
                             selectedOption = option['image'];
-                            _play('assets/level3/Level 3 $selectedOption.m4a');
+                            selectedText = option['text'];
+                            print(selectedText);
+                            _play('assets/level3/Level 3 $selectedText.m4a');
                           });
                         },
                         child: Container(

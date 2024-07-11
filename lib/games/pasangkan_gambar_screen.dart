@@ -182,11 +182,13 @@ class _SingleImageMatchingGameScreenState
                 Opacity(
                   opacity: matched ? 1.0 : 0.5,
                   child: Image.asset(
-                    targetImage == "assets/level1/aktivitas3/kucing.png"
-                        ? "assets/level1/aktivitas3/kucingsamar.png"
-                        : targetImage == "assets/level1/aktivitas3/b.png"
-                            ? "assets/level1/aktivitas3/bsamar.png"
-                            : targetImage, // Default to targetImage if no match
+                    targetImage == "assets/level1/aktivitas3/buku.png"
+                        ? "assets/level1/aktivitas3/bukusamar.png"
+                        : targetImage == "assets/level1/aktivitas3/kucing.png"
+                            ? "assets/level1/aktivitas3/kucingsamar.png"
+                            : targetImage == "assets/level1/aktivitas3/b.png"
+                                ? "assets/level1/aktivitas3/bsamar.png"
+                                : targetImage, // Default to targetImage if no match
                     width: 120,
                     height: 120,
                   ),

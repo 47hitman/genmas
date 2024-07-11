@@ -344,31 +344,77 @@ class _SusunKataScreenLevel4State extends State<SusunKataScreenLevel4> {
     });
   }
 
+  int incorrectAttempts = 0; // Initialize the counter
+
   void checkAnswer() {
     if (answer[0] == correctAnswer[0] && answer[1] == correctAnswer[1]) {
       _playKataBerurutan();
+      incorrectAttempts = 0; // Reset the counter on correct answer
     } else {
-      Future.delayed(const Duration(seconds: 1), () {
-        _play('assets/option/Ayo coba lagi.m4a');
-      });
-      showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-          title: const Text("Salah"),
-          content: const Text("Coba lagi, ya!"),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-                setState(() {
-                  answer = List.filled(answer.length, "");
-                });
-              },
-              child: const Text("OK"),
+      incorrectAttempts++; // Increment the counter on incorrect answer
+
+      if (incorrectAttempts > 3) {
+        showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: const Text("Bantuan"),
+            content: SizedBox(
+              width: 20.0, // Sesuaikan lebar dialog sesuai kebutuhan Anda
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Colors.pink.shade100,
+                  border: Border.all(
+                    color: Colors.pink.shade100, // Warna border pink muda
+                  ),
+                ),
+                padding: const EdgeInsets.all(8.0), // Padding di dalam border
+                child: Text(
+                  selectedOption,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                      fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+              ),
             ),
-          ],
-        ),
-      );
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  setState(() {
+                    answer = List.filled(answer.length, "");
+                    incorrectAttempts =
+                        0; // Reset the counter after showing the hint
+                  });
+                },
+                child: const Text("OK"),
+              ),
+            ],
+          ),
+        );
+      } else {
+        Future.delayed(const Duration(seconds: 1), () {
+          _play('assets/option/Ayo coba lagi.m4a');
+        });
+        showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: const Text("Salah"),
+            content: const Text("Coba lagi, ya!"),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  setState(() {
+                    answer = List.filled(answer.length, "");
+                  });
+                },
+                child: const Text("OK"),
+              ),
+            ],
+          ),
+        );
+      }
     }
   }
 

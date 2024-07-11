@@ -475,9 +475,19 @@ class _LengkapiKataScreenState extends State<LengkapiKataScreen> {
             // ),
             if (timer != false)
               if (_countdown > 0)
-                Text(
-                  'Tunggu $_countdown detik...',
-                  style: const TextStyle(fontSize: 24, color: Colors.red),
+                Column(
+                  children: [
+                    const SizedBox(
+                      height: 100,
+                    ),
+                    Text(
+                      'Tunggu $_countdown detik...',
+                      style: const TextStyle(fontSize: 24, color: Colors.red),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    )
+                  ],
                 ),
 
             assetLocation != null
