@@ -170,24 +170,6 @@ class _MatchingGameScreenAssestmentState
               ),
             ],
           ),
-          // content: Row(
-          //   mainAxisAlignment: MainAxisAlignment.center,
-          //   children: [
-          //     Image.asset(
-          //       'assets/poin.png',
-          //       width: 30,
-          //       height: 30,
-          //     ),
-          //     const SizedBox(width: 10),
-          //     const Text(
-          //       '10',
-          //       style: TextStyle(
-          //           fontSize: 24,
-          //           fontWeight: FontWeight.bold,
-          //           color: Colors.blue),
-          //     ),
-          //   ],
-          // ),
           actions: <Widget>[
             Container(
               decoration: BoxDecoration(

@@ -1,29 +1,22 @@
 import 'dart:async';
-import 'dart:math';
 
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
 
 import '../services/globals.dart';
 
-class KataPola extends StatefulWidget {
-  const KataPola({Key? key}) : super(key: key);
+class KataPolaAsesment extends StatefulWidget {
+  const KataPolaAsesment({Key? key}) : super(key: key);
 
   @override
-  _KataPolaState createState() => _KataPolaState();
+  _KataPolaAsesmentState createState() => _KataPolaAsesmentState();
 }
 
-class _KataPolaState extends State<KataPola> {
-  bool _showInitialScreen = true;
-  bool _showSecondScreen = false;
-  bool _showSuccessDialog = false;
-  int _selectedCount = 0; // Menghitung berapa kali kata 'susu' telah dipilih
+class _KataPolaAsesmentState extends State<KataPolaAsesment> {
   String selectedOption = kvkv;
   @override
   void initState() {
     super.initState();
-    // _startTimer();
-    // _play(sound);
   }
 
   final AssetsAudioPlayer _player = AssetsAudioPlayer.newPlayer();
@@ -35,178 +28,20 @@ class _KataPolaState extends State<KataPola> {
     );
   }
 
-  void _startTimer() {
-    // Tunggu selama 5 detik sebelum menampilkan layar kedua
-    Timer(const Duration(seconds: 5), () {
-      setState(() {
-        _showInitialScreen = false;
-        _showSecondScreen = true;
-        // _play(sound);
-
-        if (selectedOption == 'susu') {
-          _play('assets/level2/Level 2 (aktivitas 2a tunjuk kata susu).m4a');
-        }
-        if (selectedOption == 'sawi') {
-          _play('assets/level2/Level 2 (aktivitas 2a tunjuk kata sawi).m4a');
-        }
-
-        if (selectedOption == 'sapu') {
-          _play('assets/level2/Level 2 (aktivitas 2a tunjuk kata sapu).m4a');
-        }
-
-        if (selectedOption == 'siku') {
-          _play('assets/level2/Level 2 (aktivitas 2a tunjuk kata siku).m4a');
-        }
-
-        if (selectedOption == 'soda') {
-          _play('assets/level2/Level 2 (aktivitas 2a tunjuk kata soda).m4a');
-        }
-        if (selectedOption == 'bibir') {
-          _play('assets/level2/Level 2 (aktivitas 2c tunjuk kata bibir).m4a');
-        }
-        if (selectedOption == 'beras') {
-          _play('assets/level2/Level 2 (aktivitas 2c tunjuk kata beras).m4a');
-        }
-        if (selectedOption == 'beras') {
-          _play('assets/level2/Level 2 (aktivitas 2c tunjuk kata beras).m4a');
-        }
-        if (selectedOption == 'badak') {
-          _play('assets/level2/Level 2 (aktivitas 2c tunjuk kata badak).m4a');
-        }
-        if (selectedOption == 'bayam') {
-          _play('assets/level2/Level 2 (aktivitas 2c tunjuk kata bayam).m4a');
-        }
-        if (selectedOption == 'botol') {
-          _play('assets/level2/Level 2 (aktivitas 2c tunjuk kata botol).m4a');
-        }
-        if (selectedOption == 'bedak') {
-          _play('assets/level2/Level 2 (aktivitas 2c tunjuk kata bedak).m4a');
-        }
-        if (selectedOption == 'bedak') {
-          _play('assets/level2/Level 2 (aktivitas 2c tunjuk kata bedak).m4a');
-        }
-      });
-    });
+  void playSound() async {
+    // _play('assets/level3/Level 3 susu.m4a');
   }
-
-  int _randomizeCount = 0;
-  int _playCount = 0;
-
   void _onWordSelected(String word) {
-    // Cek apakah kata yang dipilih benar
     if (word == kvkv) {
       setState(() {
-        _selectedCount++; // Tambahkan satu ke hitungan kata 'susu'
-        if (_selectedCount == 2) {
-          _showSuccessDialog =
-              true; // Tampilkan dialog jika kata 'susu' sudah dipilih dua kali
-          _showSecondScreen =
-              false; // Sembunyikan layar kedua setelah dialog muncul
-          _selectedCount = 0; // Reset hitungan setelah berhasil
-        }
+        showSuccessDialogWidget();
       });
-
-      // Jika belum dua kali dipilih, acak dua kali kata yang harus dipilih lagi
-      if (_selectedCount < 2) {
-        if (_randomizeCount < 2) {
-          _randomizeButtons(); // Acak tombol lagi
-          _randomizeCount++;
-        }
-
-        final List<String> compliments = [
-          'assets/option/Bagus.m4a',
-          'assets/option/Hebat.m4a',
-          'assets/option/Pintar.m4a'
-        ];
-        final randomCompliment =
-            compliments[Random().nextInt(compliments.length)];
-
-        if (_playCount < 2) {
-          _play(randomCompliment);
-          _playCount++;
-        }
-
-        Future.delayed(const Duration(seconds: 2), () {
-          if (_playCount < 2) {
-            if (selectedOption == 'susu') {
-              _play(
-                  'assets/level2/Level 2 (aktivitas 2a tunjuk kata susu).m4a');
-            } else if (selectedOption == 'sawi') {
-              _play(
-                  'assets/level2/Level 2 (aktivitas 2a tunjuk kata sawi).m4a');
-            } else if (selectedOption == 'sapu') {
-              _play(
-                  'assets/level2/Level 2 (aktivitas 2a tunjuk kata sapu).m4a');
-            } else if (selectedOption == 'siku') {
-              _play(
-                  'assets/level2/Level 2 (aktivitas 2a tunjuk kata siku).m4a');
-            } else if (selectedOption == 'soda') {
-              _play(
-                  'assets/level2/Level 2 (aktivitas 2a tunjuk kata soda).m4a');
-            } else if (selectedOption == 'bibir') {
-              _play(
-                  'assets/level2/Level 2 (aktivitas 2c tunjuk kata bibir).m4a');
-            } else if (selectedOption == 'beras') {
-              _play(
-                  'assets/level2/Level 2 (aktivitas 2c tunjuk kata beras).m4a');
-            } else if (selectedOption == 'badak') {
-              _play(
-                  'assets/level2/Level 2 (aktivitas 2c tunjuk kata badak).m4a');
-            } else if (selectedOption == 'bayam') {
-              _play(
-                  'assets/level2/Level 2 (aktivitas 2c tunjuk kata bayam).m4a');
-            } else if (selectedOption == 'botol') {
-              _play(
-                  'assets/level2/Level 2 (aktivitas 2c tunjuk kata botol).m4a');
-            } else if (selectedOption == 'bedak') {
-              _play(
-                  'assets/level2/Level 2 (aktivitas 2c tunjuk kata bedak).m4a');
-            }
-            _playCount++;
-          }
-        });
-      }
     } else {
-      _play('assets/option/Ayo coba lagi.m4a');
-      // Jika kata yang dipilih salah
-      showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: const Text('Pilihan Salah'),
-            content: Text('Anda memilih kata yang salah. Pilih kata $kvkv.'),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  Navigator.of(context).pop(); // Tutup dialog
-                },
-                child: const Text('OK'),
-              ),
-            ],
-          );
-        },
-      );
+      showSuccessDialogWidget();
     }
   }
 
-  // Fungsi untuk mengacak posisi tombol
-  void _randomizeButtons() {
-    setState(() {
-      // Generate dua indeks acak dari 0 sampai 2 (indeks untuk 'susu', 'air', 'roti')
-      List<int> randomIndexes = [0, 1, 2];
-      randomIndexes.shuffle(); // Acak indeks
-      // Urutkan kembali tombol berdasarkan indeks acak
-      _buttonTexts.shuffle();
-    });
-  }
-
-  // Daftar teks untuk tombol pada layar kedua
   final List<String> _buttonTexts = [kvkv, option2, option3];
-  Future<void> _playAudioAndShowDialog() async {
-    _play(sound);
-    await Future.delayed(const Duration(seconds: 5));
-    _buildSuccessDialog();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -221,42 +56,8 @@ class _KataPolaState extends State<KataPola> {
             fit: BoxFit.cover,
           ),
         ),
-        child: Center(
-          child: _showInitialScreen
-              ? _buildInitialScreen()
-              : _showSecondScreen
-                  ? _buildSecondScreen()
-                  : FutureBuilder(
-                      future: _playAudioAndShowDialog(),
-                      builder: (context, snapshot) {
-                        if (snapshot.connectionState ==
-                            ConnectionState.waiting) {
-                          return _buildInitialScreen();
-                        } else {
-                          return Container(); // or another widget if needed
-                        }
-                      },
-                    ),
-        ),
+        child: Center(child: _buildSecondScreen()),
       ),
-    );
-  }
-
-  Widget _buildInitialScreen() {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        // Text(
-        //   'Ini dibaca $kvkv, ini dibaca apa',
-        //   style: const TextStyle(fontSize: 20),
-        // ),
-        const SizedBox(height: 20),
-        Text(
-          kvkv,
-          style: const TextStyle(
-              fontSize: 60, fontWeight: FontWeight.bold, color: Colors.blue),
-        ),
-      ],
     );
   }
 
@@ -264,10 +65,10 @@ class _KataPolaState extends State<KataPola> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        // Text(
-        //   'Tunjuk kata $kvkv! Pilih kata yang benar:',
-        //   style: const TextStyle(fontSize: 20),
-        // ),
+        IconButton(
+          icon: const Icon(Icons.volume_up, size: 50, color: Colors.blue),
+          onPressed: playSound,
+        ),
         const SizedBox(height: 30),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -316,45 +117,79 @@ class _KataPolaState extends State<KataPola> {
     );
   }
 
-//   Widget _buildSuccessDialog() {
-//     return AlertDialog(
-//       title: const Text('Pilihan berhasil!'),
-//       content: Text('Anda telah berhasil memilih kata $kvkv dua kali.'),
-//       actions: [
-//         TextButton(
-//           onPressed: () {
-//             setState(() {
-//               _showInitialScreen = true;
-//               _showSuccessDialog = false;
-//             });
-//             _startTimer(); // Mulai timer lagi untuk menampilkan layar kedua
-//           },
-//           child: const Text('OK'),
-//         ),
-//       ],
-//     );
-//   }
-// }
-
-  void _buildSuccessDialog() {
+  // void _buildSuccessDialog() {
+  //   showDialog(
+  //     context: context,
+  //     builder: (BuildContext context) {
+  //       return AlertDialog(
+  //         title: const Text('Success'),
+  //         content: Text('Anda telah berhasil memilih kata $kvkv dua kali.'),
+  //         actions: <Widget>[
+  //           TextButton(
+  //             child: const Text('OK'),
+  //             onPressed: () {
+  //               setState(() {
+  //                 _showInitialScreen = true;
+  //                 _showSuccessDialog = false;
+  //               });
+  //               Navigator.of(context).pop();
+  //               Navigator.of(context).pop();
+  //             },
+  //           ),
+  //         ],
+  //       );
+  //     },
+  //   );
+  // }
+  void showSuccessDialogWidget() {
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Success'),
-          content: Text('Anda telah berhasil memilih kata $kvkv dua kali.'),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+          backgroundColor: Colors.orange.shade100,
+          title: const Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                Icons.check_circle,
+                color: Colors.green,
+                size: 35,
+              ),
+              SizedBox(
+                width: 10,
+              ),
+              Text(
+                'Soal Selanjutnya!',
+                style: TextStyle(
+                    fontSize: 26,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.blue),
+              ),
+            ],
+          ),
           actions: <Widget>[
-            TextButton(
-              child: const Text('OK'),
-              onPressed: () {
-                setState(() {
-                  _showInitialScreen = true;
-                  _showSuccessDialog = false;
-                });
-                _startTimer(); // Mulai timer lagi untuk menampilkan layar kedua
-                Navigator.of(context).pop();
-                Navigator.of(context).pop();
-              },
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Colors.blue,
+              ),
+              child: TextButton(
+                onPressed: () {
+                  setState(() {
+                    // _showInitialScreen = true;
+                    // _showSuccessDialog = false;
+                  });
+                  Navigator.of(context).pop();
+                  Navigator.of(context).pop();
+                },
+                child: const Text(
+                  'ok',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
             ),
           ],
         );
