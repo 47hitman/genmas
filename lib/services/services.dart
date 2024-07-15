@@ -147,4 +147,62 @@ class Services {
       return null;
     }
   }
+
+  Future<dynamic> soal() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? token = prefs.getString('auth_token');
+    Uri url = Uri.parse('$blackping/assessment?activity=1&level=1');
+
+    final http.Response response = await http.get(
+      url,
+      headers: <String, String>{
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer $token',
+      },
+    );
+
+    if (response.statusCode == 200) {
+      if (kDebugMode) {
+        // print(response.body);
+      }
+      return jsonDecode(
+          response.body); // Return dynamic to handle both List and Map
+    } else {
+      if (kDebugMode) {
+        // print(blackping);
+        print(response.statusCode);
+        print(response.body);
+      }
+      return null;
+    }
+  }
+
+  Future<dynamic> soal2() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? token = prefs.getString('auth_token');
+    Uri url = Uri.parse('$blackping/assessment?activity=1&level=2');
+
+    final http.Response response = await http.get(
+      url,
+      headers: <String, String>{
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer $token',
+      },
+    );
+
+    if (response.statusCode == 200) {
+      if (kDebugMode) {
+        // print(response.body);
+      }
+      return jsonDecode(
+          response.body); // Return dynamic to handle both List and Map
+    } else {
+      if (kDebugMode) {
+        // print(blackping);
+        print(response.statusCode);
+        print(response.body);
+      }
+      return null;
+    }
+  }
 }

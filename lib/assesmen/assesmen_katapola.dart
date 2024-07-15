@@ -22,15 +22,18 @@ class _KataPolaAsesmentState extends State<KataPolaAsesment> {
   final AssetsAudioPlayer _player = AssetsAudioPlayer.newPlayer();
   void _play(sound) {
     _player.open(
-      Audio(sound),
+      Audio.network(
+        sound, // Ganti dengan URL audio dari internet
+      ),
       autoStart: true,
       showNotification: true,
     );
   }
 
   void playSound() async {
-    // _play('assets/level3/Level 3 susu.m4a');
+    _play(sound);
   }
+
   void _onWordSelected(String word) {
     if (word == kvkv) {
       setState(() {

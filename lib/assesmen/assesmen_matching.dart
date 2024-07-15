@@ -1,22 +1,7 @@
-import 'dart:math';
-
+import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
 
-import '../menu/level_1_menu.dart';
 import '../services/globals.dart';
-
-void main() => runApp(const MyApp());
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: MatchingGameScreenAssestment(),
-    );
-  }
-}
 
 class MatchingGameScreenAssestment extends StatefulWidget {
   const MatchingGameScreenAssestment({super.key});
@@ -31,6 +16,8 @@ class _MatchingGameScreenAssestmentState
   @override
   void initState() {
     super.initState();
+    // print("--------------");
+    // print(targetImage);
     // _play();
   }
 
@@ -59,8 +46,27 @@ class _MatchingGameScreenAssestmentState
   }
 
   void playSound() async {
-    // _play('assets/level3/Level 3 susu.m4a');
+    _play();
   }
+
+  final AssetsAudioPlayer _player = AssetsAudioPlayer.newPlayer();
+
+  void _play() {
+    _player.open(
+      Audio.network(
+        soundAsesmen, // Ganti dengan URL audio dari internet
+      ),
+      autoStart: true,
+      showNotification: true,
+    );
+  }
+
+  @override
+  void dispose() {
+    _player.dispose(); // Dispose the player when done
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -90,7 +96,7 @@ class _MatchingGameScreenAssestmentState
                       onPressed: playSound,
                     ),
                     const SizedBox(height: 40),
-                    Image.asset(
+                    Image.network(
                       targetImage,
                       height: 150.0,
                     ),
@@ -132,7 +138,7 @@ class _MatchingGameScreenAssestmentState
           ),
         ),
         child: Center(
-          child: Image.asset(
+          child: Image.network(
             imagePath,
             height: 70.0,
           ),
