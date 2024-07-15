@@ -87,6 +87,7 @@ class _level3State extends State<level3> {
   @override
   void initState() {
     super.initState();
+    _play2();
     _play('assets/level3/Level 3 (pilihlah salah satu gambar).m4a');
   }
 
@@ -96,6 +97,22 @@ class _level3State extends State<level3> {
       Audio(sound),
       autoStart: true,
       showNotification: true,
+    );
+  }
+
+  @override
+  void dispose() {
+    _player.dispose(); // Melepaskan sumber audio
+    super.dispose();
+  }
+
+  void _play2() {
+    _player.open(
+      Audio('assets/outro.mp3'),
+      volume: 20,
+      autoStart: true,
+      showNotification: true,
+      loopMode: LoopMode.single, // Loop the audio
     );
   }
 
@@ -112,6 +129,7 @@ class _level3State extends State<level3> {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
+            _player.dispose();
             Navigator.push(
               context,
               MaterialPageRoute(
@@ -166,6 +184,7 @@ class _level3State extends State<level3> {
                   itemBuilder: (context, index) {
                     return GestureDetector(
                       onTap: () {
+                        _player.dispose();
                         String imageName = _getImageName(index);
                         assetName = _getText(index);
                         assetLocation =
@@ -255,6 +274,7 @@ class _level3State extends State<level3> {
                     return GestureDetector(
                       onTap: isEnabled
                           ? () {
+                              _player.dispose();
                               String imageName = _getImageName2(index);
                               assetName = _getText2(index);
                               assetLocation =

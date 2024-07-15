@@ -1,3 +1,4 @@
+import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
 import 'package:genmmas/games/voice_game_screen.dart';
 import 'package:page_transition/page_transition.dart';
@@ -12,6 +13,29 @@ class level5 extends StatefulWidget {
 }
 
 class _level5State extends State<level5> {
+  @override
+  void initState() {
+    super.initState();
+    _play();
+  }
+
+  @override
+  void dispose() {
+    _player.dispose(); // Melepaskan sumber audio
+    super.dispose();
+  }
+
+  final AssetsAudioPlayer _player = AssetsAudioPlayer.newPlayer();
+  void _play() {
+    _player.open(
+      Audio('assets/outro.mp3'),
+      volume: 20,
+      autoStart: true,
+      showNotification: true,
+      loopMode: LoopMode.single, // Loop the audio
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,6 +89,7 @@ class _level5State extends State<level5> {
                   ),
                   InkWell(
                     onTap: () {
+                      _player.dispose();
                       voice = "susu";
                       Navigator.push(
                         context,
@@ -114,6 +139,7 @@ class _level5State extends State<level5> {
                 children: [
                   InkWell(
                     onTap: () {
+                      _player.dispose();
                       voice = "sawi";
                       Navigator.push(
                         context,
@@ -169,6 +195,7 @@ class _level5State extends State<level5> {
                   ),
                   InkWell(
                     onTap: () {
+                      _player.dispose();
                       voice = "sapu";
                       Navigator.push(
                         context,
@@ -218,6 +245,7 @@ class _level5State extends State<level5> {
                 children: [
                   InkWell(
                     onTap: () {
+                      _player.dispose();
                       voice = "siku";
                       Navigator.push(
                         context,
@@ -273,6 +301,7 @@ class _level5State extends State<level5> {
                   ),
                   InkWell(
                     onTap: () {
+                      _player.dispose();
                       voice = "soda";
                       Navigator.push(
                         context,
@@ -346,6 +375,7 @@ class _level5State extends State<level5> {
                   ),
                   InkWell(
                     onTap: () {
+                      _player.dispose();
                       voice = "bibir";
                       Navigator.push(
                         context,
@@ -395,6 +425,7 @@ class _level5State extends State<level5> {
                 children: [
                   InkWell(
                     onTap: () {
+                      _player.dispose();
                       voice = "badak";
                       Navigator.push(
                         context,
@@ -450,6 +481,7 @@ class _level5State extends State<level5> {
                   ),
                   InkWell(
                     onTap: () {
+                      _player.dispose();
                       voice = "botol";
                       Navigator.push(
                         context,
@@ -499,6 +531,7 @@ class _level5State extends State<level5> {
                 children: [
                   InkWell(
                     onTap: () {
+                      _player.dispose();
                       voice = "bayam";
                       Navigator.push(
                         context,
@@ -554,6 +587,7 @@ class _level5State extends State<level5> {
                   ),
                   InkWell(
                     onTap: () {
+                      _player.dispose();
                       voice = "beras";
                       Navigator.push(
                         context,

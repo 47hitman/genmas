@@ -1,3 +1,4 @@
+import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 
@@ -12,6 +13,29 @@ class level4 extends StatefulWidget {
 }
 
 class _level4State extends State<level4> {
+  @override
+  void initState() {
+    super.initState();
+    _play();
+  }
+
+  @override
+  void dispose() {
+    _player.dispose(); // Melepaskan sumber audio
+    super.dispose();
+  }
+
+  final AssetsAudioPlayer _player = AssetsAudioPlayer.newPlayer();
+  void _play() {
+    _player.open(
+      Audio('assets/outro.mp3'),
+      volume: 20,
+      autoStart: true,
+      showNotification: true,
+      loopMode: LoopMode.single, // Loop the audio
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,10 +96,14 @@ class _level4State extends State<level4> {
                 children: [
                   InkWell(
                     onTap: () {
+                      _player.dispose();
                       assetName = 'susu';
                       targetImage = 'assets/level4/susu.png';
                       options4 = ["su", "mo", "sa", "su"];
-                      answer = ["", ""];
+                      answer = [
+                        "",
+                        "",
+                      ];
                       correctAnswer = ["su", "su"];
                       Navigator.push(
                         context,
@@ -131,6 +159,7 @@ class _level4State extends State<level4> {
                   ),
                   InkWell(
                     onTap: () {
+                      _player.dispose();
                       assetName = 'sawi';
                       targetImage = 'assets/level4/sawi.png';
                       options4 = ["sa", "ku", "se", "wi"];
@@ -184,6 +213,7 @@ class _level4State extends State<level4> {
                 children: [
                   InkWell(
                     onTap: () {
+                      _player.dispose();
                       assetName = 'sapu';
                       targetImage = 'assets/level4/sapu.png';
                       options4 = ["pe", "ku", "pu", "sa"];
@@ -243,6 +273,7 @@ class _level4State extends State<level4> {
                   ),
                   InkWell(
                     onTap: () {
+                      _player.dispose();
                       assetName = 'siku';
                       targetImage = 'assets/level4/siku.png';
                       options4 = ["su", "ku", "ra", "si"];
@@ -296,6 +327,7 @@ class _level4State extends State<level4> {
                 children: [
                   InkWell(
                     onTap: () {
+                      _player.dispose();
                       assetName = 'soda';
                       targetImage = 'assets/level4/soda.png';
                       options4 = ["su", "so", "ba", "da"];
@@ -390,6 +422,7 @@ class _level4State extends State<level4> {
                   ),
                   InkWell(
                     onTap: () {
+                      _player.dispose();
                       assetName = 'bibir';
                       targetImage = 'assets/level4/bibir.png';
                       options4 = ["be", "bir", "de", "bi"];
@@ -443,6 +476,7 @@ class _level4State extends State<level4> {
                 children: [
                   InkWell(
                     onTap: () {
+                      _player.dispose();
                       assetName = 'badak';
                       targetImage = 'assets/level4/badak.png';
                       options4 = ["da", "kak", "dak", "ba"];
@@ -502,6 +536,7 @@ class _level4State extends State<level4> {
                   ),
                   InkWell(
                     onTap: () {
+                      _player.dispose();
                       assetName = 'botol';
                       targetImage = 'assets/level4/botol.png';
                       options4 = ["do", "bo", "lok", "tol"];
@@ -555,6 +590,7 @@ class _level4State extends State<level4> {
                 children: [
                   InkWell(
                     onTap: () {
+                      _player.dispose();
                       assetName = 'bayam';
                       targetImage = 'assets/level4/bayam.png';
                       options4 = ["yu", "be", "yam", "ba"];
@@ -614,6 +650,7 @@ class _level4State extends State<level4> {
                   ),
                   InkWell(
                     onTap: () {
+                      _player.dispose();
                       assetName = 'beras';
                       targetImage = 'assets/level4/beras.png';
                       options4 = ["ras", "ba", "gus", "be"];

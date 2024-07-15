@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
+import 'package:genmmas/assesmen/assesmen.dart';
 import 'package:page_transition/page_transition.dart';
 
 import 'games_screen.dart';
@@ -22,9 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     _doSomething();
-    if (isAudioPlayerReady = false) {
-      _play();
-    }
+    _play();
   }
 
   final AssetsAudioPlayer _player = AssetsAudioPlayer.newPlayer();
@@ -99,6 +98,7 @@ class _HomeScreenState extends State<HomeScreen> {
     role != ""
         ? setState(() {
             _player.dispose();
+            isAudioPlayerReady = false;
             Navigator.push(
               context,
               PageTransition(
@@ -112,8 +112,20 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void _onAssessmentTap() {
+    setState(() {
+      _player.dispose();
+      isAudioPlayerReady = false;
+      Navigator.push(
+        context,
+        PageTransition(
+          duration: const Duration(milliseconds: 300),
+          type: PageTransitionType.rightToLeft,
+          child: const assesmen(),
+        ),
+      );
+    });
     // Aksi saat tombol ASESMEN ditekan
-    print('ASESMEN ditekan');
+    // print('ASESMEN ditekan');
   }
 
   @override

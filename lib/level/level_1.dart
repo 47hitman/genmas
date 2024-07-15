@@ -1,5 +1,6 @@
 // ignore_for_file: library_private_types_in_public_api
 
+import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
 import 'package:genmmas/games/cocokkan_gambar_screen.dart';
 import 'package:genmmas/games_screen.dart';
@@ -27,6 +28,24 @@ class _level1State extends State<level1> {
   void initState() {
     super.initState();
     _loadData();
+    _play();
+  }
+
+  @override
+  void dispose() {
+    _player.dispose(); // Melepaskan sumber audio
+    super.dispose();
+  }
+
+  final AssetsAudioPlayer _player = AssetsAudioPlayer.newPlayer();
+  void _play() {
+    _player.open(
+      Audio('assets/outro.mp3'),
+      volume: 20,
+      autoStart: true,
+      showNotification: true,
+      loopMode: LoopMode.single, // Loop the audio
+    );
   }
 
   Future<void> _loadData() async {
@@ -115,6 +134,7 @@ class _level1State extends State<level1> {
           leading: IconButton(
             icon: const Icon(Icons.arrow_back),
             onPressed: () {
+              _player.dispose();
               Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -177,6 +197,7 @@ class _level1State extends State<level1> {
                 children: [
                   InkWell(
                     onTap: () {
+                      _player.dispose();
                       Navigator.push(
                         context,
                         PageTransition(
@@ -193,8 +214,7 @@ class _level1State extends State<level1> {
                       decoration: BoxDecoration(
                         shape: BoxShape
                             .circle, // Membuat tombol berbentuk lingkaran
-                        color: const Color.fromARGB(
-                            255, 19, 212, 42), // Warna tombol
+                        color: Colors.red, // Warna tombol
                         boxShadow: [
                           BoxShadow(
                             color: Colors.black.withOpacity(0.3),
@@ -253,6 +273,7 @@ class _level1State extends State<level1> {
                         ),
                         InkWell(
                           onTap: () {
+                            _player.dispose();
                             aktivitas2 = 1;
                             extra1 = '';
                             extratext1 = '';
@@ -287,8 +308,7 @@ class _level1State extends State<level1> {
                             decoration: BoxDecoration(
                               shape: BoxShape
                                   .circle, // Membuat tombol berbentuk lingkaran
-                              color: const Color.fromARGB(
-                                  255, 19, 212, 42), // Warna tombol
+                              color: Colors.orange,
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.black.withOpacity(0.3),
@@ -321,6 +341,7 @@ class _level1State extends State<level1> {
                       children: [
                         InkWell(
                           onTap: () {
+                            _player.dispose();
                             aktivitas2 = 2;
                             extra1 = 'assets/level1/aktivitas2/meja.png';
                             extratext1 = 'meja';
@@ -355,8 +376,7 @@ class _level1State extends State<level1> {
                             decoration: BoxDecoration(
                               shape: BoxShape
                                   .circle, // Membuat tombol berbentuk lingkaran
-                              color: const Color.fromARGB(
-                                  255, 19, 212, 42), // Warna tombol
+                              color: Colors.orange, // Warna tombol
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.black.withOpacity(0.3),
@@ -395,6 +415,7 @@ class _level1State extends State<level1> {
                         ),
                         InkWell(
                           onTap: () {
+                            _player.dispose();
                             aktivitas2 = 3;
                             extra1 = 'assets/level1/aktivitas2/meja.png';
                             extratext1 = 'meja';
@@ -429,8 +450,7 @@ class _level1State extends State<level1> {
                             decoration: BoxDecoration(
                               shape: BoxShape
                                   .circle, // Membuat tombol berbentuk lingkaran
-                              color: const Color.fromARGB(
-                                  255, 19, 212, 42), // Warna tombol
+                              color: Colors.orange, // Warna tombol
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.black.withOpacity(0.3),
@@ -463,6 +483,7 @@ class _level1State extends State<level1> {
                       children: [
                         InkWell(
                           onTap: () {
+                            _player.dispose();
                             aktivitas2 = 4;
                             extra1 = 'assets/level1/aktivitas2/meja.png';
                             extratext1 = 'meja';
@@ -497,8 +518,7 @@ class _level1State extends State<level1> {
                             decoration: BoxDecoration(
                               shape: BoxShape
                                   .circle, // Membuat tombol berbentuk lingkaran
-                              color: const Color.fromARGB(
-                                  255, 19, 212, 42), // Warna tombol
+                              color: Colors.orange,
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.black.withOpacity(0.3),
@@ -537,6 +557,7 @@ class _level1State extends State<level1> {
                         ),
                         InkWell(
                           onTap: () {
+                            _player.dispose();
                             aktivitas2 = 5;
                             extraTexts = [];
 
@@ -560,8 +581,7 @@ class _level1State extends State<level1> {
                             decoration: BoxDecoration(
                               shape: BoxShape
                                   .circle, // Membuat tombol berbentuk lingkaran
-                              color: const Color.fromARGB(
-                                  255, 19, 212, 42), // Warna tombol
+                              color: Colors.orange,
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.black.withOpacity(0.3),
@@ -594,6 +614,7 @@ class _level1State extends State<level1> {
                       children: [
                         InkWell(
                           onTap: () {
+                            _player.dispose();
                             aktivitas2 = 6;
                             extraTexts = ['meja'];
                             itemstext = [
@@ -616,8 +637,7 @@ class _level1State extends State<level1> {
                             decoration: BoxDecoration(
                               shape: BoxShape
                                   .circle, // Membuat tombol berbentuk lingkaran
-                              color: const Color.fromARGB(
-                                  255, 19, 212, 42), // Warna tombol
+                              color: Colors.orange,
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.black.withOpacity(0.3),
@@ -656,6 +676,7 @@ class _level1State extends State<level1> {
                         ),
                         InkWell(
                           onTap: () {
+                            _player.dispose();
                             aktivitas2 = 7;
                             extraTexts = ['meja', 'baju'];
                             itemstext = [
@@ -678,8 +699,7 @@ class _level1State extends State<level1> {
                             decoration: BoxDecoration(
                               shape: BoxShape
                                   .circle, // Membuat tombol berbentuk lingkaran
-                              color: const Color.fromARGB(
-                                  255, 19, 212, 42), // Warna tombol
+                              color: Colors.orange,
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.black.withOpacity(0.3),
@@ -712,6 +732,7 @@ class _level1State extends State<level1> {
                       children: [
                         InkWell(
                           onTap: () {
+                            _player.dispose();
                             aktivitas2 = 8;
                             extraTexts = ['meja', 'baju', 'mobil'];
                             itemstext = [
@@ -734,8 +755,7 @@ class _level1State extends State<level1> {
                             decoration: BoxDecoration(
                               shape: BoxShape
                                   .circle, // Membuat tombol berbentuk lingkaran
-                              color: const Color.fromARGB(
-                                  255, 19, 212, 42), // Warna tombol
+                              color: Colors.orange,
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.black.withOpacity(0.3),
@@ -792,6 +812,7 @@ class _level1State extends State<level1> {
                       children: [
                         InkWell(
                           onTap: () {
+                            _player.dispose();
                             aktivitas3 = 1;
                             sound = 'assets/soal1/Level 1 (aktivitas 3a).m4a';
                             targetImage = 'assets/level1/aktivitas3/kucing.png';
@@ -825,8 +846,7 @@ class _level1State extends State<level1> {
                             decoration: BoxDecoration(
                               shape: BoxShape
                                   .circle, // Membuat tombol berbentuk lingkaran
-                              color: const Color.fromARGB(
-                                  255, 19, 212, 42), // Warna tombol
+                              color: Colors.yellow,
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.black.withOpacity(0.3),
@@ -865,6 +885,7 @@ class _level1State extends State<level1> {
                         ),
                         InkWell(
                           onTap: () {
+                            _player.dispose();
                             aktivitas3 = 2;
                             sound = 'assets/soal1/Level 1 (aktivitas 3b).m4a';
                             targetImage = 'assets/level1/aktivitas3/b.png';
@@ -898,8 +919,7 @@ class _level1State extends State<level1> {
                             decoration: BoxDecoration(
                               shape: BoxShape
                                   .circle, // Membuat tombol berbentuk lingkaran
-                              color: const Color.fromARGB(
-                                  255, 19, 212, 42), // Warna tombol
+                              color: Colors.yellow,
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.black.withOpacity(0.3),
@@ -932,6 +952,7 @@ class _level1State extends State<level1> {
                       children: [
                         InkWell(
                           onTap: () {
+                            _player.dispose();
                             aktivitas3 = 3;
                             sound = 'assets/soal1/Level 1 (aktivitas 3c).m4a';
                             targetImage = 'assets/level1/aktivitas3/buku.png';
@@ -965,8 +986,7 @@ class _level1State extends State<level1> {
                             decoration: BoxDecoration(
                               shape: BoxShape
                                   .circle, // Membuat tombol berbentuk lingkaran
-                              color: const Color.fromARGB(
-                                  255, 19, 212, 42), // Warna tombol
+                              color: Colors.yellow,
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.black.withOpacity(0.3),
@@ -1026,6 +1046,7 @@ class _level1State extends State<level1> {
                         ),
                         InkWell(
                           onTap: () {
+                            _player.dispose();
                             sound = 'assets/soal1/Level 1 (aktivitas 4).m4a';
                             imageItems = [
                               ImageFindItem(
@@ -1123,6 +1144,7 @@ class _level1State extends State<level1> {
                       children: [
                         InkWell(
                           onTap: () {
+                            _player.dispose();
                             sound = 'assets/soal1/Level 1 (aktivitas 5).m4a';
                             images = [
                               'assets/level1/aktivitas5/wortel.png',
@@ -1144,8 +1166,7 @@ class _level1State extends State<level1> {
                             decoration: BoxDecoration(
                               shape: BoxShape
                                   .circle, // Membuat tombol berbentuk lingkaran
-                              color: const Color.fromARGB(
-                                  255, 19, 212, 42), // Warna tombol
+                              color: Colors.blue,
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.black.withOpacity(0.3),
@@ -1205,7 +1226,9 @@ class _level1State extends State<level1> {
                         ),
                         InkWell(
                           onTap: () {
+                            _player.dispose();
                             aktivitas6 = 1;
+
                             targetImage = 'assets/level1/aktivitas6/kubus.png';
                             options = [
                               {
@@ -1237,8 +1260,7 @@ class _level1State extends State<level1> {
                             decoration: BoxDecoration(
                               shape: BoxShape
                                   .circle, // Membuat tombol berbentuk lingkaran
-                              color: const Color.fromARGB(
-                                  255, 19, 212, 42), // Warna tombol
+                              color: Colors.purple,
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.black.withOpacity(0.3),
@@ -1271,6 +1293,7 @@ class _level1State extends State<level1> {
                       children: [
                         InkWell(
                           onTap: () {
+                            _player.dispose();
                             aktivitas6 = 2;
                             targetImage =
                                 'assets/level1/aktivitas6/segiempat.png';
@@ -1304,8 +1327,7 @@ class _level1State extends State<level1> {
                             decoration: BoxDecoration(
                               shape: BoxShape
                                   .circle, // Membuat tombol berbentuk lingkaran
-                              color: const Color.fromARGB(
-                                  255, 19, 212, 42), // Warna tombol
+                              color: Colors.purple,
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.black.withOpacity(0.3),
@@ -1344,6 +1366,7 @@ class _level1State extends State<level1> {
                         ),
                         InkWell(
                           onTap: () {
+                            _player.dispose();
                             aktivitas6 = 3;
                             targetImage = 'assets/level1/aktivitas6/bulat.png';
                             options = [
@@ -1376,8 +1399,7 @@ class _level1State extends State<level1> {
                             decoration: BoxDecoration(
                               shape: BoxShape
                                   .circle, // Membuat tombol berbentuk lingkaran
-                              color: const Color.fromARGB(
-                                  255, 19, 212, 42), // Warna tombol
+                              color: Colors.purple,
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.black.withOpacity(0.3),
@@ -1431,6 +1453,7 @@ class _level1State extends State<level1> {
                       children: [
                         InkWell(
                           onTap: () {
+                            _player.dispose();
                             Navigator.push(
                               context,
                               PageTransition(
@@ -1446,8 +1469,7 @@ class _level1State extends State<level1> {
                             decoration: BoxDecoration(
                               shape: BoxShape
                                   .circle, // Membuat tombol berbentuk lingkaran
-                              color: const Color.fromARGB(
-                                  255, 19, 212, 42), // Warna tombol
+                              color: Colors.pink,
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.black.withOpacity(0.3),

@@ -1,8 +1,6 @@
 import 'dart:math';
 
-import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../menu/level_1_menu.dart';
 import '../services/globals.dart';
@@ -15,60 +13,25 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: MatchingGameScreen(),
+      home: MatchingGameScreenAssestment(),
     );
   }
 }
 
-class MatchingGameScreen extends StatefulWidget {
-  const MatchingGameScreen({super.key});
+class MatchingGameScreenAssestment extends StatefulWidget {
+  const MatchingGameScreenAssestment({super.key});
 
   @override
-  _MatchingGameScreenState createState() => _MatchingGameScreenState();
+  _MatchingGameScreenAssestmentState createState() =>
+      _MatchingGameScreenAssestmentState();
 }
 
-class _MatchingGameScreenState extends State<MatchingGameScreen> {
-  Future<void> _saveData() async {
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-
-    switch (aktivitas6) {
-      case 1:
-        prefs.setBool('aktivast61', aktivast61);
-        break;
-      case 2:
-        prefs.setBool('aktivast62', aktivast62);
-        break;
-      case 3:
-        prefs.setBool('aktivast63', aktivast63);
-        break;
-      default:
-        // print('Invalid aktivitas2 value: $aktivitas2');
-        break;
-    }
-  }
-
+class _MatchingGameScreenAssestmentState
+    extends State<MatchingGameScreenAssestment> {
   @override
   void initState() {
     super.initState();
-
-    _play();
-  }
-
-  final AssetsAudioPlayer _player = AssetsAudioPlayer.newPlayer();
-  void _play() {
-    _player.open(
-      Audio('assets/soal1/Level 1 (aktivitas 6).m4a'),
-      autoStart: true,
-      showNotification: true,
-    );
-  }
-
-  void _play2(sound) {
-    _player.open(
-      Audio(sound),
-      autoStart: true,
-      showNotification: true,
-    );
+    // _play();
   }
 
   String? selectedImage;
@@ -77,22 +40,14 @@ class _MatchingGameScreenState extends State<MatchingGameScreen> {
   void checkAnswer() {
     // Cek apakah gambar yang dipilih memiliki bentuk yang mirip dengan kubus (seperti dadu)
     if (selectedImage == options[0]['path']) {
-      final List<String> compliments = [
-        'assets/option/Bagus.m4a',
-        'assets/option/Hebat.m4a',
-        'assets/option/Pintar.m4a'
-      ];
-      final randomCompliment =
-          compliments[Random().nextInt(compliments.length)];
-      _play2(randomCompliment);
-
       setState(() {
         showSuccessDialogWidget();
         showSuccessDialog = true;
       });
     } else {
-      _play2('assets/option/Ayo coba lagi.m4a');
-      showWrongAnswerDialog(); // Tampilkan dialog jawaban salah
+      showSuccessDialogWidget();
+      showSuccessDialog = true;
+      // showWrongAnswerDialog(); // Tampilkan dialog jawaban salah
     }
   }
 
@@ -103,12 +58,15 @@ class _MatchingGameScreenState extends State<MatchingGameScreen> {
     });
   }
 
+  void playSound() async {
+    // _play('assets/level3/Level 3 susu.m4a');
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Cari Bentuk Gambar yang Sama',
+          'Mencocokkan Gambar',
           style: TextStyle(fontSize: 16),
         ),
       ),
@@ -126,6 +84,11 @@ class _MatchingGameScreenState extends State<MatchingGameScreen> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    IconButton(
+                      icon: const Icon(Icons.volume_up,
+                          size: 50, color: Colors.blue),
+                      onPressed: playSound,
+                    ),
                     const SizedBox(height: 40),
                     Image.asset(
                       targetImage,
@@ -199,7 +162,7 @@ class _MatchingGameScreenState extends State<MatchingGameScreen> {
                 width: 10,
               ),
               Text(
-                'Selamat!',
+                'Soal Selanjutnya!',
                 style: TextStyle(
                     fontSize: 26,
                     fontWeight: FontWeight.bold,
@@ -207,24 +170,24 @@ class _MatchingGameScreenState extends State<MatchingGameScreen> {
               ),
             ],
           ),
-          content: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset(
-                'assets/poin.png',
-                width: 30,
-                height: 30,
-              ),
-              const SizedBox(width: 10),
-              const Text(
-                '10',
-                style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.blue),
-              ),
-            ],
-          ),
+          // content: Row(
+          //   mainAxisAlignment: MainAxisAlignment.center,
+          //   children: [
+          //     Image.asset(
+          //       'assets/poin.png',
+          //       width: 30,
+          //       height: 30,
+          //     ),
+          //     const SizedBox(width: 10),
+          //     const Text(
+          //       '10',
+          //       style: TextStyle(
+          //           fontSize: 24,
+          //           fontWeight: FontWeight.bold,
+          //           color: Colors.blue),
+          //     ),
+          //   ],
+          // ),
           actions: <Widget>[
             Container(
               decoration: BoxDecoration(
@@ -250,13 +213,8 @@ class _MatchingGameScreenState extends State<MatchingGameScreen> {
                     }
                   });
                   resetGame();
-                  _saveData();
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            const menu1level()), // Replace SpecificPage with your target page
-                  );
+                  Navigator.of(context).pop();
+                  Navigator.of(context).pop();
                 },
                 child: const Text(
                   'ok',

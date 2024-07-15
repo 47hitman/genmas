@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
 import 'package:maze/maze.dart' as maze; // Use 'maze' as a prefix
@@ -15,6 +17,14 @@ class _MazeScreenState extends State<MazeScreen> {
   void initState() {
     super.initState();
     _play();
+  }
+
+  void _play2(sound) {
+    _player.open(
+      Audio(sound),
+      autoStart: true,
+      showNotification: true,
+    );
   }
 
   void _play() {
@@ -61,6 +71,14 @@ class _MazeScreenState extends State<MazeScreen> {
                   maze.ImageType.asset, // Use 'maze.ImageType' with the prefix
                 ),
                 onFinish: () {
+                  final List<String> compliments = [
+                    'assets/option/Bagus.m4a',
+                    'assets/option/Hebat.m4a',
+                    'assets/option/Pintar.m4a'
+                  ];
+                  final randomCompliment =
+                      compliments[Random().nextInt(compliments.length)];
+                  _play2(randomCompliment);
                   showCompletionDialog(); // Call function to show dialog
                 },
               ),

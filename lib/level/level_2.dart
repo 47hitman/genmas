@@ -1,3 +1,4 @@
+import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 
@@ -15,6 +16,29 @@ class level2 extends StatefulWidget {
 }
 
 class _level2State extends State<level2> {
+  @override
+  void initState() {
+    super.initState();
+    _play();
+  }
+
+  @override
+  void dispose() {
+    _player.dispose(); // Melepaskan sumber audio
+    super.dispose();
+  }
+
+  final AssetsAudioPlayer _player = AssetsAudioPlayer.newPlayer();
+  void _play() {
+    _player.open(
+      Audio('assets/outro.mp3'),
+      volume: 20,
+      autoStart: true,
+      showNotification: true,
+      loopMode: LoopMode.single, // Loop the audio
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,6 +99,7 @@ class _level2State extends State<level2> {
                 children: [
                   InkWell(
                     onTap: () {
+                      _player.dispose();
                       sound = 'assets/level2/Level 2 (aktivitas 1 sa).m4a';
                       berawalan = "sa";
                       targetImage = 'assets/level2/sapu.png';
@@ -137,6 +162,7 @@ class _level2State extends State<level2> {
                   ),
                   InkWell(
                     onTap: () {
+                      _player.dispose();
                       sound = 'assets/level2/Level 2 (aktivitas 1 si).m4a';
                       berawalan = "si";
                       targetImage = 'assets/level2/siku.png';
@@ -193,6 +219,7 @@ class _level2State extends State<level2> {
                 children: [
                   InkWell(
                     onTap: () {
+                      _player.dispose();
                       sound = 'assets/level2/Level 2 (aktivitas 1 su).m4a';
                       berawalan = "su";
                       targetImage = 'assets/level2/susu.png';
@@ -255,6 +282,7 @@ class _level2State extends State<level2> {
                   ),
                   InkWell(
                     onTap: () {
+                      _player.dispose();
                       sound = 'assets/level2/Level 2 (aktivitas 1 so).m4a';
                       berawalan = "so";
                       targetImage = 'assets/level2/soda.png';
@@ -311,6 +339,7 @@ class _level2State extends State<level2> {
                 children: [
                   InkWell(
                     onTap: () {
+                      _player.dispose();
                       sound = 'assets/level2/Level 2 (aktivitas 1 ba).m4a';
                       berawalan = "ba";
                       targetImage = 'assets/level2/badak.png';
@@ -373,6 +402,7 @@ class _level2State extends State<level2> {
                   ),
                   InkWell(
                     onTap: () {
+                      _player.dispose();
                       sound = 'assets/level2/Level 2 (aktivitas 1 bi).m4a';
                       berawalan = "bi";
                       targetImage = 'assets/level2/bibir.png';
@@ -429,6 +459,7 @@ class _level2State extends State<level2> {
                 children: [
                   InkWell(
                     onTap: () {
+                      _player.dispose();
                       sound = 'assets/level2/Level 2 (aktivitas 1 be).m4a';
                       berawalan = "be";
                       targetImage = 'assets/level2/beras.png';
@@ -491,6 +522,7 @@ class _level2State extends State<level2> {
                   ),
                   InkWell(
                     onTap: () {
+                      _player.dispose();
                       sound = 'assets/level2/Level 2 (aktivitas 1 bo).m4a';
                       berawalan = "bo";
                       targetImage = 'assets/level2/botol.png';
@@ -585,6 +617,7 @@ class _level2State extends State<level2> {
                   ),
                   InkWell(
                     onTap: () {
+                      _player.dispose();
                       sound =
                           'assets/level2/Level 2 (aktivitas 2a ini dibaca susu).m4a';
                       appbar = "KVKV";
@@ -640,6 +673,7 @@ class _level2State extends State<level2> {
                 children: [
                   InkWell(
                     onTap: () {
+                      _player.dispose();
                       appbar = "KVKV";
                       voice = "susu";
                       Navigator.push(
@@ -696,6 +730,7 @@ class _level2State extends State<level2> {
                   ),
                   InkWell(
                     onTap: () {
+                      _player.dispose();
                       sound =
                           'assets/level2/Level 2 (aktivitas 2a ini dibaca sawi).m4a';
                       appbar = "KVKV";
@@ -750,6 +785,7 @@ class _level2State extends State<level2> {
                 children: [
                   InkWell(
                     onTap: () {
+                      _player.dispose();
                       appbar = "KVKV";
                       voice = "sawi";
                       Navigator.push(
@@ -805,6 +841,7 @@ class _level2State extends State<level2> {
                   ),
                   InkWell(
                     onTap: () {
+                      _player.dispose();
                       sound =
                           'assets/level2/Level 2 (aktivitas 2a ini dibaca sapu).m4a';
                       appbar = "KVKV";
@@ -859,6 +896,7 @@ class _level2State extends State<level2> {
                 children: [
                   InkWell(
                     onTap: () {
+                      _player.dispose();
                       appbar = "KVKV";
                       voice = "sapu";
                       Navigator.push(
@@ -920,7 +958,7 @@ class _level2State extends State<level2> {
                       kvkv = "siku";
                       option2 = "bebek";
                       option3 = "jari";
-
+                      _player.dispose();
                       Navigator.push(
                         context,
                         PageTransition(
@@ -968,6 +1006,7 @@ class _level2State extends State<level2> {
                 children: [
                   InkWell(
                     onTap: () {
+                      _player.dispose();
                       appbar = "KVKV";
                       voice = "siku";
                       Navigator.push(
@@ -1029,7 +1068,7 @@ class _level2State extends State<level2> {
                       kvkv = "soda";
                       option2 = "kapas";
                       option3 = "batu";
-
+                      _player.dispose();
                       Navigator.push(
                         context,
                         PageTransition(
@@ -1078,7 +1117,7 @@ class _level2State extends State<level2> {
                   InkWell(
                     onTap: () {
                       appbar = "KVKV";
-
+                      _player.dispose();
                       voice = "soda";
                       Navigator.push(
                         context,
@@ -1157,7 +1196,7 @@ class _level2State extends State<level2> {
                       kvkv = "bibir";
                       option2 = "lidi";
                       option3 = "siku";
-
+                      _player.dispose();
                       Navigator.push(
                         context,
                         PageTransition(
@@ -1212,6 +1251,7 @@ class _level2State extends State<level2> {
                   ),
                   InkWell(
                     onTap: () {
+                      _player.dispose();
                       appbar = "KVKVK";
                       voice = "bibir";
                       Navigator.push(
@@ -1268,7 +1308,7 @@ class _level2State extends State<level2> {
                       kvkv = "badak";
                       option2 = "rusa";
                       option3 = "duku";
-
+                      _player.dispose();
                       Navigator.push(
                         context,
                         PageTransition(
@@ -1322,6 +1362,7 @@ class _level2State extends State<level2> {
                   ),
                   InkWell(
                     onTap: () {
+                      _player.dispose();
                       appbar = "KVKVK";
                       voice = "badak";
                       Navigator.push(
@@ -1377,7 +1418,7 @@ class _level2State extends State<level2> {
                       kvkv = "botol";
                       option2 = "pena";
                       option3 = "dasi";
-
+                      _player.dispose();
                       Navigator.push(
                         context,
                         PageTransition(
@@ -1431,6 +1472,7 @@ class _level2State extends State<level2> {
                   ),
                   InkWell(
                     onTap: () {
+                      _player.dispose();
                       appbar = "KVKVK";
                       voice = "botol";
                       Navigator.push(
@@ -1486,7 +1528,7 @@ class _level2State extends State<level2> {
                       kvkv = "bayam";
                       option2 = "madu";
                       option3 = "dasi";
-
+                      _player.dispose();
                       Navigator.push(
                         context,
                         PageTransition(
@@ -1540,6 +1582,7 @@ class _level2State extends State<level2> {
                   ),
                   InkWell(
                     onTap: () {
+                      _player.dispose();
                       appbar = "KVKVK";
                       voice = "bayam";
                       Navigator.push(
@@ -1595,7 +1638,7 @@ class _level2State extends State<level2> {
                       kvkv = "beras";
                       option2 = "dasi";
                       option3 = "mata";
-
+                      _player.dispose();
                       Navigator.push(
                         context,
                         PageTransition(
@@ -1649,6 +1692,7 @@ class _level2State extends State<level2> {
                   ),
                   InkWell(
                     onTap: () {
+                      _player.dispose();
                       appbar = "KVKVK";
                       voice = "beras";
                       Navigator.push(

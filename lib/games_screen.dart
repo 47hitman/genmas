@@ -7,7 +7,6 @@ import 'menu/level_2_menu.dart';
 import 'menu/level_3_menu.dart';
 import 'menu/level_4_menu.dart';
 import 'menuScreens.dart';
-import 'services/globals.dart';
 
 class GamesScreen extends StatefulWidget {
   const GamesScreen({Key? key}) : super(key: key);
@@ -20,10 +19,7 @@ class _GamesScreenState extends State<GamesScreen> {
   @override
   void initState() {
     super.initState();
-    isAudioPlayerReady = true;
-    if (isAudioPlayerReady = true) {
-      _play();
-    }
+    _play();
   }
 
   final AssetsAudioPlayer _player = AssetsAudioPlayer.newPlayer();
@@ -39,11 +35,13 @@ class _GamesScreenState extends State<GamesScreen> {
 
   @override
   void dispose() {
-    _player.dispose(); // Dispose the player when done
+    _player.stop(); // Menghentikan pemutaran audio
+    _player.dispose(); // Melepaskan sumber audio
     super.dispose();
   }
 
   void _onGamesTap(int level) {
+    _player.dispose();
     // Ganti sesuai dengan fungsi navigasi ke level yang dipilih
     Navigator.push(
       context,
@@ -56,6 +54,7 @@ class _GamesScreenState extends State<GamesScreen> {
   }
 
   void _onGamesTap2(int level) {
+    _player.dispose();
     // Ganti sesuai dengan fungsi navigasi ke level yang dipilih
     Navigator.push(
       context,
@@ -68,6 +67,7 @@ class _GamesScreenState extends State<GamesScreen> {
   }
 
   void _onGamesTap3(int level) {
+    _player.dispose();
     // Ganti sesuai dengan fungsi navigasi ke level yang dipilih
     Navigator.push(
       context,
@@ -80,6 +80,7 @@ class _GamesScreenState extends State<GamesScreen> {
   }
 
   void _onGamesTap4(int level) {
+    _player.dispose();
     Navigator.push(
       context,
       PageTransition(
@@ -91,6 +92,7 @@ class _GamesScreenState extends State<GamesScreen> {
   }
 
   void _onGamesTap5(int level) {
+    _player.dispose();
     // Ganti sesuai dengan fungsi navigasi ke level yang dipilih
     Navigator.push(
       context,
