@@ -1,6 +1,9 @@
+// ignore_for_file: camel_case_types, library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 import 'package:genmmas/assesmen/assesmen_matching.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:rounded_loading_button/rounded_loading_button.dart';
 
 import '../services/globals.dart';
 import '../services/services.dart';
@@ -9,7 +12,17 @@ import 'assesmen_susun_kata.dart';
 import 'assesmen_voice.dart';
 
 List<Map<String, dynamic>> resources = [];
+List<Map<String, dynamic>> resources11 = [];
 List<Map<String, dynamic>> resources2 = [];
+List<Map<String, dynamic>> resources22 = [];
+List<Map<String, dynamic>> resources3 = [];
+List<Map<String, dynamic>> resources33 = [];
+List<Map<String, dynamic>> resources4 = [];
+List<Map<String, dynamic>> resources44 = [];
+List<Map<String, dynamic>> resources5 = [];
+List<Map<String, dynamic>> resources55 = [];
+final RoundedLoadingButtonController _btnController =
+    RoundedLoadingButtonController();
 
 class assesmen extends StatefulWidget {
   const assesmen({Key? key}) : super(key: key);
@@ -19,24 +32,44 @@ class assesmen extends StatefulWidget {
 }
 
 class _assesmenState extends State<assesmen> {
-  // String targetImage = '';
-  // List<Map<String, String>> options = [];
   @override
   void initState() {
     super.initState();
-    _doSomething();
-    _doSomething2();
+    _fetchData(Services.instance.soal, (data) => resources = data);
+    _fetchData(Services.instance.soal11, (data) => resources11 = data);
+    _fetchData(Services.instance.soal2, (data) => resources2 = data);
+    _fetchData(Services.instance.soal22, (data) => resources22 = data);
+    _fetchData(Services.instance.soal3, (data) => resources3 = data);
+    _fetchData(Services.instance.soal33, (data) => resources33 = data);
+    _fetchData(Services.instance.soal4, (data) => resources4 = data);
+    _fetchData(Services.instance.soal44, (data) => resources44 = data);
+    _fetchData(Services.instance.soal5, (data) => resources5 = data);
+    _fetchData(Services.instance.soal55, (data) => resources55 = data);
+  }
+
+  void _fetchData(Future<dynamic> Function() serviceCall,
+      Function(List<Map<String, dynamic>>) onSuccess) async {
+    try {
+      dynamic value = await serviceCall();
+      setState(() {
+        if (value is List<dynamic>) {
+          onSuccess(List<Map<String, dynamic>>.from(value));
+        } else {
+          // Handle unknown data type
+        }
+      });
+    } catch (e) {
+      _showErrorDialog('Error', 'An error occurred while fetching data.');
+    }
   }
 
   void _showErrorDialog(String title, String message) {
     showDialog(
       context: context,
-      barrierDismissible:
-          false, // Prevents dialog from being dismissed by tapping outside
+      barrierDismissible: false,
       builder: (BuildContext context) {
         return WillPopScope(
-          onWillPop: () async =>
-              false, // Prevents dialog from being dismissed by the back button
+          onWillPop: () async => false,
           child: AlertDialog(
             title: Text(title),
             content: Text(message),
@@ -54,50 +87,59 @@ class _assesmenState extends State<assesmen> {
     );
   }
 
-  void _doSomething() async {
-    try {
-      dynamic value = await Services.instance.soal();
-      setState(() {
-        if (value is Map<String, dynamic>) {
-          // Handle map data
-        } else if (value is List<dynamic>) {
-          // print('Received a List:');
-          // print(value);
-          // Cast the dynamic list to a List<Map<String, dynamic>>
-          resources = List<Map<String, dynamic>>.from(value);
-        } else {
-          // Handle unknown data type
-        }
-      });
-    } catch (e) {
-      _showErrorDialog(
-          'Error', 'An error occurred while fetching user information.');
-    }
-  }
-
-  void _doSomething2() async {
-    try {
-      dynamic value = await Services.instance.soal2();
-      setState(() {
-        if (value is Map<String, dynamic>) {
-          // Handle map data
-        } else if (value is List<dynamic>) {
-          // print('Received a List:');
-          // print(value);
-          // Cast the dynamic list to a List<Map<String, dynamic>>
-          resources2 = List<Map<String, dynamic>>.from(value);
-        } else {
-          // Handle unknown data type
-        }
-      });
-    } catch (e) {
-      _showErrorDialog(
-          'Error', 'An error occurred while fetching user information.');
-    }
+  void _showConfirmationDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Konfirmasi'),
+          content: const Text('Apakah kamu yakin menyelesaikan ujian?'),
+          actions: <Widget>[
+            TextButton(
+              child: const Text(
+                'Tidak',
+                style: TextStyle(color: Colors.red, fontSize: 18),
+              ),
+              onPressed: () {
+                _btnController.stop();
+                Navigator.of(context).pop(); // Dismiss the dialog
+              },
+            ),
+            TextButton(
+              child: const Text(
+                'Iya',
+                style: TextStyle(color: Colors.green, fontSize: 18),
+              ),
+              onPressed: () {
+                _btnController.stop();
+                Navigator.of(context).pop(); // Dismiss the dialog
+                // Add your completion logic here
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
   Widget build(BuildContext context) {
+    final loginButton = RoundedLoadingButton(
+      color: const Color.fromARGB(255, 19, 212, 42),
+      controller: _btnController,
+      onPressed: () {
+        _showConfirmationDialog();
+      },
+      child: Container(
+          width: double.infinity,
+          height: 56,
+          decoration: BoxDecoration(
+              color: const Color.fromARGB(255, 19, 212, 42),
+              borderRadius: BorderRadius.circular(30)),
+          child: const Center(
+              child: Text("Selesai",
+                  style: TextStyle(color: Colors.white, fontSize: 26)))),
+    );
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -117,28 +159,29 @@ class _assesmenState extends State<assesmen> {
             fit: BoxFit.cover,
           ),
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Container(
-              width: double.infinity,
-              color: const Color.fromARGB(255, 19, 212, 42),
-              padding: const EdgeInsets.all(16.0),
-              child: const Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Level 1",
-                    style: TextStyle(color: Colors.white, fontSize: 18),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Container(
+                width: double.infinity,
+                color: const Color.fromARGB(
+                    255, 255, 223, 186), // Light orange background
+                padding: const EdgeInsets.all(16.0),
+                child: const Text(
+                  "Level 1",
+                  style: TextStyle(
+                    color: Colors.brown, // Contrasting text color
+                    fontSize: 24, // Larger font size
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'ComicSans', // Playful font
                   ),
-                ],
+                ),
               ),
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            Expanded(
-              child: ListView.builder(
+              const SizedBox(height: 30),
+              ListView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
                 padding: const EdgeInsets.symmetric(
                   vertical: 10,
                   horizontal: 20,
@@ -149,7 +192,6 @@ class _assesmenState extends State<assesmen> {
                   final targetImagesoal = resource['resource']['targetImage'];
                   final optionsList = resource['resource']['option'];
                   final sound = resource['resource']['levelSound'];
-                  // Ensure the optionsList is a List<Map<String, String>>
                   final optionssoal = List<Map<String, String>>.from(
                     optionsList.map((item) => Map<String, String>.from(item)),
                   );
@@ -174,8 +216,10 @@ class _assesmenState extends State<assesmen> {
                         width: 80,
                         height: 80,
                         decoration: BoxDecoration(
-                          color: const Color.fromARGB(255, 19, 212, 42),
-                          borderRadius: BorderRadius.circular(10),
+                          color: const Color.fromARGB(
+                              255, 255, 165, 0), // Bright orange
+                          borderRadius:
+                              BorderRadius.circular(20), // More rounded corners
                           boxShadow: [
                             BoxShadow(
                               color: Colors.black.withOpacity(0.3),
@@ -190,8 +234,9 @@ class _assesmenState extends State<assesmen> {
                             'Soal ${index + 1}',
                             style: const TextStyle(
                               color: Colors.white,
-                              fontSize: 27,
+                              fontSize: 24, // Reduced font size for balance
                               fontWeight: FontWeight.bold,
+                              fontFamily: 'ComicSans',
                             ),
                           ),
                         ),
@@ -200,27 +245,104 @@ class _assesmenState extends State<assesmen> {
                   );
                 },
               ),
-            ),
-
-            Container(
-              width: double.infinity,
-              color: const Color.fromARGB(255, 19, 212, 42),
-              padding: const EdgeInsets.all(16.0),
-              child: const Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Level 2",
-                    style: TextStyle(color: Colors.white, fontSize: 18),
+              Container(
+                width: double.infinity,
+                color: const Color.fromARGB(255, 255, 223, 186),
+                padding: const EdgeInsets.all(16.0),
+                child: const Text(
+                  "Level 1 Letter Discrimination",
+                  style: TextStyle(
+                    color: Colors.brown,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'ComicSans',
                   ),
-                ],
+                ),
               ),
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            Expanded(
-              child: ListView.builder(
+              const SizedBox(height: 30),
+              ListView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                padding: const EdgeInsets.symmetric(
+                  vertical: 10,
+                  horizontal: 20,
+                ),
+                itemCount: resources11.length,
+                itemBuilder: (context, index) {
+                  final resource = resources11[index];
+                  final targetImagesoal = resource['resource']['targetImage'];
+                  final optionsList = resource['resource']['option'];
+                  final sound = resource['resource']['levelSound'];
+                  final optionssoal = List<Map<String, String>>.from(
+                    optionsList.map((item) => Map<String, String>.from(item)),
+                  );
+
+                  return Padding(
+                    padding: const EdgeInsets.only(bottom: 20),
+                    child: InkWell(
+                      onTap: () {
+                        options = optionssoal;
+                        targetImage = targetImagesoal;
+                        soundAsesmen = sound;
+                        Navigator.push(
+                          context,
+                          PageTransition(
+                            duration: const Duration(milliseconds: 300),
+                            type: PageTransitionType.rightToLeft,
+                            child: const MatchingGameScreenAssestment(),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        width: 80,
+                        height: 80,
+                        decoration: BoxDecoration(
+                          color: const Color.fromARGB(255, 255, 165, 0),
+                          borderRadius: BorderRadius.circular(20),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.3),
+                              spreadRadius: 1,
+                              blurRadius: 2,
+                              offset: const Offset(0, 2),
+                            ),
+                          ],
+                        ),
+                        child: Center(
+                          child: Text(
+                            'Soal ${index + 1}',
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'ComicSans',
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  );
+                },
+              ),
+              Container(
+                width: double.infinity,
+                color: const Color.fromARGB(
+                    255, 255, 223, 186), // Light orange background
+                padding: const EdgeInsets.all(16.0),
+                child: const Text(
+                  "Level 2 KVKV",
+                  style: TextStyle(
+                    color: Colors.brown, // Contrasting text color
+                    fontSize: 24, // Larger font size
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'ComicSans', // Playful font
+                  ),
+                ),
+              ),
+              const SizedBox(height: 30),
+              ListView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
                 padding: const EdgeInsets.symmetric(
                   vertical: 10,
                   horizontal: 20,
@@ -233,41 +355,24 @@ class _assesmenState extends State<assesmen> {
                     padding: const EdgeInsets.only(bottom: 20),
                     child: InkWell(
                       onTap: () {
-                        // Pastikan struktur data sesuai dengan yang diharapkan
                         if (resource2.containsKey('resource') &&
                             resource2['resource'] is Map<String, dynamic>) {
                           var resource = resource2['resource'];
-
-                          // Pastikan option ada dan merupakan List<Map<String, dynamic>>
                           if (resource.containsKey('option') &&
                               resource['option'] is List<dynamic>) {
-                            // Coba melakukan pengecoran ke List<Map<String, dynamic>>
                             List<Map<String, dynamic>> optionList =
                                 List<Map<String, dynamic>>.from(
                                     resource['option']);
-
-                            // Pastikan optionList sesuai dengan yang diharapkan
                             if (optionList.isNotEmpty) {
-                              // Mengambil daftar teks dari option
                               List<String> finalOptionsList = optionList
                                   .map((option) => option['text'] as String)
                                   .toList();
-
-                              // Cetak hasilnya
-                              // print(finalOptionsList);
                               kvkv = finalOptionsList[0];
                               option2 = finalOptionsList[1];
-                              option3 = finalOptionsList[3];
-                            } else {
-                              // print('Error: Option list is empty.');
+                              option3 = finalOptionsList[2];
+                              option4 = finalOptionsList[3];
                             }
-                          } else {
-                            // print(
-                            //     'Error: Option list is not in the expected format.');
                           }
-                        } else {
-                          // print(
-                          //     'Error: Resource structure is not in the expected format.');
                         }
                         sound = sound2;
                         appbar = "KVKV";
@@ -279,25 +384,15 @@ class _assesmenState extends State<assesmen> {
                             child: const KataPolaAsesment(),
                           ),
                         );
-                        // print(finalOptionsList);
-                        // options = optionssoal;
-                        // targetImage = targetImagesoal;
-                        // soundAsesmen = sound;
-                        // Navigator.push(
-                        //   context,
-                        //   PageTransition(
-                        //     duration: const Duration(milliseconds: 300),
-                        //     type: PageTransitionType.rightToLeft,
-                        //     child: const MatchingGameScreenAssestment(),
-                        //   ),
-                        // );
                       },
                       child: Container(
                         width: 80,
                         height: 80,
                         decoration: BoxDecoration(
-                          color: const Color.fromARGB(255, 19, 212, 42),
-                          borderRadius: BorderRadius.circular(10),
+                          color: const Color.fromARGB(
+                              255, 135, 206, 235), // Sky blue color
+                          borderRadius:
+                              BorderRadius.circular(20), // More rounded corners
                           boxShadow: [
                             BoxShadow(
                               color: Colors.black.withOpacity(0.3),
@@ -312,8 +407,9 @@ class _assesmenState extends State<assesmen> {
                             'Soal ${index + 1}',
                             style: const TextStyle(
                               color: Colors.white,
-                              fontSize: 27,
+                              fontSize: 24, // Reduced font size for balance
                               fontWeight: FontWeight.bold,
+                              fontFamily: 'ComicSans',
                             ),
                           ),
                         ),
@@ -322,363 +418,595 @@ class _assesmenState extends State<assesmen> {
                   );
                 },
               ),
-            ),
-
-            // Expanded(
-            //   child: ListView.builder(
-            //     padding: const EdgeInsets.symmetric(
-            //       vertical: 10,
-            //       horizontal: 20,
-            //     ),
-            //     itemCount: otherResources
-            //         .length, // Ganti dengan jumlah item dari list kedua
-            //     itemBuilder: (context, index) {
-            //       final resource = otherResources[
-            //           index]; // Ganti dengan sumber data dari list kedua
-
-            //       // Buat widget item untuk list kedua sesuai dengan kebutuhan Anda
-            //       return ListTile(
-            //         title: Text('Item ${index + 1}'),
-            //         // Tambahkan logic atau tampilan sesuai kebutuhan
-            //       );
-            //     },
-            //   ),
-            // ),
-          ],
+              Container(
+                width: double.infinity,
+                color: const Color.fromARGB(
+                    255, 255, 182, 193), // Light pink background
+                padding: const EdgeInsets.all(16.0),
+                child: const Text(
+                  "Level 2 KVKVK",
+                  style: TextStyle(
+                    color: Colors.brown, // Contrasting text color
+                    fontSize: 24, // Larger font size
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'ComicSans',
+                  ),
+                ),
+              ),
+              const SizedBox(height: 30),
+              ListView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                padding: const EdgeInsets.symmetric(
+                  vertical: 10,
+                  horizontal: 20,
+                ),
+                itemCount: resources22.length,
+                itemBuilder: (context, index) {
+                  final resource2 = resources22[index];
+                  final sound2 = resource2['resource']['levelSound'];
+                  return Padding(
+                    padding: const EdgeInsets.only(bottom: 20),
+                    child: InkWell(
+                      onTap: () {
+                        if (resource2.containsKey('resource') &&
+                            resource2['resource'] is Map<String, dynamic>) {
+                          var resource = resource2['resource'];
+                          if (resource.containsKey('option') &&
+                              resource['option'] is List<dynamic>) {
+                            List<Map<String, dynamic>> optionList =
+                                List<Map<String, dynamic>>.from(
+                                    resource['option']);
+                            if (optionList.isNotEmpty) {
+                              List<String> finalOptionsList = optionList
+                                  .map((option) => option['text'] as String)
+                                  .toList();
+                              kvkv = finalOptionsList[0];
+                              option2 = finalOptionsList[1];
+                              option3 = finalOptionsList[2];
+                              option4 = finalOptionsList[3];
+                            }
+                          }
+                        }
+                        sound = sound2;
+                        appbar = "KVKVK";
+                        Navigator.push(
+                          context,
+                          PageTransition(
+                            duration: const Duration(milliseconds: 300),
+                            type: PageTransitionType.rightToLeft,
+                            child: const KataPolaAsesment(),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        width: 80,
+                        height: 80,
+                        decoration: BoxDecoration(
+                          color: const Color.fromARGB(
+                              255, 144, 238, 144), // Light green color
+                          borderRadius:
+                              BorderRadius.circular(20), // More rounded corners
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.3),
+                              spreadRadius: 1,
+                              blurRadius: 2,
+                              offset: const Offset(0, 2),
+                            ),
+                          ],
+                        ),
+                        child: Center(
+                          child: Text(
+                            'Soal ${index + 1}',
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 24, // Reduced font size for balance
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'ComicSans',
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  );
+                },
+              ),
+              Container(
+                width: double.infinity,
+                color: const Color.fromARGB(
+                    255, 255, 223, 186), // Light orange background
+                padding: const EdgeInsets.all(16.0),
+                child: const Text(
+                  "Level 3 KVKV",
+                  style: TextStyle(
+                    color: Colors.brown, // Contrasting text color
+                    fontSize: 24, // Larger font size
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'ComicSans', // Playful font
+                  ),
+                ),
+              ),
+              const SizedBox(height: 30),
+              ListView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                padding: const EdgeInsets.symmetric(
+                  vertical: 10,
+                  horizontal: 20,
+                ),
+                itemCount: resources3.length,
+                itemBuilder: (context, index) {
+                  final resource3 = resources3[index];
+                  final options = resource3['resource']['option'];
+                  final correctAnswer2 = resource3['resource']['correctAnswer'];
+                  final image = resource3['resource']['targetImage'];
+                  final sound = resource3['resource']['levelSound'];
+                  final asset = resource3['resource']['assetName'];
+                  return Padding(
+                    padding: const EdgeInsets.only(bottom: 20),
+                    child: InkWell(
+                      onTap: () {
+                        assetName = asset;
+                        targetImage = image;
+                        optionsAsesmen = options;
+                        answer = ["", "", "", ""];
+                        correctAnswerAsesmen = correctAnswer2;
+                        soundAsesmen = sound;
+                        Navigator.push(
+                          context,
+                          PageTransition(
+                            duration: const Duration(milliseconds: 300),
+                            type: PageTransitionType.rightToLeft,
+                            child: const SusunKataScreenAsesmen(),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        width: 80,
+                        height: 80,
+                        decoration: BoxDecoration(
+                          color: const Color.fromARGB(
+                              255, 135, 206, 235), // Sky blue color
+                          borderRadius:
+                              BorderRadius.circular(20), // More rounded corners
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.3),
+                              spreadRadius: 1,
+                              blurRadius: 2,
+                              offset: const Offset(0, 2),
+                            ),
+                          ],
+                        ),
+                        child: Center(
+                          child: Text(
+                            'Soal ${index + 1}',
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 24, // Reduced font size for balance
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'ComicSans',
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  );
+                },
+              ),
+              Container(
+                width: double.infinity,
+                color: const Color.fromARGB(
+                    255, 255, 182, 193), // Light pink background
+                padding: const EdgeInsets.all(16.0),
+                child: const Text(
+                  "Level 3 KVKVK",
+                  style: TextStyle(
+                    color: Colors.brown, // Contrasting text color
+                    fontSize: 24, // Larger font size
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'ComicSans',
+                  ),
+                ),
+              ),
+              const SizedBox(height: 30),
+              ListView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                padding: const EdgeInsets.symmetric(
+                  vertical: 10,
+                  horizontal: 20,
+                ),
+                itemCount: resources33.length,
+                itemBuilder: (context, index) {
+                  final resource3 = resources33[index];
+                  final options = resource3['resource']['option'];
+                  final correctAnswer2 = resource3['resource']['correctAnswer'];
+                  final image = resource3['resource']['targetImage'];
+                  final sound = resource3['resource']['levelSound'];
+                  final asset = resource3['resource']['assetName'];
+                  return Padding(
+                    padding: const EdgeInsets.only(bottom: 20),
+                    child: InkWell(
+                      onTap: () {
+                        assetName = asset;
+                        targetImage = image;
+                        optionsAsesmen = options;
+                        answer = ["", "", "", ""];
+                        correctAnswerAsesmen = correctAnswer2;
+                        soundAsesmen = sound;
+                        Navigator.push(
+                          context,
+                          PageTransition(
+                            duration: const Duration(milliseconds: 300),
+                            type: PageTransitionType.rightToLeft,
+                            child: const SusunKataScreenAsesmen(),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        width: 80,
+                        height: 80,
+                        decoration: BoxDecoration(
+                          color: const Color.fromARGB(
+                              255, 144, 238, 144), // Light green color
+                          borderRadius:
+                              BorderRadius.circular(20), // More rounded corners
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.3),
+                              spreadRadius: 1,
+                              blurRadius: 2,
+                              offset: const Offset(0, 2),
+                            ),
+                          ],
+                        ),
+                        child: Center(
+                          child: Text(
+                            'Soal ${index + 1}',
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 24, // Reduced font size for balance
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'ComicSans',
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  );
+                },
+              ),
+              Container(
+                width: double.infinity,
+                color: const Color.fromARGB(
+                    255, 255, 223, 186), // Light orange background
+                padding: const EdgeInsets.all(16.0),
+                child: const Text(
+                  "Level 4 KVKV",
+                  style: TextStyle(
+                    color: Colors.brown, // Contrasting text color
+                    fontSize: 24, // Larger font size
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'ComicSans', // Playful font
+                  ),
+                ),
+              ),
+              const SizedBox(height: 30),
+              ListView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                padding: const EdgeInsets.symmetric(
+                  vertical: 10,
+                  horizontal: 20,
+                ),
+                itemCount: resources4.length,
+                itemBuilder: (context, index) {
+                  final resource4 = resources4[index];
+                  final options = resource4['resource']['option'];
+                  final correctAnswer2 = resource4['resource']['correctAnswer'];
+                  final image = resource4['resource']['targetImage'];
+                  final sound = resource4['resource']['levelSound'];
+                  final asset = resource4['resource']['assetName'];
+                  return Padding(
+                    padding: const EdgeInsets.only(bottom: 20),
+                    child: InkWell(
+                      onTap: () {
+                        assetName = asset;
+                        targetImage = image;
+                        optionsAsesmen = options;
+                        answer = ["", ""];
+                        correctAnswerAsesmen = correctAnswer2;
+                        soundAsesmen = sound;
+                        Navigator.push(
+                          context,
+                          PageTransition(
+                            duration: const Duration(milliseconds: 300),
+                            type: PageTransitionType.rightToLeft,
+                            child: const SusunKataScreenAsesmen(),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        width: 80,
+                        height: 80,
+                        decoration: BoxDecoration(
+                          color: const Color.fromARGB(
+                              255, 135, 206, 235), // Sky blue color
+                          borderRadius:
+                              BorderRadius.circular(20), // More rounded corners
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.3),
+                              spreadRadius: 1,
+                              blurRadius: 2,
+                              offset: const Offset(0, 2),
+                            ),
+                          ],
+                        ),
+                        child: Center(
+                          child: Text(
+                            'Soal ${index + 1}',
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 24, // Reduced font size for balance
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'ComicSans',
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  );
+                },
+              ),
+              Container(
+                width: double.infinity,
+                color: const Color.fromARGB(
+                    255, 255, 182, 193), // Light pink background
+                padding: const EdgeInsets.all(16.0),
+                child: const Text(
+                  "Level 4 KVKVK",
+                  style: TextStyle(
+                    color: Colors.brown, // Contrasting text color
+                    fontSize: 24, // Larger font size
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'ComicSans',
+                  ),
+                ),
+              ),
+              const SizedBox(height: 30),
+              ListView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                padding: const EdgeInsets.symmetric(
+                  vertical: 10,
+                  horizontal: 20,
+                ),
+                itemCount: resources44.length,
+                itemBuilder: (context, index) {
+                  final resource4 = resources44[index];
+                  final options = resource4['resource']['option'];
+                  final correctAnswer2 = resource4['resource']['correctAnswer'];
+                  final image = resource4['resource']['targetImage'];
+                  final sound = resource4['resource']['levelSound'];
+                  final asset = resource4['resource']['assetName'];
+                  return Padding(
+                    padding: const EdgeInsets.only(bottom: 20),
+                    child: InkWell(
+                      onTap: () {
+                        assetName = asset;
+                        targetImage = image;
+                        optionsAsesmen = options;
+                        answer = ["", ""];
+                        correctAnswerAsesmen = correctAnswer2;
+                        soundAsesmen = sound;
+                        Navigator.push(
+                          context,
+                          PageTransition(
+                            duration: const Duration(milliseconds: 300),
+                            type: PageTransitionType.rightToLeft,
+                            child: const SusunKataScreenAsesmen(),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        width: 80,
+                        height: 80,
+                        decoration: BoxDecoration(
+                          color: const Color.fromARGB(
+                              255, 144, 238, 144), // Light green color
+                          borderRadius:
+                              BorderRadius.circular(20), // More rounded corners
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.3),
+                              spreadRadius: 1,
+                              blurRadius: 2,
+                              offset: const Offset(0, 2),
+                            ),
+                          ],
+                        ),
+                        child: Center(
+                          child: Text(
+                            'Soal ${index + 1}',
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 24, // Reduced font size for balance
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'ComicSans',
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  );
+                },
+              ),
+              Container(
+                width: double.infinity,
+                color: const Color.fromARGB(
+                    255, 255, 182, 193), // Light pink background
+                padding: const EdgeInsets.all(16.0),
+                child: const Text(
+                  "Level 5 KVKV",
+                  style: TextStyle(
+                    color: Colors.brown, // Contrasting text color
+                    fontSize: 24, // Larger font size
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'ComicSans', // Playful font
+                  ),
+                ),
+              ),
+              const SizedBox(height: 30),
+              ListView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                padding: const EdgeInsets.symmetric(
+                  vertical: 10,
+                  horizontal: 20,
+                ),
+                itemCount: resources5.length,
+                itemBuilder: (context, index) {
+                  final resource5 = resources5[index];
+                  final correctAnswer2 = resource5['resource']['correctAnswer'];
+                  final sound2 = resource5['resource']['levelSound'];
+                  return Padding(
+                    padding: const EdgeInsets.only(bottom: 20),
+                    child: InkWell(
+                      onTap: () {
+                        sound = sound2;
+                        voice = correctAnswer2;
+                        Navigator.push(
+                          context,
+                          PageTransition(
+                            duration: const Duration(milliseconds: 300),
+                            type: PageTransitionType.rightToLeft,
+                            child: const VoiceGameAssesmentScreen(),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        width: 80,
+                        height: 80,
+                        decoration: BoxDecoration(
+                          color: const Color.fromARGB(
+                              255, 135, 206, 235), // Sky blue color
+                          borderRadius:
+                              BorderRadius.circular(20), // More rounded corners
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.3),
+                              spreadRadius: 1,
+                              blurRadius: 2,
+                              offset: const Offset(0, 2),
+                            ),
+                          ],
+                        ),
+                        child: Center(
+                          child: Text(
+                            'Soal ${index + 1}',
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 24, // Reduced font size for balance
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'ComicSans',
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  );
+                },
+              ),
+              Container(
+                width: double.infinity,
+                color: const Color.fromARGB(
+                    255, 255, 223, 186), // Light orange background
+                padding: const EdgeInsets.all(16.0),
+                child: const Text(
+                  "Level 5 KVKVK",
+                  style: TextStyle(
+                    color: Colors.brown, // Contrasting text color
+                    fontSize: 24, // Larger font size
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'ComicSans',
+                  ),
+                ),
+              ),
+              const SizedBox(height: 30),
+              ListView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                padding: const EdgeInsets.symmetric(
+                  vertical: 10,
+                  horizontal: 20,
+                ),
+                itemCount: resources55.length,
+                itemBuilder: (context, index) {
+                  final resource5 = resources55[index];
+                  final correctAnswer2 = resource5['resource']['correctAnswer'];
+                  final sound2 = resource5['resource']['levelSound'];
+                  return Padding(
+                    padding: const EdgeInsets.only(bottom: 20),
+                    child: InkWell(
+                      onTap: () {
+                        sound = sound2;
+                        voice = correctAnswer2;
+                        Navigator.push(
+                          context,
+                          PageTransition(
+                            duration: const Duration(milliseconds: 300),
+                            type: PageTransitionType.rightToLeft,
+                            child: const VoiceGameAssesmentScreen(),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        width: 80,
+                        height: 80,
+                        decoration: BoxDecoration(
+                          color: const Color.fromARGB(
+                              255, 144, 238, 144), // Light green color
+                          borderRadius:
+                              BorderRadius.circular(20), // More rounded corners
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.3),
+                              spreadRadius: 1,
+                              blurRadius: 2,
+                              offset: const Offset(0, 2),
+                            ),
+                          ],
+                        ),
+                        child: Center(
+                          child: Text(
+                            'Soal ${index + 1}',
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 24, // Reduced font size for balance
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'ComicSans',
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  );
+                },
+              ),
+              const SizedBox(
+                height: 90,
+              )
+            ],
+          ),
         ),
+      ),
+      bottomSheet: Container(
+        padding: const EdgeInsets.all(15),
+        child: loginButton,
       ),
     );
   }
 }
-
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       backgroundColor: Colors.white,
-//       appBar: AppBar(
-//         backgroundColor: const Color.fromARGB(255, 19, 212, 42),
-//         title: const Text(
-//           'assesmen',
-//           style: TextStyle(color: Colors.white), // Text warna putih
-//         ),
-//         iconTheme: const IconThemeData(
-//           color: Colors.white, // Icon (panah kembali) warna putih
-//         ),
-//       ),
-//       body: Container(
-//         decoration: const BoxDecoration(
-//           image: DecorationImage(
-//             image: AssetImage("assets/background7.png"),
-//             fit: BoxFit.cover,
-//           ),
-//         ),
-//         child: SingleChildScrollView(
-//           child: Column(
-//             children: [
-//               Container(
-//                 width: double.infinity,
-//                 color: const Color.fromARGB(255, 19, 212, 42),
-//                 padding: const EdgeInsets.all(16.0),
-//                 child: const Column(
-//                   crossAxisAlignment: CrossAxisAlignment.start,
-//                   children: [
-//                     Text(
-//                       "Level 1",
-//                       style: TextStyle(color: Colors.white, fontSize: 18),
-//                     ),
-//                   ],
-//                 ),
-//               ),
-//               const SizedBox(
-//                 height: 30,
-//               ),
-//               Row(
-//                 mainAxisAlignment: MainAxisAlignment.center,
-//                 children: [
-//                   InkWell(
-//                     onTap: () {
-  // targetImage = 'assets/asesmen/1.png';
-  // options = [
-  //   {
-  //     'image': 'tupai',
-  //     'path': 'assets/asesmen/2.png',
-  //   },
-  //   {
-  //     'image': 'topi',
-  //     'path': 'assets/asesmen/1.png',
-  //   },
-  //   {
-  //     'image': 'kursi',
-  //     'path': 'assets/asesmen/3.png',
-  //   },
-  // ];
-//                       Navigator.push(
-//                         context,
-//                         PageTransition(
-//                           duration: const Duration(milliseconds: 300),
-//                           type: PageTransitionType.rightToLeft,
-//                           child: const MatchingGameScreenAssestment(),
-//                         ),
-//                       );
-//                       // Aksi yang ingin dilakukan ketika tombol ditekan
-//                     },
-//                     child: Container(
-//                       width: 80, // Lebar tombol
-//                       height: 80, // Tinggi tombol
-//                       decoration: BoxDecoration(
-//                         shape: BoxShape
-//                             .circle, // Membuat tombol berbentuk lingkaran
-//                         color: const Color.fromARGB(
-//                             255, 19, 212, 42), // Warna tombol
-//                         boxShadow: [
-//                           BoxShadow(
-//                             color: Colors.black.withOpacity(0.3),
-//                             spreadRadius: 1,
-//                             blurRadius: 2,
-//                             offset: const Offset(
-//                                 0, 2), // changes position of shadow
-//                           ),
-//                         ],
-//                       ),
-//                       child: const Center(
-//                         child: Icon(
-//                           Icons.star,
-//                           color:
-//                               Colors.white, // Warna ikon bintang selalu putih
-//                           size: 40, // Ukuran ikon bintang
-//                         ),
-//                       ),
-//                     ),
-//                   ),
-//                   const SizedBox(
-//                     width: 50,
-//                   ),
-//                 ],
-//               ),
-//               const SizedBox(
-//                 height: 30,
-//               ),
-//               Container(
-//                 width: double.infinity,
-//                 color: const Color.fromARGB(255, 19, 212, 42),
-//                 padding: const EdgeInsets.all(16.0),
-//                 child: const Column(
-//                   crossAxisAlignment: CrossAxisAlignment.start,
-//                   children: [
-//                     Text(
-//                       "Level 2",
-//                       style: TextStyle(color: Colors.white, fontSize: 18),
-//                     ),
-//                   ],
-//                 ),
-//               ),
-//               const SizedBox(
-//                 height: 30,
-//               ),
-//               Row(
-//                 mainAxisAlignment: MainAxisAlignment.center,
-//                 children: [
-//                   const SizedBox(
-//                     width: 50,
-//                   ),
-//                   InkWell(
-//                     onTap: () {
-//                       sound =
-//                           'assets/level2/Level 2 (aktivitas 2a ini dibaca susu).m4a';
-//                       appbar = "KVKV";
-//                       kvkv = "susu";
-//                       option2 = "air";
-//                       option3 = "roti";
-//                       Navigator.push(
-//                         context,
-//                         PageTransition(
-//                           duration: const Duration(milliseconds: 300),
-//                           type: PageTransitionType.rightToLeft,
-//                           child: const KataPolaAsesment(),
-//                         ),
-//                       );
-//                       // Aksi yang ingin dilakukan ketika tombol ditekan
-//                     },
-//                     child: Container(
-//                       width: 80, // Lebar tombol
-//                       height: 80, // Tinggi tombol
-//                       decoration: BoxDecoration(
-//                         shape: BoxShape
-//                             .circle, // Membuat tombol berbentuk lingkaran
-//                         color: const Color.fromARGB(
-//                             255, 19, 212, 42), // Warna tombol
-//                         boxShadow: [
-//                           BoxShadow(
-//                             color: Colors.black.withOpacity(0.3),
-//                             spreadRadius: 1,
-//                             blurRadius: 2,
-//                             offset: const Offset(
-//                                 0, 2), // changes position of shadow
-//                           ),
-//                         ],
-//                       ),
-//                       child: const Center(
-//                         child: Icon(
-//                           Icons.star,
-//                           color:
-//                               Colors.white, // Warna ikon bintang selalu putih
-//                           size: 40, // Ukuran ikon bintang
-//                         ),
-//                       ),
-//                     ),
-//                   ),
-//                 ],
-//               ),
-//               const SizedBox(
-//                 height: 30,
-//               ),
-//               Container(
-//                 width: double.infinity,
-//                 color: const Color.fromARGB(255, 19, 212, 42),
-//                 padding: const EdgeInsets.all(16.0),
-//                 child: const Column(
-//                   crossAxisAlignment: CrossAxisAlignment.start,
-//                   children: [
-//                     Text(
-//                       "Level 3",
-//                       style: TextStyle(color: Colors.white, fontSize: 18),
-//                     ),
-//                   ],
-//                 ),
-//               ),
-//               const SizedBox(
-//                 height: 30,
-//               ),
-//               Row(
-//                 mainAxisAlignment: MainAxisAlignment.center,
-//                 children: [
-//                   InkWell(
-//                     onTap: () {
-//                       assetName = 'susu';
-//                       targetImage = 'assets/level4/susu.png';
-//                       options4 = ["u", "s", "s", "u"];
-//                       answer = ["", "", "", ""];
-//                       correctAnswer = ["s", "u", "s" "u"];
-//                       Navigator.push(
-//                         context,
-//                         PageTransition(
-//                           duration: const Duration(milliseconds: 300),
-//                           type: PageTransitionType.rightToLeft,
-//                           child: const SusunKataScreenAsesmen(),
-//                         ),
-//                       );
-//                       // Aksi yang ingin dilakukan ketika tombol ditekan
-//                     },
-//                     child: Container(
-//                       width: 80, // Lebar tombol
-//                       height: 80, // Tinggi tombol
-//                       decoration: BoxDecoration(
-//                         shape: BoxShape
-//                             .circle, // Membuat tombol berbentuk lingkaran
-//                         color: const Color.fromARGB(
-//                             255, 19, 212, 42), // Warna tombol
-//                         boxShadow: [
-//                           BoxShadow(
-//                             color: Colors.black.withOpacity(0.3),
-//                             spreadRadius: 1,
-//                             blurRadius: 2,
-//                             offset: const Offset(
-//                                 0, 2), // changes position of shadow
-//                           ),
-//                         ],
-//                       ),
-//                       child: const Center(
-//                         child: Icon(
-//                           Icons.star,
-//                           color:
-//                               Colors.white, // Warna ikon bintang selalu putih
-//                           size: 40, // Ukuran ikon bintang
-//                         ),
-//                       ),
-//                     ),
-//                   ),
-//                   const SizedBox(
-//                     width: 50,
-//                   ),
-//                 ],
-//               ),
-//               const SizedBox(
-//                 height: 30,
-//               ),
-//               Container(
-//                 width: double.infinity,
-//                 color: const Color.fromARGB(255, 19, 212, 42),
-//                 padding: const EdgeInsets.all(16.0),
-//                 child: const Column(
-//                   crossAxisAlignment: CrossAxisAlignment.start,
-//                   children: [
-//                     Text(
-//                       "Level 4",
-//                       style: TextStyle(color: Colors.white, fontSize: 18),
-//                     ),
-//                   ],
-//                 ),
-//               ),
-//               const SizedBox(
-//                 height: 30,
-//               ),
-//               Row(
-//                 mainAxisAlignment: MainAxisAlignment.center,
-//                 children: [
-//                   const SizedBox(
-//                     width: 50,
-//                   ),
-//                   InkWell(
-//                     onTap: () {
-//                       voice = "susu";
-//                       Navigator.push(
-//                         context,
-//                         PageTransition(
-//                           duration: const Duration(milliseconds: 300),
-//                           type: PageTransitionType.rightToLeft,
-//                           child: const VoiceGameAssesmentScreen(),
-//                         ),
-//                       );
-//                       // Aksi yang ingin dilakukan ketika tombol ditekan
-//                     },
-//                     child: Container(
-//                       width: 80, // Lebar tombol
-//                       height: 80, // Tinggi tombol
-//                       decoration: BoxDecoration(
-//                         shape: BoxShape
-//                             .circle, // Membuat tombol berbentuk lingkaran
-//                         color: const Color.fromARGB(
-//                             255, 19, 212, 42), // Warna tombol
-//                         boxShadow: [
-//                           BoxShadow(
-//                             color: Colors.black.withOpacity(0.3),
-//                             spreadRadius: 1,
-//                             blurRadius: 2,
-//                             offset: const Offset(
-//                                 0, 2), // changes position of shadow
-//                           ),
-//                         ],
-//                       ),
-//                       child: const Center(
-//                         child: Icon(
-//                           Icons.star,
-//                           color:
-//                               Colors.white, // Warna ikon bintang selalu putih
-//                           size: 40, // Ukuran ikon bintang
-//                         ),
-//                       ),
-//                     ),
-//                   ),
-//                 ],
-//               ),
-//               const SizedBox(
-//                 height: 30,
-//               ),
-//             ],
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }

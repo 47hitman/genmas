@@ -181,7 +181,10 @@ class _VoiceGameAssesmentScreenState extends State<VoiceGameAssesmentScreen> {
     setState(() => _spokenText = '');
   }
 
-  void playSound() async {}
+  void playSound() async {
+    _play(sound);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

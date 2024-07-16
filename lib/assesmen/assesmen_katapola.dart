@@ -44,7 +44,7 @@ class _KataPolaAsesmentState extends State<KataPolaAsesment> {
     }
   }
 
-  final List<String> _buttonTexts = [kvkv, option2, option3];
+  final List<String> _buttonTexts = [kvkv, option2, option3, option4];
 
   @override
   Widget build(BuildContext context) {
@@ -81,11 +81,11 @@ class _KataPolaAsesmentState extends State<KataPolaAsesment> {
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.green,
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               ), // Index 0
               child: Text(
                 _buttonTexts[0],
-                style: const TextStyle(fontSize: 30, color: Colors.white),
+                style: const TextStyle(fontSize: 18, color: Colors.white),
               ),
             ),
             const SizedBox(width: 10),
@@ -94,11 +94,11 @@ class _KataPolaAsesmentState extends State<KataPolaAsesment> {
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.orange,
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               ), // Index 1
               child: Text(
                 _buttonTexts[1],
-                style: const TextStyle(fontSize: 30, color: Colors.white),
+                style: const TextStyle(fontSize: 18, color: Colors.white),
               ),
             ),
             const SizedBox(width: 10),
@@ -107,11 +107,24 @@ class _KataPolaAsesmentState extends State<KataPolaAsesment> {
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.pink,
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               ), // Index 2
               child: Text(
                 _buttonTexts[2],
-                style: const TextStyle(fontSize: 30, color: Colors.white),
+                style: const TextStyle(fontSize: 18, color: Colors.white),
+              ),
+            ),
+            const SizedBox(width: 10),
+            ElevatedButton(
+              onPressed: () => _onWordSelected(_buttonTexts[2]),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.pink,
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              ), // Index 2
+              child: Text(
+                _buttonTexts[3],
+                style: const TextStyle(fontSize: 18, color: Colors.white),
               ),
             ),
           ],

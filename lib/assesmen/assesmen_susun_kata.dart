@@ -23,7 +23,9 @@ class _SusunKataScreenAsesmenState extends State<SusunKataScreenAsesmen> {
   final AssetsAudioPlayer _player = AssetsAudioPlayer.newPlayer();
   void _play(sound) {
     _player.open(
-      Audio(sound),
+      Audio.network(
+        sound, // Ganti dengan URL audio dari internet
+      ),
       autoStart: true,
       showNotification: true,
     );
@@ -81,14 +83,16 @@ class _SusunKataScreenAsesmenState extends State<SusunKataScreenAsesmen> {
     );
   }
 
-  void playSound() async {}
+  void playSound() async {
+    _play(soundAsesmen);
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Susun Kata Level 4',
+          'Alfabet Lenkap',
           style: TextStyle(color: Colors.white),
         ),
         backgroundColor: const Color.fromARGB(255, 19, 212, 42),
@@ -101,75 +105,95 @@ class _SusunKataScreenAsesmenState extends State<SusunKataScreenAsesmen> {
           ),
         ),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(
-              targetImage,
-              width: 70,
-              height: 70,
+            const SizedBox(
+              height: 20,
             ),
-            // const SizedBox(height: 20),
-            // Kolom kosong untuk jawaban
-            // Gambar
-            IconButton(
-              icon: const Icon(Icons.volume_up, size: 50, color: Colors.blue),
-              onPressed: playSound,
-            ),
-
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: List.generate(answer.length, (index) {
-                    return Container(
-                      width: 50,
-                      height: 50,
-                      // margin: const EdgeInsets.all(5),
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.black),
-                        color: Colors.white,
-                      ),
-                      child: Center(
-                        child: Text(
-                          answer[index],
-                          style: const TextStyle(fontSize: 24),
-                        ),
-                      ),
-                    );
-                  }),
+                IconButton(
+                  icon:
+                      const Icon(Icons.volume_up, size: 50, color: Colors.blue),
+                  onPressed: playSound,
                 ),
               ],
             ),
+            const SizedBox(
+              height: 70,
+            ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.network(
+                  targetImage,
+                  width: 70,
+                  height: 70,
+                ),
+                // const SizedBox(height: 20),
+                // Kolom kosong untuk jawaban
+                // Gambar
+                IconButton(
+                  icon:
+                      const Icon(Icons.volume_up, size: 50, color: Colors.blue),
+                  onPressed: playSound,
+                ),
 
-            const SizedBox(height: 20),
-            // Pilihan suku kata
-            Wrap(
-              alignment: WrapAlignment.center,
-              children: options4.map((option) {
-                return GestureDetector(
-                  onTap: () {
-                    // playAudioForCharacter(option);
-                    updateAnswer(option);
-                  },
-                  child: Container(
-                    width: 70,
-                    height: 70,
-                    margin: const EdgeInsets.all(5),
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.black),
-                      color: Colors.yellow[100],
-                      borderRadius: BorderRadius.circular(10),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: List.generate(answer.length, (index) {
+                        return Container(
+                          width: 50,
+                          height: 50,
+                          // margin: const EdgeInsets.all(5),
+                          decoration: BoxDecoration(
+                            border: Border.all(color: Colors.black),
+                            color: Colors.white,
+                          ),
+                          child: Center(
+                            child: Text(
+                              answer[index],
+                              style: const TextStyle(fontSize: 24),
+                            ),
+                          ),
+                        );
+                      }),
                     ),
-                    child: Center(
-                      child: Text(
-                        option,
-                        style: const TextStyle(fontSize: 24),
+                  ],
+                ),
+
+                const SizedBox(height: 20),
+                // Pilihan suku kata
+                Wrap(
+                  alignment: WrapAlignment.center,
+                  children: optionsAsesmen.map((option) {
+                    return GestureDetector(
+                      onTap: () {
+                        // playAudioForCharacter(option);
+                        updateAnswer(option);
+                      },
+                      child: Container(
+                        width: 70,
+                        height: 70,
+                        margin: const EdgeInsets.all(5),
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.black),
+                          color: Colors.yellow[100],
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Center(
+                          child: Text(
+                            option,
+                            style: const TextStyle(fontSize: 24),
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-                );
-              }).toList(),
+                    );
+                  }).toList(),
+                ),
+              ],
             ),
           ],
         ),
@@ -196,7 +220,8 @@ class _SusunKataScreenAsesmenState extends State<SusunKataScreenAsesmen> {
   int incorrectAttempts = 0; // Initialize the counter
 
   void checkAnswer() {
-    if (answer[0] == correctAnswer[0] && answer[1] == correctAnswer[1]) {
+    if (answer[0] == correctAnswerAsesmen[0] &&
+        answer[1] == correctAnswerAsesmen[1]) {
       _playKataBerurutan();
       // incorrectAttempts = 0; // Reset the counter on correct answer
     } else {

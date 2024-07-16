@@ -15,7 +15,7 @@ String berawalan = "";
 String kvkv = "";
 String option2 = "";
 String option3 = "";
-
+String option4 = "";
 String appbar = "";
 bool isAudioPlayerReady = false;
 String assetLocation = "";
@@ -183,3 +183,8 @@ bool soal5 = false;
 bool soal6 = false;
 
 String soundAsesmen = '';
+
+// aktivitas 3----------
+List<dynamic> optionsAsesmen = [];
+List<dynamic> answerAsesmen = [];
+List<dynamic> correctAnswerAsesmen = [];
