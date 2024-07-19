@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:genmmas/games/cocokkan_gambar_screen.dart';
 import 'package:genmmas/services/globals.dart';
 import 'package:page_transition/page_transition.dart';
 
@@ -7,6 +6,7 @@ import '../games/cocokkan_text_screen.dart';
 import '../games/pasangkan_gambar_screen.dart';
 import '../games/quits_screen.dart';
 import '../games_screen.dart';
+import 'game_asesment/cocokkan_gambar_ujian_screen.dart';
 
 class asesment1level extends StatefulWidget {
   const asesment1level({super.key});
@@ -95,7 +95,7 @@ class _Asesment1LevelState extends State<asesment1level> {
                     PageTransition(
                       duration: const Duration(milliseconds: 300),
                       type: PageTransitionType.rightToLeft,
-                      child: const ImageMatchingGameScreen(),
+                      child: const ImageMatchingUjianGameScreen(),
                     ),
                   );
                 },
