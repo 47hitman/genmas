@@ -123,26 +123,34 @@ class _level1State extends State<level1> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-          backgroundColor: const Color.fromARGB(255, 19, 212, 42),
-          title: const Text(
-            'Level 1',
-            style: TextStyle(color: Colors.white), // Text warna putih
-          ),
-          iconTheme: const IconThemeData(
-            color: Colors.white, // Icon (panah kembali) warna putih
-          ),
-          leading: IconButton(
-            icon: const Icon(Icons.arrow_back),
+        backgroundColor: const Color.fromARGB(255, 19, 212, 42),
+        title: const Text(
+          'Level 1',
+          style: TextStyle(color: Colors.white),
+        ),
+        iconTheme: const IconThemeData(
+          color: Colors.white,
+        ),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            _player.dispose();
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const GamesScreen()),
+            );
+          },
+        ),
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(Icons.refresh),
             onPressed: () {
-              _player.dispose();
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) =>
-                        const GamesScreen()), // Replace SpecificPage with your target page
-              );
+              _reset();
+              // Implement your reset logic here
             },
-          )),
+          ),
+        ],
+      ),
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(

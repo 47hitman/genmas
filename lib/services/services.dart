@@ -279,7 +279,7 @@ class Services {
 
     if (response.statusCode == 200) {
       if (kDebugMode) {
-        // print(response.body);
+        print(response.body);
       }
       return jsonDecode(
           response.body); // Return dynamic to handle both List and Map

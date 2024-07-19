@@ -72,11 +72,23 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
             Row(
               children: <Widget>[
+                // const CircleAvatar(
+                //   radius: 30,
+                //   backgroundImage: NetworkImage(
+                //       'https://gemmasapi.kapuyuaxdev.my.id/file/user/tessiswa.png'), // Ganti dengan URL foto profil Anda
+                // ),
                 const CircleAvatar(
-                  radius: 30,
-                  backgroundImage: NetworkImage(
-                      'https://gemmasapi.kapuyuaxdev.my.id/file/user/tessiswa.png'), // Ganti dengan URL foto profil Anda
-                ),
+                    radius: 30,
+                    // backgroundImage: NetworkImage(
+                    //   'https://gemmasapi.kapuyuaxdev.my.id/file/user/tessiswa.png',
+                    // ),
+                    child: Icon(
+                      Icons
+                          .account_circle, // Ganti dengan ikon default yang Anda inginkan
+                      size: 60, // Ukuran ikon
+                      color: Colors.grey, // Warna ikon
+                    )),
+
                 const SizedBox(width: 16),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

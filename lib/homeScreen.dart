@@ -7,6 +7,7 @@ import 'package:page_transition/page_transition.dart';
 import 'games_screen.dart';
 import 'services/globals.dart';
 import 'services/services.dart';
+import 'vidio/vidioScreen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -121,6 +122,23 @@ class _HomeScreenState extends State<HomeScreen> {
           duration: const Duration(milliseconds: 300),
           type: PageTransitionType.rightToLeft,
           child: const assesmen(),
+        ),
+      );
+    });
+    // Aksi saat tombol ASESMEN ditekan
+    // print('ASESMEN ditekan');
+  }
+
+  void _onHelpTap() {
+    setState(() {
+      _player.dispose();
+      isAudioPlayerReady = false;
+      Navigator.push(
+        context,
+        PageTransition(
+          duration: const Duration(milliseconds: 300),
+          type: PageTransitionType.rightToLeft,
+          child: const WebViewPage(),
         ),
       );
     });
@@ -288,6 +306,49 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
             ),
+            const SizedBox(height: 20),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 40.0),
+              child: GestureDetector(
+                onTap:
+                    _onHelpTap, // Rename _onAssessmentTap to _onHelpTap if it's intended for Help
+                child: Container(
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(20.0),
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Colors.black26,
+                        blurRadius: 10.0,
+                        offset: Offset(0, 10),
+                      ),
+                    ],
+                  ),
+                  child: const Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.help,
+                        size: 60,
+                        color: Colors.red,
+                      ),
+                      SizedBox(height: 5),
+                      Text(
+                        "Petunjuk Penggunaan",
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.red,
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(height: 20),
           ],
         ),
       ),

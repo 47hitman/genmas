@@ -60,6 +60,19 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
               backgroundColor: Colors.transparent,
               elevation: 0,
             ),
+
+            // const CircleAvatar(
+            //     radius: 30,
+            //     // backgroundImage: NetworkImage(
+            //     //   'https://gemmasapi.kapuyuaxdev.my.id/file/user/tessiswa.png',
+            //     // ),
+            //     child: Icon(
+            //       Icons
+            //           .account_circle, // Ganti dengan ikon default yang Anda inginkan
+            //       size: 60, // Ukuran ikon
+            //       color: Colors.grey, // Warna ikon
+            //     )
+            //     ),
             Form(
               key: _formKey,
               child: Expanded(
@@ -67,13 +80,25 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   children: <Widget>[
                     GestureDetector(
                       onTap: _pickImage,
-                      child: CircleAvatar(
-                        radius: 50,
-                        backgroundImage: _image == null
-                            ? const NetworkImage(
-                                'https://gemmasapi.kapuyuaxdev.my.id/file/user/tessiswa.png')
-                            : FileImage(_image!) as ImageProvider,
-                      ),
+                      child: const CircleAvatar(
+                          radius: 50,
+                          // backgroundImage: NetworkImage(
+                          //   'https://gemmasapi.kapuyuaxdev.my.id/file/user/tessiswa.png',
+                          // ),
+                          child: Icon(
+                            Icons
+                                .account_circle, // Ganti dengan ikon default yang Anda inginkan
+                            size: 90, // Ukuran ikon
+                            color: Colors.grey, // Warna ikon
+                          )),
+                      //  CircleAvatar(
+                      //   radius: 50,
+
+                      //   backgroundImage: _image == null
+                      //       ? const NetworkImage(
+                      //           'https://gemmasapi.kapuyuaxdev.my.id/file/user/tessiswa.png')
+                      //       : FileImage(_image!) as ImageProvider,
+                      // ),
                     ),
                     const SizedBox(height: 16),
                     TextFormField(

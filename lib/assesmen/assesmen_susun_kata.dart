@@ -84,6 +84,10 @@ class _SusunKataScreenAsesmenState extends State<SusunKataScreenAsesmen> {
   }
 
   void playSound() async {
+    _play(levelSoundAsesmen);
+  }
+
+  void playSound2() async {
     _play(soundAsesmen);
   }
 
@@ -114,7 +118,7 @@ class _SusunKataScreenAsesmenState extends State<SusunKataScreenAsesmen> {
                 IconButton(
                   icon:
                       const Icon(Icons.volume_up, size: 50, color: Colors.blue),
-                  onPressed: playSound,
+                  onPressed: playSound2,
                 ),
               ],
             ),

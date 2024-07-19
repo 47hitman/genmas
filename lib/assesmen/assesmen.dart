@@ -5,6 +5,7 @@ import 'package:genmmas/assesmen/assesmen_matching.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
 
+import '../menuScreens.dart';
 import '../services/globals.dart';
 import '../services/services.dart';
 import 'assesmen_katapola.dart';
@@ -111,8 +112,12 @@ class _assesmenState extends State<assesmen> {
                 style: TextStyle(color: Colors.green, fontSize: 18),
               ),
               onPressed: () {
-                _btnController.stop();
-                Navigator.of(context).pop(); // Dismiss the dialog
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          const MenuScreen()), // Replace SpecificPage with your target page
+                );
                 // Add your completion logic here
               },
             ),
@@ -543,6 +548,7 @@ class _assesmenState extends State<assesmen> {
                   final image = resource3['resource']['targetImage'];
                   final sound = resource3['resource']['levelSound'];
                   final asset = resource3['resource']['assetName'];
+                  final soundlevel = resource3['resource']['assetSound'];
                   return Padding(
                     padding: const EdgeInsets.only(bottom: 20),
                     child: InkWell(
@@ -553,6 +559,7 @@ class _assesmenState extends State<assesmen> {
                         answer = ["", "", "", ""];
                         correctAnswerAsesmen = correctAnswer2;
                         soundAsesmen = sound;
+                        levelSoundAsesmen = soundlevel;
                         Navigator.push(
                           context,
                           PageTransition(
@@ -626,6 +633,7 @@ class _assesmenState extends State<assesmen> {
                   final image = resource3['resource']['targetImage'];
                   final sound = resource3['resource']['levelSound'];
                   final asset = resource3['resource']['assetName'];
+                  final soundlevel = resource3['resource']['assetSound'];
                   return Padding(
                     padding: const EdgeInsets.only(bottom: 20),
                     child: InkWell(
@@ -633,9 +641,10 @@ class _assesmenState extends State<assesmen> {
                         assetName = asset;
                         targetImage = image;
                         optionsAsesmen = options;
-                        answer = ["", "", "", ""];
+                        answer = ["", "", "", "", ""];
                         correctAnswerAsesmen = correctAnswer2;
                         soundAsesmen = sound;
+                        levelSoundAsesmen = soundlevel;
                         Navigator.push(
                           context,
                           PageTransition(
@@ -709,6 +718,7 @@ class _assesmenState extends State<assesmen> {
                   final image = resource4['resource']['targetImage'];
                   final sound = resource4['resource']['levelSound'];
                   final asset = resource4['resource']['assetName'];
+                  final soundlevel = resource4['resource']['assetSound'];
                   return Padding(
                     padding: const EdgeInsets.only(bottom: 20),
                     child: InkWell(
@@ -719,6 +729,7 @@ class _assesmenState extends State<assesmen> {
                         answer = ["", ""];
                         correctAnswerAsesmen = correctAnswer2;
                         soundAsesmen = sound;
+                        levelSoundAsesmen = soundlevel;
                         Navigator.push(
                           context,
                           PageTransition(
@@ -796,12 +807,15 @@ class _assesmenState extends State<assesmen> {
                     padding: const EdgeInsets.only(bottom: 20),
                     child: InkWell(
                       onTap: () {
+                        final soundlevel = resource4['resource']['assetSound'];
+                        levelSoundAsesmen = soundlevel;
                         assetName = asset;
                         targetImage = image;
                         optionsAsesmen = options;
                         answer = ["", ""];
                         correctAnswerAsesmen = correctAnswer2;
                         soundAsesmen = sound;
+
                         Navigator.push(
                           context,
                           PageTransition(
