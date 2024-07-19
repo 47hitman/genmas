@@ -365,7 +365,7 @@ class _LengkapiKataScreenState extends State<LengkapiKataScreen> {
                           builder: (context) =>
                               const Level3kvkv()), // Replace SpecificPage with your target page
                     );
-                    await Services.instance.score(points);
+                    // await Services.instance.score(points);
 
                     // _playKataBerurutan(); // Jika ingin memulai kembali setelah scoring, uncomment line ini
                   },
