@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:genmmas/asesmentlevel/game_asesment/quit_ujian_screen.dart';
 import 'package:genmmas/games/kata_pola_screnn.dart';
-import 'package:genmmas/games/voice_game_level2.dart';
 import 'package:page_transition/page_transition.dart';
-import '../games/cari_gambar_screen.dart';
-import '../games/cocokkan_gambar_screen.dart';
-import '../games/cocokkan_text_screen.dart';
-import '../games/kata_berawalan_screen.dart';
-import '../games/maze_screen.dart';
 import '../games/pasangkan_gambar_screen.dart';
 import '../games/quits_screen.dart';
-import '../models/image_find_item.dart';
 import '../services/globals.dart';
+import 'game_asesment/kata_berawalan_ujian.dart';
+import 'game_asesment/pasangkan_gambar_ujian_screen.dart';
 
 class asesment2level extends StatefulWidget {
   const asesment2level({super.key});
@@ -85,7 +81,7 @@ class _asesment2levelState extends State<asesment2level> {
                       PageTransition(
                         duration: const Duration(milliseconds: 300),
                         type: PageTransitionType.rightToLeft,
-                        child: const MatchingGameScreen(),
+                        child: const MatchingGameUjianScreen(),
                       ),
                     );
                   },
@@ -148,7 +144,7 @@ class _asesment2levelState extends State<asesment2level> {
                       PageTransition(
                         duration: const Duration(milliseconds: 300),
                         type: PageTransitionType.rightToLeft,
-                        child: const SingleImageMatchingGameScreen(),
+                        child: const SingleImageMatchingUjianGameScreen(),
                       ),
                     );
                   },
@@ -201,7 +197,7 @@ class _asesment2levelState extends State<asesment2level> {
                       PageTransition(
                         duration: const Duration(milliseconds: 300),
                         type: PageTransitionType.rightToLeft,
-                        child: const BerawalnGameScreen(),
+                        child: const BerawalnUjianGameScreen(),
                       ),
                     );
                     // Aksi yang ingin dilakukan ketika tombol ditekan
@@ -255,7 +251,7 @@ class _asesment2levelState extends State<asesment2level> {
                       PageTransition(
                         duration: const Duration(milliseconds: 300),
                         type: PageTransitionType.rightToLeft,
-                        child: const BerawalnGameScreen(),
+                        child: const BerawalnUjianGameScreen(),
                       ),
                     );
                     // Aksi yang ingin dilakukan ketika tombol ditekan
