@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:genmmas/games/lengkapi_kata_screen.dart';
 import 'package:page_transition/page_transition.dart';
 
-import '../games/cocokkan_gambar_screen.dart';
-import '../games/cocokkan_text_screen.dart';
-import '../games/kata_pola_screnn.dart';
 import '../games/lelvel_4_games.dart';
 import '../games/quits_screen.dart';
 import '../services/globals.dart';
+import 'game_asesment/cocokkan_gambar_ujian_screen.dart';
+import 'game_asesment/cocokkan_text_ujian_screen.dart';
+import 'game_asesment/kata_pola_ujian_screen.dart';
+import 'game_asesment/lengkapi_kata_ujian_screen.dart';
 
 class asesment4level extends StatefulWidget {
   const asesment4level({super.key});
@@ -84,7 +84,7 @@ class _asesment3levelState extends State<asesment4level> {
                       PageTransition(
                         duration: const Duration(milliseconds: 300),
                         type: PageTransitionType.rightToLeft,
-                        child: const ImageMatchingGameScreen(),
+                        child: const ImageMatchingUjianGameScreen(),
                       ),
                     );
                   },
@@ -137,7 +137,7 @@ class _asesment3levelState extends State<asesment4level> {
                       PageTransition(
                         duration: const Duration(milliseconds: 300),
                         type: PageTransitionType.rightToLeft,
-                        child: const TextMatchingGameScreen(),
+                        child: const TextMatchingGameUjianScreen(),
                       ),
                     );
                   },
@@ -189,7 +189,7 @@ class _asesment3levelState extends State<asesment4level> {
                       PageTransition(
                         duration: const Duration(milliseconds: 300),
                         type: PageTransitionType.rightToLeft,
-                        child: const TextMatchingGameScreen(),
+                        child: const TextMatchingGameUjianScreen(),
                       ),
                     );
                   },
@@ -303,7 +303,7 @@ class _asesment3levelState extends State<asesment4level> {
                       PageTransition(
                         duration: const Duration(milliseconds: 300),
                         type: PageTransitionType.rightToLeft,
-                        child: const KataPola(),
+                        child: const KataPolaUjian(),
                       ),
                     );
                     // Aksi yang ingin dilakukan ketika tombol ditekan
@@ -356,7 +356,7 @@ class _asesment3levelState extends State<asesment4level> {
                       PageTransition(
                         duration: const Duration(milliseconds: 300),
                         type: PageTransitionType.rightToLeft,
-                        child: const KataPola(),
+                        child: const KataPolaUjian(),
                       ),
                     );
                     // Aksi yang ingin dilakukan ketika tombol ditekan
@@ -400,25 +400,16 @@ class _asesment3levelState extends State<asesment4level> {
                     {
                       assetName = 'sapu';
                       assetLocation = "assets/level3/aktivitas1/sapu.png";
-                      soal1 = false;
-                      soal2 = true;
-                      soal3 = false;
-                      soal4 = false;
-                      soal5 = false;
-                      soal6 = false;
-                      // assetName != 'susu' ? awal = true : awal = false;
-                      awal = false;
-                      pilih1 = false;
-                      pilih2 = false;
-                      pilih3 = false;
-                      pilih4 = false;
-                      timer = false;
+                      answer = ["", "", "", ""];
+                      optionsAsesmen = ["a", "p", "s", "u"];
+                      correctAnswerAsesmen = ["s", "a", "p" "u"];
+
                       Navigator.push(
                         context,
                         PageTransition(
                           duration: const Duration(milliseconds: 300),
                           type: PageTransitionType.rightToLeft,
-                          child: const LengkapiKataScreen(),
+                          child: const LengkapiKataUjianScreen(),
                         ),
                       );
                     }
@@ -463,25 +454,15 @@ class _asesment3levelState extends State<asesment4level> {
                     {
                       assetName = 'soda';
                       assetLocation = "assets/level3/aktivitas1/soda.png";
-                      soal1 = false;
-                      soal2 = true;
-                      soal3 = false;
-                      soal4 = false;
-                      soal5 = false;
-                      soal6 = false;
-                      // assetName != 'susu' ? awal = true : awal = false;
-                      awal = false;
-                      pilih1 = false;
-                      pilih2 = false;
-                      pilih3 = false;
-                      pilih4 = false;
-                      timer = false;
+                      answer = ["", "", "", ""];
+                      optionsAsesmen = ["o", "s", "a", "d"];
+                      correctAnswerAsesmen = ["s", "o", "d" "a"];
                       Navigator.push(
                         context,
                         PageTransition(
                           duration: const Duration(milliseconds: 300),
                           type: PageTransitionType.rightToLeft,
-                          child: const LengkapiKataScreen(),
+                          child: const LengkapiKataUjianScreen(),
                         ),
                       );
                     }
@@ -525,16 +506,16 @@ class _asesment3levelState extends State<asesment4level> {
                   onTap: () {
                     {
                       assetName = 'sawi';
-                      targetImage = 'assets/level4/sawi.png';
-                      options4 = ["sa", "ku", "se", "wi"];
+                      assetLocation = 'assets/level4/sawi.png';
+                      optionsAsesmen = ["sa", "ku", "se", "wi"];
                       answer = ["", ""];
-                      correctAnswer = ["sa", "wi"];
+                      correctAnswerAsesmen = ["sa", "wi"];
                       Navigator.push(
                         context,
                         PageTransition(
                           duration: const Duration(milliseconds: 300),
                           type: PageTransitionType.rightToLeft,
-                          child: const SusunKataScreenLevel4(),
+                          child: const LengkapiKataUjianScreen(),
                         ),
                       );
                     }
@@ -577,16 +558,16 @@ class _asesment3levelState extends State<asesment4level> {
                 child: InkWell(
                   onTap: () {
                     assetName = 'badak';
-                    targetImage = 'assets/level4/badak.png';
-                    options4 = ["da", "kak", "dak", "ba"];
+                    assetLocation = 'assets/level4/badak.png';
+                    optionsAsesmen = ["da", "kak", "dak", "ba"];
                     answer = ["", ""];
-                    correctAnswer = ["ba", "dak"];
+                    correctAnswerAsesmen = ["ba", "dak"];
                     Navigator.push(
                       context,
                       PageTransition(
                         duration: const Duration(milliseconds: 300),
                         type: PageTransitionType.rightToLeft,
-                        child: const SusunKataScreenLevel4(),
+                        child: const LengkapiKataUjianScreen(),
                       ),
                     );
                     // Aksi yang ingin dilakukan ketika tombol ditekan

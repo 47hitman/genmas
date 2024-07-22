@@ -6,6 +6,7 @@ import '../games/pasangkan_gambar_screen.dart';
 import '../games/quits_screen.dart';
 import '../services/globals.dart';
 import 'game_asesment/kata_berawalan_ujian.dart';
+import 'game_asesment/kata_pola_ujian_screen.dart';
 import 'game_asesment/pasangkan_gambar_ujian_screen.dart';
 
 class asesment2level extends StatefulWidget {
@@ -304,7 +305,7 @@ class _asesment2levelState extends State<asesment2level> {
                       PageTransition(
                         duration: const Duration(milliseconds: 300),
                         type: PageTransitionType.rightToLeft,
-                        child: const KataPola(),
+                        child: const KataPolaUjian(),
                       ),
                     );
                     // Aksi yang ingin dilakukan ketika tombol ditekan
@@ -357,7 +358,7 @@ class _asesment2levelState extends State<asesment2level> {
                       PageTransition(
                         duration: const Duration(milliseconds: 300),
                         type: PageTransitionType.rightToLeft,
-                        child: const KataPola(),
+                        child: const KataPolaUjian(),
                       ),
                     );
                     // Aksi yang ingin dilakukan ketika tombol ditekan

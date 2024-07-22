@@ -8,8 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:genmmas/level/level3_kvkv.dart';
 import 'package:genmmas/services/globals.dart';
 
-import '../services/services.dart';
-
 class LengkapiKataScreen extends StatefulWidget {
   const LengkapiKataScreen({Key? key}) : super(key: key);
 
