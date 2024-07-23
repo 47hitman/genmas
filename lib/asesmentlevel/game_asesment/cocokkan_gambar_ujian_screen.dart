@@ -2,8 +2,6 @@ import 'dart:math';
 
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
-import 'package:genmmas/menu/level_1_menu.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../services/globals.dart';
 
@@ -280,24 +278,24 @@ class _ImageMatchingUjianGameScreenState
                             setState(() {
                               matchedItems.add(item['image']!);
                             });
-                            final List<String> compliments = [
-                              'assets/option/Bagus.m4a',
-                              'assets/option/Hebat.m4a',
-                              'assets/option/Pintar.m4a'
-                            ];
-                            final randomCompliment = compliments[
-                                Random().nextInt(compliments.length)];
-                            _play2(randomCompliment);
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(content: Text('Cocok!')),
-                            );
+                            // final List<String> compliments = [
+                            //   'assets/option/Bagus.m4a',
+                            //   'assets/option/Hebat.m4a',
+                            //   'assets/option/Pintar.m4a'
+                            // ];
+                            // final randomCompliment = compliments[
+                            //     Random().nextInt(compliments.length)];
+                            // _play2(randomCompliment);
+                            // ScaffoldMessenger.of(context).showSnackBar(
+                            //   const SnackBar(content: Text('Cocok!')),
+                            // );
                             _checkCompletion();
                           } else {
                             _play2('assets/option/Ayo coba lagi.m4a');
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                  content: Text('Tidak cocok, coba lagi!')),
-                            );
+                            // ScaffoldMessenger.of(context).showSnackBar(
+                            //   const SnackBar(
+                            //       content: Text('Tidak cocok, coba lagi!')),
+                            // );
                           }
                         },
                       );

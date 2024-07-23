@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:genmmas/services/globals.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:rounded_loading_button/rounded_loading_button.dart';
 
-import '../games/cocokkan_text_screen.dart';
-import '../games/pasangkan_gambar_screen.dart';
-import '../games/quits_screen.dart';
 import '../games_screen.dart';
 import 'game_asesment/cocokkan_gambar_ujian_screen.dart';
 import 'game_asesment/cocokkan_text_ujian_screen.dart';
 import 'game_asesment/pasangkan_gambar_ujian_screen.dart';
 import 'game_asesment/quit_ujian_screen.dart';
+
+final RoundedLoadingButtonController _btnController =
+    RoundedLoadingButtonController();
 
 class asesment1level extends StatefulWidget {
   const asesment1level({super.key});
@@ -19,10 +20,58 @@ class asesment1level extends StatefulWidget {
 }
 
 class _Asesment1LevelState extends State<asesment1level> {
+  void _showConfirmationDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Konfirmasi'),
+          content: const Text('Apakah kamu yakin menyelesaikan ujian?'),
+          actions: <Widget>[
+            TextButton(
+              child: const Text(
+                'Tidak',
+                style: TextStyle(color: Colors.red, fontSize: 18),
+              ),
+              onPressed: () {
+                _btnController.stop();
+                Navigator.of(context).pop(); // Dismiss the dialog
+              },
+            ),
+            TextButton(
+              child: const Text(
+                'Iya',
+                style: TextStyle(color: Colors.green, fontSize: 18),
+              ),
+              onPressed: () {
+                // Add your completion logic here
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
-
+    final loginButton = RoundedLoadingButton(
+      color: const Color.fromARGB(255, 19, 212, 42),
+      controller: _btnController,
+      onPressed: () {
+        _showConfirmationDialog();
+      },
+      child: Container(
+          width: double.infinity,
+          height: 56,
+          decoration: BoxDecoration(
+              color: const Color.fromARGB(255, 19, 212, 42),
+              borderRadius: BorderRadius.circular(30)),
+          child: const Center(
+              child: Text("Selesai",
+                  style: TextStyle(color: Colors.white, fontSize: 26)))),
+    );
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -354,8 +403,311 @@ class _Asesment1LevelState extends State<asesment1level> {
                 ),
               ),
             ),
+            Padding(
+              padding: const EdgeInsets.all(20),
+              child: InkWell(
+                onTap: () {
+                  aktivitas2 = 1;
+                  extra1 = '';
+                  extratext1 = '';
+                  extra2 = '';
+                  extratext2 = '';
+                  extra3 = '';
+                  extratext3 = '';
+                  extra4 = '';
+                  extratext4 = '';
+                  items = [
+                    {
+                      'image': 'assets/level1/aktivitas2/buku.png',
+                      'text': 'Buku'
+                    },
+                    {
+                      'image': 'assets/level1/aktivitas2/bola.png',
+                      'text': 'Bola'
+                    },
+                  ];
+                  Navigator.push(
+                    context,
+                    PageTransition(
+                      duration: const Duration(milliseconds: 300),
+                      type: PageTransitionType.rightToLeft,
+                      child: const ImageMatchingUjianGameScreen(),
+                    ),
+                  );
+                },
+                child: Container(
+                  width: screenWidth *
+                      0.9, // Button selebar layar (90% dari lebar layar)
+                  height: 80,
+                  decoration: BoxDecoration(
+                    color:
+                        const Color.fromARGB(255, 255, 165, 0), // Bright orange
+                    borderRadius:
+                        BorderRadius.circular(20), // More rounded corners
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.3),
+                        spreadRadius: 1,
+                        blurRadius: 2,
+                        offset: const Offset(0, 2),
+                      ),
+                    ],
+                  ),
+                  child: const Center(
+                    child: Text(
+                      'Soal 6',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 24, // Reduced font size for balance
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'ComicSans',
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20),
+              child: InkWell(
+                onTap: () {
+                  aktivitas2 = 3;
+                  extra1 = 'assets/level1/aktivitas2/meja.png';
+                  extratext1 = 'meja';
+                  extra2 = 'assets/level1/aktivitas2/baju.png';
+                  extratext2 = 'baju';
+                  extra3 = '';
+                  extratext3 = '';
+                  extra4 = '';
+                  extratext4 = '';
+                  items = [
+                    {
+                      'image': 'assets/level1/aktivitas2/buku.png',
+                      'text': 'Buku'
+                    },
+                    {
+                      'image': 'assets/level1/aktivitas2/bola.png',
+                      'text': 'Bola'
+                    },
+                  ];
+                  Navigator.push(
+                    context,
+                    PageTransition(
+                      duration: const Duration(milliseconds: 300),
+                      type: PageTransitionType.rightToLeft,
+                      child: const ImageMatchingUjianGameScreen(),
+                    ),
+                  );
+                },
+                child: Container(
+                  width: screenWidth *
+                      0.9, // Button selebar layar (90% dari lebar layar)
+                  height: 80,
+                  decoration: BoxDecoration(
+                    color:
+                        const Color.fromARGB(255, 255, 165, 0), // Bright orange
+                    borderRadius:
+                        BorderRadius.circular(20), // More rounded corners
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.3),
+                        spreadRadius: 1,
+                        blurRadius: 2,
+                        offset: const Offset(0, 2),
+                      ),
+                    ],
+                  ),
+                  child: const Center(
+                    child: Text(
+                      'Soal 7',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 24, // Reduced font size for balance
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'ComicSans',
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20),
+              child: InkWell(
+                onTap: () {
+                  extraTexts = ['meja', 'baju'];
+                  itemstext = [
+                    'buku',
+                    'bola',
+                  ];
+
+                  Navigator.push(
+                    context,
+                    PageTransition(
+                      duration: const Duration(milliseconds: 300),
+                      type: PageTransitionType.rightToLeft,
+                      child: const TextMatchingGameUjianScreen(),
+                    ),
+                  );
+                },
+                child: Container(
+                  width: screenWidth *
+                      0.9, // Button selebar layar (90% dari lebar layar)
+                  height: 80,
+                  decoration: BoxDecoration(
+                    color:
+                        const Color.fromARGB(255, 255, 165, 0), // Bright orange
+                    borderRadius:
+                        BorderRadius.circular(20), // More rounded corners
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.3),
+                        spreadRadius: 1,
+                        blurRadius: 2,
+                        offset: const Offset(0, 2),
+                      ),
+                    ],
+                  ),
+                  child: const Center(
+                    child: Text(
+                      'Soal 8',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 24, // Reduced font size for balance
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'ComicSans',
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20),
+              child: InkWell(
+                onTap: () {
+                  targetImage = 'assets/level1/aktivitas6/kubus.png';
+                  options = [
+                    {
+                      'image': 'dadu',
+                      'path': 'assets/level1/aktivitas6/dadu.png',
+                    },
+                    {
+                      'image': 'bola',
+                      'path': 'assets/level1/aktivitas6/bola.png',
+                    },
+                    {
+                      'image': 'gelas',
+                      'path': 'assets/level1/aktivitas6/gelas.png',
+                    },
+                  ];
+                  Navigator.push(
+                    context,
+                    PageTransition(
+                      duration: const Duration(milliseconds: 300),
+                      type: PageTransitionType.rightToLeft,
+                      child: const MatchingGameUjianScreen(),
+                    ),
+                  );
+                },
+                child: Container(
+                  width: screenWidth *
+                      0.9, // Button selebar layar (90% dari lebar layar)
+                  height: 80,
+                  decoration: BoxDecoration(
+                    color:
+                        const Color.fromARGB(255, 255, 165, 0), // Bright orange
+                    borderRadius:
+                        BorderRadius.circular(20), // More rounded corners
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.3),
+                        spreadRadius: 1,
+                        blurRadius: 2,
+                        offset: const Offset(0, 2),
+                      ),
+                    ],
+                  ),
+                  child: const Center(
+                    child: Text(
+                      'Soal 9',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 24, // Reduced font size for balance
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'ComicSans',
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20),
+              child: InkWell(
+                onTap: () {
+                  targetImage = 'assets/level1/aktivitas6/bulat.png';
+                  options = [
+                    {
+                      'image': 'jam',
+                      'path': 'assets/level1/aktivitas6/jam.png',
+                    },
+                    {
+                      'image': 'jeruk',
+                      'path': 'assets/level1/aktivitas6/jeruk.png',
+                    },
+                    {
+                      'image': 'mail',
+                      'path': 'assets/level1/aktivitas6/mail.png',
+                    },
+                  ];
+                  Navigator.push(
+                    context,
+                    PageTransition(
+                      duration: const Duration(milliseconds: 300),
+                      type: PageTransitionType.rightToLeft,
+                      child: const MatchingGameUjianScreen(),
+                    ),
+                  );
+                },
+                child: Container(
+                  width: screenWidth *
+                      0.9, // Button selebar layar (90% dari lebar layar)
+                  height: 80,
+                  decoration: BoxDecoration(
+                    color:
+                        const Color.fromARGB(255, 255, 165, 0), // Bright orange
+                    borderRadius:
+                        BorderRadius.circular(20), // More rounded corners
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.3),
+                        spreadRadius: 1,
+                        blurRadius: 2,
+                        offset: const Offset(0, 2),
+                      ),
+                    ],
+                  ),
+                  child: const Center(
+                    child: Text(
+                      'Soal 10',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 24, // Reduced font size for balance
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'ComicSans',
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
+      ),
+      bottomSheet: Container(
+        padding: const EdgeInsets.all(15),
+        child: loginButton,
       ),
     );
   }

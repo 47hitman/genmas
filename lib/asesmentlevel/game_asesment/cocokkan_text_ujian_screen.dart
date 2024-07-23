@@ -295,15 +295,15 @@ class _TextMatchingGameUjianScreenState
                             setState(() {
                               matchedItems.add(item);
                             });
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(content: Text('Cocok!')),
-                            );
+                            // ScaffoldMessenger.of(context).showSnackBar(
+                            //   const SnackBar(content: Text('Cocok!')),
+                            // );
                             _checkCompletion();
                           } else {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                  content: Text('Tidak cocok, coba lagi!')),
-                            );
+                            // ScaffoldMessenger.of(context).showSnackBar(
+                            //   const SnackBar(
+                            //       content: Text('Tidak cocok, coba lagi!')),
+                            // );
                           }
                         },
                       );
