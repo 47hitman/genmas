@@ -80,11 +80,46 @@ class _LengkapiKataUjianScreenState extends State<LengkapiKataUjianScreen> {
   }
 
   void playSound() async {
-    _play(levelSoundAsesmen);
+    // _play(levelSoundAsesmen);
+    Future.delayed(const Duration(seconds: 2), () {
+      if (selectedOption == 'susu') {
+        _play('assets/level3/Level 3 susu.m4a');
+      }
+      if (selectedOption == 'sawi') {
+        _play('assets/level3/Level 3 sawi.m4a');
+      }
+      if (selectedOption == 'sapu') {
+        _play('assets/level3/Level 3 sapu.m4a');
+      }
+
+      if (selectedOption == 'siku') {
+        _play('assets/level3/Level 3 siku.m4a');
+      }
+
+      if (selectedOption == 'soda') {
+        _play('assets/level3/Level 3 soda.m4a');
+      }
+      if (selectedOption == 'bibir') {
+        _play('assets/level3/Level 3 bibir.m4a');
+      }
+      if (selectedOption == 'badak') {
+        _play('assets/level3/Level 3 badak.m4a');
+      }
+      if (selectedOption == 'botol') {
+        _play('assets/level3/Level 3 botol.m4a');
+      }
+      if (selectedOption == 'bayam') {
+        _play('assets/level3/Level 3 bayam.m4a');
+      }
+      if (selectedOption == 'beras') {
+        _play('assets/level3/Level 3 beras.m4a');
+      }
+    });
   }
 
   void playSound2() async {
-    _play(soundAsesmen);
+    // _play(soundAsesmen);
+    _play('assets/level3/insruksi.m4a');
   }
 
   @override
@@ -105,8 +140,23 @@ class _LengkapiKataUjianScreenState extends State<LengkapiKataUjianScreen> {
           ),
         ),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          // mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            const SizedBox(
+              height: 20,
+            ),
+            Row(
+              children: [
+                IconButton(
+                  icon:
+                      const Icon(Icons.volume_up, size: 50, color: Colors.blue),
+                  onPressed: playSound2,
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 70,
+            ),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

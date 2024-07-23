@@ -1154,9 +1154,10 @@ class _level1State extends State<level1> {
                             _player.dispose();
                             sound = 'assets/soal1/Level 1 (aktivitas 5).m4a';
                             images = [
-                              'assets/level1/aktivitas5/wortel.png',
                               'assets/level1/aktivitas5/brokoli.png',
                               'assets/level1/aktivitas5/wortel.png',
+                              'assets/level1/aktivitas5/brokoli.png',
+                              // 'assets/level1/aktivitas5/wortel.png',
                             ];
                             Navigator.push(
                               context,

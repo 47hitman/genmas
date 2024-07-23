@@ -87,7 +87,7 @@ class _level3State extends State<level3> {
   @override
   void initState() {
     super.initState();
-    _play2();
+    // _play2();
     _play('assets/level3/Level 3 (pilihlah salah satu gambar).m4a');
   }
 
@@ -106,15 +106,15 @@ class _level3State extends State<level3> {
     super.dispose();
   }
 
-  void _play2() {
-    _player.open(
-      Audio('assets/outro.mp3'),
-      volume: 20,
-      autoStart: true,
-      showNotification: true,
-      loopMode: LoopMode.single, // Loop the audio
-    );
-  }
+  // void _play2() {
+  //   _player.open(
+  //     Audio('assets/outro.mp3'),
+  //     volume: 20,
+  //     autoStart: true,
+  //     showNotification: true,
+  //     loopMode: LoopMode.single, // Loop the audio
+  //   );
+  // }
 
   @override
   Widget build(BuildContext context) {
