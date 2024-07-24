@@ -259,11 +259,82 @@ class _LengkapiKataUjianScreenState extends State<LengkapiKataUjianScreen> {
     if (answer[0] == correctAnswerAsesmen[0] &&
         answer[1] == correctAnswerAsesmen[1]) {
       _playKataBerurutan();
-      print("benar");
+      for (int i = 1; i <= 10; i++) {
+        if (ujian == i) {
+          switch (i) {
+            case 1:
+              ujian1 = true;
+              break;
+            case 2:
+              ujian2 = true;
+              break;
+            case 3:
+              ujian3 = true;
+              break;
+            case 4:
+              ujian4 = true;
+              break;
+            case 5:
+              ujian5 = true;
+              break;
+            case 6:
+              ujian6 = true;
+              break;
+            case 7:
+              ujian7 = true;
+              break;
+            case 8:
+              ujian8 = true;
+              break;
+            case 9:
+              ujian9 = true;
+              break;
+            case 10:
+              ujian10 = true;
+              break;
+          }
+        }
+      }
+      // print("benar");
       // incorrectAttempts = 0; // Reset the counter on correct answer
     } else {
-      print("salah");
-      _playKataBerurutan();
+      for (int i = 1; i <= 10; i++) {
+        if (ujian == i) {
+          switch (i) {
+            case 1:
+              ujian1 = false;
+              break;
+            case 2:
+              ujian2 = false;
+              break;
+            case 3:
+              ujian3 = false;
+              break;
+            case 4:
+              ujian4 = false;
+              break;
+            case 5:
+              ujian5 = false;
+              break;
+            case 6:
+              ujian6 = false;
+              break;
+            case 7:
+              ujian7 = false;
+              break;
+            case 8:
+              ujian8 = false;
+              break;
+            case 9:
+              ujian9 = false;
+              break;
+            case 10:
+              ujian10 = false;
+              break;
+          }
+        }
+      }
+      // _playKataBerurutan();
       // incorrectAttempts++; // Increment the counter on incorrect answer
     }
   }

@@ -1,5 +1,6 @@
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
+import 'package:genmmas/services/globals.dart';
 import 'package:page_transition/page_transition.dart';
 import 'level/level_5.dart';
 import 'menu/level_1_menu.dart';
@@ -184,161 +185,169 @@ class _GamesScreenState extends State<GamesScreen> {
                 ),
               ),
               const SizedBox(height: 20),
-              GestureDetector(
-                onTap: () => _onGamesTap2(
-                    2), // Ubah menjadi level 2 jika sudah ditambahkan
-                child: Container(
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(20.0),
-                    boxShadow: const [
-                      BoxShadow(
-                        color: Colors.black26,
-                        blurRadius: 10.0,
-                        offset: Offset(0, 10),
-                      ),
-                    ],
-                  ),
-                  child: const Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(
-                        Icons.videogame_asset,
-                        size: 100,
-                        color: Colors.purple,
-                      ),
-                      SizedBox(height: 20),
-                      Text(
-                        "LEVEL 2",
-                        style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.purple,
+              games1 > 79
+                  ? GestureDetector(
+                      onTap: () => _onGamesTap2(
+                          2), // Ubah menjadi level 2 jika sudah ditambahkan
+                      child: Container(
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(20.0),
+                          boxShadow: const [
+                            BoxShadow(
+                              color: Colors.black26,
+                              blurRadius: 10.0,
+                              offset: Offset(0, 10),
+                            ),
+                          ],
+                        ),
+                        child: const Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.videogame_asset,
+                              size: 100,
+                              color: Colors.purple,
+                            ),
+                            SizedBox(height: 20),
+                            Text(
+                              "LEVEL 2",
+                              style: TextStyle(
+                                fontSize: 24,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.purple,
+                              ),
+                            ),
+                            SizedBox(height: 20),
+                          ],
                         ),
                       ),
-                      SizedBox(height: 20),
-                    ],
-                  ),
-                ),
-              ),
+                    )
+                  : disable("2"),
               const SizedBox(height: 20),
-              GestureDetector(
-                onTap: () => _onGamesTap3(
-                    3), // Ubah menjadi level 3 jika sudah ditambahkan
-                child: Container(
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(20.0),
-                    boxShadow: const [
-                      BoxShadow(
-                        color: Colors.black26,
-                        blurRadius: 10.0,
-                        offset: Offset(0, 10),
-                      ),
-                    ],
-                  ),
-                  child: const Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(
-                        Icons.videogame_asset,
-                        size: 100,
-                        color: Colors.purple,
-                      ),
-                      SizedBox(height: 20),
-                      Text(
-                        "LEVEL 3",
-                        style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.purple,
+              games2 > 79
+                  ? GestureDetector(
+                      onTap: () => _onGamesTap3(
+                          3), // Ubah menjadi level 3 jika sudah ditambahkan
+                      child: Container(
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(20.0),
+                          boxShadow: const [
+                            BoxShadow(
+                              color: Colors.black26,
+                              blurRadius: 10.0,
+                              offset: Offset(0, 10),
+                            ),
+                          ],
+                        ),
+                        child: const Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.videogame_asset,
+                              size: 100,
+                              color: Colors.purple,
+                            ),
+                            SizedBox(height: 20),
+                            Text(
+                              "LEVEL 3",
+                              style: TextStyle(
+                                fontSize: 24,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.purple,
+                              ),
+                            ),
+                            SizedBox(height: 20),
+                          ],
                         ),
                       ),
-                      SizedBox(height: 20),
-                    ],
-                  ),
-                ),
-              ),
+                    )
+                  : disable("3"),
               const SizedBox(height: 20),
-              GestureDetector(
-                onTap: () => _onGamesTap4(
-                    3), // Ubah menjadi level 3 jika sudah ditambahkan
-                child: Container(
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(20.0),
-                    boxShadow: const [
-                      BoxShadow(
-                        color: Colors.black26,
-                        blurRadius: 10.0,
-                        offset: Offset(0, 10),
-                      ),
-                    ],
-                  ),
-                  child: const Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(
-                        Icons.videogame_asset,
-                        size: 100,
-                        color: Colors.purple,
-                      ),
-                      SizedBox(height: 20),
-                      Text(
-                        "LEVEL 4",
-                        style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.purple,
+              games3 > 79
+                  ? GestureDetector(
+                      onTap: () => _onGamesTap4(
+                          3), // Ubah menjadi level 3 jika sudah ditambahkan
+                      child: Container(
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(20.0),
+                          boxShadow: const [
+                            BoxShadow(
+                              color: Colors.black26,
+                              blurRadius: 10.0,
+                              offset: Offset(0, 10),
+                            ),
+                          ],
+                        ),
+                        child: const Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.videogame_asset,
+                              size: 100,
+                              color: Colors.purple,
+                            ),
+                            SizedBox(height: 20),
+                            Text(
+                              "LEVEL 4",
+                              style: TextStyle(
+                                fontSize: 24,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.purple,
+                              ),
+                            ),
+                            SizedBox(height: 20),
+                          ],
                         ),
                       ),
-                      SizedBox(height: 20),
-                    ],
-                  ),
-                ),
-              ),
+                    )
+                  : disable("4"),
               const SizedBox(height: 20),
-              GestureDetector(
-                onTap: () => _onGamesTap5(
-                    3), // Ubah menjadi level 3 jika sudah ditambahkan
-                child: Container(
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(20.0),
-                    boxShadow: const [
-                      BoxShadow(
-                        color: Colors.black26,
-                        blurRadius: 10.0,
-                        offset: Offset(0, 10),
-                      ),
-                    ],
-                  ),
-                  child: const Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(
-                        Icons.videogame_asset,
-                        size: 100,
-                        color: Colors.purple,
-                      ),
-                      SizedBox(height: 20),
-                      Text(
-                        "LEVEL 5",
-                        style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.purple,
+              games4 > 79
+                  ? GestureDetector(
+                      onTap: () => _onGamesTap5(
+                          3), // Ubah menjadi level 3 jika sudah ditambahkan
+                      child: Container(
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(20.0),
+                          boxShadow: const [
+                            BoxShadow(
+                              color: Colors.black26,
+                              blurRadius: 10.0,
+                              offset: Offset(0, 10),
+                            ),
+                          ],
+                        ),
+                        child: const Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.videogame_asset,
+                              size: 100,
+                              color: Colors.purple,
+                            ),
+                            SizedBox(height: 20),
+                            Text(
+                              "LEVEL 5",
+                              style: TextStyle(
+                                fontSize: 24,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.purple,
+                              ),
+                            ),
+                            SizedBox(height: 20),
+                          ],
                         ),
                       ),
-                      SizedBox(height: 20),
-                    ],
-                  ),
-                ),
-              ),
+                    )
+                  : disable("5"),
               const SizedBox(height: 20),
             ],
           ),
@@ -346,6 +355,46 @@ class _GamesScreenState extends State<GamesScreen> {
       ),
     );
   }
+}
+
+Widget disable(text) {
+  return GestureDetector(
+    onTap: () => (), // Ubah menjadi level 3 jika sudah ditambahkan
+    child: Container(
+      width: double.infinity,
+      decoration: BoxDecoration(
+        color: Colors.grey,
+        borderRadius: BorderRadius.circular(20.0),
+        boxShadow: const [
+          BoxShadow(
+            color: Colors.black26,
+            blurRadius: 10.0,
+            offset: Offset(0, 10),
+          ),
+        ],
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Icon(
+            Icons.videogame_asset,
+            size: 100,
+            color: Colors.black,
+          ),
+          const SizedBox(height: 20),
+          Text(
+            "LEVEL $text",
+            style: const TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+              color: Colors.black,
+            ),
+          ),
+          const SizedBox(height: 20),
+        ],
+      ),
+    ),
+  );
 }
 
 void main() {

@@ -188,3 +188,21 @@ String levelSoundAsesmen = '';
 List<dynamic> optionsAsesmen = [];
 List<dynamic> answerAsesmen = [];
 List<dynamic> correctAnswerAsesmen = [];
+
+int games1 = 0;
+int games2 = 0;
+int games3 = 0;
+int games4 = 0;
+
+bool ujian1 = false;
+bool ujian2 = false;
+bool ujian3 = false;
+bool ujian4 = false;
+bool ujian5 = false;
+bool ujian6 = false;
+bool ujian7 = false;
+bool ujian8 = false;
+bool ujian9 = false;
+bool ujian10 = false;
+
+int ujian = 0;

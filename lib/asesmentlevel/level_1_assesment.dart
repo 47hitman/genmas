@@ -4,6 +4,7 @@ import 'package:page_transition/page_transition.dart';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
 
 import '../games_screen.dart';
+import '../homeScreen.dart';
 import 'game_asesment/cocokkan_gambar_ujian_screen.dart';
 import 'game_asesment/cocokkan_text_ujian_screen.dart';
 import 'game_asesment/pasangkan_gambar_ujian_screen.dart';
@@ -20,6 +21,40 @@ class asesment1level extends StatefulWidget {
 }
 
 class _Asesment1LevelState extends State<asesment1level> {
+  void _evaluateUjianValues() {
+    int score = 0;
+    int trueCount = 0;
+
+    List<bool> ujianList = [
+      ujian1,
+      ujian2,
+      ujian3,
+      ujian4,
+      ujian5,
+      ujian6,
+      ujian7,
+      ujian8,
+      ujian9,
+      ujian10
+    ];
+
+    for (var value in ujianList) {
+      if (value) {
+        trueCount++;
+        score += 10;
+      }
+    }
+
+    if (trueCount == 2) {
+      score = 20;
+    }
+    setState(() {
+      games1 = score;
+    });
+
+    // print('Score: $score');
+  }
+
   void _showConfirmationDialog() {
     showDialog(
       context: context,
@@ -44,7 +79,17 @@ class _Asesment1LevelState extends State<asesment1level> {
                 style: TextStyle(color: Colors.green, fontSize: 18),
               ),
               onPressed: () {
-                // Add your completion logic here
+                _btnController.stop();
+                _evaluateUjianValues(); // Evaluate and print the values
+                Navigator.push(
+                  context,
+                  PageTransition(
+                    duration: const Duration(milliseconds: 300),
+                    type: PageTransitionType.rightToLeft,
+                    child:
+                        const HomeScreen(), // Ganti dengan widget level yang sesuai
+                  ),
+                );
               },
             ),
           ],
@@ -60,6 +105,16 @@ class _Asesment1LevelState extends State<asesment1level> {
       color: const Color.fromARGB(255, 19, 212, 42),
       controller: _btnController,
       onPressed: () {
+        // print('ujian1: $ujian1');
+        // print('ujian2: $ujian2');
+        // print('ujian3: $ujian3');
+        // print('ujian4: $ujian4');
+        // print('ujian5: $ujian5');
+        // print('ujian6: $ujian6');
+        // print('ujian7: $ujian7');
+        // print('ujian8: $ujian8');
+        // print('ujian9: $ujian9');
+        // print('ujian10: $ujian10');
         _showConfirmationDialog();
       },
       child: Container(
@@ -104,16 +159,16 @@ class _Asesment1LevelState extends State<asesment1level> {
                 width: double.infinity,
                 color: const Color.fromARGB(255, 19, 212, 42),
                 padding: const EdgeInsets.all(16.0),
-                child: const Row(
+                child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
+                    const Text(
                       "Ujian Level 1",
                       style: TextStyle(color: Colors.white, fontSize: 18),
                     ),
                     Text(
-                      "Point 0",
-                      style: TextStyle(color: Colors.white, fontSize: 18),
+                      "Point $games1",
+                      style: const TextStyle(color: Colors.white, fontSize: 18),
                     ),
                   ],
                 ),
@@ -125,6 +180,17 @@ class _Asesment1LevelState extends State<asesment1level> {
                 padding: const EdgeInsets.all(20),
                 child: InkWell(
                   onTap: () {
+                    ujian = 1;
+                    // ujian1 = false;
+                    // ujian2 = false;
+                    // ujian3 = false;
+                    // ujian4 = false;
+                    // ujian5 = false;
+                    // ujian6 = false;
+                    // ujian7 = false;
+                    // ujian8 = false;
+                    // ujian9 = false;
+                    // ujian10 = false;
                     aktivitas2 = 2;
                     extra1 = 'assets/level1/aktivitas2/meja.png';
                     extratext1 = 'meja';
@@ -189,6 +255,7 @@ class _Asesment1LevelState extends State<asesment1level> {
                 padding: const EdgeInsets.all(20),
                 child: InkWell(
                   onTap: () {
+                    ujian = 2;
                     aktivitas2 = 5;
                     extraTexts = [];
 
@@ -242,6 +309,7 @@ class _Asesment1LevelState extends State<asesment1level> {
                 padding: const EdgeInsets.all(20),
                 child: InkWell(
                   onTap: () {
+                    ujian = 3;
                     aktivitas2 = 6;
                     extraTexts = ['meja'];
                     itemstext = [
@@ -294,6 +362,7 @@ class _Asesment1LevelState extends State<asesment1level> {
                 padding: const EdgeInsets.all(20),
                 child: InkWell(
                   onTap: () {
+                    ujian = 1;
                     aktivitas6 = 2;
                     targetImage = 'assets/level1/aktivitas6/segiempat.png';
                     options = [
@@ -356,6 +425,7 @@ class _Asesment1LevelState extends State<asesment1level> {
                 padding: const EdgeInsets.all(20),
                 child: InkWell(
                   onTap: () {
+                    ujian = 5;
                     aktivitas3 = 3;
                     sound = 'assets/soal1/Level 1 (aktivitas 3c).m4a';
                     targetImage = 'assets/level1/aktivitas3/buku.png';
@@ -418,6 +488,7 @@ class _Asesment1LevelState extends State<asesment1level> {
                 padding: const EdgeInsets.all(20),
                 child: InkWell(
                   onTap: () {
+                    ujian = 6;
                     aktivitas2 = 1;
                     extra1 = '';
                     extratext1 = '';
@@ -482,6 +553,7 @@ class _Asesment1LevelState extends State<asesment1level> {
                 padding: const EdgeInsets.all(20),
                 child: InkWell(
                   onTap: () {
+                    ujian = 7;
                     aktivitas2 = 3;
                     extra1 = 'assets/level1/aktivitas2/meja.png';
                     extratext1 = 'meja';
@@ -546,6 +618,7 @@ class _Asesment1LevelState extends State<asesment1level> {
                 padding: const EdgeInsets.all(20),
                 child: InkWell(
                   onTap: () {
+                    ujian = 9;
                     extraTexts = ['meja', 'baju'];
                     itemstext = [
                       'buku',
@@ -657,6 +730,7 @@ class _Asesment1LevelState extends State<asesment1level> {
                 padding: const EdgeInsets.all(20),
                 child: InkWell(
                   onTap: () {
+                    ujian = 10;
                     targetImage = 'assets/level1/aktivitas6/bulat.png';
                     options = [
                       {

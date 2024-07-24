@@ -290,12 +290,94 @@ class _ImageMatchingUjianGameScreenState
                             //   const SnackBar(content: Text('Cocok!')),
                             // );
                             _checkCompletion();
+                            for (int i = 1; i <= 10; i++) {
+                              if (ujian == i) {
+                                switch (i) {
+                                  case 1:
+                                    ujian1 = true;
+                                    break;
+                                  case 2:
+                                    ujian2 = true;
+                                    break;
+                                  case 3:
+                                    ujian3 = true;
+                                    break;
+                                  case 4:
+                                    ujian4 = true;
+                                    break;
+                                  case 5:
+                                    ujian5 = true;
+                                    break;
+                                  case 6:
+                                    ujian6 = true;
+                                    break;
+                                  case 7:
+                                    ujian7 = true;
+                                    break;
+                                  case 8:
+                                    ujian8 = true;
+                                    break;
+                                  case 9:
+                                    ujian9 = true;
+                                    break;
+                                  case 10:
+                                    ujian10 = true;
+                                    break;
+                                }
+                              }
+                            }
+                            // ujian1 = false;
+                            // ujian2 = false;
+                            // ujian3 = false;
+                            // ujian4 = false;
+                            // ujian5 = false;
+                            // ujian6 = false;
+                            // ujian7 = false;
+                            // ujian8 = false;
+                            // ujian9 = false;
+                            // ujian10 = false;
                           } else {
-                            _play2('assets/option/Ayo coba lagi.m4a');
-                            // ScaffoldMessenger.of(context).showSnackBar(
-                            //   const SnackBar(
-                            //       content: Text('Tidak cocok, coba lagi!')),
-                            // );
+                            for (int i = 1; i <= 10; i++) {
+                              if (ujian == i) {
+                                switch (i) {
+                                  case 1:
+                                    ujian1 = false;
+                                    break;
+                                  case 2:
+                                    ujian2 = false;
+                                    break;
+                                  case 3:
+                                    ujian3 = false;
+                                    break;
+                                  case 4:
+                                    ujian4 = false;
+                                    break;
+                                  case 5:
+                                    ujian5 = false;
+                                    break;
+                                  case 6:
+                                    ujian6 = false;
+                                    break;
+                                  case 7:
+                                    ujian7 = false;
+                                    break;
+                                  case 8:
+                                    ujian8 = false;
+                                    break;
+                                  case 9:
+                                    ujian9 = false;
+                                    break;
+                                  case 10:
+                                    ujian10 = false;
+                                    break;
+                                }
+                              }
+                            }
+                            // _play2('assets/option/Ayo coba lagi.m4a');
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                  content: Text('Tidak cocok, coba lagi!')),
+                            );
                           }
                         },
                       );

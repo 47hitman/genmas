@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
+import '../homeScreen.dart';
 import '../services/globals.dart';
 import 'game_asesment/cocokkan_gambar_ujian_screen.dart';
 import 'game_asesment/kata_berawalan_ujian.dart';
@@ -20,6 +21,40 @@ class asesment3level extends StatefulWidget {
 }
 
 class _asesment3levelState extends State<asesment3level> {
+  void _evaluateUjianValues() {
+    int score = 0;
+    int trueCount = 0;
+
+    List<bool> ujianList = [
+      ujian1,
+      ujian2,
+      ujian3,
+      ujian4,
+      ujian5,
+      ujian6,
+      ujian7,
+      ujian8,
+      ujian9,
+      ujian10
+    ];
+
+    for (var value in ujianList) {
+      if (value) {
+        trueCount++;
+        score += 10;
+      }
+    }
+
+    if (trueCount == 2) {
+      score = 20;
+    }
+    setState(() {
+      games3 = score;
+    });
+
+    // print('Score: $score');
+  }
+
   void _showConfirmationDialog() {
     showDialog(
       context: context,
@@ -44,7 +79,17 @@ class _asesment3levelState extends State<asesment3level> {
                 style: TextStyle(color: Colors.green, fontSize: 18),
               ),
               onPressed: () {
-                // Add your completion logic here
+                _btnController.stop();
+                _evaluateUjianValues(); // Evaluate and print the values
+                Navigator.push(
+                  context,
+                  PageTransition(
+                    duration: const Duration(milliseconds: 300),
+                    type: PageTransitionType.rightToLeft,
+                    child:
+                        const HomeScreen(), // Ganti dengan widget level yang sesuai
+                  ),
+                );
               },
             ),
           ],
@@ -93,16 +138,16 @@ class _asesment3levelState extends State<asesment3level> {
                 width: double.infinity,
                 color: const Color.fromARGB(255, 19, 212, 42),
                 padding: const EdgeInsets.all(16.0),
-                child: const Row(
+                child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
+                    const Text(
                       "Ujian Level 3",
                       style: TextStyle(color: Colors.white, fontSize: 18),
                     ),
                     Text(
-                      "Point 0",
-                      style: TextStyle(color: Colors.white, fontSize: 18),
+                      "Point $games3",
+                      style: const TextStyle(color: Colors.white, fontSize: 18),
                     ),
                   ],
                 ),
@@ -114,6 +159,7 @@ class _asesment3levelState extends State<asesment3level> {
                 padding: const EdgeInsets.all(20),
                 child: InkWell(
                   onTap: () {
+                    ujian = 1;
                     aktivitas3 = 3;
                     sound = 'assets/soal1/Level 1 (aktivitas 3b).m4a';
                     targetImage = 'assets/level1/aktivitas3/b.png';
@@ -167,6 +213,7 @@ class _asesment3levelState extends State<asesment3level> {
                 padding: const EdgeInsets.all(20),
                 child: InkWell(
                   onTap: () {
+                    ujian = 2;
                     aktivitas3 = 3;
                     sound = 'assets/soal1/Level 1 (aktivitas 3c).m4a';
                     targetImage = 'assets/level1/aktivitas3/buku.png';
@@ -230,6 +277,7 @@ class _asesment3levelState extends State<asesment3level> {
                 padding: const EdgeInsets.all(20),
                 child: InkWell(
                   onTap: () {
+                    ujian = 3;
                     sound = 'assets/level2/Level 2 (aktivitas 1 sa).m4a';
                     berawalan = "sa";
                     targetImage = 'assets/level2/sapu.png';
@@ -284,6 +332,7 @@ class _asesment3levelState extends State<asesment3level> {
                 padding: const EdgeInsets.all(20),
                 child: InkWell(
                   onTap: () {
+                    ujian = 4;
                     sound = 'assets/level2/Level 2 (aktivitas 1 so).m4a';
                     berawalan = "so";
                     targetImage = 'assets/level2/soda.png';
@@ -338,6 +387,7 @@ class _asesment3levelState extends State<asesment3level> {
                 padding: const EdgeInsets.all(20),
                 child: InkWell(
                   onTap: () {
+                    ujian = 5;
                     sound =
                         'assets/level2/Level 2 (aktivitas 2a ini dibaca susu).m4a';
                     appbar = "KVKV";
@@ -391,6 +441,7 @@ class _asesment3levelState extends State<asesment3level> {
                 padding: const EdgeInsets.all(20),
                 child: InkWell(
                   onTap: () {
+                    ujian = 6;
                     sound =
                         'assets/level2/Level 2 (aktivitas 2a ini dibaca sapu).m4a';
                     appbar = "KVKV";
@@ -444,6 +495,7 @@ class _asesment3levelState extends State<asesment3level> {
                 padding: const EdgeInsets.all(20),
                 child: InkWell(
                   onTap: () {
+                    ujian = 7;
                     {
                       assetName = 'sapu';
                       assetLocation = "assets/level3/aktivitas1/sapu.png";
@@ -498,6 +550,7 @@ class _asesment3levelState extends State<asesment3level> {
                 padding: const EdgeInsets.all(20),
                 child: InkWell(
                   onTap: () {
+                    ujian = 8;
                     {
                       assetName = 'soda';
                       assetLocation = "assets/level3/aktivitas1/soda.png";
@@ -551,6 +604,7 @@ class _asesment3levelState extends State<asesment3level> {
                 padding: const EdgeInsets.all(20),
                 child: InkWell(
                   onTap: () {
+                    ujian = 9;
                     aktivitas2 = 3;
                     extra1 = 'assets/level1/aktivitas2/meja.png';
                     extratext1 = 'meja';
@@ -615,6 +669,7 @@ class _asesment3levelState extends State<asesment3level> {
                 padding: const EdgeInsets.all(20),
                 child: InkWell(
                   onTap: () {
+                    ujian = 10;
                     targetImage = 'assets/level1/aktivitas6/bulat.png';
                     options = [
                       {
