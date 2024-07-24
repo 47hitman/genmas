@@ -49,6 +49,7 @@ dependencies:
   chewie: ^1.7.5
   sizer: ^2.0.15
   webview_flutter: ^3.0.2
+  permission_handler: ^11.3.1
   # flutter_tts: ^4.0.2
 
 dev_dependencies:

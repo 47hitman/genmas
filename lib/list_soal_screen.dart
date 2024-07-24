@@ -115,7 +115,7 @@ class _ListSoalScreenState extends State<ListSoalScreen> {
           ),
           CustomButton(
             iconPath: 'assets/icon.gif',
-            label: 'Tebak Gambar',
+            label: 'TebakGambarBerurutanScreen',
             onTap: () {
               Navigator.push(
                 context,

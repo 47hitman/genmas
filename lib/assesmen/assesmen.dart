@@ -197,6 +197,9 @@ class _assesmenState extends State<assesmen> {
                   final targetImagesoal = resource['resource']['targetImage'];
                   final optionsList = resource['resource']['option'];
                   final sound = resource['resource']['levelSound'];
+                  final level = resource['level'];
+                  final activity = resource['activity'];
+                  final id = resource['id'];
                   final optionssoal = List<Map<String, String>>.from(
                     optionsList.map((item) => Map<String, String>.from(item)),
                   );
@@ -208,14 +211,17 @@ class _assesmenState extends State<assesmen> {
                         options = optionssoal;
                         targetImage = targetImagesoal;
                         soundAsesmen = sound;
-                        Navigator.push(
-                          context,
-                          PageTransition(
-                            duration: const Duration(milliseconds: 300),
-                            type: PageTransitionType.rightToLeft,
-                            child: const MatchingGameScreenAssestment(),
-                          ),
-                        );
+                        // print("-------");
+                        // print(activity);
+                        // print("-------");
+                        // Navigator.push(
+                        //   context,
+                        //   PageTransition(
+                        //     duration: const Duration(milliseconds: 300),
+                        //     type: PageTransitionType.rightToLeft,
+                        //     child: const MatchingGameScreenAssestment(),
+                        //   ),
+                        // );
                       },
                       child: Container(
                         width: 80,

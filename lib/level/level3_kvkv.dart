@@ -1,7 +1,6 @@
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
 import 'package:genmmas/games/lengkapi_kata_screen.dart';
-import 'package:genmmas/level/level_3.dart';
 import 'package:page_transition/page_transition.dart';
 
 import '../menu/level_3_menu.dart';

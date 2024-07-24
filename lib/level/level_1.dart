@@ -1157,7 +1157,7 @@ class _level1State extends State<level1> {
                               'assets/level1/aktivitas5/brokoli.png',
                               'assets/level1/aktivitas5/wortel.png',
                               'assets/level1/aktivitas5/brokoli.png',
-                              // 'assets/level1/aktivitas5/wortel.png',
+                              'assets/level1/aktivitas5/wortel.png',
                             ];
                             Navigator.push(
                               context,

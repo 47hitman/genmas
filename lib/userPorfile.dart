@@ -7,6 +7,7 @@ import 'package:page_transition/page_transition.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'aboutUs.dart';
+import 'gurus_screen.dart';
 import 'loginScreens.dart';
 import 'services/services.dart';
 
@@ -118,6 +119,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         duration: const Duration(milliseconds: 300),
                         type: PageTransitionType.rightToLeft,
                         child: const EditProfileScreen()));
+
+                // Aksi untuk Edit Profile
+              },
+            ),
+            CustomButton(
+              iconPath: 'assets/simbolsiswa.png',
+              label: 'menu guru',
+              onTap: () {
+                Navigator.push(
+                    context,
+                    PageTransition(
+                        duration: const Duration(milliseconds: 300),
+                        type: PageTransitionType.rightToLeft,
+                        child: const DownloadScreen()));
 
                 // Aksi untuk Edit Profile
               },
