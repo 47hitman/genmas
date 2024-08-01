@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
 import '../homeScreen.dart';
+import '../menuScreens.dart';
 import '../services/globals.dart';
 import 'game_asesment/cocokkan_gambar_ujian_screen.dart';
 import 'game_asesment/kata_berawalan_ujian.dart';
@@ -79,6 +80,28 @@ class _asesment3levelState extends State<asesment3level> {
                 style: TextStyle(color: Colors.green, fontSize: 18),
               ),
               onPressed: () {
+                _evaluateUjianValues(); // Evaluate and print the values
+                // print(ujian1);
+                // print(ujian2);
+                // print(ujian3);
+                // print(ujian4);
+                // print(ujian5);
+                // print(ujian6);
+                // print(ujian7);
+                // print(ujian8);
+                // print(ujian9);
+                // print(ujian10);
+                ujian1 = false;
+                ujian2 = false;
+                ujian3 = false;
+                ujian4 = false;
+                ujian5 = false;
+                ujian6 = false;
+                ujian7 = false;
+                ujian8 = false;
+                ujian9 = false;
+                ujian10 = false;
+
                 soalujian1 = false;
                 soalujian2 = false;
                 soalujian3 = false;
@@ -90,14 +113,13 @@ class _asesment3levelState extends State<asesment3level> {
                 soalujian9 = false;
                 soalujian10 = false;
                 _btnController.stop();
-                _evaluateUjianValues(); // Evaluate and print the values
                 Navigator.push(
                   context,
                   PageTransition(
                     duration: const Duration(milliseconds: 300),
                     type: PageTransitionType.rightToLeft,
                     child:
-                        const HomeScreen(), // Ganti dengan widget level yang sesuai
+                        const MenuScreen(), // Ganti dengan widget level yang sesuai
                   ),
                 );
               },
@@ -169,7 +191,6 @@ class _asesment3levelState extends State<asesment3level> {
                 padding: const EdgeInsets.all(20),
                 child: InkWell(
                   onTap: () {
-                    ujian = 1;
                     aktivitas3 = 3;
                     sound = 'assets/soal1/Level 1 (aktivitas 3b).m4a';
                     targetImage = 'assets/level1/aktivitas3/b.png';
@@ -187,6 +208,7 @@ class _asesment3levelState extends State<asesment3level> {
                       ),
                     );
                     setState(() {
+                      ujian = 1;
                       soalujian1 = true;
                     });
                   },
@@ -227,7 +249,6 @@ class _asesment3levelState extends State<asesment3level> {
                 padding: const EdgeInsets.all(20),
                 child: InkWell(
                   onTap: () {
-                    ujian = 2;
                     aktivitas3 = 3;
                     sound = 'assets/soal1/Level 1 (aktivitas 3c).m4a';
                     targetImage = 'assets/level1/aktivitas3/buku.png';
@@ -248,6 +269,7 @@ class _asesment3levelState extends State<asesment3level> {
                       // {'image': 'assets/level1/aktivitas3/kucing.png', 'text': 'Burung'},
                     ];
                     setState(() {
+                      ujian = 2;
                       soalujian2 = true;
                     });
                     Navigator.push(
@@ -296,7 +318,6 @@ class _asesment3levelState extends State<asesment3level> {
                 padding: const EdgeInsets.all(20),
                 child: InkWell(
                   onTap: () {
-                    ujian = 3;
                     sound = 'assets/level2/Level 2 (aktivitas 1 sa).m4a';
                     berawalan = "sa";
                     targetImage = 'assets/level2/sapu.png';
@@ -306,6 +327,7 @@ class _asesment3levelState extends State<asesment3level> {
                       {'image': 'assets/level2/sapu.png', 'text': 'sapu'},
                     ];
                     setState(() {
+                      ujian = 3;
                       soalujian3 = true;
                     });
                     Navigator.push(
@@ -355,7 +377,6 @@ class _asesment3levelState extends State<asesment3level> {
                 padding: const EdgeInsets.all(20),
                 child: InkWell(
                   onTap: () {
-                    ujian = 4;
                     sound = 'assets/level2/Level 2 (aktivitas 1 so).m4a';
                     berawalan = "so";
                     targetImage = 'assets/level2/soda.png';
@@ -373,6 +394,7 @@ class _asesment3levelState extends State<asesment3level> {
                       ),
                     );
                     setState(() {
+                      ujian = 4;
                       soalujian4 = true;
                     });
                     // Aksi yang ingin dilakukan ketika tombol ditekan
@@ -414,7 +436,6 @@ class _asesment3levelState extends State<asesment3level> {
                 padding: const EdgeInsets.all(20),
                 child: InkWell(
                   onTap: () {
-                    ujian = 5;
                     sound =
                         'assets/level2/Level 2 (aktivitas 2a ini dibaca susu).m4a';
                     appbar = "KVKV";
@@ -431,6 +452,7 @@ class _asesment3levelState extends State<asesment3level> {
                       ),
                     );
                     setState(() {
+                      ujian = 5;
                       soalujian5 = true;
                     });
                     // Aksi yang ingin dilakukan ketika tombol ditekan
@@ -472,7 +494,6 @@ class _asesment3levelState extends State<asesment3level> {
                 padding: const EdgeInsets.all(20),
                 child: InkWell(
                   onTap: () {
-                    ujian = 6;
                     sound =
                         'assets/level2/Level 2 (aktivitas 2a ini dibaca sapu).m4a';
                     appbar = "KVKV";
@@ -480,6 +501,7 @@ class _asesment3levelState extends State<asesment3level> {
                     option2 = "besi";
                     option3 = "kotak";
                     setState(() {
+                      ujian = 6;
                       soalujian6 = true;
                     });
                     Navigator.push(
@@ -529,7 +551,6 @@ class _asesment3levelState extends State<asesment3level> {
                 padding: const EdgeInsets.all(20),
                 child: InkWell(
                   onTap: () {
-                    ujian = 7;
                     {
                       assetName = 'sapu';
                       assetLocation = "assets/level3/aktivitas1/sapu.png";
@@ -537,6 +558,7 @@ class _asesment3levelState extends State<asesment3level> {
                       optionsAsesmen = ["a", "p", "s", "u"];
                       correctAnswerAsesmen = ["s", "a", "p" "u"];
                       setState(() {
+                        ujian = 7;
                         soalujian7 = true;
                       });
                       Navigator.push(
@@ -587,7 +609,6 @@ class _asesment3levelState extends State<asesment3level> {
                 padding: const EdgeInsets.all(20),
                 child: InkWell(
                   onTap: () {
-                    ujian = 8;
                     {
                       assetName = 'soda';
                       assetLocation = "assets/level3/aktivitas1/soda.png";
@@ -604,6 +625,7 @@ class _asesment3levelState extends State<asesment3level> {
                       );
                     }
                     setState(() {
+                      ujian = 8;
                       soalujian8 = true;
                     });
                     // Aksi yang ingin dilakukan ketika tombol ditekan
@@ -645,7 +667,6 @@ class _asesment3levelState extends State<asesment3level> {
                 padding: const EdgeInsets.all(20),
                 child: InkWell(
                   onTap: () {
-                    ujian = 9;
                     aktivitas2 = 3;
                     extra1 = 'assets/level1/aktivitas2/meja.png';
                     extratext1 = 'meja';
@@ -674,6 +695,7 @@ class _asesment3levelState extends State<asesment3level> {
                       ),
                     );
                     setState(() {
+                      ujian = 9;
                       soalujian9 = true;
                     });
                   },
@@ -714,7 +736,6 @@ class _asesment3levelState extends State<asesment3level> {
                 padding: const EdgeInsets.all(20),
                 child: InkWell(
                   onTap: () {
-                    ujian = 10;
                     targetImage = 'assets/level1/aktivitas6/bulat.png';
                     options = [
                       {
@@ -731,6 +752,7 @@ class _asesment3levelState extends State<asesment3level> {
                       },
                     ];
                     setState(() {
+                      ujian = 10;
                       soalujian10 = true;
                     });
                     Navigator.push(

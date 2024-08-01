@@ -298,43 +298,43 @@ class _ImageMatchingUjianGameScreenState
                                   switch (i) {
                                     case 1:
                                       ujian1 = true;
-                                      soalujian1 = true;
+                                      // soalujian1 = true;
                                       break;
                                     case 2:
                                       ujian2 = true;
-                                      soalujian2 = true;
+                                      // soalujian2 = true;
                                       break;
                                     case 3:
                                       ujian3 = true;
-                                      soalujian3 = true;
+                                      // soalujian3 = true;
                                       break;
                                     case 4:
                                       ujian4 = true;
-                                      soalujian4 = true;
+                                      // soalujian4 = true;
                                       break;
                                     case 5:
                                       ujian5 = true;
-                                      soalujian5 = true;
+                                      // soalujian5 = true;
                                       break;
                                     case 6:
                                       ujian6 = true;
-                                      soalujian6 = true;
+                                      // soalujian6 = true;
                                       break;
                                     case 7:
                                       ujian7 = true;
-                                      soalujian7 = true;
+                                      // soalujian7 = true;
                                       break;
                                     case 8:
                                       ujian8 = true;
-                                      soalujian8 = true;
+                                      // soalujian8 = true;
                                       break;
                                     case 9:
                                       ujian9 = true;
-                                      soalujian9 = true;
+                                      // soalujian9 = true;
                                       break;
                                     case 10:
                                       ujian10 = true;
-                                      soalujian10 = true;
+                                      // soalujian10 = true;
                                       break;
                                   }
                                 });
@@ -347,43 +347,43 @@ class _ImageMatchingUjianGameScreenState
                                   switch (i) {
                                     case 1:
                                       ujian1 = false;
-                                      soalujian1 = true;
+                                      // soalujian1 = true;
                                       break;
                                     case 2:
                                       ujian2 = false;
-                                      soalujian2 = true;
+                                      // soalujian2 = true;
                                       break;
                                     case 3:
                                       ujian3 = false;
-                                      soalujian3 = true;
+                                      // soalujian3 = true;
                                       break;
                                     case 4:
                                       ujian4 = false;
-                                      soalujian4 = true;
+                                      // soalujian4 = true;
                                       break;
                                     case 5:
                                       ujian5 = false;
-                                      soalujian5 = true;
+                                      // soalujian5 = true;
                                       break;
                                     case 6:
                                       ujian6 = false;
-                                      soalujian6 = true;
+                                      // soalujian6 = true;
                                       break;
                                     case 7:
                                       ujian7 = false;
-                                      soalujian7 = true;
+                                      // soalujian7 = true;
                                       break;
                                     case 8:
                                       ujian8 = false;
-                                      soalujian8 = true;
+                                      // soalujian8 = true;
                                       break;
                                     case 9:
                                       ujian9 = false;
-                                      soalujian9 = true;
+                                      // soalujian9 = true;
                                       break;
                                     case 10:
                                       ujian10 = false;
-                                      soalujian10 = true;
+                                      // soalujian10 = true;
                                       break;
                                   }
                                 });

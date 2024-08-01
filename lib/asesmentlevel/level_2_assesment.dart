@@ -4,6 +4,7 @@ import 'package:genmmas/homeScreen.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
 
+import '../menuScreens.dart';
 import '../services/globals.dart';
 import 'game_asesment/cocokkan_gambar_ujian_screen.dart';
 import 'game_asesment/cocokkan_text_ujian_screen.dart';
@@ -80,6 +81,29 @@ class _asesment2levelState extends State<asesment2level> {
                 style: TextStyle(color: Colors.green, fontSize: 18),
               ),
               onPressed: () {
+                _evaluateUjianValues(); // Evaluate and print the values
+                // print(ujian1);
+                // print(ujian2);
+                // print(ujian3);
+                // print(ujian4);
+                // print(ujian5);
+                // print(ujian6);
+                // print(ujian7);
+                // print(ujian8);
+                // print(ujian9);
+                // print(ujian10);
+
+                ujian1 = false;
+                ujian2 = false;
+                ujian3 = false;
+                ujian4 = false;
+                ujian5 = false;
+                ujian6 = false;
+                ujian7 = false;
+                ujian8 = false;
+                ujian9 = false;
+                ujian10 = false;
+
                 soalujian1 = false;
                 soalujian2 = false;
                 soalujian3 = false;
@@ -91,16 +115,16 @@ class _asesment2levelState extends State<asesment2level> {
                 soalujian9 = false;
                 soalujian10 = false;
                 _btnController.stop();
-                _evaluateUjianValues(); // Evaluate and print the values
-                Navigator.push(
-                  context,
-                  PageTransition(
-                    duration: const Duration(milliseconds: 300),
-                    type: PageTransitionType.rightToLeft,
-                    child:
-                        const HomeScreen(), // Ganti dengan widget level yang sesuai
-                  ),
-                );
+
+                // Navigator.push(
+                //   context,
+                //   PageTransition(
+                //     duration: const Duration(milliseconds: 300),
+                //     type: PageTransitionType.rightToLeft,
+                //     child:
+                //         const MenuScreen(), // Ganti dengan widget level yang sesuai
+                //   ),
+                // );
               },
             ),
           ],
@@ -172,8 +196,9 @@ class _asesment2levelState extends State<asesment2level> {
                   onTap: () {
                     setState(() {
                       soalujian1 = true;
+                      ujian = 1;
                     });
-                    ujian = 1;
+
                     aktivitas6 = 2;
                     targetImage = 'assets/level1/aktivitas6/segiempat.png';
                     options = [
@@ -239,8 +264,9 @@ class _asesment2levelState extends State<asesment2level> {
                   onTap: () {
                     setState(() {
                       soalujian2 = true;
+                      ujian = 2;
                     });
-                    ujian = 2;
+
                     aktivitas3 = 3;
                     sound = 'assets/soal1/Level 1 (aktivitas 3c).m4a';
                     targetImage = 'assets/level1/aktivitas3/buku.png';
@@ -307,8 +333,9 @@ class _asesment2levelState extends State<asesment2level> {
                   onTap: () {
                     setState(() {
                       soalujian3 = true;
+                      ujian = 3;
                     });
-                    ujian = 3;
+
                     sound = 'assets/level2/Level 2 (aktivitas 1 sa).m4a';
                     berawalan = "sa";
                     targetImage = 'assets/level2/sapu.png';
@@ -366,8 +393,9 @@ class _asesment2levelState extends State<asesment2level> {
                   onTap: () {
                     setState(() {
                       soalujian4 = true;
+                      ujian = 4;
                     });
-                    ujian = 4;
+
                     sound = 'assets/level2/Level 2 (aktivitas 1 so).m4a';
                     berawalan = "so";
                     targetImage = 'assets/level2/soda.png';
@@ -423,7 +451,6 @@ class _asesment2levelState extends State<asesment2level> {
                 padding: const EdgeInsets.all(20),
                 child: InkWell(
                   onTap: () {
-                    ujian = 5;
                     sound =
                         'assets/level2/Level 2 (aktivitas 2a ini dibaca susu).m4a';
                     appbar = "KVKV";
@@ -431,6 +458,7 @@ class _asesment2levelState extends State<asesment2level> {
                     option2 = "air";
                     option3 = "roti";
                     setState(() {
+                      ujian = 5;
                       soalujian5 = true;
                     });
                     Navigator.push(
@@ -480,7 +508,6 @@ class _asesment2levelState extends State<asesment2level> {
                 padding: const EdgeInsets.all(20),
                 child: InkWell(
                   onTap: () {
-                    ujian = 6;
                     sound =
                         'assets/level2/Level 2 (aktivitas 2a ini dibaca sapu).m4a';
                     appbar = "KVKV";
@@ -488,6 +515,7 @@ class _asesment2levelState extends State<asesment2level> {
                     option2 = "besi";
                     option3 = "kotak";
                     setState(() {
+                      ujian = 6;
                       soalujian6 = true;
                     });
                     Navigator.push(
@@ -537,7 +565,6 @@ class _asesment2levelState extends State<asesment2level> {
                 padding: const EdgeInsets.all(20),
                 child: InkWell(
                   onTap: () {
-                    ujian = 7;
                     targetImage = 'assets/level1/aktivitas6/kubus.png';
                     options = [
                       {
@@ -554,6 +581,7 @@ class _asesment2levelState extends State<asesment2level> {
                       },
                     ];
                     setState(() {
+                      ujian = 7;
                       soalujian7 = true;
                     });
                     Navigator.push(
@@ -602,7 +630,6 @@ class _asesment2levelState extends State<asesment2level> {
                 padding: const EdgeInsets.all(20),
                 child: InkWell(
                   onTap: () {
-                    ujian = 8;
                     targetImage = 'assets/level1/aktivitas6/bulat.png';
                     options = [
                       {
@@ -619,6 +646,7 @@ class _asesment2levelState extends State<asesment2level> {
                       },
                     ];
                     setState(() {
+                      ujian = 8;
                       soalujian8 = true;
                     });
                     Navigator.push(
@@ -667,13 +695,13 @@ class _asesment2levelState extends State<asesment2level> {
                 padding: const EdgeInsets.all(20),
                 child: InkWell(
                   onTap: () {
-                    ujian = 9;
                     extraTexts = ['meja', 'baju'];
                     itemstext = [
                       'buku',
                       'bola',
                     ];
                     setState(() {
+                      ujian = 9;
                       soalujian9 = true;
                     });
                     Navigator.push(
@@ -722,7 +750,6 @@ class _asesment2levelState extends State<asesment2level> {
                 padding: const EdgeInsets.all(20),
                 child: InkWell(
                   onTap: () {
-                    ujian = 10;
                     aktivitas2 = 3;
                     extra1 = 'assets/level1/aktivitas2/meja.png';
                     extratext1 = 'meja';
@@ -743,6 +770,7 @@ class _asesment2levelState extends State<asesment2level> {
                       },
                     ];
                     setState(() {
+                      ujian = 10;
                       soalujian10 = true;
                     });
                     Navigator.push(

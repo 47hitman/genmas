@@ -85,6 +85,28 @@ class _Asesment1LevelState extends State<asesment1level> {
                 style: TextStyle(color: Colors.green, fontSize: 18),
               ),
               onPressed: () {
+                _evaluateUjianValues(); // Evaluate and print the values
+                // print(ujian1);
+                // print(ujian2);
+                // print(ujian3);
+                // print(ujian4);
+                // print(ujian5);
+                // print(ujian6);
+                // print(ujian7);
+                // print(ujian8);
+                // print(ujian9);
+                // print(ujian10);
+                ujian1 = false;
+                ujian2 = false;
+                ujian3 = false;
+                ujian4 = false;
+                ujian5 = false;
+                ujian6 = false;
+                ujian7 = false;
+                ujian8 = false;
+                ujian9 = false;
+                ujian10 = false;
+
                 soalujian1 = false;
                 soalujian2 = false;
                 soalujian3 = false;
@@ -95,9 +117,7 @@ class _Asesment1LevelState extends State<asesment1level> {
                 soalujian8 = false;
                 soalujian9 = false;
                 soalujian10 = false;
-
                 _btnController.stop();
-                _evaluateUjianValues(); // Evaluate and print the values
                 Navigator.push(
                   context,
                   PageTransition(
@@ -187,7 +207,6 @@ class _Asesment1LevelState extends State<asesment1level> {
                 padding: const EdgeInsets.all(20),
                 child: InkWell(
                   onTap: () {
-                    ujian = 1;
                     aktivitas2 = 2;
                     extra1 = 'assets/level1/aktivitas2/meja.png';
                     extratext1 = 'meja';
@@ -216,6 +235,7 @@ class _Asesment1LevelState extends State<asesment1level> {
                       ),
                     );
                     setState(() {
+                      ujian = 1;
                       soalujian1 = true;
                     });
                   },
@@ -256,7 +276,6 @@ class _Asesment1LevelState extends State<asesment1level> {
                 padding: const EdgeInsets.all(20),
                 child: InkWell(
                   onTap: () {
-                    ujian = 2;
                     aktivitas2 = 5;
                     extraTexts = [];
 
@@ -265,6 +284,7 @@ class _Asesment1LevelState extends State<asesment1level> {
                       'bola',
                     ];
                     setState(() {
+                      ujian = 2;
                       soalujian2 = true;
                     });
                     Navigator.push(
@@ -313,7 +333,6 @@ class _Asesment1LevelState extends State<asesment1level> {
                 padding: const EdgeInsets.all(20),
                 child: InkWell(
                   onTap: () {
-                    ujian = 3;
                     aktivitas2 = 6;
                     extraTexts = ['meja'];
                     itemstext = [
@@ -321,6 +340,7 @@ class _Asesment1LevelState extends State<asesment1level> {
                       'bola',
                     ];
                     setState(() {
+                      ujian = 3;
                       soalujian3 = true;
                     });
                     Navigator.push(
@@ -371,8 +391,9 @@ class _Asesment1LevelState extends State<asesment1level> {
                   onTap: () {
                     setState(() {
                       soalujian4 = true;
+                      ujian = 4;
                     });
-                    ujian = 1;
+
                     aktivitas6 = 2;
                     targetImage = 'assets/level1/aktivitas6/segiempat.png';
                     options = [
@@ -438,9 +459,9 @@ class _Asesment1LevelState extends State<asesment1level> {
                   onTap: () {
                     setState(() {
                       soalujian5 = true;
+                      ujian = 5;
                     });
 
-                    ujian = 5;
                     aktivitas3 = 3;
                     sound = 'assets/soal1/Level 1 (aktivitas 3c).m4a';
                     targetImage = 'assets/level1/aktivitas3/buku.png';
@@ -504,7 +525,6 @@ class _Asesment1LevelState extends State<asesment1level> {
                 padding: const EdgeInsets.all(20),
                 child: InkWell(
                   onTap: () {
-                    ujian = 6;
                     aktivitas2 = 1;
                     extra1 = '';
                     extratext1 = '';
@@ -525,6 +545,7 @@ class _Asesment1LevelState extends State<asesment1level> {
                       },
                     ];
                     setState(() {
+                      ujian = 6;
                       soalujian6 = true;
                     });
                     Navigator.push(
@@ -573,7 +594,6 @@ class _Asesment1LevelState extends State<asesment1level> {
                 padding: const EdgeInsets.all(20),
                 child: InkWell(
                   onTap: () {
-                    ujian = 7;
                     aktivitas2 = 3;
                     extra1 = 'assets/level1/aktivitas2/meja.png';
                     extratext1 = 'meja';
@@ -594,6 +614,7 @@ class _Asesment1LevelState extends State<asesment1level> {
                       },
                     ];
                     setState(() {
+                      ujian = 7;
                       soalujian7 = true;
                     });
 
@@ -645,9 +666,9 @@ class _Asesment1LevelState extends State<asesment1level> {
                   onTap: () {
                     setState(() {
                       soalujian8 = true;
+                      ujian = 8;
                     });
 
-                    ujian = 9;
                     extraTexts = ['meja', 'baju'];
                     itemstext = [
                       'buku',
@@ -702,6 +723,7 @@ class _Asesment1LevelState extends State<asesment1level> {
                   onTap: () {
                     setState(() {
                       soalujian9 = true;
+                      ujian = 9;
                     });
                     targetImage = 'assets/level1/aktivitas6/kubus.png';
                     options = [
@@ -766,8 +788,9 @@ class _Asesment1LevelState extends State<asesment1level> {
                   onTap: () {
                     setState(() {
                       soalujian10 = true;
+                      ujian = 10;
                     });
-                    ujian = 10;
+
                     targetImage = 'assets/level1/aktivitas6/bulat.png';
                     options = [
                       {
