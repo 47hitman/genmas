@@ -206,3 +206,75 @@ bool ujian9 = false;
 bool ujian10 = false;
 
 int ujian = 0;
+
+int level = 0;
+int activity = 0;
+bool answerAssesment = false;
+int questionId = 0;
+
+bool soalujian1 = false;
+bool soalujian2 = false;
+bool soalujian3 = false;
+bool soalujian4 = false;
+bool soalujian5 = false;
+bool soalujian6 = false;
+bool soalujian7 = false;
+bool soalujian8 = false;
+bool soalujian9 = false;
+bool soalujian10 = false;
+
+//games2
+
+bool level21 = false;
+bool level22 = false;
+bool level23 = false;
+bool level24 = false;
+bool level25 = false;
+bool level26 = false;
+bool level27 = false;
+bool level28 = false;
+bool level29 = false;
+bool level210 = false;
+bool level211 = false;
+bool level212 = false;
+bool level213 = false;
+bool level214 = false;
+bool level215 = false;
+bool level216 = false;
+bool level217 = false;
+bool level218 = false;
+bool level219 = false;
+bool level220 = false;
+bool level221 = false;
+bool level222 = false;
+bool level223 = false;
+bool level224 = false;
+bool level225 = false;
+bool level226 = false;
+bool level227 = false;
+bool level228 = false;
+bool level229 = false;
+bool level230 = false;
+
+bool level41 = false;
+bool level42 = false;
+bool level43 = false;
+bool level44 = false;
+bool level45 = false;
+
+bool level46 = false;
+bool level47 = false;
+bool level48 = false;
+bool level49 = false;
+bool level40 = false;
+
+bool level51 = false;
+bool level52 = false;
+bool level53 = false;
+bool level54 = false;
+bool level55 = false;
+bool level56 = false;
+bool level57 = false;
+bool level58 = false;
+bool level59 = false;
+bool level50 = false;

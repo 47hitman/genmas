@@ -163,7 +163,7 @@ class Services {
 
     if (response.statusCode == 200) {
       if (kDebugMode) {
-        // print(response.body);
+        print(response.body);
       }
       return jsonDecode(
           response.body); // Return dynamic to handle both List and Map
@@ -431,6 +431,51 @@ class Services {
     } else {
       if (kDebugMode) {
         // print(blackping);
+        print(response.statusCode);
+        print(response.body);
+      }
+      return null;
+    }
+  }
+
+  Future<String?> submitAssessmentScore(
+    int level,
+    int activity,
+    bool answer,
+    int questionId,
+  ) async {
+    // Ensure the path does not have a leading slash
+    Uri url = Uri.parse('$blackping/assessment/score');
+
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? token = prefs.getString('auth_token');
+
+    final Map<String, dynamic> bodyData = {
+      'level': level,
+      'activity': activity,
+      // 'part': part,
+      // if (questionNumber != null) 'question_number': questionNumber,
+      'answer': answer,
+      'question_id': questionId,
+      // if (additionalInfo != null) 'additional_info': additionalInfo,
+    };
+
+    final http.Response response = await http.post(
+      url,
+      headers: <String, String>{
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer $token',
+      },
+      body: jsonEncode(bodyData),
+    );
+
+    if (response.statusCode == 200) {
+      if (kDebugMode) {
+        print(response.body);
+      }
+      return jsonDecode(response.body)['message']; // Ensure it returns a String
+    } else {
+      if (kDebugMode) {
         print(response.statusCode);
         print(response.body);
       }

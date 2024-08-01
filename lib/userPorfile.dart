@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:genmmas/editProfile.dart';
-import 'package:genmmas/games/cari_gambar_screen.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -13,6 +12,7 @@ import 'services/services.dart';
 
 String name = "Loading...";
 String email = "";
+String role = "";
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -37,6 +37,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           print(value);
           name = "${value['first_name']} ${value['last_name']}";
           email = value['email'];
+          role = value['role'];
         });
       }
     } catch (e) {
@@ -123,20 +124,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 // Aksi untuk Edit Profile
               },
             ),
-            CustomButton(
-              iconPath: 'assets/simbolsiswa.png',
-              label: 'menu guru',
-              onTap: () {
-                Navigator.push(
-                    context,
-                    PageTransition(
-                        duration: const Duration(milliseconds: 300),
-                        type: PageTransitionType.rightToLeft,
-                        child: const DownloadScreen()));
+            role != "Siswa"
+                ? CustomButton(
+                    iconPath: 'assets/simbolsiswa.png',
+                    label: 'menu guru',
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          PageTransition(
+                              duration: const Duration(milliseconds: 300),
+                              type: PageTransitionType.rightToLeft,
+                              child: const DownloadScreen()));
 
-                // Aksi untuk Edit Profile
-              },
-            ),
+                      // Aksi untuk Edit Profile
+                    },
+                  )
+                : Container(),
             CustomButton(
               iconPath: 'assets/simbolsiswa.png',
               label: 'tentang aplikasi',

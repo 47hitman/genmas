@@ -89,21 +89,56 @@ class _DownloadScreenState extends State<DownloadScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Download Assessment Score"),
+        backgroundColor: Colors.teal,
       ),
-      body: Center(
-        child: isLoading
-            ? const CircularProgressIndicator()
-            : Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  ElevatedButton(
-                    onPressed: downloadAssessmentScore,
-                    child: const Text("Download File"),
-                  ),
-                  const SizedBox(height: 20),
-                  Text(message),
-                ],
-              ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Center(
+          child: isLoading
+              ? Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const CircularProgressIndicator(),
+                    const SizedBox(height: 20),
+                    Text(
+                      message,
+                      style: const TextStyle(fontSize: 18),
+                    ),
+                  ],
+                )
+              : Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    const Icon(
+                      Icons.file_download,
+                      size: 100,
+                      color: Colors.teal,
+                    ),
+                    const SizedBox(height: 20),
+                    ElevatedButton.icon(
+                      onPressed: downloadAssessmentScore,
+                      icon: const Icon(
+                        Icons.download,
+                        color: Colors.white,
+                      ),
+                      label: const Text(
+                        "Download File",
+                        style: TextStyle(fontSize: 18, color: Colors.white),
+                      ),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.teal,
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 32, vertical: 16),
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    Text(
+                      message,
+                      style: const TextStyle(fontSize: 18),
+                    ),
+                  ],
+                ),
+        ),
       ),
     );
   }

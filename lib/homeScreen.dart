@@ -99,6 +99,16 @@ class _HomeScreenState extends State<HomeScreen> {
         ? setState(() {
             _player.dispose();
             isAudioPlayerReady = false;
+            soalujian1 = false;
+            soalujian2 = false;
+            soalujian3 = false;
+            soalujian4 = false;
+            soalujian5 = false;
+            soalujian6 = false;
+            soalujian7 = false;
+            soalujian8 = false;
+            soalujian9 = false;
+            soalujian10 = false;
             Navigator.push(
               context,
               PageTransition(

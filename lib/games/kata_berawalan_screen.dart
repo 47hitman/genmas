@@ -2,7 +2,9 @@ import 'dart:math';
 
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
+import '../menu/level_2_menu.dart';
 import '../services/globals.dart';
 
 class BerawalnGameScreen extends StatefulWidget {
@@ -32,6 +34,40 @@ class _BerawalnGameScreenState extends State<BerawalnGameScreen> {
       autoStart: true,
       showNotification: true,
     );
+  }
+
+  Future<void> _saveData() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    switch (aktivitas2) {
+      case 1:
+        prefs.setBool('level21', level21);
+        break;
+      case 2:
+        prefs.setBool('level22', level22);
+        break;
+      case 3:
+        prefs.setBool('level23', level23);
+        break;
+      case 4:
+        prefs.setBool('level24', level24);
+        break;
+      case 5:
+        prefs.setBool('level25', level25);
+        break;
+      case 6:
+        prefs.setBool('level26', level26);
+        break;
+      case 7:
+        prefs.setBool('level27', level27);
+        break;
+      case 8:
+        prefs.setBool('level28', level28);
+        break;
+      default:
+        // print('Invalid aktivitas2 value: $aktivitas2');
+        break;
+    }
   }
 
   void _showSuccessDialog() {
@@ -81,8 +117,12 @@ class _BerawalnGameScreenState extends State<BerawalnGameScreen> {
             TextButton(
               child: const Text('OK'),
               onPressed: () {
-                Navigator.of(context).pop();
-                Navigator.of(context).pop();
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          const menu2level()), // Replace SpecificPage with your target page
+                );
                 setState(() {
                   matched = false;
                   selectedOption = null;
@@ -102,7 +142,36 @@ class _BerawalnGameScreenState extends State<BerawalnGameScreen> {
   int incorrectAttempts = 0;
   void _checkAnswer() {
     String targetText = berawalan;
+    setState(() {
+      switch (aktivitas2) {
+        case 1:
+          level21 = true;
+          break;
+        case 2:
+          level22 = true;
+          break;
+        case 3:
+          level23 = true;
+          break;
+        case 4:
+          level25 = true;
+          break;
+        case 5:
+          level26 = true;
+          break;
+        case 6:
+          level27 = true;
+          break;
+        case 7:
+          level28 = true;
+          break;
 
+        default:
+          // print('Invalid aktivitas2 value: $aktivitas2');
+          break;
+      }
+    });
+    _saveData();
     // Check if targetImage matches any option's image and update targetText
     for (var option in options) {
       if (option['image'] == targetImage) {

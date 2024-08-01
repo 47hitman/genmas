@@ -2,6 +2,7 @@ import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
 
 import '../services/globals.dart';
+import '../services/services.dart';
 
 class MatchingGameScreenAssestment extends StatefulWidget {
   const MatchingGameScreenAssestment({super.key});
@@ -24,18 +25,44 @@ class _MatchingGameScreenAssestmentState
   String? selectedImage;
   bool showSuccessDialog = false;
 
+  void _dosomething() async {
+    print(answerAssesment);
+    // try {
+    //   await Services.instance.submitAssessmentScore(
+    //     level,
+    //     activity,
+    //     answerAssesment,
+    //     questionId,
+    //   );
+    //   // Navigator.pushReplacement(
+    //   //   context,
+    //   //   MaterialPageRoute(
+    //   //     builder: (BuildContext context) => const LoginScreen(),
+    //   //   ),
+    //   // );
+    // } catch (e) {
+    //   print(e);
+    // }
+  }
+
   void checkAnswer() {
+    print(targetImage);
+    print(selectedImage);
     // Cek apakah gambar yang dipilih memiliki bentuk yang mirip dengan kubus (seperti dadu)
-    if (selectedImage == options[0]['path']) {
-      setState(() {
-        showSuccessDialogWidget();
-        showSuccessDialog = true;
-      });
-    } else {
-      showSuccessDialogWidget();
-      showSuccessDialog = true;
-      // showWrongAnswerDialog(); // Tampilkan dialog jawaban salah
-    }
+    // if (targetImage == options[0]['path']) {
+    //   setState(() {
+    //     answerAssesment = true;
+    //     showSuccessDialog = true;
+    //   });
+    //   showSuccessDialogWidget();
+    // } else {
+    //   setState(() {
+    //     answerAssesment = false;
+    //   });
+    //   showSuccessDialogWidget();
+    //   showSuccessDialog = false;
+    //   // showWrongAnswerDialog(); // Tampilkan dialog jawaban salah
+    // }
   }
 
   void resetGame() {
@@ -200,6 +227,7 @@ class _MatchingGameScreenAssestmentState
                         break;
                     }
                   });
+                  _dosomething();
                   resetGame();
                   Navigator.of(context).pop();
                   Navigator.of(context).pop();

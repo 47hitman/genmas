@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
 
 import '../services/globals.dart';
@@ -25,6 +26,106 @@ class _VoiceGameScreen2State extends State<VoiceGameScreen2> {
     _speech = stt.SpeechToText();
     // Level 2 (aktivitas 2 ini dibaca apa).m4a
     _play('assets/level2/Level 2 (aktivitas 2 ini dibaca apa).m4a');
+  }
+
+  Future<void> _saveData() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    switch (aktivitas2) {
+      case 1:
+        prefs.setBool('level21', level21);
+        break;
+      case 2:
+        prefs.setBool('level22', level22);
+        break;
+      case 3:
+        prefs.setBool('level23', level23);
+        break;
+      case 4:
+        prefs.setBool('level24', level24);
+        break;
+      case 5:
+        prefs.setBool('level25', level25);
+        break;
+      case 6:
+        prefs.setBool('level26', level26);
+        break;
+      case 7:
+        prefs.setBool('level27', level27);
+        break;
+      case 8:
+        prefs.setBool('level28', level28);
+        break;
+      case 9:
+        prefs.setBool('level29', level29);
+        break;
+      case 10:
+        prefs.setBool('level210', level210);
+        break;
+      case 11:
+        prefs.setBool('level211', level211);
+        break;
+      case 12:
+        prefs.setBool('level212', level212);
+        break;
+      case 13:
+        prefs.setBool('level213', level213);
+        break;
+      case 14:
+        prefs.setBool('level214', level214);
+        break;
+      case 15:
+        prefs.setBool('level215', level215);
+        break;
+      case 16:
+        prefs.setBool('level216', level216);
+        break;
+      case 17:
+        prefs.setBool('level217', level217);
+        break;
+      case 18:
+        prefs.setBool('level218', level218);
+        break;
+      case 19:
+        prefs.setBool('level219', level219);
+        break;
+      case 20:
+        prefs.setBool('level220', level220);
+        break;
+      case 21:
+        prefs.setBool('level221', level221);
+        break;
+      case 22:
+        prefs.setBool('level222', level222);
+        break;
+      case 23:
+        prefs.setBool('level223', level223);
+        break;
+      case 24:
+        prefs.setBool('level224', level224);
+        break;
+      case 25:
+        prefs.setBool('level225', level225);
+        break;
+      case 26:
+        prefs.setBool('level226', level226);
+        break;
+      case 27:
+        prefs.setBool('level227', level227);
+        break;
+      case 28:
+        prefs.setBool('level228', level228);
+        break;
+      case 29:
+        prefs.setBool('level229', level229);
+        break;
+      case 30:
+        prefs.setBool('level230', level230);
+        break;
+      default:
+        // print('Invalid aktivitas2 value: $aktivitas2');
+        break;
+    }
   }
 
   final AssetsAudioPlayer _player = AssetsAudioPlayer.newPlayer();
@@ -65,6 +166,105 @@ class _VoiceGameScreen2State extends State<VoiceGameScreen2> {
   int incorrectAttempts = 0; // Initialize the counter
 
   void _checkResult() {
+    setState(() {
+      switch (aktivitas2) {
+        case 1:
+          level21 = true;
+          break;
+        case 2:
+          level22 = true;
+          break;
+        case 3:
+          level23 = true;
+          break;
+        case 4:
+          level24 = true;
+          break;
+        case 5:
+          level25 = true;
+          break;
+        case 6:
+          level26 = true;
+          break;
+        case 7:
+          level27 = true;
+          break;
+        case 8:
+          level28 = true;
+          break;
+        case 9:
+          level29 = true;
+          break;
+        case 10:
+          level210 = true;
+          break;
+        case 11:
+          level211 = true;
+          break;
+        case 12:
+          level212 = true;
+          break;
+        case 13:
+          level213 = true;
+          break;
+        case 14:
+          level214 = true;
+          break;
+        case 15:
+          level215 = true;
+          break;
+        case 16:
+          level216 = true;
+          break;
+        case 17:
+          level217 = true;
+          break;
+        case 18:
+          level218 = true;
+          break;
+        case 19:
+          level219 = true;
+          break;
+        case 20:
+          level220 = true;
+          break;
+        case 21:
+          level221 = true;
+          break;
+        case 22:
+          level222 = true;
+          break;
+        case 23:
+          level223 = true;
+          break;
+        case 24:
+          level224 = true;
+          break;
+        case 25:
+          level225 = true;
+          break;
+        case 26:
+          level226 = true;
+          break;
+        case 27:
+          level227 = true;
+          break;
+        case 28:
+          level228 = true;
+          break;
+        case 29:
+          level229 = true;
+          break;
+        case 30:
+          level230 = true;
+          break;
+        default:
+          // print('Invalid aktivitas2 value: $aktivitas2');
+          break;
+      }
+    });
+
+    _saveData();
     if (_spokenText.toLowerCase() == _targetWord.toLowerCase()) {
       final List<String> compliments = [
         'assets/option/Bagus.m4a',

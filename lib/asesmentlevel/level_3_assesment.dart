@@ -79,6 +79,16 @@ class _asesment3levelState extends State<asesment3level> {
                 style: TextStyle(color: Colors.green, fontSize: 18),
               ),
               onPressed: () {
+                soalujian1 = false;
+                soalujian2 = false;
+                soalujian3 = false;
+                soalujian4 = false;
+                soalujian5 = false;
+                soalujian6 = false;
+                soalujian7 = false;
+                soalujian8 = false;
+                soalujian9 = false;
+                soalujian10 = false;
                 _btnController.stop();
                 _evaluateUjianValues(); // Evaluate and print the values
                 Navigator.push(
@@ -176,14 +186,18 @@ class _asesment3levelState extends State<asesment3level> {
                         child: const SingleImageMatchingUjianGameScreen(),
                       ),
                     );
+                    setState(() {
+                      soalujian1 = true;
+                    });
                   },
                   child: Container(
                     width: screenWidth *
                         0.9, // Button selebar layar (90% dari lebar layar)
                     height: 80,
                     decoration: BoxDecoration(
-                      color: const Color.fromARGB(
-                          255, 255, 165, 0), // Bright orange
+                      color: soalujian1
+                          ? const Color.fromARGB(255, 255, 165, 0)
+                          : Colors.grey, // Bright orange
                       borderRadius:
                           BorderRadius.circular(20), // More rounded corners
                       boxShadow: [
@@ -230,8 +244,12 @@ class _asesment3levelState extends State<asesment3level> {
                         'image': 'assets/level1/aktivitas3/bola.png',
                         'text': ''
                       },
+
                       // {'image': 'assets/level1/aktivitas3/kucing.png', 'text': 'Burung'},
                     ];
+                    setState(() {
+                      soalujian2 = true;
+                    });
                     Navigator.push(
                       context,
                       PageTransition(
@@ -246,8 +264,9 @@ class _asesment3levelState extends State<asesment3level> {
                         0.9, // Button selebar layar (90% dari lebar layar)
                     height: 80,
                     decoration: BoxDecoration(
-                      color: const Color.fromARGB(
-                          255, 255, 165, 0), // Bright orange
+                      color: soalujian2
+                          ? const Color.fromARGB(255, 255, 165, 0)
+                          : Colors.grey, // Bright orange
                       borderRadius:
                           BorderRadius.circular(20), // More rounded corners
                       boxShadow: [
@@ -286,6 +305,9 @@ class _asesment3levelState extends State<asesment3level> {
                       {'image': 'assets/level2/bibir.png', 'text': 'bibir'},
                       {'image': 'assets/level2/sapu.png', 'text': 'sapu'},
                     ];
+                    setState(() {
+                      soalujian3 = true;
+                    });
                     Navigator.push(
                       context,
                       PageTransition(
@@ -301,8 +323,9 @@ class _asesment3levelState extends State<asesment3level> {
                         0.9, // Button selebar layar (90% dari lebar layar)
                     height: 80,
                     decoration: BoxDecoration(
-                      color: const Color.fromARGB(
-                          255, 255, 165, 0), // Bright orange
+                      color: soalujian3
+                          ? const Color.fromARGB(255, 255, 165, 0)
+                          : Colors.grey, // Bright orange
                       borderRadius:
                           BorderRadius.circular(20), // More rounded corners
                       boxShadow: [
@@ -349,6 +372,9 @@ class _asesment3levelState extends State<asesment3level> {
                         child: const BerawalnUjianGameScreen(),
                       ),
                     );
+                    setState(() {
+                      soalujian4 = true;
+                    });
                     // Aksi yang ingin dilakukan ketika tombol ditekan
                   },
                   child: Container(
@@ -356,8 +382,9 @@ class _asesment3levelState extends State<asesment3level> {
                         0.9, // Button selebar layar (90% dari lebar layar)
                     height: 80,
                     decoration: BoxDecoration(
-                      color: const Color.fromARGB(
-                          255, 255, 165, 0), // Bright orange
+                      color: soalujian4
+                          ? const Color.fromARGB(255, 255, 165, 0)
+                          : Colors.grey, // Bright orange
                       borderRadius:
                           BorderRadius.circular(20), // More rounded corners
                       boxShadow: [
@@ -403,6 +430,9 @@ class _asesment3levelState extends State<asesment3level> {
                         child: const KataPolaUjian(),
                       ),
                     );
+                    setState(() {
+                      soalujian5 = true;
+                    });
                     // Aksi yang ingin dilakukan ketika tombol ditekan
                   },
                   child: Container(
@@ -410,8 +440,9 @@ class _asesment3levelState extends State<asesment3level> {
                         0.9, // Button selebar layar (90% dari lebar layar)
                     height: 80,
                     decoration: BoxDecoration(
-                      color: const Color.fromARGB(
-                          255, 255, 165, 0), // Bright orange
+                      color: soalujian5
+                          ? const Color.fromARGB(255, 255, 165, 0)
+                          : Colors.grey, // Bright orange
                       borderRadius:
                           BorderRadius.circular(20), // More rounded corners
                       boxShadow: [
@@ -448,7 +479,9 @@ class _asesment3levelState extends State<asesment3level> {
                     kvkv = "sapu";
                     option2 = "besi";
                     option3 = "kotak";
-
+                    setState(() {
+                      soalujian6 = true;
+                    });
                     Navigator.push(
                       context,
                       PageTransition(
@@ -464,8 +497,9 @@ class _asesment3levelState extends State<asesment3level> {
                         0.9, // Button selebar layar (90% dari lebar layar)
                     height: 80,
                     decoration: BoxDecoration(
-                      color: const Color.fromARGB(
-                          255, 255, 165, 0), // Bright orange
+                      color: soalujian6
+                          ? const Color.fromARGB(255, 255, 165, 0)
+                          : Colors.grey, // Bright orange
                       borderRadius:
                           BorderRadius.circular(20), // More rounded corners
                       boxShadow: [
@@ -502,7 +536,9 @@ class _asesment3levelState extends State<asesment3level> {
                       answer = ["", "", "", ""];
                       optionsAsesmen = ["a", "p", "s", "u"];
                       correctAnswerAsesmen = ["s", "a", "p" "u"];
-
+                      setState(() {
+                        soalujian7 = true;
+                      });
                       Navigator.push(
                         context,
                         PageTransition(
@@ -519,8 +555,9 @@ class _asesment3levelState extends State<asesment3level> {
                         0.9, // Button selebar layar (90% dari lebar layar)
                     height: 80,
                     decoration: BoxDecoration(
-                      color: const Color.fromARGB(
-                          255, 255, 165, 0), // Bright orange
+                      color: soalujian7
+                          ? const Color.fromARGB(255, 255, 165, 0)
+                          : Colors.grey, // Bright orange
                       borderRadius:
                           BorderRadius.circular(20), // More rounded corners
                       boxShadow: [
@@ -566,6 +603,9 @@ class _asesment3levelState extends State<asesment3level> {
                         ),
                       );
                     }
+                    setState(() {
+                      soalujian8 = true;
+                    });
                     // Aksi yang ingin dilakukan ketika tombol ditekan
                   },
                   child: Container(
@@ -573,8 +613,9 @@ class _asesment3levelState extends State<asesment3level> {
                         0.9, // Button selebar layar (90% dari lebar layar)
                     height: 80,
                     decoration: BoxDecoration(
-                      color: const Color.fromARGB(
-                          255, 255, 165, 0), // Bright orange
+                      color: soalujian8
+                          ? const Color.fromARGB(255, 255, 165, 0)
+                          : Colors.grey, // Bright orange
                       borderRadius:
                           BorderRadius.circular(20), // More rounded corners
                       boxShadow: [
@@ -632,14 +673,18 @@ class _asesment3levelState extends State<asesment3level> {
                         child: const ImageMatchingUjianGameScreen(),
                       ),
                     );
+                    setState(() {
+                      soalujian9 = true;
+                    });
                   },
                   child: Container(
                     width: screenWidth *
                         0.9, // Button selebar layar (90% dari lebar layar)
                     height: 80,
                     decoration: BoxDecoration(
-                      color: const Color.fromARGB(
-                          255, 255, 165, 0), // Bright orange
+                      color: soalujian9
+                          ? const Color.fromARGB(255, 255, 165, 0)
+                          : Colors.grey, // Bright orange
                       borderRadius:
                           BorderRadius.circular(20), // More rounded corners
                       boxShadow: [
@@ -685,6 +730,9 @@ class _asesment3levelState extends State<asesment3level> {
                         'path': 'assets/level1/aktivitas6/mail.png',
                       },
                     ];
+                    setState(() {
+                      soalujian10 = true;
+                    });
                     Navigator.push(
                       context,
                       PageTransition(
@@ -699,8 +747,9 @@ class _asesment3levelState extends State<asesment3level> {
                         0.9, // Button selebar layar (90% dari lebar layar)
                     height: 80,
                     decoration: BoxDecoration(
-                      color: const Color.fromARGB(
-                          255, 255, 165, 0), // Bright orange
+                      color: soalujian10
+                          ? const Color.fromARGB(255, 255, 165, 0)
+                          : Colors.grey, // Bright orange
                       borderRadius:
                           BorderRadius.circular(20), // More rounded corners
                       boxShadow: [

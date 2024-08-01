@@ -2,8 +2,10 @@ import 'dart:math';
 
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
 
+import '../level/level_5.dart';
 import '../services/globals.dart';
 
 class VoiceGameScreen extends StatefulWidget {
@@ -11,6 +13,46 @@ class VoiceGameScreen extends StatefulWidget {
 
   @override
   _VoiceGameScreenState createState() => _VoiceGameScreenState();
+}
+
+Future<void> _saveData() async {
+  final SharedPreferences prefs = await SharedPreferences.getInstance();
+
+  switch (aktivitas2) {
+    case 1:
+      prefs.setBool('level51', level51);
+      break;
+    case 2:
+      prefs.setBool('level52', level52);
+      break;
+    case 3:
+      prefs.setBool('level53', level53);
+      break;
+    case 4:
+      prefs.setBool('level54', level54);
+      break;
+    case 5:
+      prefs.setBool('level55', level55);
+      break;
+    case 6:
+      prefs.setBool('level56', level56);
+      break;
+    case 7:
+      prefs.setBool('level57', level57);
+      break;
+    case 8:
+      prefs.setBool('level58', level58);
+      break;
+    case 9:
+      prefs.setBool('level59', level59);
+      break;
+    case 10:
+      prefs.setBool('level50', level50);
+      break;
+    default:
+      // print('Invalid aktivitas2 value: $aktivitas2');
+      break;
+  }
 }
 
 class _VoiceGameScreenState extends State<VoiceGameScreen> {
@@ -71,6 +113,44 @@ class _VoiceGameScreenState extends State<VoiceGameScreen> {
         'assets/option/Hebat.m4a',
         'assets/option/Pintar.m4a'
       ];
+      setState(() {
+        switch (aktivitas2) {
+          case 1:
+            level51 = true;
+            break;
+          case 2:
+            level52 = true;
+            break;
+          case 3:
+            level53 = true;
+            break;
+          case 4:
+            level54 = true;
+            break;
+          case 5:
+            level55 = true;
+            break;
+          case 6:
+            level56 = true;
+            break;
+          case 7:
+            level57 = true;
+            break;
+          case 8:
+            level58 = true;
+            break;
+          case 9:
+            level59 = true;
+            break;
+          case 10:
+            level50 = true;
+            break;
+          default:
+            // print('Invalid aktivitas2 value: $aktivitas2');
+            break;
+        }
+      });
+      _saveData();
       Future.delayed(const Duration(seconds: 2), () {
         final randomCompliment =
             compliments[Random().nextInt(compliments.length)];
@@ -86,8 +166,12 @@ class _VoiceGameScreenState extends State<VoiceGameScreen> {
             TextButton(
               child: const Text('OK'),
               onPressed: () {
-                Navigator.of(context).pop();
-                Navigator.of(context).pop();
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          const level5()), // Replace SpecificPage with your target page
+                );
               },
             ),
           ],

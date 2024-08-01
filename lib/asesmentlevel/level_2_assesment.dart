@@ -80,6 +80,16 @@ class _asesment2levelState extends State<asesment2level> {
                 style: TextStyle(color: Colors.green, fontSize: 18),
               ),
               onPressed: () {
+                soalujian1 = false;
+                soalujian2 = false;
+                soalujian3 = false;
+                soalujian4 = false;
+                soalujian5 = false;
+                soalujian6 = false;
+                soalujian7 = false;
+                soalujian8 = false;
+                soalujian9 = false;
+                soalujian10 = false;
                 _btnController.stop();
                 _evaluateUjianValues(); // Evaluate and print the values
                 Navigator.push(
@@ -160,6 +170,9 @@ class _asesment2levelState extends State<asesment2level> {
                 padding: const EdgeInsets.all(20),
                 child: InkWell(
                   onTap: () {
+                    setState(() {
+                      soalujian1 = true;
+                    });
                     ujian = 1;
                     aktivitas6 = 2;
                     targetImage = 'assets/level1/aktivitas6/segiempat.png';
@@ -192,8 +205,9 @@ class _asesment2levelState extends State<asesment2level> {
                         0.9, // Button selebar layar (90% dari lebar layar)
                     height: 80,
                     decoration: BoxDecoration(
-                      color: const Color.fromARGB(
-                          255, 255, 165, 0), // Bright orange
+                      color: soalujian1
+                          ? const Color.fromARGB(255, 255, 165, 0)
+                          : Colors.grey, // Bright orange
                       borderRadius:
                           BorderRadius.circular(20), // More rounded corners
                       boxShadow: [
@@ -223,6 +237,9 @@ class _asesment2levelState extends State<asesment2level> {
                 padding: const EdgeInsets.all(20),
                 child: InkWell(
                   onTap: () {
+                    setState(() {
+                      soalujian2 = true;
+                    });
                     ujian = 2;
                     aktivitas3 = 3;
                     sound = 'assets/soal1/Level 1 (aktivitas 3c).m4a';
@@ -256,8 +273,9 @@ class _asesment2levelState extends State<asesment2level> {
                         0.9, // Button selebar layar (90% dari lebar layar)
                     height: 80,
                     decoration: BoxDecoration(
-                      color: const Color.fromARGB(
-                          255, 255, 165, 0), // Bright orange
+                      color: soalujian2
+                          ? const Color.fromARGB(255, 255, 165, 0)
+                          : Colors.grey, // Bright orange
                       borderRadius:
                           BorderRadius.circular(20), // More rounded corners
                       boxShadow: [
@@ -287,6 +305,9 @@ class _asesment2levelState extends State<asesment2level> {
                 padding: const EdgeInsets.all(20),
                 child: InkWell(
                   onTap: () {
+                    setState(() {
+                      soalujian3 = true;
+                    });
                     ujian = 3;
                     sound = 'assets/level2/Level 2 (aktivitas 1 sa).m4a';
                     berawalan = "sa";
@@ -311,8 +332,9 @@ class _asesment2levelState extends State<asesment2level> {
                         0.9, // Button selebar layar (90% dari lebar layar)
                     height: 80,
                     decoration: BoxDecoration(
-                      color: const Color.fromARGB(
-                          255, 255, 165, 0), // Bright orange
+                      color: soalujian3
+                          ? const Color.fromARGB(255, 255, 165, 0)
+                          : Colors.grey, // Bright orange // Bright orange
                       borderRadius:
                           BorderRadius.circular(20), // More rounded corners
                       boxShadow: [
@@ -342,6 +364,9 @@ class _asesment2levelState extends State<asesment2level> {
                 padding: const EdgeInsets.all(20),
                 child: InkWell(
                   onTap: () {
+                    setState(() {
+                      soalujian4 = true;
+                    });
                     ujian = 4;
                     sound = 'assets/level2/Level 2 (aktivitas 1 so).m4a';
                     berawalan = "so";
@@ -366,8 +391,9 @@ class _asesment2levelState extends State<asesment2level> {
                         0.9, // Button selebar layar (90% dari lebar layar)
                     height: 80,
                     decoration: BoxDecoration(
-                      color: const Color.fromARGB(
-                          255, 255, 165, 0), // Bright orange
+                      color: soalujian4
+                          ? const Color.fromARGB(255, 255, 165, 0)
+                          : Colors.grey, // Bright orange
                       borderRadius:
                           BorderRadius.circular(20), // More rounded corners
                       boxShadow: [
@@ -404,7 +430,9 @@ class _asesment2levelState extends State<asesment2level> {
                     kvkv = "susu";
                     option2 = "air";
                     option3 = "roti";
-
+                    setState(() {
+                      soalujian5 = true;
+                    });
                     Navigator.push(
                       context,
                       PageTransition(
@@ -420,8 +448,9 @@ class _asesment2levelState extends State<asesment2level> {
                         0.9, // Button selebar layar (90% dari lebar layar)
                     height: 80,
                     decoration: BoxDecoration(
-                      color: const Color.fromARGB(
-                          255, 255, 165, 0), // Bright orange
+                      color: soalujian5
+                          ? const Color.fromARGB(255, 255, 165, 0)
+                          : Colors.grey, // Bright orange
                       borderRadius:
                           BorderRadius.circular(20), // More rounded corners
                       boxShadow: [
@@ -458,7 +487,9 @@ class _asesment2levelState extends State<asesment2level> {
                     kvkv = "sapu";
                     option2 = "besi";
                     option3 = "kotak";
-
+                    setState(() {
+                      soalujian6 = true;
+                    });
                     Navigator.push(
                       context,
                       PageTransition(
@@ -474,8 +505,9 @@ class _asesment2levelState extends State<asesment2level> {
                         0.9, // Button selebar layar (90% dari lebar layar)
                     height: 80,
                     decoration: BoxDecoration(
-                      color: const Color.fromARGB(
-                          255, 255, 165, 0), // Bright orange
+                      color: soalujian6
+                          ? const Color.fromARGB(255, 255, 165, 0)
+                          : Colors.grey, // Bright orange
                       borderRadius:
                           BorderRadius.circular(20), // More rounded corners
                       boxShadow: [
@@ -521,6 +553,9 @@ class _asesment2levelState extends State<asesment2level> {
                         'path': 'assets/level1/aktivitas6/gelas.png',
                       },
                     ];
+                    setState(() {
+                      soalujian7 = true;
+                    });
                     Navigator.push(
                       context,
                       PageTransition(
@@ -535,8 +570,9 @@ class _asesment2levelState extends State<asesment2level> {
                         0.9, // Button selebar layar (90% dari lebar layar)
                     height: 80,
                     decoration: BoxDecoration(
-                      color: const Color.fromARGB(
-                          255, 255, 165, 0), // Bright orange
+                      color: soalujian7
+                          ? const Color.fromARGB(255, 255, 165, 0)
+                          : Colors.grey, // Bright orange
                       borderRadius:
                           BorderRadius.circular(20), // More rounded corners
                       boxShadow: [
@@ -582,6 +618,9 @@ class _asesment2levelState extends State<asesment2level> {
                         'path': 'assets/level1/aktivitas6/mail.png',
                       },
                     ];
+                    setState(() {
+                      soalujian8 = true;
+                    });
                     Navigator.push(
                       context,
                       PageTransition(
@@ -596,8 +635,9 @@ class _asesment2levelState extends State<asesment2level> {
                         0.9, // Button selebar layar (90% dari lebar layar)
                     height: 80,
                     decoration: BoxDecoration(
-                      color: const Color.fromARGB(
-                          255, 255, 165, 0), // Bright orange
+                      color: soalujian8
+                          ? const Color.fromARGB(255, 255, 165, 0)
+                          : Colors.grey, // Bright orange
                       borderRadius:
                           BorderRadius.circular(20), // More rounded corners
                       boxShadow: [
@@ -633,7 +673,9 @@ class _asesment2levelState extends State<asesment2level> {
                       'buku',
                       'bola',
                     ];
-
+                    setState(() {
+                      soalujian9 = true;
+                    });
                     Navigator.push(
                       context,
                       PageTransition(
@@ -648,8 +690,9 @@ class _asesment2levelState extends State<asesment2level> {
                         0.9, // Button selebar layar (90% dari lebar layar)
                     height: 80,
                     decoration: BoxDecoration(
-                      color: const Color.fromARGB(
-                          255, 255, 165, 0), // Bright orange
+                      color: soalujian9
+                          ? const Color.fromARGB(255, 255, 165, 0)
+                          : Colors.grey, // Bright orange
                       borderRadius:
                           BorderRadius.circular(20), // More rounded corners
                       boxShadow: [
@@ -699,6 +742,9 @@ class _asesment2levelState extends State<asesment2level> {
                         'text': 'Bola'
                       },
                     ];
+                    setState(() {
+                      soalujian10 = true;
+                    });
                     Navigator.push(
                       context,
                       PageTransition(
@@ -713,8 +759,9 @@ class _asesment2levelState extends State<asesment2level> {
                         0.9, // Button selebar layar (90% dari lebar layar)
                     height: 80,
                     decoration: BoxDecoration(
-                      color: const Color.fromARGB(
-                          255, 255, 165, 0), // Bright orange
+                      color: soalujian10
+                          ? const Color.fromARGB(255, 255, 165, 0)
+                          : Colors.grey, // Bright orange
                       borderRadius:
                           BorderRadius.circular(20), // More rounded corners
                       boxShadow: [

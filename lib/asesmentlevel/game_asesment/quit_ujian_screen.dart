@@ -47,34 +47,44 @@ class _MatchingGameUjianScreenState extends State<MatchingGameUjianScreen> {
           if (ujian == i) {
             switch (i) {
               case 1:
-                ujian1 = true;
+                ujian1 = false;
+                soalujian1 = true;
                 break;
               case 2:
-                ujian2 = true;
+                ujian2 = false;
+                soalujian2 = true;
                 break;
               case 3:
-                ujian3 = true;
+                ujian3 = false;
+                soalujian3 = true;
                 break;
               case 4:
-                ujian4 = true;
+                ujian4 = false;
+                soalujian4 = true;
                 break;
               case 5:
-                ujian5 = true;
+                ujian5 = false;
+                soalujian5 = true;
                 break;
               case 6:
-                ujian6 = true;
+                ujian6 = false;
+                soalujian6 = true;
                 break;
               case 7:
-                ujian7 = true;
+                ujian7 = false;
+                soalujian7 = true;
                 break;
               case 8:
-                ujian8 = true;
+                ujian8 = false;
+                soalujian8 = true;
                 break;
               case 9:
-                ujian9 = true;
+                ujian9 = false;
+                soalujian9 = true;
                 break;
               case 10:
-                ujian10 = true;
+                ujian10 = false;
+                soalujian10 = true;
                 break;
             }
           }

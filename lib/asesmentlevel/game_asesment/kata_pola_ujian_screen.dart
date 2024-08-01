@@ -27,7 +27,48 @@ class _KataPolaUjianState extends State<KataPolaUjian> {
   }
 
   void playSound() async {
-    _play(sound);
+    if (selectedOption == 'susu') {
+      _play('assets/level2/Level 2 (aktivitas 2a tunjuk kata susu).m4a');
+    }
+    if (selectedOption == 'sawi') {
+      _play('assets/level2/Level 2 (aktivitas 2a tunjuk kata sawi).m4a');
+    }
+
+    if (selectedOption == 'sapu') {
+      _play('assets/level2/Level 2 (aktivitas 2a tunjuk kata sapu).m4a');
+    }
+
+    if (selectedOption == 'siku') {
+      _play('assets/level2/Level 2 (aktivitas 2a tunjuk kata siku).m4a');
+    }
+
+    if (selectedOption == 'soda') {
+      _play('assets/level2/Level 2 (aktivitas 2a tunjuk kata soda).m4a');
+    }
+    if (selectedOption == 'bibir') {
+      _play('assets/level2/Level 2 (aktivitas 2c tunjuk kata bibir).m4a');
+    }
+    if (selectedOption == 'beras') {
+      _play('assets/level2/Level 2 (aktivitas 2c tunjuk kata beras).m4a');
+    }
+    if (selectedOption == 'beras') {
+      _play('assets/level2/Level 2 (aktivitas 2c tunjuk kata beras).m4a');
+    }
+    if (selectedOption == 'badak') {
+      _play('assets/level2/Level 2 (aktivitas 2c tunjuk kata badak).m4a');
+    }
+    if (selectedOption == 'bayam') {
+      _play('assets/level2/Level 2 (aktivitas 2c tunjuk kata bayam).m4a');
+    }
+    if (selectedOption == 'botol') {
+      _play('assets/level2/Level 2 (aktivitas 2c tunjuk kata botol).m4a');
+    }
+    if (selectedOption == 'bedak') {
+      _play('assets/level2/Level 2 (aktivitas 2c tunjuk kata bedak).m4a');
+    }
+    if (selectedOption == 'bedak') {
+      _play('assets/level2/Level 2 (aktivitas 2c tunjuk kata bedak).m4a');
+    }
   }
 
   void _onWordSelected(String word) {
@@ -38,33 +79,43 @@ class _KataPolaUjianState extends State<KataPolaUjian> {
             switch (i) {
               case 1:
                 ujian1 = true;
+                soalujian1 = true;
                 break;
               case 2:
                 ujian2 = true;
+                soalujian2 = true;
                 break;
               case 3:
                 ujian3 = true;
+                soalujian3 = true;
                 break;
               case 4:
                 ujian4 = true;
+                soalujian4 = true;
                 break;
               case 5:
                 ujian5 = true;
+                soalujian5 = true;
                 break;
               case 6:
                 ujian6 = true;
+                soalujian6 = true;
                 break;
               case 7:
                 ujian7 = true;
+                soalujian7 = true;
                 break;
               case 8:
                 ujian8 = true;
+                soalujian8 = true;
                 break;
               case 9:
                 ujian9 = true;
+                soalujian9 = true;
                 break;
               case 10:
                 ujian10 = true;
+                soalujian10 = true;
                 break;
             }
           }
@@ -77,33 +128,43 @@ class _KataPolaUjianState extends State<KataPolaUjian> {
           switch (i) {
             case 1:
               ujian1 = false;
+              soalujian1 = true;
               break;
             case 2:
               ujian2 = false;
+              soalujian2 = true;
               break;
             case 3:
               ujian3 = false;
+              soalujian3 = true;
               break;
             case 4:
               ujian4 = false;
+              soalujian4 = true;
               break;
             case 5:
               ujian5 = false;
+              soalujian5 = true;
               break;
             case 6:
               ujian6 = false;
+              soalujian6 = true;
               break;
             case 7:
               ujian7 = false;
+              soalujian7 = true;
               break;
             case 8:
               ujian8 = false;
+              soalujian8 = true;
               break;
             case 9:
               ujian9 = false;
+              soalujian9 = true;
               break;
             case 10:
               ujian10 = false;
+              soalujian10 = true;
               break;
           }
         }

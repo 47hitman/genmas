@@ -3,7 +3,9 @@ import 'dart:math';
 
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
+import '../menu/level_4_menu.dart';
 import '../services/globals.dart';
 
 class SusunKataScreenLevel4 extends StatefulWidget {
@@ -55,6 +57,47 @@ class _SusunKataScreenLevel4State extends State<SusunKataScreenLevel4> {
     });
   }
 
+  Future<void> _saveData() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    switch (aktivitas2) {
+      case 1:
+        prefs.setBool('level41', level41);
+        break;
+      case 2:
+        prefs.setBool('level42', level42);
+        break;
+      case 3:
+        prefs.setBool('level43', level43);
+        break;
+      case 4:
+        prefs.setBool('level44', level44);
+        break;
+      case 5:
+        prefs.setBool('level45', level45);
+        break;
+      case 6:
+        prefs.setBool('level46', level46);
+        break;
+      case 7:
+        prefs.setBool('level47', level47);
+        break;
+      case 8:
+        prefs.setBool('level48', level48);
+        break;
+      case 9:
+        prefs.setBool('level49', level49);
+        break;
+      case 10:
+        prefs.setBool('level40', level40);
+        break;
+
+      default:
+        // print('Invalid aktivitas2 value: $aktivitas2');
+        break;
+    }
+  }
+
   final AssetsAudioPlayer _player = AssetsAudioPlayer.newPlayer();
   void _play(sound) {
     _player.open(
@@ -101,7 +144,44 @@ class _SusunKataScreenLevel4State extends State<SusunKataScreenLevel4> {
           _play('assets/level3/Level 3 beras.m4a');
         }
         // Pilih satu pujian secara acak
-
+        setState(() {
+          switch (aktivitas2) {
+            case 1:
+              level41 = true;
+              break;
+            case 2:
+              level42 = true;
+              break;
+            case 3:
+              level43 = true;
+              break;
+            case 4:
+              level44 = true;
+              break;
+            case 5:
+              level45 = true;
+              break;
+            case 6:
+              level46 = true;
+              break;
+            case 7:
+              level47 = true;
+              break;
+            case 8:
+              level48 = true;
+              break;
+            case 9:
+              level49 = true;
+              break;
+            case 10:
+              level40 = true;
+              break;
+            default:
+              // print('Invalid aktivitas2 value: $aktivitas2');
+              break;
+          }
+        });
+        _saveData();
         // Tampilkan dialog setelah pujian dimainkan
         Future.delayed(const Duration(seconds: 2), () {
           final randomCompliment =
@@ -161,8 +241,12 @@ class _SusunKataScreenLevel4State extends State<SusunKataScreenLevel4> {
                     ),
                     child: TextButton(
                       onPressed: () async {
-                        Navigator.of(context).pop();
-                        Navigator.of(context).pop();
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  const menu4level()), // Replace SpecificPage with your target page
+                        );
                         // _playKataBerurutan(); // Jika ingin memulai kembali setelah scoring, uncomment line ini
                       },
                       child: const Text(

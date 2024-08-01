@@ -81,45 +81,42 @@ class _LengkapiKataUjianScreenState extends State<LengkapiKataUjianScreen> {
 
   void playSound() async {
     // _play(levelSoundAsesmen);
-    Future.delayed(const Duration(seconds: 2), () {
-      if (selectedOption == 'susu') {
-        _play('assets/level3/Level 3 susu.m4a');
-      }
-      if (selectedOption == 'sawi') {
-        _play('assets/level3/Level 3 sawi.m4a');
-      }
-      if (selectedOption == 'sapu') {
-        _play('assets/level3/Level 3 sapu.m4a');
-      }
+    if (selectedOption == 'susu') {
+      _play('assets/level3/Level 3 susu.m4a');
+    }
+    if (selectedOption == 'sawi') {
+      _play('assets/level3/Level 3 sawi.m4a');
+    }
+    if (selectedOption == 'sapu') {
+      _play('assets/level3/Level 3 sapu.m4a');
+    }
 
-      if (selectedOption == 'siku') {
-        _play('assets/level3/Level 3 siku.m4a');
-      }
+    if (selectedOption == 'siku') {
+      _play('assets/level3/Level 3 siku.m4a');
+    }
 
-      if (selectedOption == 'soda') {
-        _play('assets/level3/Level 3 soda.m4a');
-      }
-      if (selectedOption == 'bibir') {
-        _play('assets/level3/Level 3 bibir.m4a');
-      }
-      if (selectedOption == 'badak') {
-        _play('assets/level3/Level 3 badak.m4a');
-      }
-      if (selectedOption == 'botol') {
-        _play('assets/level3/Level 3 botol.m4a');
-      }
-      if (selectedOption == 'bayam') {
-        _play('assets/level3/Level 3 bayam.m4a');
-      }
-      if (selectedOption == 'beras') {
-        _play('assets/level3/Level 3 beras.m4a');
-      }
-    });
+    if (selectedOption == 'soda') {
+      _play('assets/level3/Level 3 soda.m4a');
+    }
+    if (selectedOption == 'bibir') {
+      _play('assets/level3/Level 3 bibir.m4a');
+    }
+    if (selectedOption == 'badak') {
+      _play('assets/level3/Level 3 badak.m4a');
+    }
+    if (selectedOption == 'botol') {
+      _play('assets/level3/Level 3 botol.m4a');
+    }
+    if (selectedOption == 'bayam') {
+      _play('assets/level3/Level 3 bayam.m4a');
+    }
+    if (selectedOption == 'beras') {
+      _play('assets/level3/Level 3 beras.m4a');
+    }
   }
 
   void playSound2() async {
-    // _play(soundAsesmen);
-    _play('assets/level3/insruksi.m4a');
+    _play('assets/Asesmen intruksi.m4a');
   }
 
   @override
@@ -264,33 +261,43 @@ class _LengkapiKataUjianScreenState extends State<LengkapiKataUjianScreen> {
           switch (i) {
             case 1:
               ujian1 = true;
+              soalujian1 = true;
               break;
             case 2:
               ujian2 = true;
+              soalujian2 = true;
               break;
             case 3:
               ujian3 = true;
+              soalujian3 = true;
               break;
             case 4:
               ujian4 = true;
+              soalujian4 = true;
               break;
             case 5:
               ujian5 = true;
+              soalujian5 = true;
               break;
             case 6:
               ujian6 = true;
+              soalujian6 = true;
               break;
             case 7:
               ujian7 = true;
+              soalujian7 = true;
               break;
             case 8:
               ujian8 = true;
+              soalujian8 = true;
               break;
             case 9:
               ujian9 = true;
+              soalujian9 = true;
               break;
             case 10:
               ujian10 = true;
+              soalujian10 = true;
               break;
           }
         }
@@ -303,33 +310,43 @@ class _LengkapiKataUjianScreenState extends State<LengkapiKataUjianScreen> {
           switch (i) {
             case 1:
               ujian1 = false;
+              soalujian1 = true;
               break;
             case 2:
               ujian2 = false;
+              soalujian2 = true;
               break;
             case 3:
               ujian3 = false;
+              soalujian3 = true;
               break;
             case 4:
               ujian4 = false;
+              soalujian4 = true;
               break;
             case 5:
               ujian5 = false;
+              soalujian5 = true;
               break;
             case 6:
               ujian6 = false;
+              soalujian6 = true;
               break;
             case 7:
               ujian7 = false;
+              soalujian7 = true;
               break;
             case 8:
               ujian8 = false;
+              soalujian8 = true;
               break;
             case 9:
               ujian9 = false;
+              soalujian9 = true;
               break;
             case 10:
               ujian10 = false;
+              soalujian10 = true;
               break;
           }
         }
