@@ -351,7 +351,7 @@ class _LengkapiKataUjianScreenState extends State<LengkapiKataUjianScreen> {
           }
         }
       }
-      // _playKataBerurutan();
+      _playKataBerurutan();
       // incorrectAttempts++; // Increment the counter on incorrect answer
     }
   }
