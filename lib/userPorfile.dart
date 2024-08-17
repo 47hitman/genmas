@@ -2,12 +2,14 @@
 
 import 'package:flutter/material.dart';
 import 'package:genmmas/editProfile.dart';
+import 'package:genmmas/menuguru.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'aboutUs.dart';
 import 'gurus_screen.dart';
 import 'loginScreens.dart';
+import 'request.dart';
 import 'services/services.dart';
 
 String name = "Loading...";
@@ -111,7 +113,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
             const SizedBox(height: 32),
             CustomButton(
-              iconPath: 'assets/simbolsiswa.png',
+              iconPath: 'assets/revisi/Icon edit profil.png',
               label: 'edit profil',
               onTap: () {
                 Navigator.push(
@@ -126,7 +128,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
             role != "Siswa"
                 ? CustomButton(
-                    iconPath: 'assets/simbolsiswa.png',
+                    iconPath: 'assets/revisi/Icon menu guru.png',
                     label: 'menu guru',
                     onTap: () {
                       Navigator.push(
@@ -134,14 +136,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           PageTransition(
                               duration: const Duration(milliseconds: 300),
                               type: PageTransitionType.rightToLeft,
-                              child: const DownloadScreen()));
+                              child: const TeacherMenuScreen()));
 
                       // Aksi untuk Edit Profile
                     },
                   )
                 : Container(),
             CustomButton(
-              iconPath: 'assets/simbolsiswa.png',
+              iconPath: 'assets/revisi/Icon tentang aplikasi.png',
               label: 'tentang aplikasi',
               onTap: () {
                 Navigator.push(
@@ -154,7 +156,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               },
             ),
             CustomButton(
-              iconPath: 'assets/simbolsiswa.png',
+              iconPath: 'assets/revisi/Icon keluar.png',
               label: 'keluar',
               onTap: () {
                 showDialog(
@@ -194,7 +196,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               Navigator.of(context).pop();
                             },
                             child: const Text(
-                              'Batal',
+                              'tidak',
                               style: TextStyle(color: Colors.white),
                             ),
                           ),
@@ -224,7 +226,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               );
                             },
                             child: const Text(
-                              'Keluar',
+                              'iya',
                               style: TextStyle(color: Colors.white),
                             ),
                           ),

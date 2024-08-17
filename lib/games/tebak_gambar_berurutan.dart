@@ -57,7 +57,7 @@ class _TebakGambarBerurutanScreenState
         currentIndex = (currentIndex + 1) % images.length;
       } else {
         _play2('assets/option/Ayo coba lagi.m4a');
-        _showDialog(false); // Menampilkan dialog jika jawaban salah
+        // _showDialog(false); // Menampilkan dialog jika jawaban salah
         // Show some feedback for incorrect answer
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Salah! Coba lagi.')),

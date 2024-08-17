@@ -103,7 +103,7 @@ class _TextMatchingGameUjianScreenState
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Cocokkan Teks!',
+          'cocokkan kata yang sama',
           style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
         ),
         backgroundColor: Colors.orange,
@@ -289,7 +289,9 @@ class _TextMatchingGameUjianScreenState
                             ),
                           );
                         },
+                        // ignore: deprecated_member_use
                         onWillAccept: (data) => true,
+                        // ignore: deprecated_member_use
                         onAccept: (data) {
                           if (_checkIfMatched(data, item)) {
                             setState(() {

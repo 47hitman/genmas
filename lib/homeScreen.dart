@@ -147,7 +147,7 @@ class _HomeScreenState extends State<HomeScreen> {
         PageTransition(
           duration: const Duration(milliseconds: 300),
           type: PageTransitionType.rightToLeft,
-          child: const WebViewPage(),
+          child: InstructionsScreen(),
         ),
       );
     });
@@ -196,9 +196,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   Row(
                     children: [
                       Image.asset(
-                        'assets/simbolsiswa.png',
+                        'assets/revisi/Icon nama.png',
                         width: 30,
-                        height: 30,
+                        height: 40,
                       ),
                       const SizedBox(width: 10),
                       Text(
@@ -230,7 +230,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 30),
+                  const SizedBox(height: 20),
                 ],
               ),
             ),
@@ -292,24 +292,24 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ],
                   ),
-                  child: const Column(
+                  child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Icon(
-                        Icons.school,
-                        size: 100,
-                        color: Colors.orange,
+                      Image.asset(
+                        'assets/revisi/Icon asesmen.png',
+                        width: 100,
+                        height: 100,
                       ),
-                      SizedBox(height: 20),
-                      Text(
+                      const SizedBox(height: 10),
+                      const Text(
                         "Assesmen",
                         style: TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.bold,
-                          color: Colors.orange,
+                          color: Color(0xFFFB773C), // Updated color
                         ),
                       ),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                     ],
                   ),
                 ),
@@ -337,6 +337,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: const Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
+                      SizedBox(
+                        height: 20,
+                      ),
                       Icon(
                         Icons.help,
                         size: 60,
@@ -346,12 +349,12 @@ class _HomeScreenState extends State<HomeScreen> {
                       Text(
                         "Petunjuk Penggunaan",
                         style: TextStyle(
-                          fontSize: 16,
+                          fontSize: 24,
                           fontWeight: FontWeight.bold,
                           color: Colors.red,
                         ),
                       ),
-                      SizedBox(height: 20),
+                      SizedBox(height: 30),
                     ],
                   ),
                 ),

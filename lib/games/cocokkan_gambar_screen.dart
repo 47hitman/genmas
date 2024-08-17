@@ -280,7 +280,7 @@ class _ImageMatchingGameScreenState extends State<ImageMatchingGameScreen> {
       appBar: AppBar(
         title: const Text(
           'Cocokkan gambar yang sama',
-          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+          style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold),
         ),
         backgroundColor: Colors.orange,
       ),
@@ -425,7 +425,9 @@ class _ImageMatchingGameScreenState extends State<ImageMatchingGameScreen> {
                             ),
                           );
                         },
+                        // ignore: deprecated_member_use
                         onWillAccept: (data) => true,
+                        // ignore: deprecated_member_use
                         onAccept: (data) {
                           if (_checkIfMatched(data['image']!, item['image']!)) {
                             setState(() {

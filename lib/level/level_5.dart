@@ -73,7 +73,7 @@ class _level5State extends State<level5> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 19, 212, 42),
+        backgroundColor: const Color(0xFF3ABEF9),
         title: const Text(
           'Level 5',
           style: TextStyle(color: Colors.white), // Text warna putih
@@ -113,7 +113,7 @@ class _level5State extends State<level5> {
             children: [
               Container(
                 width: double.infinity,
-                color: Colors.pink,
+                color: const Color(0xFF3ABEF9),
                 padding: const EdgeInsets.all(16.0),
                 child: const Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -160,8 +160,7 @@ class _level5State extends State<level5> {
                             decoration: BoxDecoration(
                               shape: BoxShape
                                   .circle, // Membuat tombol berbentuk lingkaran
-                              color: const Color.fromARGB(
-                                  255, 19, 212, 42), // Warna tombol
+                              color: const Color(0xFF3ABEF9),
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.black.withOpacity(0.3),
@@ -213,8 +212,7 @@ class _level5State extends State<level5> {
                             decoration: BoxDecoration(
                               shape: BoxShape
                                   .circle, // Membuat tombol berbentuk lingkaran
-                              color: const Color.fromARGB(
-                                  255, 19, 212, 42), // Warna tombol
+                              color: const Color(0xFF3ABEF9),
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.black.withOpacity(0.3),
@@ -272,8 +270,7 @@ class _level5State extends State<level5> {
                             decoration: BoxDecoration(
                               shape: BoxShape
                                   .circle, // Membuat tombol berbentuk lingkaran
-                              color: const Color.fromARGB(
-                                  255, 19, 212, 42), // Warna tombol
+                              color: const Color(0xFF3ABEF9),
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.black.withOpacity(0.3),
@@ -325,8 +322,7 @@ class _level5State extends State<level5> {
                             decoration: BoxDecoration(
                               shape: BoxShape
                                   .circle, // Membuat tombol berbentuk lingkaran
-                              color: const Color.fromARGB(
-                                  255, 19, 212, 42), // Warna tombol
+                              color: const Color(0xFF3ABEF9),
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.black.withOpacity(0.3),
@@ -384,8 +380,7 @@ class _level5State extends State<level5> {
                             decoration: BoxDecoration(
                               shape: BoxShape
                                   .circle, // Membuat tombol berbentuk lingkaran
-                              color: const Color.fromARGB(
-                                  255, 19, 212, 42), // Warna tombol
+                              color: const Color(0xFF3ABEF9),
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.black.withOpacity(0.3),
@@ -414,7 +409,7 @@ class _level5State extends State<level5> {
               ),
               Container(
                 width: double.infinity,
-                color: Colors.blue,
+                color: const Color(0xFFFFB22C),
                 padding: const EdgeInsets.all(16.0),
                 child: const Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -461,8 +456,7 @@ class _level5State extends State<level5> {
                             decoration: BoxDecoration(
                               shape: BoxShape
                                   .circle, // Membuat tombol berbentuk lingkaran
-                              color: const Color.fromARGB(
-                                  255, 19, 212, 42), // Warna tombol
+                              color: const Color(0xFFFFB22C),
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.black.withOpacity(0.3),
@@ -514,8 +508,7 @@ class _level5State extends State<level5> {
                             decoration: BoxDecoration(
                               shape: BoxShape
                                   .circle, // Membuat tombol berbentuk lingkaran
-                              color: const Color.fromARGB(
-                                  255, 19, 212, 42), // Warna tombol
+                              color: const Color(0xFFFFB22C),
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.black.withOpacity(0.3),
@@ -573,8 +566,7 @@ class _level5State extends State<level5> {
                             decoration: BoxDecoration(
                               shape: BoxShape
                                   .circle, // Membuat tombol berbentuk lingkaran
-                              color: const Color.fromARGB(
-                                  255, 19, 212, 42), // Warna tombol
+                              color: const Color(0xFFFFB22C),
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.black.withOpacity(0.3),
@@ -626,8 +618,7 @@ class _level5State extends State<level5> {
                             decoration: BoxDecoration(
                               shape: BoxShape
                                   .circle, // Membuat tombol berbentuk lingkaran
-                              color: const Color.fromARGB(
-                                  255, 19, 212, 42), // Warna tombol
+                              color: const Color(0xFFFFB22C),
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.black.withOpacity(0.3),
@@ -684,8 +675,7 @@ class _level5State extends State<level5> {
                             decoration: BoxDecoration(
                               shape: BoxShape
                                   .circle, // Membuat tombol berbentuk lingkaran
-                              color: const Color.fromARGB(
-                                  255, 19, 212, 42), // Warna tombol
+                              color: const Color(0xFFFFB22C),
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.black.withOpacity(0.3),

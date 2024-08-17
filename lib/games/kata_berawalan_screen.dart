@@ -65,7 +65,7 @@ class _BerawalnGameScreenState extends State<BerawalnGameScreen> {
         prefs.setBool('level28', level28);
         break;
       default:
-        // print('Invalid aktivitas2 value: $aktivitas2');
+        print('Invalid aktivitas2 value: $aktivitas2');
         break;
     }
   }
@@ -75,6 +75,10 @@ class _BerawalnGameScreenState extends State<BerawalnGameScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+          backgroundColor: Colors.orange.shade100,
           title: const Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -142,6 +146,7 @@ class _BerawalnGameScreenState extends State<BerawalnGameScreen> {
   int incorrectAttempts = 0;
   void _checkAnswer() {
     String targetText = berawalan;
+    print(aktivitas2);
     setState(() {
       switch (aktivitas2) {
         case 1:
@@ -154,18 +159,20 @@ class _BerawalnGameScreenState extends State<BerawalnGameScreen> {
           level23 = true;
           break;
         case 4:
-          level25 = true;
+          level24 = true;
           break;
         case 5:
-          level26 = true;
+          level25 = true;
           break;
         case 6:
-          level27 = true;
+          level26 = true;
           break;
         case 7:
+          level27 = true;
+          break;
+        case 8:
           level28 = true;
           break;
-
         default:
           // print('Invalid aktivitas2 value: $aktivitas2');
           break;
@@ -272,8 +279,8 @@ class _BerawalnGameScreenState extends State<BerawalnGameScreen> {
     return Scaffold(
         appBar: AppBar(
           title: const Text(
-            'Kata Berawalan!',
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            'mengidentifikasi bunyi suku kata',
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
           backgroundColor: Colors.orange,
         ),

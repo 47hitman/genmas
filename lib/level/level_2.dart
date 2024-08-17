@@ -116,7 +116,7 @@ class _level2State extends State<level2> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 19, 212, 42),
+        backgroundColor: const Color(0xFF3ABEF9),
         title: const Text(
           'Level 2',
           style: TextStyle(color: Colors.white), // Text warna putih
@@ -147,7 +147,7 @@ class _level2State extends State<level2> {
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("assets/background7.png"),
+            image: AssetImage("assets/revisi/background aktivias game.png"),
             fit: BoxFit.cover,
           ),
         ),
@@ -156,7 +156,7 @@ class _level2State extends State<level2> {
             children: [
               Container(
                 width: double.infinity,
-                color: Colors.blue,
+                color: const Color(0xFF3ABEF9),
                 padding: const EdgeInsets.all(16.0),
                 child: const Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -170,13 +170,13 @@ class _level2State extends State<level2> {
               ),
               Container(
                 width: double.infinity,
-                color: Colors.blue,
+                color: const Color(0xFFFFB22C),
                 padding: const EdgeInsets.all(16.0),
                 child: const Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Mengidentifikasi bunyi suku kata “Phonemic Awareness”",
+                      "Mengidentifikasi bunyi suku kata “Phonemic awareness",
                       style: TextStyle(color: Colors.white, fontSize: 18),
                     ),
                   ],
@@ -227,8 +227,8 @@ class _level2State extends State<level2> {
                             decoration: BoxDecoration(
                               shape: BoxShape
                                   .circle, // Membuat tombol berbentuk lingkaran
-                              color: const Color.fromARGB(
-                                  255, 19, 212, 42), // Warna tombol
+                              color: const Color(0xFFFFB22C),
+
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.black.withOpacity(0.3),
@@ -303,8 +303,8 @@ class _level2State extends State<level2> {
                             decoration: BoxDecoration(
                               shape: BoxShape
                                   .circle, // Membuat tombol berbentuk lingkaran
-                              color: const Color.fromARGB(
-                                  255, 19, 212, 42), // Warna tombol
+                              color: const Color(0xFFFFB22C),
+
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.black.withOpacity(0.3),
@@ -373,8 +373,8 @@ class _level2State extends State<level2> {
                             decoration: BoxDecoration(
                               shape: BoxShape
                                   .circle, // Membuat tombol berbentuk lingkaran
-                              color: const Color.fromARGB(
-                                  255, 19, 212, 42), // Warna tombol
+                              color: const Color(0xFFFFB22C),
+
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.black.withOpacity(0.3),
@@ -449,8 +449,8 @@ class _level2State extends State<level2> {
                             decoration: BoxDecoration(
                               shape: BoxShape
                                   .circle, // Membuat tombol berbentuk lingkaran
-                              color: const Color.fromARGB(
-                                  255, 19, 212, 42), // Warna tombol
+                              color: const Color(0xFFFFB22C),
+
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.black.withOpacity(0.3),
@@ -519,8 +519,8 @@ class _level2State extends State<level2> {
                             decoration: BoxDecoration(
                               shape: BoxShape
                                   .circle, // Membuat tombol berbentuk lingkaran
-                              color: const Color.fromARGB(
-                                  255, 19, 212, 42), // Warna tombol
+                              color: const Color(0xFFFFB22C),
+
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.black.withOpacity(0.3),
@@ -595,8 +595,8 @@ class _level2State extends State<level2> {
                             decoration: BoxDecoration(
                               shape: BoxShape
                                   .circle, // Membuat tombol berbentuk lingkaran
-                              color: const Color.fromARGB(
-                                  255, 19, 212, 42), // Warna tombol
+                              color: const Color(0xFFFFB22C),
+
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.black.withOpacity(0.3),
@@ -665,8 +665,8 @@ class _level2State extends State<level2> {
                             decoration: BoxDecoration(
                               shape: BoxShape
                                   .circle, // Membuat tombol berbentuk lingkaran
-                              color: const Color.fromARGB(
-                                  255, 19, 212, 42), // Warna tombol
+                              color: const Color(0xFFFFB22C),
+
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.black.withOpacity(0.3),
@@ -741,8 +741,8 @@ class _level2State extends State<level2> {
                             decoration: BoxDecoration(
                               shape: BoxShape
                                   .circle, // Membuat tombol berbentuk lingkaran
-                              color: const Color.fromARGB(
-                                  255, 19, 212, 42), // Warna tombol
+                              color: const Color(0xFFFFB22C),
+
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.black.withOpacity(0.3),
@@ -771,7 +771,7 @@ class _level2State extends State<level2> {
               ),
               Container(
                 width: double.infinity,
-                color: Colors.orange,
+                color: const Color(0xFFFF4E88),
                 padding: const EdgeInsets.all(16.0),
                 child: const Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -785,7 +785,7 @@ class _level2State extends State<level2> {
               ),
               Container(
                 width: double.infinity,
-                color: Colors.orange,
+                color: const Color(0xFFFF4E88),
                 padding: const EdgeInsets.all(16.0),
                 child: const Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -838,8 +838,8 @@ class _level2State extends State<level2> {
                             decoration: BoxDecoration(
                               shape: BoxShape
                                   .circle, // Membuat tombol berbentuk lingkaran
-                              color: const Color.fromARGB(
-                                  255, 19, 212, 42), // Warna tombol
+                              color: const Color(0xFFFF4E88),
+
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.black.withOpacity(0.3),
@@ -892,8 +892,8 @@ class _level2State extends State<level2> {
                             decoration: BoxDecoration(
                               shape: BoxShape
                                   .circle, // Membuat tombol berbentuk lingkaran
-                              color: const Color.fromARGB(
-                                  255, 19, 212, 42), // Warna tombol
+                              color: const Color(0xFFFF4E88),
+
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.black.withOpacity(0.3),

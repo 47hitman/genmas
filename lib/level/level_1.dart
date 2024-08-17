@@ -123,7 +123,7 @@ class _level1State extends State<level1> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 19, 212, 42),
+        backgroundColor: const Color(0xFF3ABEF9),
         title: const Text(
           'Level 1',
           style: TextStyle(color: Colors.white),
@@ -154,7 +154,7 @@ class _level1State extends State<level1> {
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("assets/background7.png"),
+            image: AssetImage("assets/revisi/background aktivias game.png"),
             fit: BoxFit.cover,
           ),
         ),
@@ -163,7 +163,7 @@ class _level1State extends State<level1> {
             children: [
               Container(
                 width: double.infinity,
-                color: const Color.fromARGB(255, 19, 212, 42),
+                color: const Color(0xFF3ABEF9),
                 padding: const EdgeInsets.all(16.0),
                 child: const Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -181,7 +181,7 @@ class _level1State extends State<level1> {
               // ),
               Container(
                 width: double.infinity,
-                color: Colors.red,
+                color: const Color(0xFF54E346),
                 padding: const EdgeInsets.all(16.0),
                 child: const Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -191,7 +191,7 @@ class _level1State extends State<level1> {
                       style: TextStyle(color: Colors.white, fontSize: 18),
                     ),
                     Text(
-                      "Figure ground / Objek dan latar belakang",
+                      "Objek dan latar belakang ",
                       style: TextStyle(color: Colors.white, fontSize: 18),
                     ),
                   ],
@@ -222,7 +222,7 @@ class _level1State extends State<level1> {
                       decoration: BoxDecoration(
                         shape: BoxShape
                             .circle, // Membuat tombol berbentuk lingkaran
-                        color: Colors.red, // Warna tombol
+                        color: const Color(0xFF54E346),
                         boxShadow: [
                           BoxShadow(
                             color: Colors.black.withOpacity(0.3),
@@ -251,551 +251,585 @@ class _level1State extends State<level1> {
               const SizedBox(
                 height: 30,
               ),
-              Container(
-                width: double.infinity,
-                color: Colors.orange,
-                padding: const EdgeInsets.all(16.0),
-                child: const Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Aktivitas 2",
-                      style: TextStyle(color: Colors.white, fontSize: 18),
+              Column(
+                children: [
+                  Container(
+                    width: double.infinity,
+                    color: const Color(0xFFFFB22C),
+                    padding: const EdgeInsets.all(16.0),
+                    child: const Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Aktivitas 2",
+                          style: TextStyle(color: Colors.white, fontSize: 18),
+                        ),
+                        Text(
+                          "Diskriminasi visual",
+                          style: TextStyle(color: Colors.white, fontSize: 18),
+                        ),
+                      ],
                     ),
-                    Text(
-                      "Visual Discrimination",
-                      style: TextStyle(color: Colors.white, fontSize: 18),
+                  ),
+                ],
+              ),
+              Container(
+                // decoration: const BoxDecoration(
+                //   image: DecorationImage(
+                //     image: AssetImage(
+                //         "assets/revisi/background aktivias game.png"),
+                //     fit: BoxFit.cover,
+                //   ),
+                // ),
+                child: Column(
+                  children: [
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    aktivast1 == true
+                        ? Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const SizedBox(
+                                width: 50,
+                              ),
+                              InkWell(
+                                onTap: () {
+                                  _player.dispose();
+                                  aktivitas2 = 1;
+                                  extra1 = '';
+                                  extratext1 = '';
+                                  extra2 = '';
+                                  extratext2 = '';
+                                  extra3 = '';
+                                  extratext3 = '';
+                                  extra4 = '';
+                                  extratext4 = '';
+                                  items = [
+                                    {
+                                      'image':
+                                          'assets/level1/aktivitas2/buku.png',
+                                      'text': 'buku'
+                                    },
+                                    {
+                                      'image':
+                                          'assets/level1/aktivitas2/bola.png',
+                                      'text': 'bola'
+                                    },
+                                  ];
+                                  Navigator.push(
+                                    context,
+                                    PageTransition(
+                                      duration:
+                                          const Duration(milliseconds: 300),
+                                      type: PageTransitionType.rightToLeft,
+                                      child: const ImageMatchingGameScreen(),
+                                    ),
+                                  );
+                                },
+                                child: Container(
+                                  width: 80, // Lebar tombol
+                                  height: 80, // Tinggi tombol
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape
+                                        .circle, // Membuat tombol berbentuk lingkaran
+                                    color: const Color(0xFFFFB22C),
+
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.black.withOpacity(0.3),
+                                        spreadRadius: 1,
+                                        blurRadius: 2,
+                                        offset: const Offset(
+                                            0, 2), // changes position of shadow
+                                      ),
+                                    ],
+                                  ),
+                                  child: const Center(
+                                    child: Icon(
+                                      Icons.star,
+                                      color: Colors
+                                          .white, // Warna ikon bintang selalu putih
+                                      size: 40, // Ukuran ikon bintang
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          )
+                        : enable2(),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    aktivast21 == true
+                        ? Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              InkWell(
+                                onTap: () {
+                                  _player.dispose();
+                                  aktivitas2 = 2;
+                                  extra1 = 'assets/level1/aktivitas2/meja.png';
+                                  extratext1 = 'meja';
+                                  extra2 = '';
+                                  extratext2 = '';
+                                  extra3 = '';
+                                  extratext3 = '';
+                                  extra4 = '';
+                                  extratext4 = '';
+                                  items = [
+                                    {
+                                      'image':
+                                          'assets/level1/aktivitas2/buku.png',
+                                      'text': 'buku'
+                                    },
+                                    {
+                                      'image':
+                                          'assets/level1/aktivitas2/bola.png',
+                                      'text': 'bola'
+                                    },
+                                  ];
+                                  Navigator.push(
+                                    context,
+                                    PageTransition(
+                                      duration:
+                                          const Duration(milliseconds: 300),
+                                      type: PageTransitionType.rightToLeft,
+                                      child: const ImageMatchingGameScreen(),
+                                    ),
+                                  );
+                                },
+                                child: Container(
+                                  width: 80, // Lebar tombol
+                                  height: 80, // Tinggi tombol
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape
+                                        .circle, // Membuat tombol berbentuk lingkaran
+                                    color: const Color(0xFFFFB22C),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.black.withOpacity(0.3),
+                                        spreadRadius: 1,
+                                        blurRadius: 2,
+                                        offset: const Offset(
+                                            0, 2), // changes position of shadow
+                                      ),
+                                    ],
+                                  ),
+                                  child: const Center(
+                                    child: Icon(
+                                      Icons.star,
+                                      color: Colors
+                                          .white, // Warna ikon bintang selalu putih
+                                      size: 40, // Ukuran ikon bintang
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 50,
+                              ),
+                            ],
+                          )
+                        : enable(),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    aktivast22 == true
+                        ? Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const SizedBox(
+                                width: 50,
+                              ),
+                              InkWell(
+                                onTap: () {
+                                  _player.dispose();
+                                  aktivitas2 = 3;
+                                  extra1 = 'assets/level1/aktivitas2/meja.png';
+                                  extratext1 = 'meja';
+                                  extra2 = 'assets/level1/aktivitas2/baju.png';
+                                  extratext2 = 'baju';
+                                  extra3 = '';
+                                  extratext3 = '';
+                                  extra4 = '';
+                                  extratext4 = '';
+                                  items = [
+                                    {
+                                      'image':
+                                          'assets/level1/aktivitas2/buku.png',
+                                      'text': 'buku'
+                                    },
+                                    {
+                                      'image':
+                                          'assets/level1/aktivitas2/bola.png',
+                                      'text': 'bola'
+                                    },
+                                  ];
+                                  Navigator.push(
+                                    context,
+                                    PageTransition(
+                                      duration:
+                                          const Duration(milliseconds: 300),
+                                      type: PageTransitionType.rightToLeft,
+                                      child: const ImageMatchingGameScreen(),
+                                    ),
+                                  );
+                                },
+                                child: Container(
+                                  width: 80, // Lebar tombol
+                                  height: 80, // Tinggi tombol
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape
+                                        .circle, // Membuat tombol berbentuk lingkaran
+                                    color: const Color(0xFFFFB22C),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.black.withOpacity(0.3),
+                                        spreadRadius: 1,
+                                        blurRadius: 2,
+                                        offset: const Offset(
+                                            0, 2), // changes position of shadow
+                                      ),
+                                    ],
+                                  ),
+                                  child: const Center(
+                                    child: Icon(
+                                      Icons.star,
+                                      color: Colors
+                                          .white, // Warna ikon bintang selalu putih
+                                      size: 40, // Ukuran ikon bintang
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          )
+                        : enable2(),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    aktivast23 == true
+                        ? Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              InkWell(
+                                onTap: () {
+                                  _player.dispose();
+                                  aktivitas2 = 4;
+                                  extra1 = 'assets/level1/aktivitas2/meja.png';
+                                  extratext1 = 'meja';
+                                  extra2 = 'assets/level1/aktivitas2/baju.png';
+                                  extratext2 = 'baju';
+                                  extra3 = 'assets/level1/aktivitas2/mobil.png';
+                                  extratext3 = 'mobil';
+                                  extra4 = 'assets/level1/aktivitas2/balon.png';
+                                  extratext4 = 'balon';
+                                  items = [
+                                    {
+                                      'image':
+                                          'assets/level1/aktivitas2/buku.png',
+                                      'text': 'Buku'
+                                    },
+                                    {
+                                      'image':
+                                          'assets/level1/aktivitas2/bola.png',
+                                      'text': 'Bola'
+                                    },
+                                  ];
+                                  Navigator.push(
+                                    context,
+                                    PageTransition(
+                                      duration:
+                                          const Duration(milliseconds: 300),
+                                      type: PageTransitionType.rightToLeft,
+                                      child: const ImageMatchingGameScreen(),
+                                    ),
+                                  );
+                                },
+                                child: Container(
+                                  width: 80, // Lebar tombol
+                                  height: 80, // Tinggi tombol
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape
+                                        .circle, // Membuat tombol berbentuk lingkaran
+                                    color: const Color(0xFFFFB22C),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.black.withOpacity(0.3),
+                                        spreadRadius: 1,
+                                        blurRadius: 2,
+                                        offset: const Offset(
+                                            0, 2), // changes position of shadow
+                                      ),
+                                    ],
+                                  ),
+                                  child: const Center(
+                                    child: Icon(
+                                      Icons.star,
+                                      color: Colors
+                                          .white, // Warna ikon bintang selalu putih
+                                      size: 40, // Ukuran ikon bintang
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 50,
+                              ),
+                            ],
+                          )
+                        : enable(),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    aktivast24 == true
+                        ? Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const SizedBox(
+                                width: 50,
+                              ),
+                              InkWell(
+                                onTap: () {
+                                  _player.dispose();
+                                  aktivitas2 = 5;
+                                  extraTexts = [];
+
+                                  itemstext = [
+                                    'buku',
+                                    'bola',
+                                  ];
+
+                                  Navigator.push(
+                                    context,
+                                    PageTransition(
+                                      duration:
+                                          const Duration(milliseconds: 300),
+                                      type: PageTransitionType.rightToLeft,
+                                      child: const TextMatchingGameScreen(),
+                                    ),
+                                  );
+                                },
+                                child: Container(
+                                  width: 80, // Lebar tombol
+                                  height: 80, // Tinggi tombol
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape
+                                        .circle, // Membuat tombol berbentuk lingkaran
+                                    color: const Color(0xFFFFB22C),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.black.withOpacity(0.3),
+                                        spreadRadius: 1,
+                                        blurRadius: 2,
+                                        offset: const Offset(
+                                            0, 2), // changes position of shadow
+                                      ),
+                                    ],
+                                  ),
+                                  child: const Center(
+                                    child: Icon(
+                                      Icons.star,
+                                      color: Colors
+                                          .white, // Warna ikon bintang selalu putih
+                                      size: 40, // Ukuran ikon bintang
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          )
+                        : enable2(),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    aktivast25 == true
+                        ? Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              InkWell(
+                                onTap: () {
+                                  _player.dispose();
+                                  aktivitas2 = 6;
+                                  extraTexts = ['meja'];
+                                  itemstext = [
+                                    'buku',
+                                    'bola',
+                                  ];
+
+                                  Navigator.push(
+                                    context,
+                                    PageTransition(
+                                      duration:
+                                          const Duration(milliseconds: 300),
+                                      type: PageTransitionType.rightToLeft,
+                                      child: const TextMatchingGameScreen(),
+                                    ),
+                                  );
+                                },
+                                child: Container(
+                                  width: 80, // Lebar tombol
+                                  height: 80, // Tinggi tombol
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape
+                                        .circle, // Membuat tombol berbentuk lingkaran
+                                    color: const Color(0xFFFFB22C),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.black.withOpacity(0.3),
+                                        spreadRadius: 1,
+                                        blurRadius: 2,
+                                        offset: const Offset(
+                                            0, 2), // changes position of shadow
+                                      ),
+                                    ],
+                                  ),
+                                  child: const Center(
+                                    child: Icon(
+                                      Icons.star,
+                                      color: Colors
+                                          .white, // Warna ikon bintang selalu putih
+                                      size: 40, // Ukuran ikon bintang
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 50,
+                              ),
+                            ],
+                          )
+                        : enable(),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    aktivast26 == true
+                        ? Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const SizedBox(
+                                width: 50,
+                              ),
+                              InkWell(
+                                onTap: () {
+                                  _player.dispose();
+                                  aktivitas2 = 7;
+                                  extraTexts = ['meja', 'baju'];
+                                  itemstext = [
+                                    'buku',
+                                    'bola',
+                                  ];
+
+                                  Navigator.push(
+                                    context,
+                                    PageTransition(
+                                      duration:
+                                          const Duration(milliseconds: 300),
+                                      type: PageTransitionType.rightToLeft,
+                                      child: const TextMatchingGameScreen(),
+                                    ),
+                                  );
+                                },
+                                child: Container(
+                                  width: 80, // Lebar tombol
+                                  height: 80, // Tinggi tombol
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape
+                                        .circle, // Membuat tombol berbentuk lingkaran
+                                    color: const Color(0xFFFFB22C),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.black.withOpacity(0.3),
+                                        spreadRadius: 1,
+                                        blurRadius: 2,
+                                        offset: const Offset(
+                                            0, 2), // changes position of shadow
+                                      ),
+                                    ],
+                                  ),
+                                  child: const Center(
+                                    child: Icon(
+                                      Icons.star,
+                                      color: Colors
+                                          .white, // Warna ikon bintang selalu putih
+                                      size: 40, // Ukuran ikon bintang
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          )
+                        : enable2(),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    aktivast27 == true
+                        ? Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              InkWell(
+                                onTap: () {
+                                  _player.dispose();
+                                  aktivitas2 = 8;
+                                  extraTexts = ['meja', 'baju', 'mobil'];
+                                  itemstext = [
+                                    'buku',
+                                    'bola',
+                                  ];
+
+                                  Navigator.push(
+                                    context,
+                                    PageTransition(
+                                      duration:
+                                          const Duration(milliseconds: 300),
+                                      type: PageTransitionType.rightToLeft,
+                                      child: const TextMatchingGameScreen(),
+                                    ),
+                                  );
+                                },
+                                child: Container(
+                                  width: 80, // Lebar tombol
+                                  height: 80, // Tinggi tombol
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape
+                                        .circle, // Membuat tombol berbentuk lingkaran
+                                    color: const Color(0xFFFFB22C),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.black.withOpacity(0.3),
+                                        spreadRadius: 1,
+                                        blurRadius: 2,
+                                        offset: const Offset(
+                                            0, 2), // changes position of shadow
+                                      ),
+                                    ],
+                                  ),
+                                  child: const Center(
+                                    child: Icon(
+                                      Icons.star,
+                                      color: Colors
+                                          .white, // Warna ikon bintang selalu putih
+                                      size: 40, // Ukuran ikon bintang
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 50,
+                              ),
+                            ],
+                          )
+                        : enable(),
+                    const SizedBox(
+                      height: 30,
                     ),
                   ],
                 ),
               ),
-              const SizedBox(
-                height: 30,
-              ),
-              aktivast1 == true
-                  ? Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const SizedBox(
-                          width: 50,
-                        ),
-                        InkWell(
-                          onTap: () {
-                            _player.dispose();
-                            aktivitas2 = 1;
-                            extra1 = '';
-                            extratext1 = '';
-                            extra2 = '';
-                            extratext2 = '';
-                            extra3 = '';
-                            extratext3 = '';
-                            extra4 = '';
-                            extratext4 = '';
-                            items = [
-                              {
-                                'image': 'assets/level1/aktivitas2/buku.png',
-                                'text': 'Buku'
-                              },
-                              {
-                                'image': 'assets/level1/aktivitas2/bola.png',
-                                'text': 'Bola'
-                              },
-                            ];
-                            Navigator.push(
-                              context,
-                              PageTransition(
-                                duration: const Duration(milliseconds: 300),
-                                type: PageTransitionType.rightToLeft,
-                                child: const ImageMatchingGameScreen(),
-                              ),
-                            );
-                          },
-                          child: Container(
-                            width: 80, // Lebar tombol
-                            height: 80, // Tinggi tombol
-                            decoration: BoxDecoration(
-                              shape: BoxShape
-                                  .circle, // Membuat tombol berbentuk lingkaran
-                              color: Colors.orange,
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.black.withOpacity(0.3),
-                                  spreadRadius: 1,
-                                  blurRadius: 2,
-                                  offset: const Offset(
-                                      0, 2), // changes position of shadow
-                                ),
-                              ],
-                            ),
-                            child: const Center(
-                              child: Icon(
-                                Icons.star,
-                                color: Colors
-                                    .white, // Warna ikon bintang selalu putih
-                                size: 40, // Ukuran ikon bintang
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    )
-                  : enable2(),
-              const SizedBox(
-                height: 30,
-              ),
-              aktivast21 == true
-                  ? Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        InkWell(
-                          onTap: () {
-                            _player.dispose();
-                            aktivitas2 = 2;
-                            extra1 = 'assets/level1/aktivitas2/meja.png';
-                            extratext1 = 'meja';
-                            extra2 = '';
-                            extratext2 = '';
-                            extra3 = '';
-                            extratext3 = '';
-                            extra4 = '';
-                            extratext4 = '';
-                            items = [
-                              {
-                                'image': 'assets/level1/aktivitas2/buku.png',
-                                'text': 'Buku'
-                              },
-                              {
-                                'image': 'assets/level1/aktivitas2/bola.png',
-                                'text': 'Bola'
-                              },
-                            ];
-                            Navigator.push(
-                              context,
-                              PageTransition(
-                                duration: const Duration(milliseconds: 300),
-                                type: PageTransitionType.rightToLeft,
-                                child: const ImageMatchingGameScreen(),
-                              ),
-                            );
-                          },
-                          child: Container(
-                            width: 80, // Lebar tombol
-                            height: 80, // Tinggi tombol
-                            decoration: BoxDecoration(
-                              shape: BoxShape
-                                  .circle, // Membuat tombol berbentuk lingkaran
-                              color: Colors.orange, // Warna tombol
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.black.withOpacity(0.3),
-                                  spreadRadius: 1,
-                                  blurRadius: 2,
-                                  offset: const Offset(
-                                      0, 2), // changes position of shadow
-                                ),
-                              ],
-                            ),
-                            child: const Center(
-                              child: Icon(
-                                Icons.star,
-                                color: Colors
-                                    .white, // Warna ikon bintang selalu putih
-                                size: 40, // Ukuran ikon bintang
-                              ),
-                            ),
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 50,
-                        ),
-                      ],
-                    )
-                  : enable(),
-              const SizedBox(
-                height: 30,
-              ),
-              aktivast22 == true
-                  ? Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const SizedBox(
-                          width: 50,
-                        ),
-                        InkWell(
-                          onTap: () {
-                            _player.dispose();
-                            aktivitas2 = 3;
-                            extra1 = 'assets/level1/aktivitas2/meja.png';
-                            extratext1 = 'meja';
-                            extra2 = 'assets/level1/aktivitas2/baju.png';
-                            extratext2 = 'baju';
-                            extra3 = '';
-                            extratext3 = '';
-                            extra4 = '';
-                            extratext4 = '';
-                            items = [
-                              {
-                                'image': 'assets/level1/aktivitas2/buku.png',
-                                'text': 'Buku'
-                              },
-                              {
-                                'image': 'assets/level1/aktivitas2/bola.png',
-                                'text': 'Bola'
-                              },
-                            ];
-                            Navigator.push(
-                              context,
-                              PageTransition(
-                                duration: const Duration(milliseconds: 300),
-                                type: PageTransitionType.rightToLeft,
-                                child: const ImageMatchingGameScreen(),
-                              ),
-                            );
-                          },
-                          child: Container(
-                            width: 80, // Lebar tombol
-                            height: 80, // Tinggi tombol
-                            decoration: BoxDecoration(
-                              shape: BoxShape
-                                  .circle, // Membuat tombol berbentuk lingkaran
-                              color: Colors.orange, // Warna tombol
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.black.withOpacity(0.3),
-                                  spreadRadius: 1,
-                                  blurRadius: 2,
-                                  offset: const Offset(
-                                      0, 2), // changes position of shadow
-                                ),
-                              ],
-                            ),
-                            child: const Center(
-                              child: Icon(
-                                Icons.star,
-                                color: Colors
-                                    .white, // Warna ikon bintang selalu putih
-                                size: 40, // Ukuran ikon bintang
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    )
-                  : enable2(),
-              const SizedBox(
-                height: 30,
-              ),
-              aktivast23 == true
-                  ? Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        InkWell(
-                          onTap: () {
-                            _player.dispose();
-                            aktivitas2 = 4;
-                            extra1 = 'assets/level1/aktivitas2/meja.png';
-                            extratext1 = 'meja';
-                            extra2 = 'assets/level1/aktivitas2/baju.png';
-                            extratext2 = 'baju';
-                            extra3 = 'assets/level1/aktivitas2/mobil.png';
-                            extratext3 = 'mobil';
-                            extra4 = 'assets/level1/aktivitas2/balon.png';
-                            extratext4 = 'balon';
-                            items = [
-                              {
-                                'image': 'assets/level1/aktivitas2/buku.png',
-                                'text': 'Buku'
-                              },
-                              {
-                                'image': 'assets/level1/aktivitas2/bola.png',
-                                'text': 'Bola'
-                              },
-                            ];
-                            Navigator.push(
-                              context,
-                              PageTransition(
-                                duration: const Duration(milliseconds: 300),
-                                type: PageTransitionType.rightToLeft,
-                                child: const ImageMatchingGameScreen(),
-                              ),
-                            );
-                          },
-                          child: Container(
-                            width: 80, // Lebar tombol
-                            height: 80, // Tinggi tombol
-                            decoration: BoxDecoration(
-                              shape: BoxShape
-                                  .circle, // Membuat tombol berbentuk lingkaran
-                              color: Colors.orange,
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.black.withOpacity(0.3),
-                                  spreadRadius: 1,
-                                  blurRadius: 2,
-                                  offset: const Offset(
-                                      0, 2), // changes position of shadow
-                                ),
-                              ],
-                            ),
-                            child: const Center(
-                              child: Icon(
-                                Icons.star,
-                                color: Colors
-                                    .white, // Warna ikon bintang selalu putih
-                                size: 40, // Ukuran ikon bintang
-                              ),
-                            ),
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 50,
-                        ),
-                      ],
-                    )
-                  : enable(),
-              const SizedBox(
-                height: 30,
-              ),
-              aktivast24 == true
-                  ? Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const SizedBox(
-                          width: 50,
-                        ),
-                        InkWell(
-                          onTap: () {
-                            _player.dispose();
-                            aktivitas2 = 5;
-                            extraTexts = [];
-
-                            itemstext = [
-                              'buku',
-                              'bola',
-                            ];
-
-                            Navigator.push(
-                              context,
-                              PageTransition(
-                                duration: const Duration(milliseconds: 300),
-                                type: PageTransitionType.rightToLeft,
-                                child: const TextMatchingGameScreen(),
-                              ),
-                            );
-                          },
-                          child: Container(
-                            width: 80, // Lebar tombol
-                            height: 80, // Tinggi tombol
-                            decoration: BoxDecoration(
-                              shape: BoxShape
-                                  .circle, // Membuat tombol berbentuk lingkaran
-                              color: Colors.orange,
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.black.withOpacity(0.3),
-                                  spreadRadius: 1,
-                                  blurRadius: 2,
-                                  offset: const Offset(
-                                      0, 2), // changes position of shadow
-                                ),
-                              ],
-                            ),
-                            child: const Center(
-                              child: Icon(
-                                Icons.star,
-                                color: Colors
-                                    .white, // Warna ikon bintang selalu putih
-                                size: 40, // Ukuran ikon bintang
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    )
-                  : enable2(),
-              const SizedBox(
-                height: 30,
-              ),
-              aktivast25 == true
-                  ? Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        InkWell(
-                          onTap: () {
-                            _player.dispose();
-                            aktivitas2 = 6;
-                            extraTexts = ['meja'];
-                            itemstext = [
-                              'buku',
-                              'bola',
-                            ];
-
-                            Navigator.push(
-                              context,
-                              PageTransition(
-                                duration: const Duration(milliseconds: 300),
-                                type: PageTransitionType.rightToLeft,
-                                child: const TextMatchingGameScreen(),
-                              ),
-                            );
-                          },
-                          child: Container(
-                            width: 80, // Lebar tombol
-                            height: 80, // Tinggi tombol
-                            decoration: BoxDecoration(
-                              shape: BoxShape
-                                  .circle, // Membuat tombol berbentuk lingkaran
-                              color: Colors.orange,
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.black.withOpacity(0.3),
-                                  spreadRadius: 1,
-                                  blurRadius: 2,
-                                  offset: const Offset(
-                                      0, 2), // changes position of shadow
-                                ),
-                              ],
-                            ),
-                            child: const Center(
-                              child: Icon(
-                                Icons.star,
-                                color: Colors
-                                    .white, // Warna ikon bintang selalu putih
-                                size: 40, // Ukuran ikon bintang
-                              ),
-                            ),
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 50,
-                        ),
-                      ],
-                    )
-                  : enable(),
-              const SizedBox(
-                height: 30,
-              ),
-              aktivast26 == true
-                  ? Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const SizedBox(
-                          width: 50,
-                        ),
-                        InkWell(
-                          onTap: () {
-                            _player.dispose();
-                            aktivitas2 = 7;
-                            extraTexts = ['meja', 'baju'];
-                            itemstext = [
-                              'buku',
-                              'bola',
-                            ];
-
-                            Navigator.push(
-                              context,
-                              PageTransition(
-                                duration: const Duration(milliseconds: 300),
-                                type: PageTransitionType.rightToLeft,
-                                child: const TextMatchingGameScreen(),
-                              ),
-                            );
-                          },
-                          child: Container(
-                            width: 80, // Lebar tombol
-                            height: 80, // Tinggi tombol
-                            decoration: BoxDecoration(
-                              shape: BoxShape
-                                  .circle, // Membuat tombol berbentuk lingkaran
-                              color: Colors.orange,
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.black.withOpacity(0.3),
-                                  spreadRadius: 1,
-                                  blurRadius: 2,
-                                  offset: const Offset(
-                                      0, 2), // changes position of shadow
-                                ),
-                              ],
-                            ),
-                            child: const Center(
-                              child: Icon(
-                                Icons.star,
-                                color: Colors
-                                    .white, // Warna ikon bintang selalu putih
-                                size: 40, // Ukuran ikon bintang
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    )
-                  : enable2(),
-              const SizedBox(
-                height: 30,
-              ),
-              aktivast27 == true
-                  ? Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        InkWell(
-                          onTap: () {
-                            _player.dispose();
-                            aktivitas2 = 8;
-                            extraTexts = ['meja', 'baju', 'mobil'];
-                            itemstext = [
-                              'buku',
-                              'bola',
-                            ];
-
-                            Navigator.push(
-                              context,
-                              PageTransition(
-                                duration: const Duration(milliseconds: 300),
-                                type: PageTransitionType.rightToLeft,
-                                child: const TextMatchingGameScreen(),
-                              ),
-                            );
-                          },
-                          child: Container(
-                            width: 80, // Lebar tombol
-                            height: 80, // Tinggi tombol
-                            decoration: BoxDecoration(
-                              shape: BoxShape
-                                  .circle, // Membuat tombol berbentuk lingkaran
-                              color: Colors.orange,
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.black.withOpacity(0.3),
-                                  spreadRadius: 1,
-                                  blurRadius: 2,
-                                  offset: const Offset(
-                                      0, 2), // changes position of shadow
-                                ),
-                              ],
-                            ),
-                            child: const Center(
-                              child: Icon(
-                                Icons.star,
-                                color: Colors
-                                    .white, // Warna ikon bintang selalu putih
-                                size: 40, // Ukuran ikon bintang
-                              ),
-                            ),
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 50,
-                        ),
-                      ],
-                    )
-                  : enable(),
-              const SizedBox(
-                height: 30,
-              ),
               Container(
                 width: double.infinity,
-                color: Colors.yellow,
+                color: const Color(0xFFFF4E88),
                 padding: const EdgeInsets.all(16.0),
                 child: const Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -805,7 +839,7 @@ class _level1State extends State<level1> {
                       style: TextStyle(color: Colors.white, fontSize: 18),
                     ),
                     Text(
-                      "Visual Closure / Kelengkapan objek yang dilihat",
+                      "Kelengkapan objek yang dilihat ",
                       style: TextStyle(color: Colors.white, fontSize: 16),
                     ),
                   ],
@@ -822,7 +856,7 @@ class _level1State extends State<level1> {
                           onTap: () {
                             _player.dispose();
                             aktivitas3 = 1;
-                            sound = 'assets/soal1/Level 1 (aktivitas 3a).m4a';
+                            sound = 'assets/revisi/Pilih gambar yang sama.wav';
                             targetImage = 'assets/level1/aktivitas3/kucing.png';
                             options = [
                               {
@@ -854,7 +888,8 @@ class _level1State extends State<level1> {
                             decoration: BoxDecoration(
                               shape: BoxShape
                                   .circle, // Membuat tombol berbentuk lingkaran
-                              color: Colors.yellow,
+                              color: const Color(0xFFFF4E88),
+
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.black.withOpacity(0.3),
@@ -895,7 +930,7 @@ class _level1State extends State<level1> {
                           onTap: () {
                             _player.dispose();
                             aktivitas3 = 2;
-                            sound = 'assets/soal1/Level 1 (aktivitas 3b).m4a';
+                            sound = 'assets/revisi/Pilih huruf yang sama.wav';
                             targetImage = 'assets/level1/aktivitas3/b.png';
                             options = [
                               {
@@ -926,7 +961,7 @@ class _level1State extends State<level1> {
                             decoration: BoxDecoration(
                               shape: BoxShape
                                   .circle, // Membuat tombol berbentuk lingkaran
-                              color: Colors.yellow,
+                              color: const Color(0xFFFF4E88),
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.black.withOpacity(0.3),
@@ -961,7 +996,7 @@ class _level1State extends State<level1> {
                           onTap: () {
                             _player.dispose();
                             aktivitas3 = 3;
-                            sound = 'assets/soal1/Level 1 (aktivitas 3c).m4a';
+                            sound = 'assets/revisi/Pilih huruf yang sama.wav';
                             targetImage = 'assets/level1/aktivitas3/buku.png';
                             options = [
                               {
@@ -993,7 +1028,7 @@ class _level1State extends State<level1> {
                             decoration: BoxDecoration(
                               shape: BoxShape
                                   .circle, // Membuat tombol berbentuk lingkaran
-                              color: Colors.yellow,
+                              color: const Color(0xFFFF4E88),
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.black.withOpacity(0.3),
@@ -1025,7 +1060,7 @@ class _level1State extends State<level1> {
               ),
               Container(
                 width: double.infinity,
-                color: Colors.green,
+                color: const Color(0xFFFFDB00),
                 padding: const EdgeInsets.all(16.0),
                 child: const Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -1035,7 +1070,7 @@ class _level1State extends State<level1> {
                       style: TextStyle(color: Colors.white, fontSize: 18),
                     ),
                     Text(
-                      "Visual Memory / Ingatan terhadap objek yang dilihat",
+                      "Ingatan terhadap objek yang dilihat",
                       style: TextStyle(color: Colors.white, fontSize: 16),
                     ),
                   ],
@@ -1096,8 +1131,8 @@ class _level1State extends State<level1> {
                             decoration: BoxDecoration(
                               shape: BoxShape
                                   .circle, // Membuat tombol berbentuk lingkaran
-                              color: const Color.fromARGB(
-                                  255, 19, 212, 42), // Warna tombol
+                              color: const Color(0xFFFFDB00),
+
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.black.withOpacity(0.3),
@@ -1126,7 +1161,7 @@ class _level1State extends State<level1> {
               ),
               Container(
                 width: double.infinity,
-                color: Colors.blue,
+                color: const Color(0xFFE5890A),
                 padding: const EdgeInsets.all(16.0),
                 child: const Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -1136,7 +1171,7 @@ class _level1State extends State<level1> {
                       style: TextStyle(color: Colors.white, fontSize: 18),
                     ),
                     Text(
-                      "Visual Sequential / Urutan objek yang diliha",
+                      "Urutan objek yang dilihat",
                       style: TextStyle(color: Colors.white, fontSize: 16),
                     ),
                   ],
@@ -1174,7 +1209,8 @@ class _level1State extends State<level1> {
                             decoration: BoxDecoration(
                               shape: BoxShape
                                   .circle, // Membuat tombol berbentuk lingkaran
-                              color: Colors.blue,
+                              color: const Color(0xFFE5890A),
+
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.black.withOpacity(0.3),
@@ -1216,7 +1252,7 @@ class _level1State extends State<level1> {
                       style: TextStyle(color: Colors.white, fontSize: 18),
                     ),
                     Text(
-                      "Visual Form Constancy/ Kekekalan objek yang dilihat",
+                      "Kekekalan objek yang dilihat",
                       style: TextStyle(color: Colors.white, fontSize: 16),
                     ),
                   ],
@@ -1436,7 +1472,7 @@ class _level1State extends State<level1> {
               ),
               Container(
                 width: double.infinity,
-                color: Colors.pink,
+                color: const Color(0xFFFF4C4C),
                 padding: const EdgeInsets.all(16.0),
                 child: const Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -1446,7 +1482,7 @@ class _level1State extends State<level1> {
                       style: TextStyle(color: Colors.white, fontSize: 18),
                     ),
                     Text(
-                      "Visual Spatial Skill/Keruangan",
+                      "Keruangan",
                       style: TextStyle(color: Colors.white, fontSize: 16),
                     ),
                   ],
@@ -1477,7 +1513,8 @@ class _level1State extends State<level1> {
                             decoration: BoxDecoration(
                               shape: BoxShape
                                   .circle, // Membuat tombol berbentuk lingkaran
-                              color: Colors.pink,
+                              color: const Color(0xFFFF4C4C),
+
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.black.withOpacity(0.3),

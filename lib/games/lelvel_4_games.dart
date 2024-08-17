@@ -338,14 +338,25 @@ class _SusunKataScreenLevel4State extends State<SusunKataScreenLevel4> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(
-              targetImage,
+            Container(
               width: 70,
               height: 70,
+              decoration: BoxDecoration(
+                color: Colors.white, // White background
+                border: Border.all(
+                  color: Colors.black, // Black border
+                  width: 1.0, // Border width
+                ),
+              ),
+              child: Center(
+                child: Image.asset(
+                  targetImage,
+                  width: 60, // Adjust width to fit within the container
+                  height: 60, // Adjust height to fit within the container
+                ),
+              ),
             ),
-            // const SizedBox(height: 20),
-            // Kolom kosong untuk jawaban
-            // Gambar
+
             IconButton(
               icon: const Icon(Icons.volume_up, size: 50, color: Colors.blue),
               onPressed: playSound,
@@ -480,24 +491,30 @@ class _SusunKataScreenLevel4State extends State<SusunKataScreenLevel4> {
         Future.delayed(const Duration(seconds: 1), () {
           _play('assets/option/Ayo coba lagi.m4a');
         });
-        showDialog(
-          context: context,
-          builder: (context) => AlertDialog(
-            title: const Text("Salah"),
-            content: const Text("Coba lagi, ya!"),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                  setState(() {
-                    answer = List.filled(answer.length, "");
-                  });
-                },
-                child: const Text("OK"),
-              ),
-            ],
-          ),
-        );
+        Future.delayed(const Duration(seconds: 2), () {
+          setState(() {
+            answer = List.filled(answer.length, "");
+          });
+        });
+
+        // showDialog(
+        //   context: context,
+        //   builder: (context) => AlertDialog(
+        //     title: const Text("Salah"),
+        //     content: const Text("Coba lagi, ya!"),
+        //     actions: [
+        //       TextButton(
+        //         onPressed: () {
+        //           Navigator.of(context).pop();
+        //           setState(() {
+        //             answer = List.filled(answer.length, "");
+        //           });
+        //         },
+        //         child: const Text("OK"),
+        //       ),
+        //     ],
+        //   ),
+        // );
       }
     }
   }

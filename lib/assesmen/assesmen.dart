@@ -127,6 +127,17 @@ class _assesmenState extends State<assesmen> {
     );
   }
 
+  Set<int> tappedItems = {};
+  Set<int> tappedItems2 = {};
+  Set<int> tappedItems3 = {};
+  Set<int> tappedItems4 = {};
+  Set<int> tappedItems5 = {};
+  Set<int> tappedItems6 = {};
+  Set<int> tappedItems7 = {};
+  Set<int> tappedItems8 = {};
+  Set<int> tappedItems9 = {};
+  Set<int> tappedItems10 = {};
+  Set<int> tappedItems11 = {};
   @override
   Widget build(BuildContext context) {
     final loginButton = RoundedLoadingButton(
@@ -204,21 +215,23 @@ class _assesmenState extends State<assesmen> {
                     optionsList.map((item) => Map<String, String>.from(item)),
                   );
 
+                  final bool isTapped = tappedItems.contains(index);
+
                   return Padding(
                     padding: const EdgeInsets.only(bottom: 20),
                     child: InkWell(
                       onTap: () {
-                        print(options);
-                        print(targetImagesoal);
+                        setState(() {
+                          tappedItems.add(index);
+                        });
+
                         options = optionssoal;
                         targetImage = targetImagesoal;
                         soundAsesmen = sound;
                         level = levelAsesment;
                         activity = activityAsesment;
                         questionId = id;
-                        // print("-------");
-                        // print(activity);
-                        // print("-------");
+
                         Navigator.push(
                           context,
                           PageTransition(
@@ -232,10 +245,12 @@ class _assesmenState extends State<assesmen> {
                         width: 80,
                         height: 80,
                         decoration: BoxDecoration(
-                          color: const Color.fromARGB(
-                              255, 255, 165, 0), // Bright orange
-                          borderRadius:
-                              BorderRadius.circular(20), // More rounded corners
+                          color: isTapped
+                              ? const Color.fromARGB(
+                                  255, 19, 212, 42) // Green for tapped
+                              : const Color.fromARGB(
+                                  255, 128, 128, 128), // Gray for not tapped
+                          borderRadius: BorderRadius.circular(20),
                           boxShadow: [
                             BoxShadow(
                               color: Colors.black.withOpacity(0.3),
@@ -250,7 +265,7 @@ class _assesmenState extends State<assesmen> {
                             'Soal ${index + 1}',
                             style: const TextStyle(
                               color: Colors.white,
-                              fontSize: 24, // Reduced font size for balance
+                              fontSize: 24,
                               fontWeight: FontWeight.bold,
                               fontFamily: 'ComicSans',
                             ),
@@ -293,10 +308,16 @@ class _assesmenState extends State<assesmen> {
                     optionsList.map((item) => Map<String, String>.from(item)),
                   );
 
+                  final bool isTapped = tappedItems2.contains(index);
+
                   return Padding(
                     padding: const EdgeInsets.only(bottom: 20),
                     child: InkWell(
                       onTap: () {
+                        setState(() {
+                          tappedItems2.add(index);
+                        });
+
                         options = optionssoal;
                         targetImage = targetImagesoal;
                         soundAsesmen = sound;
@@ -313,7 +334,11 @@ class _assesmenState extends State<assesmen> {
                         width: 80,
                         height: 80,
                         decoration: BoxDecoration(
-                          color: const Color.fromARGB(255, 255, 165, 0),
+                          color: isTapped
+                              ? const Color.fromARGB(
+                                  255, 19, 212, 42) // Green for tapped
+                              : const Color.fromARGB(
+                                  255, 128, 128, 128), // Gray for not tapped
                           borderRadius: BorderRadius.circular(20),
                           boxShadow: [
                             BoxShadow(
@@ -367,6 +392,9 @@ class _assesmenState extends State<assesmen> {
                 itemBuilder: (context, index) {
                   final resource2 = resources2[index];
                   final sound2 = resource2['resource']['levelSound'];
+
+                  final bool isTapped = tappedItems3.contains(index);
+
                   return Padding(
                     padding: const EdgeInsets.only(bottom: 20),
                     child: InkWell(
@@ -392,6 +420,12 @@ class _assesmenState extends State<assesmen> {
                         }
                         sound = sound2;
                         appbar = "KVKV";
+
+                        // Update tapped items
+                        setState(() {
+                          tappedItems3.add(index);
+                        });
+
                         Navigator.push(
                           context,
                           PageTransition(
@@ -405,10 +439,12 @@ class _assesmenState extends State<assesmen> {
                         width: 80,
                         height: 80,
                         decoration: BoxDecoration(
-                          color: const Color.fromARGB(
-                              255, 135, 206, 235), // Sky blue color
-                          borderRadius:
-                              BorderRadius.circular(20), // More rounded corners
+                          color: isTapped
+                              ? const Color.fromARGB(
+                                  255, 19, 212, 42) // Green for tapped
+                              : const Color.fromARGB(
+                                  255, 128, 128, 128), // Gray for not tapped
+                          borderRadius: BorderRadius.circular(20),
                           boxShadow: [
                             BoxShadow(
                               color: Colors.black.withOpacity(0.3),
@@ -423,7 +459,7 @@ class _assesmenState extends State<assesmen> {
                             'Soal ${index + 1}',
                             style: const TextStyle(
                               color: Colors.white,
-                              fontSize: 24, // Reduced font size for balance
+                              fontSize: 24,
                               fontWeight: FontWeight.bold,
                               fontFamily: 'ComicSans',
                             ),
@@ -461,6 +497,9 @@ class _assesmenState extends State<assesmen> {
                 itemBuilder: (context, index) {
                   final resource2 = resources22[index];
                   final sound2 = resource2['resource']['levelSound'];
+
+                  final bool isTapped = tappedItems4.contains(index);
+
                   return Padding(
                     padding: const EdgeInsets.only(bottom: 20),
                     child: InkWell(
@@ -486,6 +525,12 @@ class _assesmenState extends State<assesmen> {
                         }
                         sound = sound2;
                         appbar = "KVKVK";
+
+                        // Update tapped items
+                        setState(() {
+                          tappedItems4.add(index);
+                        });
+
                         Navigator.push(
                           context,
                           PageTransition(
@@ -499,10 +544,12 @@ class _assesmenState extends State<assesmen> {
                         width: 80,
                         height: 80,
                         decoration: BoxDecoration(
-                          color: const Color.fromARGB(
-                              255, 144, 238, 144), // Light green color
-                          borderRadius:
-                              BorderRadius.circular(20), // More rounded corners
+                          color: isTapped
+                              ? const Color.fromARGB(
+                                  255, 19, 212, 42) // Green for tapped
+                              : const Color.fromARGB(
+                                  255, 128, 128, 128), // Gray for not tapped
+                          borderRadius: BorderRadius.circular(20),
                           boxShadow: [
                             BoxShadow(
                               color: Colors.black.withOpacity(0.3),
@@ -517,7 +564,7 @@ class _assesmenState extends State<assesmen> {
                             'Soal ${index + 1}',
                             style: const TextStyle(
                               color: Colors.white,
-                              fontSize: 24, // Reduced font size for balance
+                              fontSize: 24,
                               fontWeight: FontWeight.bold,
                               fontFamily: 'ComicSans',
                             ),
@@ -560,10 +607,17 @@ class _assesmenState extends State<assesmen> {
                   final sound = resource3['resource']['levelSound'];
                   final asset = resource3['resource']['assetName'];
                   final soundlevel = resource3['resource']['assetSound'];
+
+                  final bool isTapped = tappedItems6.contains(index);
+
                   return Padding(
                     padding: const EdgeInsets.only(bottom: 20),
                     child: InkWell(
                       onTap: () {
+                        setState(() {
+                          tappedItems6.add(index);
+                        });
+
                         assetName = asset;
                         targetImage = image;
                         optionsAsesmen = options;
@@ -584,10 +638,12 @@ class _assesmenState extends State<assesmen> {
                         width: 80,
                         height: 80,
                         decoration: BoxDecoration(
-                          color: const Color.fromARGB(
-                              255, 135, 206, 235), // Sky blue color
-                          borderRadius:
-                              BorderRadius.circular(20), // More rounded corners
+                          color: isTapped
+                              ? const Color.fromARGB(
+                                  255, 19, 212, 42) // Green for tapped
+                              : const Color.fromARGB(
+                                  255, 128, 128, 128), // Gray for not tapped
+                          borderRadius: BorderRadius.circular(20),
                           boxShadow: [
                             BoxShadow(
                               color: Colors.black.withOpacity(0.3),
@@ -602,7 +658,7 @@ class _assesmenState extends State<assesmen> {
                             'Soal ${index + 1}',
                             style: const TextStyle(
                               color: Colors.white,
-                              fontSize: 24, // Reduced font size for balance
+                              fontSize: 24,
                               fontWeight: FontWeight.bold,
                               fontFamily: 'ComicSans',
                             ),
@@ -645,10 +701,17 @@ class _assesmenState extends State<assesmen> {
                   final sound = resource3['resource']['levelSound'];
                   final asset = resource3['resource']['assetName'];
                   final soundlevel = resource3['resource']['assetSound'];
+
+                  final bool isTapped = tappedItems7.contains(index);
+
                   return Padding(
                     padding: const EdgeInsets.only(bottom: 20),
                     child: InkWell(
                       onTap: () {
+                        setState(() {
+                          tappedItems7.add(index);
+                        });
+
                         assetName = asset;
                         targetImage = image;
                         optionsAsesmen = options;
@@ -669,10 +732,12 @@ class _assesmenState extends State<assesmen> {
                         width: 80,
                         height: 80,
                         decoration: BoxDecoration(
-                          color: const Color.fromARGB(
-                              255, 144, 238, 144), // Light green color
-                          borderRadius:
-                              BorderRadius.circular(20), // More rounded corners
+                          color: isTapped
+                              ? const Color.fromARGB(
+                                  255, 19, 212, 42) // Green for tapped
+                              : const Color.fromARGB(
+                                  255, 128, 128, 128), // Gray for not tapped
+                          borderRadius: BorderRadius.circular(20),
                           boxShadow: [
                             BoxShadow(
                               color: Colors.black.withOpacity(0.3),
@@ -687,7 +752,7 @@ class _assesmenState extends State<assesmen> {
                             'Soal ${index + 1}',
                             style: const TextStyle(
                               color: Colors.white,
-                              fontSize: 24, // Reduced font size for balance
+                              fontSize: 24,
                               fontWeight: FontWeight.bold,
                               fontFamily: 'ComicSans',
                             ),
@@ -730,10 +795,17 @@ class _assesmenState extends State<assesmen> {
                   final sound = resource4['resource']['levelSound'];
                   final asset = resource4['resource']['assetName'];
                   final soundlevel = resource4['resource']['assetSound'];
+
+                  final bool isTapped = tappedItems8.contains(index);
+
                   return Padding(
                     padding: const EdgeInsets.only(bottom: 20),
                     child: InkWell(
                       onTap: () {
+                        setState(() {
+                          tappedItems8.add(index);
+                        });
+
                         assetName = asset;
                         targetImage = image;
                         optionsAsesmen = options;
@@ -741,6 +813,7 @@ class _assesmenState extends State<assesmen> {
                         correctAnswerAsesmen = correctAnswer2;
                         soundAsesmen = sound;
                         levelSoundAsesmen = soundlevel;
+
                         Navigator.push(
                           context,
                           PageTransition(
@@ -754,10 +827,12 @@ class _assesmenState extends State<assesmen> {
                         width: 80,
                         height: 80,
                         decoration: BoxDecoration(
-                          color: const Color.fromARGB(
-                              255, 135, 206, 235), // Sky blue color
-                          borderRadius:
-                              BorderRadius.circular(20), // More rounded corners
+                          color: isTapped
+                              ? const Color.fromARGB(
+                                  255, 19, 212, 42) // Green for tapped
+                              : const Color.fromARGB(
+                                  255, 128, 128, 128), // Gray for not tapped
+                          borderRadius: BorderRadius.circular(20),
                           boxShadow: [
                             BoxShadow(
                               color: Colors.black.withOpacity(0.3),
@@ -772,7 +847,7 @@ class _assesmenState extends State<assesmen> {
                             'Soal ${index + 1}',
                             style: const TextStyle(
                               color: Colors.white,
-                              fontSize: 24, // Reduced font size for balance
+                              fontSize: 24,
                               fontWeight: FontWeight.bold,
                               fontFamily: 'ComicSans',
                             ),
@@ -814,11 +889,18 @@ class _assesmenState extends State<assesmen> {
                   final image = resource4['resource']['targetImage'];
                   final sound = resource4['resource']['levelSound'];
                   final asset = resource4['resource']['assetName'];
+                  final soundlevel = resource4['resource']['assetSound'];
+
+                  final bool isTapped = tappedItems9.contains(index);
+
                   return Padding(
                     padding: const EdgeInsets.only(bottom: 20),
                     child: InkWell(
                       onTap: () {
-                        final soundlevel = resource4['resource']['assetSound'];
+                        setState(() {
+                          tappedItems9.add(index);
+                        });
+
                         levelSoundAsesmen = soundlevel;
                         assetName = asset;
                         targetImage = image;
@@ -840,10 +922,12 @@ class _assesmenState extends State<assesmen> {
                         width: 80,
                         height: 80,
                         decoration: BoxDecoration(
-                          color: const Color.fromARGB(
-                              255, 144, 238, 144), // Light green color
-                          borderRadius:
-                              BorderRadius.circular(20), // More rounded corners
+                          color: isTapped
+                              ? const Color.fromARGB(
+                                  255, 19, 212, 42) // Green for tapped
+                              : const Color.fromARGB(
+                                  255, 128, 128, 128), // Gray for not tapped
+                          borderRadius: BorderRadius.circular(20),
                           boxShadow: [
                             BoxShadow(
                               color: Colors.black.withOpacity(0.3),
@@ -858,7 +942,7 @@ class _assesmenState extends State<assesmen> {
                             'Soal ${index + 1}',
                             style: const TextStyle(
                               color: Colors.white,
-                              fontSize: 24, // Reduced font size for balance
+                              fontSize: 24,
                               fontWeight: FontWeight.bold,
                               fontFamily: 'ComicSans',
                             ),
@@ -897,12 +981,20 @@ class _assesmenState extends State<assesmen> {
                   final resource5 = resources5[index];
                   final correctAnswer2 = resource5['resource']['correctAnswer'];
                   final sound2 = resource5['resource']['levelSound'];
+
+                  final bool isTapped = tappedItems10.contains(index);
+
                   return Padding(
                     padding: const EdgeInsets.only(bottom: 20),
                     child: InkWell(
                       onTap: () {
+                        setState(() {
+                          tappedItems10.add(index);
+                        });
+
                         sound = sound2;
                         voice = correctAnswer2;
+
                         Navigator.push(
                           context,
                           PageTransition(
@@ -916,8 +1008,11 @@ class _assesmenState extends State<assesmen> {
                         width: 80,
                         height: 80,
                         decoration: BoxDecoration(
-                          color: const Color.fromARGB(
-                              255, 135, 206, 235), // Sky blue color
+                          color: isTapped
+                              ? const Color.fromARGB(
+                                  255, 19, 212, 42) // Green for tapped
+                              : const Color.fromARGB(
+                                  255, 128, 128, 128), // Gray for not tapped
                           borderRadius:
                               BorderRadius.circular(20), // More rounded corners
                           boxShadow: [
@@ -973,12 +1068,20 @@ class _assesmenState extends State<assesmen> {
                   final resource5 = resources55[index];
                   final correctAnswer2 = resource5['resource']['correctAnswer'];
                   final sound2 = resource5['resource']['levelSound'];
+
+                  final bool isTapped = tappedItems11.contains(index);
+
                   return Padding(
                     padding: const EdgeInsets.only(bottom: 20),
                     child: InkWell(
                       onTap: () {
+                        setState(() {
+                          tappedItems11.add(index);
+                        });
+
                         sound = sound2;
                         voice = correctAnswer2;
+
                         Navigator.push(
                           context,
                           PageTransition(
@@ -992,8 +1095,11 @@ class _assesmenState extends State<assesmen> {
                         width: 80,
                         height: 80,
                         decoration: BoxDecoration(
-                          color: const Color.fromARGB(
-                              255, 144, 238, 144), // Light green color
+                          color: isTapped
+                              ? const Color.fromARGB(
+                                  255, 19, 212, 42) // Green for tapped
+                              : const Color.fromARGB(
+                                  255, 128, 128, 128), // Gray for not tapped
                           borderRadius:
                               BorderRadius.circular(20), // More rounded corners
                           boxShadow: [

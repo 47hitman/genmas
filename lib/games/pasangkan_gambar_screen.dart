@@ -66,6 +66,10 @@ class _SingleImageMatchingGameScreenState
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+          backgroundColor: Colors.orange.shade100,
           title: const Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -159,10 +163,15 @@ class _SingleImageMatchingGameScreenState
     return Scaffold(
       // backgroundColor: Colors.lightBlueAccent,
       appBar: AppBar(
-        title: const Text(
-          'Pasangkan Gambar!',
-          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-        ),
+        title: sound == 'assets/revisi/Pilih gambar yang sama.wav'
+            ? const Text(
+                'pilih gambar yang sama ',
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              )
+            : const Text(
+                'pilih huruf yang sama ',
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              ),
         backgroundColor: Colors.orange,
       ),
       body: Stack(fit: StackFit.expand, children: [
@@ -189,8 +198,8 @@ class _SingleImageMatchingGameScreenState
                             : targetImage == "assets/level1/aktivitas3/b.png"
                                 ? "assets/level1/aktivitas3/bsamar.png"
                                 : targetImage, // Default to targetImage if no match
-                    width: 120,
-                    height: 120,
+                    width: 180,
+                    height: 180,
                   ),
                 ),
                 Wrap(
@@ -247,8 +256,8 @@ class _SingleImageMatchingGameScreenState
                         }
                       },
                       child: Container(
-                        width: 80,
-                        height: 120,
+                        width: 100,
+                        height: 140,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(8),
                           border: Border.all(
@@ -263,8 +272,8 @@ class _SingleImageMatchingGameScreenState
                           children: [
                             Image.asset(
                               option['image']!,
-                              width: 70,
-                              height: 70,
+                              width: 90,
+                              height: 90,
                             ),
                             const SizedBox(height: 5),
                             Text(

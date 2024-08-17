@@ -116,15 +116,15 @@ class _asesment2levelState extends State<asesment2level> {
                 soalujian10 = false;
                 _btnController.stop();
 
-                // Navigator.push(
-                //   context,
-                //   PageTransition(
-                //     duration: const Duration(milliseconds: 300),
-                //     type: PageTransitionType.rightToLeft,
-                //     child:
-                //         const MenuScreen(), // Ganti dengan widget level yang sesuai
-                //   ),
-                // );
+                Navigator.push(
+                  context,
+                  PageTransition(
+                    duration: const Duration(milliseconds: 300),
+                    type: PageTransitionType.rightToLeft,
+                    child:
+                        const MenuScreen(), // Ganti dengan widget level yang sesuai
+                  ),
+                );
               },
             ),
           ],

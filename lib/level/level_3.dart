@@ -121,7 +121,7 @@ class _level3State extends State<level3> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 19, 212, 42),
+        backgroundColor: const Color(0xFF3ABEF9),
         title: const Text(
           'Level 3',
           style: TextStyle(color: Colors.white), // Text warna putih
@@ -151,7 +151,7 @@ class _level3State extends State<level3> {
             children: [
               Container(
                 width: double.infinity,
-                color: Colors.orange,
+                color: const Color(0xFFFFB22C),
                 padding: const EdgeInsets.all(16.0),
                 child: const Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -237,7 +237,7 @@ class _level3State extends State<level3> {
               ),
               Container(
                 width: double.infinity,
-                color: Colors.blue,
+                color: const Color(0xFFFFB22C),
                 padding: const EdgeInsets.all(16.0),
                 child: const Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

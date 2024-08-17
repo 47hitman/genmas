@@ -499,11 +499,13 @@ class _LengkapiKataScreenState extends State<LengkapiKataScreen> {
                       fontSize: 24, fontWeight: FontWeight.bold),
                 ),
             if (awal != false)
-              Text(
-                kataTersusun,
-                style:
-                    const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-              ),
+              kataTersusun == "susu"
+                  ? Text(
+                      kataTersusun,
+                      style: const TextStyle(
+                          fontSize: 24, fontWeight: FontWeight.bold),
+                    )
+                  : Container(),
             const SizedBox(height: 16),
 
             Row(

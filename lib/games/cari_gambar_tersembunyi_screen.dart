@@ -215,7 +215,7 @@ class _HiddenObjectGameScreenState extends State<HiddenObjectGameScreen> {
       appBar: AppBar(
         title: const Text(
           'Temukan gambar hewan yang sama!',
-          style: TextStyle(fontSize: 16),
+          style: TextStyle(fontSize: 17),
         ),
       ),
       body: GestureDetector(
@@ -225,7 +225,8 @@ class _HiddenObjectGameScreenState extends State<HiddenObjectGameScreen> {
         child: Container(
           decoration: const BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("assets/background7.png"),
+              image: AssetImage(
+                  "assets/revisi/background level 1 aktivitas temukan gambar hewan yang sama.png"),
               fit: BoxFit.cover,
             ),
           ),

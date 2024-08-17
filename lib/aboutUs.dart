@@ -17,7 +17,7 @@ class AboutUsScreen extends StatelessWidget {
         style: TextStyle(fontSize: 18),
         textAlign: TextAlign.center,
       ),
-      SizedBox(height: 16),
+      SizedBox(height: 100),
       Text(
         'Ucapan Terima Kasih',
         style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
@@ -42,11 +42,15 @@ class AboutUsScreen extends StatelessWidget {
             fit: BoxFit.cover,
           ),
         ),
-        child: const SingleChildScrollView(
-          padding: EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: children2,
+        child: const Center(
+          child: SingleChildScrollView(
+            padding: EdgeInsets.all(16.0),
+            child: Column(
+              mainAxisAlignment:
+                  MainAxisAlignment.center, // Center the text vertically
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: children2,
+            ),
           ),
         ),
       ),

@@ -92,7 +92,7 @@ class _MatchingGameScreenState extends State<MatchingGameScreen> {
       });
     } else {
       _play2('assets/option/Ayo coba lagi.m4a');
-      showWrongAnswerDialog(); // Tampilkan dialog jawaban salah
+      // showWrongAnswerDialog(); // Tampilkan dialog jawaban salah
     }
   }
 
@@ -108,8 +108,8 @@ class _MatchingGameScreenState extends State<MatchingGameScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Cari Bentuk Gambar yang Sama',
-          style: TextStyle(fontSize: 16),
+          'pilih gambar yang sama ',
+          style: TextStyle(fontSize: 25),
         ),
       ),
       body: Stack(

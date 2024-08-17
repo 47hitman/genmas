@@ -88,6 +88,10 @@ class _TextMatchingGameScreenState extends State<TextMatchingGameScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+          backgroundColor: Colors.orange.shade100,
           title: const Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -186,7 +190,7 @@ class _TextMatchingGameScreenState extends State<TextMatchingGameScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Cocokkan Teks!',
+          'cocokkan kata yang sama',
           style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
         ),
         backgroundColor: Colors.orange,
@@ -372,7 +376,9 @@ class _TextMatchingGameScreenState extends State<TextMatchingGameScreen> {
                             ),
                           );
                         },
+                        // ignore: deprecated_member_use
                         onWillAccept: (data) => true,
+                        // ignore: deprecated_member_use
                         onAccept: (data) {
                           if (_checkIfMatched(data, item)) {
                             setState(() {
